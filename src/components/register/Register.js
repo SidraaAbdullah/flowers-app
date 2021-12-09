@@ -11,7 +11,7 @@ const Register = () => {
   return (
     <View style={{ flex: 1 }}>
       <View
-        style={{ flex: 0.3, alignItems: "center", justifyContent: "center" }}
+        style={{ flex: 0.5, alignItems: "center", justifyContent: "center" }}
       >
         <Text>Image</Text>
       </View>

@@ -5,7 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 
 const RoundButton = ({ text, screen }) => {
   const navigation = useNavigation();
-  console.log(screen);
   return (
     <TouchableOpacity
       activeOpacity={0.5}
