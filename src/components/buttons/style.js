@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   text: {
     paddingVertical: 10,
     paddingHorizontal: 10,
-    fontSize: 18,
+    fontSize: 14,
     color: Colors.white,
     textAlign: "center",
   },
