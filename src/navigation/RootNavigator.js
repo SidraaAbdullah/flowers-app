@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import GetStarted from "../components/get-started/index";
-import SignUp from "../screens/sign-up";
+import GetStarted from "../screens/get-started";
+import Register from "../screens/register";
 
 const RootNavigator = () => {
   const Stack = createStackNavigator();
@@ -11,7 +11,7 @@ const RootNavigator = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="getStarted" component={GetStarted} />
-      <Stack.Screen name="sign-up" component={SignUp} />
+      <Stack.Screen name="signUp" component={Register} />
     </Stack.Navigator>
   );
 };

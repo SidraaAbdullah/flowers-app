@@ -42,7 +42,9 @@ const GetStarted = () => {
         scrollX={scrollX}
         scrollTo={(i) => changeTo(i)}
       />
-      <RoundButton screen="sign-up" text="CREATE ACCOUNT" />
+      <View style={{ width: "80%" }}>
+        <RoundButton screen="signUp" text="CREATE ACCOUNT" />
+      </View>
     </View>
   );
 };

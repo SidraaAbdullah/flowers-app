@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.black,
     borderRadius: 60,
-    width: "70%",
+    width: "100%",
     marginVertical: 10,
     borderColor: Colors.black,
   },
