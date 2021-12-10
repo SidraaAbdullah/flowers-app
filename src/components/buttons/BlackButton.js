@@ -3,17 +3,17 @@ import { Text, TouchableOpacity } from "react-native";
 import { styles } from "./style";
 import { useNavigation } from "@react-navigation/native";
 
-const BlackButton = ({ text, screen }) => {
+const BlackButton = (props) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={() => {
-        navigation.navigate(screen);
+        props.screen && navigation.navigate(props.screen);
       }}
       style={styles.button}
     >
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}>{props.text}</Text>
     </TouchableOpacity>
   );
 };

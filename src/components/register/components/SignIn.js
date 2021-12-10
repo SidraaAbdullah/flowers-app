@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, TextInput, Text, TouchableOpacity } from "react-native";
 import { BlackButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { style } from "./style";
 
 const SignIn = () => {
   const [email, setEmail] = useState(null);
@@ -19,7 +14,7 @@ const SignIn = () => {
       <View>
         <View style={style.sectionStyle}>
           <Text style={style.imageStyle}>
-            <Icon name="envelope" size={20} color="gray" type="font-awesome" />
+            <Icon name="envelope" size={18} color="gray" type="font-awesome" />
           </Text>
           <TextInput
             style={style.input}
@@ -30,7 +25,7 @@ const SignIn = () => {
         </View>
         <View style={style.sectionStyle}>
           <Text style={style.imageStyle}>
-            <Icon name="lock" color="gray" type="font-awesome" />
+            <Icon name="lock" size={20} color="gray" type="font-awesome" />
           </Text>
           <TextInput
             style={style.input}
@@ -53,29 +48,3 @@ const SignIn = () => {
   );
 };
 export { SignIn };
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginHorizontal: 35,
-  },
-  input: {
-    height: 40,
-    marginVertical: 8,
-    borderWidth: 1,
-    borderRadius: 60,
-    padding: 10,
-    paddingLeft: 35,
-    width: "100%",
-    borderStyle: "dashed",
-    borderColor: "gray",
-  },
-  sectionStyle: {
-    position: "relative",
-  },
-  imageStyle: {
-    position: "absolute",
-    top: 16,
-    left: 10,
-    textAlign: "center",
-  },
-});

@@ -21,6 +21,7 @@ const Register = () => {
           flexDirection: "row",
           width: "100%",
           marginVertical: 35,
+          paddingHorizontal: 30,
         }}
       >
         <TouchableOpacity
