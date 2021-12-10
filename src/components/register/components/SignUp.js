@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, StyleSheet } from "react-native";
-import { RoundButton } from "../../buttons";
+import { BlackButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 
 const SignUp = () => {
@@ -51,7 +51,7 @@ const SignUp = () => {
           <TextInput style={style.input} placeholder="Confirm Pasword" />
         </View>
         <View style={{ marginTop: 10 }}>
-          <RoundButton screen="home" text="SIGN UP" />
+          <BlackButton screen="home" text="SIGN UP" />
         </View>
       </View>
     </View>
@@ -72,7 +72,8 @@ const style = StyleSheet.create({
     padding: 10,
     paddingLeft: 35,
     width: "100%",
-    borderStyle: "dotted",
+    borderStyle: "dashed",
+    borderColor: "gray",
   },
   sectionStyle: {
     position: "relative",

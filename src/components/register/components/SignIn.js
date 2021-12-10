@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { RoundButton } from "../../buttons";
+import { BlackButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
@@ -40,7 +40,7 @@ const SignIn = () => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <RoundButton text="LOG IN" screen="home" />
+          <BlackButton text="LOG IN" screen="home" />
         </View>
 
         <TouchableOpacity onPress={() => navigation.navigate("forgotPassword")}>
@@ -66,7 +66,8 @@ const style = StyleSheet.create({
     padding: 10,
     paddingLeft: 35,
     width: "100%",
-    borderStyle: "dotted",
+    borderStyle: "dashed",
+    borderColor: "gray",
   },
   sectionStyle: {
     position: "relative",

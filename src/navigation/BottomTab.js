@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CartScreen from "../screens/cart";
 import AccountScreen from "../screens/account";
 import { Icon } from "react-native-elements";
+
 const App = () => {
   const Tab = createBottomTabNavigator();
   return (
@@ -13,7 +14,7 @@ const App = () => {
         tabBarStyle: {
           paddingBottom: 3,
         },
-        tabBarIcon: ({ color, size }) => {
+        tabBarIcon: ({ color }) => {
           let iconName;
           route.name === "Cart"
             ? (iconName = "cart-plus")
@@ -22,6 +23,8 @@ const App = () => {
             : route.name === "Account"
             ? (iconName = "user")
             : route.name === "Discover"
+            ? (iconName = "search")
+            : route.name === "Partners"
             ? (iconName = "search")
             : null;
           return (
@@ -35,6 +38,7 @@ const App = () => {
       <Tab.Screen name="Discover" component={AccountScreen} />
       <Tab.Screen name="Order history" component={CartScreen} />
       <Tab.Screen name="Account" component={AccountScreen} />
+      <Tab.Screen name="Partners" component={AccountScreen} />
       <Tab.Screen name="Cart" component={CartScreen} />
     </Tab.Navigator>
   );

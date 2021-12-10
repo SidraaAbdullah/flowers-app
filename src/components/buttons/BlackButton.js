@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import { styles } from "./style";
 import { useNavigation } from "@react-navigation/native";
 
-const RoundButton = ({ text, screen }) => {
+const BlackButton = ({ text, screen }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -18,4 +18,4 @@ const RoundButton = ({ text, screen }) => {
   );
 };
 
-export { RoundButton };
+export { BlackButton };

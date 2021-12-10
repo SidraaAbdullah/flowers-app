@@ -23,28 +23,26 @@ const Register = () => {
           marginVertical: 35,
         }}
       >
-        <View
+        <TouchableOpacity
           style={{
             width: "50%",
             alignItems: "center",
             borderBottomWidth: logIn,
           }}
+          onPress={() => changeTo("logIn")}
         >
-          <TouchableOpacity onPress={() => changeTo("logIn")}>
-            <Text style={styles.text}>Log In</Text>
-          </TouchableOpacity>
-        </View>
-        <View
+          <Text style={styles.text}>Log In</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
             width: "50%",
             alignItems: "center",
             borderBottomWidth: signUp,
           }}
+          onPress={() => changeTo("signUp")}
         >
-          <TouchableOpacity onPress={() => changeTo("signUp")}>
-            <Text style={styles.text}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
+          <Text style={styles.text}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
       {value === "logIn" ? <SignIn /> : value === "signUp" ? <SignUp /> : null}
     </View>
