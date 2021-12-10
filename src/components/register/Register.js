@@ -7,7 +7,8 @@ const Register = () => {
   const changeTo = (val) => {
     setValue(val);
   };
-
+  const logIn = value === "logIn" ? 2 : 0;
+  const signUp = value === "signUp" ? 2 : 0;
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -18,16 +19,32 @@ const Register = () => {
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "space-evenly",
+          width: "100%",
           marginVertical: 35,
         }}
       >
-        <TouchableOpacity onPress={() => changeTo("logIn")}>
-          <Text style={styles.text}>Log In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => changeTo("signUp")}>
-          <Text style={styles.text}>Sign Up</Text>
-        </TouchableOpacity>
+        <View
+          style={{
+            width: "50%",
+            alignItems: "center",
+            borderBottomWidth: logIn,
+          }}
+        >
+          <TouchableOpacity onPress={() => changeTo("logIn")}>
+            <Text style={styles.text}>Log In</Text>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            width: "50%",
+            alignItems: "center",
+            borderBottomWidth: signUp,
+          }}
+        >
+          <TouchableOpacity onPress={() => changeTo("signUp")}>
+            <Text style={styles.text}>Sign Up</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       {value === "logIn" ? <SignIn /> : value === "signUp" ? <SignUp /> : null}
     </View>

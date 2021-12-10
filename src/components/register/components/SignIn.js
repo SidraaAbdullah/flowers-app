@@ -40,7 +40,7 @@ const SignIn = () => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <RoundButton text="LOG IN" />
+          <RoundButton text="LOG IN" screen="home" />
         </View>
 
         <TouchableOpacity onPress={() => navigation.navigate("forgotPassword")}>

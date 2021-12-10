@@ -11,9 +11,9 @@ const App = () => {
       screenOptions={({ route }) => ({
         headerTitleAlign: "center",
         tabBarStyle: {
-          paddingBottom: 4,
+          paddingBottom: 3,
         },
-        tabBarIcon: ({ color }) => {
+        tabBarIcon: ({ color, size }) => {
           let iconName;
           route.name === "Cart"
             ? (iconName = "cart-plus")
