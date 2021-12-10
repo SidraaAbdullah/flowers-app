@@ -51,7 +51,7 @@ const SignUp = () => {
           <TextInput style={style.input} placeholder="Confirm Pasword" />
         </View>
         <View style={{ marginTop: 10 }}>
-          <RoundButton text="SIGN UP" />
+          <RoundButton screen="home" text="SIGN UP" />
         </View>
       </View>
     </View>
