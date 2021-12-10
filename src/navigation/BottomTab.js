@@ -9,6 +9,10 @@ const App = () => {
     <Tab.Navigator
       initialRouteName="Discover"
       screenOptions={({ route }) => ({
+        headerTitleAlign: "center",
+        tabBarStyle: {
+          paddingBottom: 4,
+        },
         tabBarIcon: ({ color }) => {
           let iconName;
           route.name === "Cart"
@@ -16,15 +20,15 @@ const App = () => {
             : route.name === "Order history"
             ? (iconName = "file")
             : route.name === "Account"
-            ? (iconName = "cart-plus")
+            ? (iconName = "user")
             : route.name === "Discover"
-            ? (iconName = "cart-plus")
+            ? (iconName = "search")
             : null;
           return (
             <Icon type="font-awesome" name={iconName} size={25} color={color} />
           );
         },
-        tabBarActiveTintColor: "tomato",
+        tabBarActiveTintColor: "purple",
         tabBarInactiveTintColor: "gray",
       })}
     >
