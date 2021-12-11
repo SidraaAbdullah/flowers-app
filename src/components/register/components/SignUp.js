@@ -8,6 +8,7 @@ const SignUp = () => {
   const [email, setEmail] = useState(null);
   const [number, setNumber] = useState(null);
   const [password, setPassword] = useState(null);
+  const [confirmPassword, setconfirmPassword] = useState(null);
   return (
     <View style={style?.container}>
       <View>
@@ -49,7 +50,12 @@ const SignUp = () => {
           <Text style={style.imageStyle}>
             <Icon color="gray" size={20} name="lock" type="font-awesome" />
           </Text>
-          <TextInput style={style.input} placeholder="Confirm Pasword" />
+          <TextInput
+            style={style.input}
+            onChangeText={setconfirmPassword}
+            value={confirmPassword}
+            placeholder="Confirm Password"
+          />
         </View>
         <View style={{ marginTop: 10 }}>
           <BlackButton screen="home" text="SIGN UP" />

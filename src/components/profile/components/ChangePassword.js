@@ -8,6 +8,7 @@ import Header from "../../header";
 
 const ChangePassword = () => {
   const [password, setPassword] = useState(null);
+  const [confirmPassword, setconfirmPassword] = useState(null);
   return (
     <View>
       <Header screen="profile" headingText="Change Password" />
@@ -19,7 +20,7 @@ const ChangePassword = () => {
           </Text>
           <TextInput
             style={style.input}
-            onChangeText={setPassword}
+            onChangeText={(text) => setPassword(text)}
             value={password}
             placeholder="Password"
           />
@@ -30,8 +31,8 @@ const ChangePassword = () => {
           </Text>
           <TextInput
             style={style.input}
-            onChangeText={setPassword}
-            value={password}
+            onChangeText={setconfirmPassword}
+            value={confirmPassword}
             placeholder="Confirm Password"
           />
         </View>
