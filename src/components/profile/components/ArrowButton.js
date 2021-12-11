@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
-const ArrowButton = ({ icon, text }) => {
+
+const ArrowButton = ({ icon, text, screen, navigation }) => {
   return (
     <TouchableOpacity
+      onPress={() => navigation.navigate(screen)}
       style={{
         borderStyle: "dashed",
         borderColor: "lightgray",
@@ -36,7 +38,7 @@ const ArrowButton = ({ icon, text }) => {
           {text}
         </Text>
       </View>
-      <Icon name="arrow-forward"  color="black" type="ionicon" />
+      <Icon name="arrow-forward" color="black" type="ionicon" />
     </TouchableOpacity>
   );
 };

@@ -4,9 +4,14 @@ import CartScreen from "../screens/cart";
 import AccountScreen from "../screens/account";
 import { Icon } from "react-native-elements";
 import Profile from "../screens/profile";
+import ChangePassword from "../screens/change-password";
+import PersonalInformation from "../screens/personal-infomation";
+import AddAddress from "../screens/add-address";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const App = () => {
   const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
   return (
     <Tab.Navigator
       initialRouteName="Account"
@@ -39,7 +44,19 @@ const App = () => {
     >
       <Tab.Screen name="Discover" component={AccountScreen} />
       <Tab.Screen name="Order history" component={CartScreen} />
-      <Tab.Screen name="Account" component={Profile} />
+      <Tab.Screen name="Account">
+        {() => (
+          <Stack.Navigator
+            ininitialRouteName="profile"
+            screenOptions={() => ({ headerShown: false })}
+          >
+            <Stack.Screen name="profile" component={Profile} />
+            <Stack.Screen name="changePassword" component={ChangePassword} />
+            <Stack.Screen name="personalInfo" component={PersonalInformation} />
+            <Stack.Screen name="addAddress" component={AddAddress} />
+          </Stack.Navigator>
+        )}
+      </Tab.Screen>
       <Tab.Screen name="Partners" component={AccountScreen} />
       <Tab.Screen name="Cart" component={CartScreen} />
     </Tab.Navigator>

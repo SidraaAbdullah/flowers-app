@@ -1,7 +1,8 @@
 import React from "react";
-import ForgotPassword from "../../components/register/components";
-const Password = () => {
+import ForgotPassword from "../../components/profile/components";
+
+const ForgetPassword = () => {
   return <ForgotPassword />;
 };
 
-export default Password;
+export default ForgetPassword;

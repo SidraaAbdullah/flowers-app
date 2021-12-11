@@ -1,8 +1,10 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 import { Icon } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = (props) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -26,7 +28,13 @@ const Header = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            props.screen
+              ? navigation.navigate(props.screen)
+              : navigation.goBack(null);
+          }}
+        >
           <View style={styles.leftIcon}>
             <Icon
               name="arrow-back-outline"
@@ -44,7 +52,7 @@ const Header = (props) => {
                 textAlign: "center",
                 color: "black",
                 fontWeight: "bold",
-                fontSize: 22,
+                fontSize: 20,
               }}
             >
               {props?.headingText}
@@ -71,7 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 8,
-    marginTop:2
+    marginTop: 2,
   },
   rightIcon: {
     width: "100%",

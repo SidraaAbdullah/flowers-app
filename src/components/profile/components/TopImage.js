@@ -1,32 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { ArrowButton } from ".";
-const TopImage = () => {
+const TopImage = ({ headingText }) => {
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
-      <View
+    <View
+      style={{
+        marginTop: 40,
+        marginBottom:30,        
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>Image</Text>
+      <Text style={style.text}>{headingText}</Text>
+      <Text
         style={{
-          marginVertical: 40,
-          justifyContent: "center",
-          alignItems: "center",
+          fontSize: 14,
+          textAlign: "center",
+          paddingHorizontal: 40,
+          color: "gray",
         }}
       >
-        <Text>Image</Text>
-        <Text style={style.text}>Profile Information</Text>
-        <Text
-          style={{
-            fontSize: 14,
-            textAlign: "center",
-            paddingHorizontal: 40,
-            color: "gray",
-          }}
-        >
-          Loreum ipsum dolor sit amet, consectetur non adipiscing elit.
-        </Text>
-      </View>
-      <ArrowButton text="Add Address" icon="book-outline" />
-      <ArrowButton text="Personal Information" icon="person-outline" />
-      <ArrowButton text="Change Password" icon="lock-closed-outline" />
+        Loreum ipsum dolor sit amet, consectetur non adipiscing elit.
+      </Text>
     </View>
   );
 };

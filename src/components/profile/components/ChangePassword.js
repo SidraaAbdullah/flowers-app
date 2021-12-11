@@ -1,0 +1,45 @@
+import React, { useState } from "react";
+import { View, TextInput, Text } from "react-native";
+import { BlackButton } from "../../buttons";
+import { Icon } from "react-native-elements";
+import { style } from "../../register/components/style";
+import { TopImage } from ".";
+import Header from "../../header";
+
+const ChangePassword = () => {
+  const [password, setPassword] = useState(null);
+  return (
+    <View>
+      <Header screen="profile" headingText="Change Password" />
+      <TopImage headingText="Change Password" />
+      <View style={{ marginHorizontal: 35 }}>
+        <View style={style.sectionStyle}>
+          <Text style={style.imageStyle}>
+            <Icon name="lock" size={20} color="gray" type="font-awesome" />
+          </Text>
+          <TextInput
+            style={style.input}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="Password"
+          />
+        </View>
+        <View style={style.sectionStyle}>
+          <Text style={style.imageStyle}>
+            <Icon name="lock" size={20} color="gray" type="font-awesome" />
+          </Text>
+          <TextInput
+            style={style.input}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="Confirm Password"
+          />
+        </View>
+        <View style={{ marginTop: 10 }}>
+          <BlackButton text="Save" screen="profile" />
+        </View>
+      </View>
+    </View>
+  );
+};
+export { ChangePassword };
