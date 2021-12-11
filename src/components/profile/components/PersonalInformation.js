@@ -14,7 +14,7 @@ const PersonalInformation = () => {
   return (
     <View>
       <Header screen="profile" headingText="Personal Information" />
-      <TopImage headingText="Sidra Abdullah" />
+      <TopImage headingText="Sidra Abdullah" personalInfo />
       <View style={{ marginHorizontal: 35 }}>
         <View style={style.sectionStyle}>
           <Text style={style.imageStyle}>

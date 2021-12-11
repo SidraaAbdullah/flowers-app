@@ -16,7 +16,7 @@ const Header = (props) => {
         elevation: 0,
         shadowOpacity: 0,
         shadowRadius: 0,
-        marginTop: 20,
+        paddingTop: 20,
         height: 80,
       }}
     >

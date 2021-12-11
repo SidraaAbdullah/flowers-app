@@ -6,10 +6,9 @@ export const styles = StyleSheet.create({
     borderRadius: 60,
     width: "100%",
     marginVertical: 5,
-    borderColor: Colors.black,
   },
   text: {
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 10,
     fontSize: 14,
     textAlign: "center",
