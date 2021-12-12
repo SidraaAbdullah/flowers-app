@@ -20,9 +20,10 @@ const ChangePassword = () => {
           </Text>
           <TextInput
             style={style.input}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={setPassword}
             value={password}
             placeholder="Password"
+            secureTextEntry={true}
           />
         </View>
         <View style={style.sectionStyle}>
@@ -34,6 +35,7 @@ const ChangePassword = () => {
             onChangeText={setconfirmPassword}
             value={confirmPassword}
             placeholder="Confirm Password"
+            secureTextEntry={true}
           />
         </View>
         <View style={{ marginTop: 10 }}>

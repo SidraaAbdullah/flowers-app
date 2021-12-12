@@ -8,7 +8,7 @@ import ChangePassword from "../screens/change-password";
 import PersonalInformation from "../screens/personal-infomation";
 import AddAddress from "../screens/add-address";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import NewAddress from "../screens/new-address";
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -54,6 +54,7 @@ const App = () => {
             <Stack.Screen name="changePassword" component={ChangePassword} />
             <Stack.Screen name="personalInfo" component={PersonalInformation} />
             <Stack.Screen name="addAddress" component={AddAddress} />
+            <Stack.Screen name="newAddress" component={NewAddress} />
           </Stack.Navigator>
         )}
       </Tab.Screen>

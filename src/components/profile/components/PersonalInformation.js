@@ -48,6 +48,7 @@ const PersonalInformation = () => {
             onChangeText={setEmail}
             value={email}
             placeholder="Email"
+            keyboardType="email-address"
           />
         </View>
         <View style={style?.sectionStyle}>

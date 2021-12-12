@@ -3,18 +3,38 @@ import { View } from "react-native";
 import { BlackButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
+import RadioButton from "radio-buttons-react-native";
 
 const AddAdress = () => {
+  const data = [
+    {
+      label: "Address 1",
+    },
+    {
+      label: "Address 2",
+    },
+  ];
   return (
     <View>
-      <Header screen="profile" headingText="Add Address" />
+      <Header screen="profile" headingText="Address Setting" />
       <TopImage headingText="Add Address" />
       <View style={{ marginHorizontal: 35 }}>
+        <RadioButton
+          animationType="pulse"
+          box={false}
+          initial={2}
+          data={data}
+          selectedBtn={(e) => console.log(e.label)}
+          style={{ marginBottom: 30 }}
+          activeColor="#ffbd11"
+          circleSize={15}
+          boxStyle={{ marginBottom: 5 }}
+        />
         <BlackButton
           bgColor="#ffbd11"
           color="black"
           text="Add new Address"
-          screen="profile"
+          screen="newAddress"
         />
         <BlackButton text="Save as Primary" screen="profile" />
       </View>

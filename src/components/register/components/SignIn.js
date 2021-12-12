@@ -21,6 +21,7 @@ const SignIn = () => {
             onChangeText={setEmail}
             value={email}
             placeholder="Email"
+            keyboardType="email-address"
           />
         </View>
         <View style={style.sectionStyle}>
@@ -32,6 +33,7 @@ const SignIn = () => {
             onChangeText={setPassword}
             value={password}
             placeholder="Password"
+            secureTextEntry={true}
           />
         </View>
         <View style={{ marginTop: 10 }}>
