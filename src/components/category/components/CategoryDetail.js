@@ -1,13 +1,18 @@
 import React from "react";
-import { TouchableOpacity, View, Animated, Text, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { Icon } from "react-native-elements";
-import { CategoryList } from ".";
+import { CategoryList, FilterList } from ".";
 import Header from "../../header";
 const CategoryDetail = ({ navigation }) => {
   const data = [
     { id: "1", name: "Flowers", place: "135 Places" },
     { id: "2", name: "Plants Outdoor", place: "125 Places" },
     { id: "3", name: "Plants Indoor", place: "35 Places" },
+  ];
+  const filterData = [
+    { id: "1", name: "Over 4.5" },
+    { id: "2", name: "Browser by Bouquets" },
+    { id: "3", name: "By flowers in Box" },
   ];
   return (
     <View style={{ flex: 1 }}>
@@ -32,6 +37,17 @@ const CategoryDetail = ({ navigation }) => {
           data={data}
           renderItem={({ item }) => (
             <CategoryList navigation={navigation} item={item} />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          bounces={false}
+          keyExtractor={(item) => item.id}
+        />
+
+        <FlatList
+          data={filterData}
+          renderItem={({ item }) => (
+            <FilterList navigation={navigation} item={item} />
           )}
           horizontal
           showsHorizontalScrollIndicator={false}

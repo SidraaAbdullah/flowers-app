@@ -20,7 +20,7 @@ const CategoryList = ({ navigation, item }) => {
           <Text>Image</Text>
         </View>
         <View>
-          <Text style={{ fontSize: 16 }}>{item?.name}</Text>
+          <Text style={{ fontSize: 15 }}>{item?.name}</Text>
           <Text style={{ fontSize: 12, color: "gray" }}>{item?.place}</Text>
         </View>
       </View>
