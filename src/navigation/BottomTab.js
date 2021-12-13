@@ -9,12 +9,14 @@ import PersonalInformation from "../screens/personal-infomation";
 import AddAddress from "../screens/add-address";
 import { createStackNavigator } from "@react-navigation/stack";
 import NewAddress from "../screens/new-address";
+import Category from "../screens/category";
+import CategoryDetail from "../screens/category-detail";
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
   return (
     <Tab.Navigator
-      initialRouteName="Account"
+      initialRouteName="Discover"
       screenOptions={({ route }) => ({
         headerShown: false,
         headerTitleAlign: "center",
@@ -42,7 +44,17 @@ const App = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Discover" component={AccountScreen} />
+      <Tab.Screen name="Discover">
+        {() => (
+          <Stack.Navigator
+            ininitialRouteName="category"
+            screenOptions={() => ({ headerShown: false })}
+          >
+            <Stack.Screen name="category" component={Category} />
+            <Stack.Screen name="categoryDetail" component={CategoryDetail} />
+          </Stack.Navigator>
+        )}
+      </Tab.Screen>
       <Tab.Screen name="Order history" component={CartScreen} />
       <Tab.Screen name="Account">
         {() => (
