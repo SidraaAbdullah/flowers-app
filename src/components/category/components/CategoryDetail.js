@@ -63,7 +63,7 @@ const CategoryDetail = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <Header headingText="Flowers" />
-      <View style={{ margin: 20, marginRight: 15 }}>
+      <View style={{ margin: 15, marginVertical: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -129,8 +129,8 @@ const CategoryDetail = ({ navigation }) => {
           style={{
             flexDirection: "row",
             flexWrap: "wrap",
-            marginHorizontal: 6,
-            marginLeft: 20,
+            marginRight: 2,
+            marginLeft: 15,
           }}
         >
           {flowerList.map((list, index) => (

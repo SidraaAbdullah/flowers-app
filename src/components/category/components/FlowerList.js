@@ -46,7 +46,7 @@ const FlowerList = ({ item }) => {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "center",
+            
             }}
           >
             <Text style={{ fontSize: 12, color: "black" }}>
