@@ -17,7 +17,7 @@ const CategoryDetail = ({ navigation }) => {
         <View
           style={{
             paddingHorizontal: 15,
-            paddingTop: 20,
+            paddingTop: 15,
             backgroundColor: "white",
           }}
         >
