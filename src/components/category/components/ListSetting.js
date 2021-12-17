@@ -61,7 +61,8 @@ const ListSetting = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          marginHorizontal: 15,
+          paddingHorizontal: 15,
+          backgroundColor: "white",
         }}
       >
         <View
