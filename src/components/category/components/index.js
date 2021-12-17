@@ -1,5 +1,5 @@
 export * from "./CategoryDetail";
-export * from "./CategoryList";
+export * from "./CategoryName";
 export * from "./FilterList";
 export * from "./List";
 export * from "./BoxList";

@@ -1,9 +1,9 @@
 import React from "react";
-import { TouchableOpacity, View, Text } from "react-native";
+import { TouchableOpacity, View, Text, Image } from "react-native";
 const BoxList = ({ item }) => {
   return (
-    <TouchableOpacity activeOpacity={1} style={{ width: "100%" }}>
-      <View style={{ marginBottom: 20, marginRight: 15 }}>
+    <TouchableOpacity activeOpacity={1} style={{ width: "50%" }}>
+      <View style={{ marginBottom: 20, marginRight: 14 }}>
         <View
           style={{
             borderWidth: 1,
@@ -24,7 +24,7 @@ const BoxList = ({ item }) => {
               marginBottom: 8,
             }}
           >
-            <Text>Image</Text>
+            <Image style={{ width: 90, height: 90 }} />
           </View>
           <View
             style={{

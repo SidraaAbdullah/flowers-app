@@ -64,27 +64,31 @@ const ListSetting = () => {
           marginHorizontal: 15,
         }}
       >
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginBottom: 10,
+          }}
+        >
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-            List Setting:{" "}
+            List Setting:
           </Text>
           <TouchableOpacity
-            onPress={() => changeTo("listStyle")}
+            onPress={() => changeTo("boxStyle")}
             style={{ marginHorizontal: 3, marginTop: 3 }}
           >
-            <Icon color={listColor} name="apps" type="ionicon" size={18} />
+            <Icon color={boxColor} name="apps" type="ionicon" size={18} />
           </TouchableOpacity>
           <TouchableOpacity
             style={{ marginTop: 3 }}
-            onPress={() => changeTo("boxStyle")}
+            onPress={() => changeTo("listStyle")}
           >
-            <Icon color={boxColor} name="list" type="ionicon" />
+            <Icon color={listColor} name="list" type="ionicon" />
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={{ fontSize: 16, marginTop: 2, fontWeight: "bold" }}>
-            Price:{" "}
-          </Text>
+          <Text style={{ fontSize: 16, fontWeight: "bold" }}>Price:</Text>
           <Text>
             <Icon name="" type="" />
           </Text>
@@ -100,12 +104,12 @@ const ListSetting = () => {
             marginBottom: 10,
           }}
         >
-          {value === "listStyle"
-            ? flowerList.map((list, index) => <List item={list} key={index} />)
-            : value === "boxStyle"
+          {value === "boxStyle"
             ? flowerList.map((list, index) => (
                 <BoxList item={list} key={index} />
               ))
+            : value === "listStyle"
+            ? flowerList.map((list, index) => <List item={list} key={index} />)
             : null}
         </View>
       </ScrollView>

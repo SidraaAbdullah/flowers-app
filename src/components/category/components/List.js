@@ -1,9 +1,10 @@
 import React from "react";
-import { TouchableOpacity, View, Text } from "react-native";
+import { TouchableOpacity, View, Text, Image } from "react-native";
+
 const List = ({ item }) => {
   return (
-    <TouchableOpacity activeOpacity={1} style={{ width: "50%" }}>
-      <View style={{ marginRight: 14, marginBottom: 20 }}>
+    <TouchableOpacity activeOpacity={1} style={{ width: "100%" }}>
+      <View style={{ marginRight: 14, marginBottom: 12 }}>
         <View
           style={{
             borderWidth: 1,
@@ -11,48 +12,48 @@ const List = ({ item }) => {
             borderStyle: "dashed",
             borderRadius: 8,
             borderColor: "gray",
-            paddingTop: 10,
-            paddingBottom: 6,
-            paddingHorizontal: 5,
           }}
         >
           <View
             style={{
               flexDirection: "row",
-              justifyContent: "center",
+              justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: 8,
+              paddingHorizontal: 20,
+              paddingVertical: 10,
             }}
           >
-            <Text>Image</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingHorizontal: 5,
-            }}
-          >
-            <Text>60$</Text>
-            <Text>Icon</Text>
-          </View>
-        </View>
-        <View style={{ paddingHorizontal: 3 }}>
-          <Text style={{ fontSize: 14 }}>{item?.name}</Text>
-          <Text numberOfLines={1} style={{ fontSize: 12, color: "gray" }}>
-            {item?.place}
-          </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-            
-            }}
-          >
-            <Text style={{ fontSize: 12, color: "black" }}>
-              {item?.delivery}
-            </Text>
-            <Text style={{ fontSize: 12, color: "black" }}>{item?.price}</Text>
+            <View style={{ width: "30%", paddingHorizontal: 10 }}>
+              <Image              
+                style={{ width: 30, height: 20 }}
+              />
+            </View>
+            <View style={{ width: "70%" }}>
+              <View
+                style={{
+                  justifyContent: "space-between",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ fontSize: 14 }}>{item?.name}</Text>
+                <Text style={{ fontSize: 14 }}> {item?.price}</Text>
+              </View>
+
+              <Text numberOfLines={1} style={{ fontSize: 12, color: "gray" }}>
+                {item?.place}
+              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text style={{ fontSize: 12, color: "black" }}>
+                  {item?.delivery}
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>

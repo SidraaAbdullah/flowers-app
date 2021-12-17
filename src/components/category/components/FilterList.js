@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text } from "react-native";
 const FilterList = ({ navigation, item }) => {
   return (
     <TouchableOpacity
-      style={{ flex: 1, marginVertical: 25 }}
+      style={{ flex: 1, marginVertical: 15}}
       onPress={() => navigation.navigate("categoryDetail")}
     >
       <View
