@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text } from "react-native";
 const CategoryList = ({ navigation, item }) => {
   return (
     <TouchableOpacity
-      style={{ flex: 1, width: 100 }}
+      style={{ flex: 1, width: 105 }}
       onPress={() => navigation.navigate("categoryDetail")}
     >
       <View style={{ marginRight: 6 }}>
@@ -20,7 +20,7 @@ const CategoryList = ({ navigation, item }) => {
           <Text>Image</Text>
         </View>
         <View>
-          <Text style={{ fontSize: 13, fontWeight: "bold" }}>{item?.name}</Text>
+          <Text style={{ fontSize: 14, fontWeight: "bold" }}>{item?.name}</Text>
           <Text style={{ fontSize: 12, color: "gray" }}>{item?.place}</Text>
         </View>
       </View>

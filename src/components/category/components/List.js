@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-const FlowerList = ({ item }) => {
+const List = ({ item }) => {
   return (
     <TouchableOpacity activeOpacity={1} style={{ width: "50%" }}>
       <View style={{ marginRight: 14, marginBottom: 20 }}>
@@ -59,4 +59,4 @@ const FlowerList = ({ item }) => {
     </TouchableOpacity>
   );
 };
-export { FlowerList };
+export { List };
