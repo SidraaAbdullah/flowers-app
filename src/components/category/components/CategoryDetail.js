@@ -7,7 +7,9 @@ const CategoryDetail = ({ navigation }) => {
   const filterData = [
     { id: "1", name: "Over 4.5" },
     { id: "2", name: "Browser by Bouquets" },
-    { id: "3", name: "By flowers in Box" },
+    { id: "3", name: "Buy flowers in Box" },
+    { id: "4", name: "Browser by Bouquets" },
+    { id: "5", name: "Buy flowers in Box" },
   ];
 
   return (
