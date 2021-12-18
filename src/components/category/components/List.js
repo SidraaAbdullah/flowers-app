@@ -12,6 +12,7 @@ const List = ({ item }) => {
             borderStyle: "dashed",
             borderRadius: 8,
             borderColor: "gray",
+            backgroundColor: "white",
           }}
         >
           <View
@@ -23,9 +24,12 @@ const List = ({ item }) => {
               paddingVertical: 10,
             }}
           >
-            <View style={{ width: "30%", paddingHorizontal: 10 }}>
-              <Image              
-                style={{ width: 30, height: 20 }}
+            <View style={{ width: "30%" }}>
+              <Image
+                style={{ width: 70, height: 70 }}
+                source={{
+                  uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                }}
               />
             </View>
             <View style={{ width: "70%" }}>

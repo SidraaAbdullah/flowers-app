@@ -14,6 +14,7 @@ const BoxList = ({ item }) => {
             paddingTop: 10,
             paddingBottom: 6,
             paddingHorizontal: 5,
+            backgroundColor: "white",
           }}
         >
           <View
@@ -24,7 +25,12 @@ const BoxList = ({ item }) => {
               marginBottom: 8,
             }}
           >
-            <Image style={{ width: 90, height: 90 }} />
+            <Image
+              source={{
+                uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+              }}
+              style={{ width: 90, height: 90 }}
+            />
           </View>
           <View
             style={{
@@ -37,7 +43,7 @@ const BoxList = ({ item }) => {
             <Text>Icon</Text>
           </View>
         </View>
-        <View style={{ paddingHorizontal: 3 }}>
+        <View style={{ paddingHorizontal: 5 }}>
           <Text style={{ fontSize: 14 }}>{item?.name}</Text>
           <Text numberOfLines={1} style={{ fontSize: 12, color: "gray" }}>
             {item?.place}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { List, BoxList } from ".";
+import { BlackButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 const ListSetting = () => {
   const [value, setValue] = useState("boxStyle");
@@ -102,7 +103,6 @@ const ListSetting = () => {
             flexWrap: "wrap",
             marginLeft: 15,
             marginTop: 10,
-            marginBottom: 10,
           }}
         >
           {value === "boxStyle"
@@ -112,6 +112,9 @@ const ListSetting = () => {
             : value === "listStyle"
             ? flowerList.map((list, index) => <List item={list} key={index} />)
             : null}
+        </View>
+        <View style={{ marginHorizontal: 40, marginBottom: 15 }}>
+          <BlackButton bgColor="green" text="Load More" />
         </View>
       </ScrollView>
     </View>
