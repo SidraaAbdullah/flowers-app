@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
+import { Icon } from "react-native-elements";
 
 const List = ({ item }) => {
+  const [number, setNumber] = useState(0);
+  const increment = () => setNumber(number + 1);
+  let decrement = () => setNumber(number - 1);
+  if (number <= 0) {
+    decrement = () => setNumber(0);
+  }
   return (
     <TouchableOpacity activeOpacity={1} style={{ width: "100%" }}>
       <View style={{ marginRight: 14, marginBottom: 12 }}>
@@ -56,6 +63,47 @@ const List = ({ item }) => {
                 <Text style={{ fontSize: 12, color: "black" }}>
                   {item?.delivery}
                 </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                }}
+              >
+                <TouchableOpacity onPress={() => decrement()}>
+                  <Icon
+                    name="minus"
+                    size={20}
+                    color="gray"
+                    type="font-awesome"
+                  />
+                </TouchableOpacity>
+
+                <Text
+                  style={{
+                    marginHorizontal: 8,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                    borderRadius: 6,
+                    borderWidth: 1,
+                    borderStyle: "dashed",
+                    borderColor: "gray",
+                    paddingHorizontal: 7,
+                    color: "black",
+                    backgroundColor: "#f1f1f1",
+                  }}
+                >
+                  {number}
+                </Text>
+                <TouchableOpacity onPress={() => increment()}>
+                  <Icon
+                    name="plus"
+                    color="gray"
+                    size={20}
+                    type="font-awesome"
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           </View>

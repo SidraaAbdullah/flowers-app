@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
+import { Icon } from "react-native-elements";
 const BoxList = ({ item }) => {
+  const [number, setNumber] = useState(0);
+  const increment = () => setNumber(number + 1);
+  let decrement = () => setNumber(number - 1);
+  if (number <= 0) {
+    decrement = () => setNumber(0);
+  }
   return (
     <TouchableOpacity activeOpacity={1} style={{ width: "50%" }}>
       <View style={{ marginBottom: 20, marginRight: 14 }}>
@@ -40,7 +47,37 @@ const BoxList = ({ item }) => {
             }}
           >
             <Text>60$</Text>
-            <Text>Icon</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity onPress={() => decrement()}>
+                <Icon name="minus" size={20} color="gray" type="font-awesome" />
+              </TouchableOpacity>
+
+              <Text
+                style={{
+                  marginHorizontal: 8,
+                  fontWeight: "bold",
+                  fontSize: 16,
+                  borderRadius: 6,
+                  borderWidth: 1,
+                  borderStyle: "dashed",
+                  borderColor: "gray",
+                  paddingHorizontal: 7,
+                  color: "black",
+                  backgroundColor: "#f1f1f1",
+                }}
+              >
+                {number}
+              </Text>
+              <TouchableOpacity onPress={() => increment()}>
+                <Icon name="plus" color="gray" size={20} type="font-awesome" />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <View style={{ paddingHorizontal: 5 }}>
