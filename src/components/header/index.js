@@ -46,7 +46,7 @@ const Header = (props) => {
         </TouchableOpacity>
 
         <View>
-          {props.headingText !== "" ? (
+          {props.headingText && (
             <Text
               style={{
                 textAlign: "center",
@@ -57,12 +57,17 @@ const Header = (props) => {
             >
               {props?.headingText}
             </Text>
-          ) : null}
+          )}
         </View>
 
         <TouchableOpacity>
           <View style={styles.rightIcon}>
-            <Icon name="menu" size={30} color="black" type="ionicon" />
+            <Icon
+              name={props.rightIcon || "menu"}
+              size={props.rightSize || 30}
+              color={props.rightColor || "black"}
+              type={props.rightType || "ionicon"}
+            />
           </View>
         </TouchableOpacity>
       </View>

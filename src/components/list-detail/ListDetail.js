@@ -2,13 +2,13 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import Header from "../../components/header";
 import { BlackButton } from "../buttons";
-import { Icon } from "react-native-elements";
+import { Count } from "../category/components";
 
 const ListDetail = ({ route }) => {
-  const { name } = route.params;
+  const { name, price } = route.params;
   return (
     <View style={{ flex: 1 }}>
-      <Header headingText={name} />
+      <Header headingText={name} rightIcon="heart-outline" rightSize={24} />
       <View style={{ flex: 1 }}>
         <View
           style={{
@@ -36,11 +36,25 @@ const ListDetail = ({ route }) => {
           >
             {name}
           </Text>
+          <View
+            style={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexDirection: "row",
+              marginVertical: 10,
+            }}
+          >
+            <View>
+              <Text style={{ fontSize: 17 }}>{price}</Text>
+            </View>
+
+            <Count />
+          </View>
           <Text
             style={{
               fontSize: 14,
               color: "gray",
-              marginBottom: 10,
+              marginBottom: 20,
             }}
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -49,35 +63,6 @@ const ListDetail = ({ route }) => {
             and scrambled it to make a type specimen book. It has survived not
             only five centuries.
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginVertical: 20,
-            }}
-          >
-            <View>
-              <Text>
-                <Icon name="star-outline" size={18} type="ionicon" />
-                <Icon name="star-outline" size={18} type="ionicon" />
-                <Icon name="star-outline" size={18} type="ionicon" />
-                <Icon name="star-outline" size={18} type="ionicon" />
-                <Icon name="star-outline" size={18} type="ionicon" />
-              </Text>
-            </View>
-            <View>
-              <Text>
-                <Icon
-                  name="share-outline"
-                  style={{ marginHorizontal: 5 }}
-                  type="ionicon"
-                  size={18}
-                />
-                <Icon size={18} name="heart-outline" type="ionicon" />
-              </Text>
-            </View>
-          </View>
           <BlackButton text="Add to Cart" />
         </View>
       </View>
