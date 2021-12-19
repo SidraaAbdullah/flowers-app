@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import NewAddress from "../screens/new-address";
 import Category from "../screens/category";
 import CategoryDetail from "../screens/category-detail";
+import ListDetail from "../screens/list-detail";
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -52,6 +53,7 @@ const App = () => {
           >
             <Stack.Screen name="category" component={Category} />
             <Stack.Screen name="categoryDetail" component={CategoryDetail} />
+            <Stack.Screen name="listDetail" component={ListDetail} />
           </Stack.Navigator>
         )}
       </Tab.Screen>

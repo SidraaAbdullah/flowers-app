@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 import { Icon } from "react-native-elements";
 
-const List = ({ item }) => {
+const List = ({ item, navigation }) => {
   const [number, setNumber] = useState(0);
   const increment = () => setNumber(number + 1);
   let decrement = () => setNumber(number - 1);
@@ -10,7 +10,11 @@ const List = ({ item }) => {
     decrement = () => setNumber(0);
   }
   return (
-    <TouchableOpacity activeOpacity={1} style={{ width: "100%" }}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("listDetail", { name: item.name })}
+      activeOpacity={0.5}
+      style={{ width: "100%" }}
+    >
       <View style={{ marginRight: 14, marginBottom: 12 }}>
         <View
           style={{

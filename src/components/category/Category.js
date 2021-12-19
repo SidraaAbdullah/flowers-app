@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 import Header from "../../components/header";
+
 const Category = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>

@@ -3,12 +3,12 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { List, BoxList } from ".";
 import { BlackButton } from "../../buttons";
 import { Icon } from "react-native-elements";
-const ListSetting = () => {
+
+const ListSetting = ({ navigation }) => {
   const [value, setValue] = useState("boxStyle");
   const changeTo = (val) => {
     setValue(val);
   };
-
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const flowerList = [
@@ -107,10 +107,12 @@ const ListSetting = () => {
         >
           {value === "boxStyle"
             ? flowerList.map((list, index) => (
-                <BoxList item={list} key={index} />
+                <BoxList item={list} key={index} navigation={navigation} />
               ))
             : value === "listStyle"
-            ? flowerList.map((list, index) => <List item={list} key={index} />)
+            ? flowerList.map((list, index) => (
+                <List item={list} key={index} navigation={navigation} />
+              ))
             : null}
         </View>
         <View style={{ marginHorizontal: 40, marginBottom: 15 }}>

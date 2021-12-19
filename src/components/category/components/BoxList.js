@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 import { Icon } from "react-native-elements";
-const BoxList = ({ item }) => {
+const BoxList = ({ item, navigation }) => {
   const [number, setNumber] = useState(0);
   const increment = () => setNumber(number + 1);
   let decrement = () => setNumber(number - 1);
@@ -9,7 +9,11 @@ const BoxList = ({ item }) => {
     decrement = () => setNumber(0);
   }
   return (
-    <TouchableOpacity activeOpacity={1} style={{ width: "50%" }}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("listDetail", { name: item.name })}
+      activeOpacity={0.5}
+      style={{ width: "50%" }}
+    >
       <View style={{ marginBottom: 20, marginRight: 14 }}>
         <View
           style={{

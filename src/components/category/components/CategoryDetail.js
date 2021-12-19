@@ -35,7 +35,7 @@ const CategoryDetail = ({ navigation }) => {
             keyExtractor={(item) => item.id}
           />
         </View>
-        <ListSetting />
+        <ListSetting navigation={navigation} />
       </View>
     </View>
   );
