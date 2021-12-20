@@ -63,10 +63,10 @@ const Header = (props) => {
         <TouchableOpacity>
           <View style={styles.rightIcon}>
             <Icon
-              name={props.rightIcon || "menu"}
-              size={props.rightSize || 30}
+              name={props.rightIcon || "cart-plus"}
+              size={props.rightSize || 28}
               color={props.rightColor || "black"}
-              type={props.rightType || "ionicon"}
+              type={props.rightType || "font-awesome"}
             />
           </View>
         </TouchableOpacity>

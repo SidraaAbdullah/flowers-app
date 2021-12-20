@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import Header from "../../components/header";
-import { BlackButton } from "../buttons";
+import { CommonButton } from "../buttons";
 import { Count } from "../category/components";
 
 const ListDetail = ({ route }) => {
@@ -63,7 +63,7 @@ const ListDetail = ({ route }) => {
             and scrambled it to make a type specimen book. It has survived not
             only five centuries.
           </Text>
-          <BlackButton text="Add to Cart" />
+          <CommonButton text="Add to Cart" />
         </View>
       </View>
     </View>

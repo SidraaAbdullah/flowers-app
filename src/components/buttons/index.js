@@ -1,1 +1,1 @@
-export * from './BlackButton';
+export * from './CommonButton';

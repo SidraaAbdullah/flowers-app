@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { List, BoxList } from ".";
-import { BlackButton } from "../../buttons";
+import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 
 const ListSetting = ({ navigation }) => {
@@ -116,7 +116,7 @@ const ListSetting = ({ navigation }) => {
             : null}
         </View>
         <View style={{ marginHorizontal: 40, marginBottom: 15 }}>
-          <BlackButton bgColor="green" text="Load More" />
+          <CommonButton bgColor="green" text="Load More" />
         </View>
       </ScrollView>
     </View>

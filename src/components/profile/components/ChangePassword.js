@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Text } from "react-native";
-import { BlackButton } from "../../buttons";
+import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { style } from "../../register/components/style";
 import { TopImage } from ".";
@@ -39,7 +39,7 @@ const ChangePassword = () => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <BlackButton text="Save" screen="profile" />
+          <CommonButton text="Save" screen="profile" />
         </View>
       </View>
     </View>

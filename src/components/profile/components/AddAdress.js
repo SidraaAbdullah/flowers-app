@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { BlackButton } from "../../buttons";
+import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
 import RadioButton from "radio-buttons-react-native";
@@ -30,13 +30,15 @@ const AddAdress = () => {
           circleSize={15}
           boxStyle={{ marginBottom: 5 }}
         />
-        <BlackButton
+        <CommonButton
           bgColor="#ffbd11"
           color="black"
           text="Add new Address"
           screen="newAddress"
+          isIcon
+          iconName="add-outline"
         />
-        <BlackButton text="Save as Primary" screen="profile" />
+        <CommonButton text="Save as Primary" screen="profile" />
       </View>
     </View>
   );

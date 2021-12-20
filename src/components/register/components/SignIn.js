@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, TouchableOpacity } from "react-native";
-import { BlackButton } from "../../buttons";
+import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { style } from "./style";
@@ -37,7 +37,7 @@ const SignIn = () => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <BlackButton text="LOG IN" screen="home" />
+          <CommonButton text="LOG IN" screen="home" />
         </View>
 
         <TouchableOpacity onPress={() => navigation.navigate("forgotPassword")}>

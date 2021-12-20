@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
-import { BlackButton } from "../../buttons";
+import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
 import { Icon } from "react-native-elements";
@@ -45,11 +45,14 @@ const NewAddress = () => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <BlackButton
+          <CommonButton
             bgColor="#ffbd11"
             color="black"
             text="Save new Address"
             screen="addAddress"
+            isIcon
+            iconName="close-outline"
+            iconColor="red"
           />
         </View>
       </View>

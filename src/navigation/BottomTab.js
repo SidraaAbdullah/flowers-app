@@ -12,9 +12,11 @@ import NewAddress from "../screens/new-address";
 import Category from "../screens/category";
 import CategoryDetail from "../screens/category-detail";
 import ListDetail from "../screens/list-detail";
+
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
+
   return (
     <Tab.Navigator
       initialRouteName="Discover"
@@ -24,21 +26,26 @@ const App = () => {
         tabBarStyle: {
           paddingBottom: 3,
         },
-        tabBarIcon: ({ color }) => {
+        tabBarIcon: ({ color, type }) => {
           let iconName;
           route.name === "Cart"
             ? (iconName = "cart-plus")
             : route.name === "Order history"
-            ? (iconName = "")
+            ? ((iconName = "document-text"), (type = "ionicon"))
             : route.name === "Account"
             ? (iconName = "user-circle")
             : route.name === "Discover"
-            ? (iconName = "")
+            ? (iconName = "search")
             : route.name === "Partners"
             ? (iconName = "")
             : null;
           return (
-            <Icon type="font-awesome" name={iconName} size={25} color={color} />
+            <Icon
+              type={type || "font-awesome"}
+              name={iconName}
+              size={25}
+              color={color}
+            />
           );
         },
         tabBarActiveTintColor: "purple",
@@ -57,7 +64,7 @@ const App = () => {
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Order history" component={CartScreen} />
+      <Tab.Screen name="Order history" component={AccountScreen} />
       <Tab.Screen name="Account">
         {() => (
           <Stack.Navigator

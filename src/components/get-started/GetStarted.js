@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { View, StyleSheet, FlatList, Animated } from "react-native";
 import { Carousel } from "../../constants";
-import { BlackButton } from "../buttons/BlackButton";
+import { CommonButton } from "../buttons";
 import { Paginator, CarouselItem } from "./compoents";
 
 const GetStarted = () => {
@@ -43,7 +43,7 @@ const GetStarted = () => {
         scrollTo={(i) => changeTo(i)}
       />
       <View style={{ width: "80%" }}>
-        <BlackButton screen="signUp" text="CREATE ACCOUNT" />
+        <CommonButton screen="signUp" text="CREATE ACCOUNT" isIcon />
       </View>
     </View>
   );
