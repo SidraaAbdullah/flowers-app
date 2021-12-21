@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
-import { Count } from ".";
-
+import { Rating } from ".";
+import { Icon } from "react-native-elements";
 const List = ({ item, navigation }) => {
   return (
     <View style={{ width: "100%" }}>
@@ -21,8 +21,8 @@ const List = ({ item, navigation }) => {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              paddingHorizontal: 20,
-              paddingVertical: 10,
+              paddingHorizontal: 10,
+              paddingVertical: 5,
             }}
           >
             <TouchableOpacity
@@ -36,7 +36,7 @@ const List = ({ item, navigation }) => {
             >
               <View style={{ width: "30%" }}>
                 <Image
-                  style={{ width: 70, height: 70 }}
+                  style={{ width: 80, height: 80 }}
                   source={{
                     uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
                   }}
@@ -53,6 +53,7 @@ const List = ({ item, navigation }) => {
                   })
                 }
                 activeOpacity={0.5}
+                style={{ paddingRight: 10 }}
               >
                 <View
                   style={{
@@ -68,19 +69,31 @@ const List = ({ item, navigation }) => {
                 <Text numberOfLines={1} style={{ fontSize: 12, color: "gray" }}>
                   {item?.place}
                 </Text>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Text style={{ fontSize: 12, color: "black" }}>
-                    {item?.delivery}
-                  </Text>
-                </View>
               </TouchableOpacity>
 
-              <Count />
+              <View
+                style={{
+                  justifyContent: "space-between",
+                  flexDirection: "row",
+                  marginTop: 8,
+                  alignItems: "center",
+                }}
+              >
+                <Rating />
+                <TouchableOpacity
+                  style={{
+                    borderRadius: 15,
+                    backgroundColor: "black",
+                    width: 28,
+                    height: 28,
+                    padding: 1,
+                    paddingLeft: 3,
+                  }}
+                  onPress={() => navigation.navigate("Cart")}
+                >
+                  <Icon name="add" color="white" type="ionicon" />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>

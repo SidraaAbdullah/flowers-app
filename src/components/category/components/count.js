@@ -3,11 +3,11 @@ import { Icon } from "react-native-elements";
 import { TouchableOpacity, View, Text } from "react-native";
 
 const Count = () => {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(1);
   const increment = () => setNumber(number + 1);
   let decrement = () => setNumber(number - 1);
   if (number <= 0) {
-    decrement = () => setNumber(0);
+    decrement = () => setNumber(1);
   }
   return (
     <View

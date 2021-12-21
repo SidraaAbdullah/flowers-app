@@ -8,7 +8,12 @@ const ListDetail = ({ route }) => {
   const { name, price } = route.params;
   return (
     <View style={{ flex: 1 }}>
-      <Header headingText={name} rightIcon="heart-outline" rightSize={24} />
+      <Header
+        headingText={name}
+        rightIcon="heart-outline"
+        rightSize={24}
+        rightType="ionicon"
+      />
       <View style={{ flex: 1 }}>
         <View
           style={{
@@ -63,7 +68,7 @@ const ListDetail = ({ route }) => {
             and scrambled it to make a type specimen book. It has survived not
             only five centuries.
           </Text>
-          <CommonButton text="Add to Cart" />
+          <CommonButton text="Add to Cart" screen="Cart" />
         </View>
       </View>
     </View>

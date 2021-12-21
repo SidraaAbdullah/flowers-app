@@ -1,7 +1,8 @@
 import React from "react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
-import { CommonButton } from "../../buttons";
+import { Icon } from "react-native-elements";
 import { Rating } from ".";
+
 const BoxList = ({ item, navigation }) => {
   return (
     <View style={{ width: "50%" }}>
@@ -55,7 +56,7 @@ const BoxList = ({ item, navigation }) => {
                 }}
               >
                 <Text style={{ fontSize: 14 }}>{item?.name}</Text>
-                <Text>60$</Text>
+                <Text>{item.price}</Text>
               </View>
 
               <Text numberOfLines={1} style={{ fontSize: 12, color: "gray" }}>
@@ -63,8 +64,28 @@ const BoxList = ({ item, navigation }) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <Rating />
-          <CommonButton text="Add to Cart" paddingVertical={7} />
+          <View
+            style={{
+              justifyContent: "space-between",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Rating />
+            <TouchableOpacity
+              style={{
+                borderRadius: 15,
+                backgroundColor: "black",
+                width: 28,
+                height: 28,
+                padding: 1,
+                paddingLeft: 3,
+              }}
+              onPress={() => navigation.navigate("Cart")}
+            >
+              <Icon name="add" color="white" type="ionicon" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
