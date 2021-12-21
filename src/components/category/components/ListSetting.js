@@ -14,42 +14,42 @@ const ListSetting = ({ navigation }) => {
   const flowerList = [
     {
       id: "1",
-      name: "Flower Store/ 4.5",
+      name: "Flower Store",
       place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
       delivery: "27min . Deleivery",
       price: "5$",
     },
     {
       id: "2",
-      name: "Flower Shop/ 4.3",
+      name: "Flower Shop",
       place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
       delivery: "20min . Deleivery",
       price: "20$",
     },
     {
       id: "3",
-      name: "Flower Store/ 4.5",
+      name: "Flower Store",
       place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
       delivery: "30min . Deleivery",
       price: "30$",
     },
     {
       id: "4",
-      name: "Flower Shop/ 4.3",
+      name: "Flower Shop",
       place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
       delivery: "40min . Deleivery",
       price: "10$",
     },
     {
       id: "5",
-      name: "Flower Shop/ 4.3",
+      name: "Flower Shop",
       place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
       delivery: "20min . Deleivery",
       price: "20$",
     },
     {
       id: "6",
-      name: "Flower Store/ 4.5",
+      name: "Flower Store",
       place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
       delivery: "30min . Deleivery",
       price: "30$",
@@ -101,7 +101,8 @@ const ListSetting = ({ navigation }) => {
           style={{
             flexDirection: "row",
             flexWrap: "wrap",
-            marginLeft: 15,
+            marginLeft: 10,
+            marginRight: 2,
             marginTop: 10,
           }}
         >

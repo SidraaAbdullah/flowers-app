@@ -8,6 +8,7 @@ const CommonButton = (props) => {
   const navigation = useNavigation();
   const backgroundColor = props.bgColor ? props.bgColor : "black";
   const color = props.color ? props.color : "white";
+  const padding = props.paddingVertical ? props.paddingVertical : 12;
   return (
     <TouchableOpacity
       activeOpacity={0.5}
@@ -16,7 +17,14 @@ const CommonButton = (props) => {
       }}
       style={[styles.button, { backgroundColor: backgroundColor }]}
     >
-      <Text style={[styles.text, { color: color }]}>{props.text}</Text>
+      <Text
+        style={[
+          styles.text,
+          { color: color, paddingVertical: padding },
+        ]}
+      >
+        {props.text}
+      </Text>
       {props.isIcon && (
         <View
           style={{

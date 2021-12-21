@@ -5,7 +5,7 @@ import { Count } from ".";
 const List = ({ item, navigation }) => {
   return (
     <View style={{ width: "100%" }}>
-      <View style={{ marginRight: 14, marginBottom: 12 }}>
+      <View style={{ marginRight: 8, marginBottom: 8 }}>
         <View
           style={{
             borderWidth: 1,
