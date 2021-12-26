@@ -26,4 +26,8 @@ export const style = StyleSheet.create({
     left: 12,
     textAlign: "center",
   },
+  label: {
+    marginLeft: 4,
+    fontFamily: "ProximaNovaSemiBold",
+  },
 });

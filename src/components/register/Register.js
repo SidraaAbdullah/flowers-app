@@ -10,7 +10,7 @@ const Register = () => {
   const logIn = value === "logIn" ? 2 : 0;
   const signUp = value === "signUp" ? 2 : 0;
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <View
         style={{ flex: 0.5, alignItems: "center", justifyContent: "center" }}
       >
@@ -54,6 +54,6 @@ export default Register;
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "ProximaNovaBold",
   },
 });

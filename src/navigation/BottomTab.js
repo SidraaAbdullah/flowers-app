@@ -12,7 +12,7 @@ import NewAddress from "../screens/new-address";
 import Category from "../screens/category";
 import CategoryDetail from "../screens/category-detail";
 import ListDetail from "../screens/list-detail";
-
+import OrderHistory from "../screens/order-history";
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -25,6 +25,7 @@ const App = () => {
         headerTitleAlign: "center",
         tabBarStyle: {
           paddingBottom: 3,
+          fontFamily: "ProximaNovaSemiBold",
         },
         tabBarIcon: ({ color, type }) => {
           let iconName;
@@ -64,7 +65,7 @@ const App = () => {
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Order history" component={AccountScreen} />
+      <Tab.Screen name="Order history" component={OrderHistory} />
       <Tab.Screen name="Account">
         {() => (
           <Stack.Navigator

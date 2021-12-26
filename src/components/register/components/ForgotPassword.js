@@ -25,7 +25,7 @@ const ForgotPassword = () => {
         <CommonButton
           text="Send Email"
           rightIcon
-          rightIconName="send-outline"
+          rightIconName="send"
           rightIconSize={22}
         />
       </View>

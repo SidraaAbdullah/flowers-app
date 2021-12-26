@@ -15,7 +15,7 @@ const Input = (props) => {
   } = props;
   return (
     <View>
-      <Text style={{ marginLeft: 4 }}>{label}</Text>
+      <Text style={style.label}>{label}</Text>
       <View style={style.sectionStyle}>
         <Text style={style.imageStyle}>
           <Icon name={iconName} size={20} type="ionicon" color="gray" />

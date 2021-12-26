@@ -13,16 +13,10 @@ const CategoryDetail = ({ navigation }) => {
   ];
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Flowers" />
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            paddingHorizontal: 15,
-            paddingTop: 15,
-            backgroundColor: "white",
-          }}
-        >
+        <View style={{ paddingHorizontal: 15, paddingTop: 10 }}>
           <CategoryName />
           <FlatList
             data={filterData}

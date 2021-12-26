@@ -39,18 +39,7 @@ const CommonButton = (props) => {
 
       {props.rightIcon && (
         <View
-          style={{
-            position: "absolute",
-            backgroundColor: "white",
-            right: 0,
-            bottom: 0,
-            height: 43,
-            width: 43,
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 30,
-            borderColor: "white",
-          }}
+          style={styles.rightIcon}
         >
           <Icon
             size={props.rightIconSize || 30}

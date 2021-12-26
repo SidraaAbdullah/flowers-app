@@ -13,21 +13,22 @@ const CategoryName = () => {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text>
-            <Icon name="flower-outline" size={30} type="ionicon" />
-          </Text>
+          <Icon name="flower-outline" size={30} type="ionicon" />
           <Text
-            style={{ marginHorizontal: 4, fontSize: 22, fontWeight: "bold" }}
+            style={{
+              marginHorizontal: 4,
+              fontSize: 22,
+              fontFamily: "ProximaNovaSemiBold",
+            }}
           >
             Flowers
           </Text>
         </View>
-        <View>
-          <Icon name="location-outline" type="ionicon" />
-        </View>
       </View>
       <View style={{ marginVertical: 4 }}>
-        <Text style={{ fontSize: 14, color: "gray" }}>
+        <Text
+          style={{ fontSize: 15, color: "gray", fontFamily: "ProximaNova" }}
+        >
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been text ever since the 1500s.
         </Text>
