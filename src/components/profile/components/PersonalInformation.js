@@ -1,72 +1,80 @@
 import React, { useState } from "react";
-import { View, TextInput, Text } from "react-native";
+import { View, ScrollView } from "react-native";
 import { CommonButton } from "../../buttons";
-import { Icon } from "react-native-elements";
-import { style } from "../../register/components/style";
 import { TopImage } from ".";
 import Header from "../../header";
+import Input from "../../input/index";
 
 const PersonalInformation = () => {
   const [email, setEmail] = useState("sidraabdullah56@gmail.com");
   const [name, setName] = useState("Sidra Abdullah");
-  const [number, setNumber] = useState("0900-78601");
-  const [id, setId] = useState("1");
+  const [number, setNumber] = useState("090078601");
+  const [city, setCity] = useState("Karachi");
+  const [country, setCountry] = useState("Pakistan");
+  const [houseNo, setHouseNo] = useState("D/84/B");
+  const [town, setTown] = useState("Gulshan");
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Header screen="profile" headingText="Personal Information" />
       <TopImage headingText="Sidra Abdullah" personalInfo />
-      <View style={{ marginHorizontal: 35 }}>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="phone" size={20} type="font-awesome" color="gray" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setNumber}
+      <ScrollView>
+        <View style={{ marginHorizontal: 35, marginBottom: 30 }}>
+          <Input
+            label="Phone Number"
+            iconName="call"
             value={number}
-            placeholder="Phone Number"
+            setValue={setNumber}
             keyboardType="numeric"
+            placeholder="Phone Number"
           />
-        </View>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="person" size={17} type="ionicon" color="gray" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setName}
+          <Input
+            label="Name"
+            iconName="person"
             value={name}
+            setValue={setName}
             placeholder="Name"
           />
-        </View>
-        <View style={style?.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="envelope" size={18} color="gray" type="font-awesome" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setEmail}
+          <Input
+            label="Email"
+            iconName="mail"
             value={email}
+            setValue={setEmail}
             placeholder="Email"
             keyboardType="email-address"
           />
-        </View>
-        <View style={style?.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="albums" size={18} color="gray" type="ionicon" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setId}
-            value={id}
-            placeholder="personal ID"
-            keyboardType="numeric"
+          <Input
+            label="Country"
+            iconName="location"
+            value={country}
+            setValue={setCountry}
+            placeholder="Country"
           />
+          <Input
+            label="City"
+            iconName="location"
+            value={city}
+            setValue={setCity}
+            placeholder="City"
+          />
+          <Input
+            label="Town"
+            iconName="location"
+            value={town}
+            setValue={setTown}
+            placeholder="Town"
+          />
+          <Input
+            label="House Number"
+            iconName="location"
+            value={houseNo}
+            setValue={setHouseNo}
+            placeholder="House Number"
+          />
+          <View style={{ marginTop: 10 }}>
+            <CommonButton text="Save" screen="profile" isIcon iconName="save-outline" iconSize={22} />
+          </View>
         </View>
-        <View style={{ marginTop: 10 }}>
-          <CommonButton text="Save" screen="profile" />
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };

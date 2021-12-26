@@ -5,7 +5,7 @@ import Header from "../header";
 
 const Profile = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
       <Header headingText="Profile" />
       <TopImage headingText="Profile Information" />
       <ArrowButton
