@@ -1,16 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Avatar } from "react-native-elements";
+
 const TopImage = ({ headingText, personalInfo }) => {
   return (
-    <View
-      style={{
-        marginTop: 30,
-        marginBottom: 30,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <View style={styles.container}>
       {personalInfo ? (
         <Avatar
           rounded
@@ -23,15 +17,8 @@ const TopImage = ({ headingText, personalInfo }) => {
       ) : (
         <Text>Image</Text>
       )}
-      <Text style={style.text}>{headingText}</Text>
-      <Text
-        style={{
-          fontSize: 14,
-          textAlign: "center",
-          paddingHorizontal: 40,
-          color: "gray",
-        }}
-      >
+      <Text style={styles.text}>{headingText}</Text>
+      <Text style={styles.discription}>
         Loreum ipsum dolor sit amet, consectetur non adipiscing elit.
       </Text>
     </View>
@@ -39,9 +26,23 @@ const TopImage = ({ headingText, personalInfo }) => {
 };
 export { TopImage };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     marginVertical: 5,
+    fontFamily: "ProximaNovaSemiBold",
+  },
+  discription: {
+    fontSize: 15,
+    textAlign: "center",
+    paddingHorizontal: 40,
+    color: "gray",
+    fontFamily: "ProximaNova",
+  },
+  container: {
+    marginTop: 30,
+    marginBottom: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
