@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { View, TextInput, Text } from "react-native";
+import { View } from "react-native";
 import { CommonButton } from "../../buttons";
-import { Icon } from "react-native-elements";
-import { style } from "../../register/components/style";
 import { TopImage } from ".";
 import Header from "../../header";
 import Input from "../../input/index";
@@ -27,7 +25,7 @@ const ChangePassword = () => {
           label="Confirm Password"
           iconName="lock-closed"
           value={confirmPassword}
-          setValue={setPassword}
+          setValue={setconfirmPassword}
           placeholder="Confirm Password"
           secureTextEntry={true}
         />

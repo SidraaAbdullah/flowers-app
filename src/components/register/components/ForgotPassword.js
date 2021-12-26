@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { View, TextInput, Text } from "react-native";
+import { View, Text } from "react-native";
 import { CommonButton } from "../../buttons";
-import { Icon } from "react-native-elements";
 import { style } from "./style";
 import Input from "../../input";
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState(null);
   return (
@@ -19,9 +19,15 @@ const ForgotPassword = () => {
         value={email}
         setValue={setEmail}
         placeholder="Email"
+        keyboardType="email-address"
       />
       <View style={{ marginTop: 10 }}>
-        <CommonButton text="Send Email" rightIcon rightIconName="send-outline" rightIconSize={22} />
+        <CommonButton
+          text="Send Email"
+          rightIcon
+          rightIconName="send-outline"
+          rightIconSize={22}
+        />
       </View>
     </View>
   );
