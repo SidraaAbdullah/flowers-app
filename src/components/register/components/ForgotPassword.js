@@ -3,7 +3,7 @@ import { View, TextInput, Text } from "react-native";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { style } from "./style";
-
+import Input from "../../input";
 const ForgotPassword = () => {
   const [email, setEmail] = useState(null);
   return (
@@ -13,19 +13,15 @@ const ForgotPassword = () => {
       >
         <Text>Image</Text>
       </View>
-      <View style={style.sectionStyle}>
-        <Text style={style.imageStyle}>
-          <Icon name="envelope" size={18} color="gray" type="font-awesome" />
-        </Text>
-        <TextInput
-          style={style.input}
-          onChangeText={setEmail}
-          value={email}
-          placeholder="Email"
-        />
-      </View>
+      <Input
+        label="Email"
+        iconName="mail"
+        value={email}
+        setValue={setEmail}
+        placeholder="Email"
+      />
       <View style={{ marginTop: 10 }}>
-        <CommonButton text="Send Email" />
+        <CommonButton text="Send Email" rightIcon rightIconName="send-outline" rightIconSize={22} />
       </View>
     </View>
   );
