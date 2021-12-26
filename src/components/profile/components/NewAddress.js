@@ -50,9 +50,9 @@ const NewAddress = () => {
             color="black"
             text="Save new Address"
             screen="addAddress"
-            isIcon
-            iconName="close-outline"
-            iconColor="red"
+            rightIcon
+            rightIconName="close-outline"
+            rightIconColor="red"
           />
         </View>
       </View>

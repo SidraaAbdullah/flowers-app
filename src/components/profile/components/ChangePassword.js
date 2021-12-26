@@ -5,6 +5,7 @@ import { Icon } from "react-native-elements";
 import { style } from "../../register/components/style";
 import { TopImage } from ".";
 import Header from "../../header";
+import Input from "../../input/index";
 
 const ChangePassword = () => {
   const [password, setPassword] = useState(null);
@@ -14,32 +15,24 @@ const ChangePassword = () => {
       <Header screen="profile" headingText="Change Password" />
       <TopImage headingText="Change Password" />
       <View style={{ marginHorizontal: 35 }}>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="lock" size={20} color="gray" type="font-awesome" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setPassword}
-            value={password}
-            placeholder="Password"
-            secureTextEntry={true}
-          />
-        </View>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="lock" size={20} color="gray" type="font-awesome" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setconfirmPassword}
-            value={confirmPassword}
-            placeholder="Confirm Password"
-            secureTextEntry={true}
-          />
-        </View>
+        <Input
+          label="Password"
+          iconName="lock-closed"
+          value={password}
+          setValue={setPassword}
+          placeholder="Password"
+          secureTextEntry={true}
+        />
+        <Input
+          label="Confirm Password"
+          iconName="lock-closed"
+          value={confirmPassword}
+          setValue={setPassword}
+          placeholder="Confirm Password"
+          secureTextEntry={true}
+        />
         <View style={{ marginTop: 10 }}>
-          <CommonButton text="Save" screen="profile" />
+          <CommonButton text="Save" screen="profile" isIcon bgColor="#1c74bc" />
         </View>
       </View>
     </View>

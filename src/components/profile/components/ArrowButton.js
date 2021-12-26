@@ -8,7 +8,7 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
       onPress={() => navigation.navigate(screen)}
       style={{
         borderStyle: "dashed",
-        borderColor: "lightgray",
+        borderColor: "gray",
         borderWidth: 1,
         backgroundColor: "#ebebeb",
         borderRadius: 10,

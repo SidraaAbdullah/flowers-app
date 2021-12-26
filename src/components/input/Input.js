@@ -4,7 +4,15 @@ import { View, TextInput, Text } from "react-native";
 import { style } from "./style";
 
 const Input = (props) => {
-  const { label, iconName, setValue, placeholder, keyboardType, value } = props;
+  const {
+    label,
+    iconName,
+    setValue,
+    placeholder,
+    keyboardType,
+    value,
+    secureTextEntry,
+  } = props;
   return (
     <View>
       <Text style={{ marginLeft: 4 }}>{label}</Text>
@@ -18,6 +26,7 @@ const Input = (props) => {
           value={value}
           placeholder={placeholder}
           keyboardType={keyboardType}
+          secureTextEntry={secureTextEntry}
         />
       </View>
     </View>

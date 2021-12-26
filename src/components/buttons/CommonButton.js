@@ -17,15 +17,27 @@ const CommonButton = (props) => {
       }}
       style={[styles.button, { backgroundColor: backgroundColor }]}
     >
-      <Text
-        style={[
-          styles.text,
-          { color: color, paddingVertical: padding },
-        ]}
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        {props.text}
-      </Text>
-      {props.isIcon && (
+        <Text style={[styles.text, { color: color, paddingVertical: padding }]}>
+          {props.text}
+        </Text>
+        {props.isIcon && (
+          <Icon
+            size={props.iconSize || 20}
+            name={props.iconName || "save-outline"}
+            color={props.iconColor || "white"}
+            type={props.iconType || "ionicon"}
+          />
+        )}
+      </View>
+
+      {props.rightIcon && (
         <View
           style={{
             position: "absolute",
@@ -41,10 +53,10 @@ const CommonButton = (props) => {
           }}
         >
           <Icon
-            size={props.iconSize || 30}
-            name={props.iconName || "arrow-forward-outline"}
-            color={props.iconColor || "black"}
-            type={props.iconType || "ionicon"}
+            size={props.rightIconSize || 30}
+            name={props.rightIconName || "arrow-forward-outline"}
+            color={props.rightIconColor || "black"}
+            type={props.rightIconType || "ionicon"}
           />
         </View>
       )}

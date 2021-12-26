@@ -71,7 +71,7 @@ const PersonalInformation = () => {
             placeholder="House Number"
           />
           <View style={{ marginTop: 10 }}>
-            <CommonButton text="Save" screen="profile" isIcon iconName="save-outline" iconSize={22} />
+            <CommonButton text="Save" screen="profile" isIcon bgColor="#1c74bc" />
           </View>
         </View>
       </ScrollView>

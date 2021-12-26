@@ -141,9 +141,9 @@ const ListDetail = ({ route }) => {
             <CommonButton
               text="Add to Cart"
               screen="Cart"
-              isIcon
-              iconName="cart-outline"
-              iconSize={24}
+              rightIcon
+              rightIconName="cart-outline"
+              rightIconSize={24}
               bgColor="green"
             />
           </View>
