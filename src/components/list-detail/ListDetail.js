@@ -144,6 +144,7 @@ const ListDetail = ({ route }) => {
               isIcon
               iconName="cart-outline"
               iconSize={24}
+              bgColor="green"
             />
           </View>
         </ScrollView>
