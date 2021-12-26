@@ -7,15 +7,7 @@ const List = ({ item, navigation }) => {
     <View style={{ width: "100%" }}>
       <View style={{ marginRight: 8, marginBottom: 8 }}>
         <View style={styles.border}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-            }}
-          >
+          <View style={styles.container}>
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("listDetail", {
@@ -113,5 +105,12 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "ProximaNovaSemiBold",
     fontSize: 15,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
 });
