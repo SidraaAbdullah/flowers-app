@@ -77,7 +77,7 @@ const ListSetting = ({ navigation }) => {
           <Text style={styles.text}>List Setting:</Text>
           <TouchableOpacity
             onPress={() => changeTo("boxStyle")}
-            style={{ marginHorizontal: 3 }}
+            style={{ marginRight: 3 }}
           >
             <Icon color={boxColor} name="apps" type="ionicon" size={18} />
           </TouchableOpacity>
@@ -120,8 +120,11 @@ const ListSetting = ({ navigation }) => {
 export { ListSetting };
 const styles = StyleSheet.create({
   text: {
-    fontFamily: "ProximaSemiNova",
+    fontFamily: "ProximaNovaSemiBold",
     fontSize: 16,
     marginBottom: 3,
+    marginRight: 3,
   },
 });
+
+

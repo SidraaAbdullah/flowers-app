@@ -1,7 +1,13 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { Icon } from "react-native-elements/dist/icons/Icon";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { Count, Rating } from "../category/components";
@@ -20,7 +26,7 @@ const ListDetail = ({ route }) => {
         <View
           style={{
             backgroundColor: "white",
-            paddingVertical: 20,
+            paddingVertical: 10,
             alignItems: "center",
             paddingBottom: 30,
           }}
@@ -29,34 +35,26 @@ const ListDetail = ({ route }) => {
             source={{
               uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
             }}
-            style={{ width: 150, height: 150 }}
+            style={{ width: 130, height: 130 }}
           />
         </View>
         <ScrollView>
           <View style={{ margin: 20, marginTop: 15 }}>
-            <View
-              style={{
-                borderWidth: 1,
-                borderStyle: "dashed",
-                borderRadius: 8,
-                borderColor: "gray",
-                padding: 10,
-                marginBottom: 15,
-              }}
-            >
+            <View style={styles.border}>
               <Text
                 style={{
                   textAlign: "center",
                   fontSize: 20,
-                  fontWeight: "bold",
+                  fontFamily: "ProximaNovaSemiBold",
                 }}
               >
                 {name}
               </Text>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 15,
                   color: "gray",
+                  fontFamily: "ProximaNova",
                 }}
               >
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -80,7 +78,14 @@ const ListDetail = ({ route }) => {
                       marginTop: 3,
                     }}
                   >
-                    <Text style={{ color: "black" }}>Read reviews</Text>
+                    <Text
+                      style={{
+                        color: "black",
+                        fontFamily: "ProximaNovaSemiBold",
+                      }}
+                    >
+                      Read reviews
+                    </Text>
                     <Icon
                       name="chevron-forward-outline"
                       type="ionicon"
@@ -98,36 +103,35 @@ const ListDetail = ({ route }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 flexDirection: "row",
+                marginVertical: 20,
               }}
             >
               <View>
-                <Text style={{ fontSize: 17 }}>{price}</Text>
+                <Text
+                  style={{ fontSize: 17, fontFamily: "ProximaNovaSemiBold" }}
+                >
+                  {price}
+                </Text>
               </View>
               <Count />
             </View>
-            <View
-              style={{
-                borderWidth: 1,
-                borderStyle: "dashed",
-                borderRadius: 8,
-                borderColor: "gray",
-                padding: 10,
-                marginVertical: 15,
-              }}
-            >
+
+            <View style={styles.border}>
               <Text
                 style={{
                   fontSize: 20,
-                  fontWeight: "bold",
                   color: "black",
+                  fontFamily: "ProximaNovaSemiBold",
+                  marginBottom: 3,
                 }}
               >
                 What is?
               </Text>
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 15,
                   color: "gray",
+                  fontFamily: "ProximaNova",
                 }}
               >
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -137,15 +141,16 @@ const ListDetail = ({ route }) => {
                 survived not only five centuries.
               </Text>
             </View>
-
-            <CommonButton
-              text="Add to Cart"
-              screen="Cart"
-              rightIcon
-              rightIconName="cart-outline"
-              rightIconSize={24}
-              bgColor="green"
-            />
+            <View style={{ marginTop: 20 }}>
+              <CommonButton
+                text="Add to Cart"
+                screen="Cart"
+                rightIcon
+                rightIconName="cart-outline"
+                rightIconSize={24}
+                bgColor="green"
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -154,3 +159,12 @@ const ListDetail = ({ route }) => {
 };
 
 export default ListDetail;
+const styles = StyleSheet.create({
+  border: {
+    borderWidth: 1,
+    borderStyle: "dashed",
+    borderRadius: 8,
+    borderColor: "gray",
+    padding: 10,
+  },
+});
