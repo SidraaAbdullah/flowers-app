@@ -14,7 +14,6 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
           alignItems: "center",
         }}
       >
-<<<<<<< HEAD
         <Icon name="book-outline" size={20} color="black" type="ionicon" />
         <Text
           style={{
@@ -25,10 +24,8 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
         >
           {text}
         </Text>
-=======
         <Icon name={icon} size={20} color="black" type="ionicon" />
         <Text style={styles.text}>{text}</Text>
->>>>>>> bd8ac20ab85827deadbb92bcdf91f81839e9cadf
       </View>
       <Icon name="arrow-forward" color="black" type="ionicon" />
     </TouchableOpacity>
