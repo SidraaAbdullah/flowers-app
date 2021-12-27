@@ -6,27 +6,15 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate(screen)}
-      style={{
-        borderStyle: "dashed",
-        borderColor: "lightgray",
-        borderWidth: 1,
-        backgroundColor: "#ebebeb",
-        borderRadius: 10,
-        padding: 15,
-        marginBottom: 10,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "85%",
-      }}
+      style={styles.border}
     >
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "space-between",
           alignItems: "center",
         }}
       >
+<<<<<<< HEAD
         <Icon name="book-outline" size={20} color="black" type="ionicon" />
         <Text
           style={{
@@ -37,6 +25,10 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
         >
           {text}
         </Text>
+=======
+        <Icon name={icon} size={20} color="black" type="ionicon" />
+        <Text style={styles.text}>{text}</Text>
+>>>>>>> bd8ac20ab85827deadbb92bcdf91f81839e9cadf
       </View>
       <Icon name="arrow-forward" color="black" type="ionicon" />
     </TouchableOpacity>
@@ -44,9 +36,24 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
 };
 export { ArrowButton };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   text: {
-    fontSize: 22,
-    marginVertical: 5,
+    fontSize: 15,
+    paddingLeft: 15,
+    textAlign: "center",
+    fontFamily: "ProximaNova",
+  },
+  border: {
+    borderStyle: "dashed",
+    borderColor: "gray",
+    borderWidth: 1,
+    backgroundColor: "#ebebeb",
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "85%",
   },
 });

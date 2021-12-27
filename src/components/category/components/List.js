@@ -1,30 +1,13 @@
 import React from "react";
-import { TouchableOpacity, View, Text, Image } from "react-native";
+import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Rating } from ".";
 import { Icon } from "react-native-elements";
 const List = ({ item, navigation }) => {
   return (
     <View style={{ width: "100%" }}>
       <View style={{ marginRight: 8, marginBottom: 8 }}>
-        <View
-          style={{
-            borderWidth: 1,
-            justifyContent: "center",
-            borderStyle: "dashed",
-            borderRadius: 8,
-            borderColor: "gray",
-            backgroundColor: "white",
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-            }}
-          >
+        <View style={styles.border}>
+          <View style={styles.container}>
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("listDetail", {
@@ -62,11 +45,18 @@ const List = ({ item, navigation }) => {
                     alignItems: "center",
                   }}
                 >
-                  <Text style={{ fontSize: 14 }}>{item?.name}</Text>
-                  <Text style={{ fontSize: 14 }}> {item?.price}</Text>
+                  <Text style={styles.text}>{item?.name}</Text>
+                  <Text style={styles.text}>{item?.price}</Text>
                 </View>
 
-                <Text numberOfLines={1} style={{ fontSize: 12, color: "gray" }}>
+                <Text
+                  numberOfLines={1}
+                  style={{
+                    fontFamily: "ProximaNova",
+                    fontSize: 14,
+                    color: "gray",
+                  }}
+                >
                   {item?.place}
                 </Text>
               </TouchableOpacity>
@@ -102,3 +92,25 @@ const List = ({ item, navigation }) => {
   );
 };
 export { List };
+
+const styles = StyleSheet.create({
+  border: {
+    borderWidth: 1,
+    justifyContent: "center",
+    borderStyle: "dashed",
+    borderRadius: 8,
+    borderColor: "gray",
+    backgroundColor: "white",
+  },
+  text: {
+    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 15,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+});

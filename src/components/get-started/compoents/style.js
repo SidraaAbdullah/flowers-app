@@ -10,13 +10,14 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontWeight: "bold",
     fontSize: 24,
     marginVertical: 10,
     color: "black",
+    fontFamily: "ProximaNovaBold",
   },
   description: {
     color: "gray",
     fontSize: 15,
+    fontFamily: "ProximaNova",
   },
 });

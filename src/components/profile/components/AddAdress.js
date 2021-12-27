@@ -35,8 +35,8 @@ const AddAdress = () => {
           color="black"
           text="Add new Address"
           screen="newAddress"
-          isIcon
-          iconName="add-outline"
+          rightIcon
+          rightIconName="add-outline"
         />
         <CommonButton text="Save as Primary" screen="profile" />
       </View>

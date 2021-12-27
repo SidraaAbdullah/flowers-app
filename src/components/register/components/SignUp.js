@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, TextInput, Text } from "react-native";
+import { View } from "react-native";
 import { CommonButton } from "../../buttons";
-import { Icon } from "react-native-elements";
+import Input from "../../input";
 import { style } from "./style";
 
 const SignUp = () => {
@@ -12,54 +12,38 @@ const SignUp = () => {
   return (
     <View style={style?.container}>
       <View>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="phone" size={20} type="font-awesome" color="gray" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setNumber}
-            value={number}
-            placeholder="Phone Number"
-            keyboardType="numeric"
-          />
-        </View>
-        <View style={style?.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="envelope" size={18} color="gray" type="font-awesome" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setEmail}
-            value={email}
-            placeholder="Email"
-            keyboardType="email-address"
-          />
-        </View>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="lock" size={20} color="gray" type="font-awesome" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setPassword}
-            value={password}
-            placeholder="Password"
-            secureTextEntry={true}
-          />
-        </View>
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon color="gray" size={20} name="lock" type="font-awesome" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setconfirmPassword}
-            value={confirmPassword}
-            placeholder="Confirm Password"
-            secureTextEntry={true}
-          />
-        </View>
+        <Input
+          label="Phone Number"
+          iconName="call"
+          value={number}
+          setValue={setNumber}
+          keyboardType="numeric"
+          placeholder="Phone Number"
+        />
+        <Input
+          label="Email"
+          iconName="mail"
+          value={email}
+          setValue={setEmail}
+          placeholder="Email"
+          keyboardType="email-address"
+        />
+        <Input
+          label="Password"
+          iconName="lock-closed"
+          value={password}
+          setValue={setPassword}
+          placeholder="Password"
+          secureTextEntry={true}
+        />
+        <Input
+          label="Confirm Password"
+          iconName="lock-closed"
+          value={confirmPassword}
+          setValue={setconfirmPassword}
+          placeholder="Confirm Password"
+          secureTextEntry={true}
+        />
         <View style={{ marginTop: 10 }}>
           <CommonButton screen="home" text="SIGN UP" />
         </View>

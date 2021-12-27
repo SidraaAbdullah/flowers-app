@@ -43,7 +43,7 @@ const GetStarted = () => {
         scrollTo={(i) => changeTo(i)}
       />
       <View style={{ width: "80%" }}>
-        <CommonButton screen="signUp" text="CREATE ACCOUNT" isIcon />
+        <CommonButton screen="signUp" text="CREATE ACCOUNT" rightIcon />
       </View>
     </View>
   );

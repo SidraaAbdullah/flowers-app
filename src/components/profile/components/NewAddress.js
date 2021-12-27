@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
-import { Icon } from "react-native-elements";
-import { style } from "../../register/components/style";
+import Input from "../../input";
 import RadioButton from "radio-buttons-react-native";
 
 const NewAddress = () => {
@@ -33,26 +32,23 @@ const NewAddress = () => {
           circleSize={15}
           boxStyle={{ marginBottom: 5 }}
         />
-        <View style={style.sectionStyle}>
-          <Text style={style.imageStyle}>
-            <Icon name="book" size={20} color="gray" type="ionicon" />
-          </Text>
-          <TextInput
-            style={style.input}
-            onChangeText={setNewAddress}
-            value={newAddress}
-            placeholder="Add a new delivery address"
-          />
-        </View>
+        <Input
+          iconName="book"
+          setValue={setNewAddress}
+          value={newAddress}
+          placeholder="Add a new delivery address"
+          label="Address"
+        />
+
         <View style={{ marginTop: 10 }}>
           <CommonButton
             bgColor="#ffbd11"
             color="black"
             text="Save new Address"
             screen="addAddress"
-            isIcon
-            iconName="close-outline"
-            iconColor="red"
+            rightIcon
+            rightIconName="close-outline"
+            rightIconColor="red"
           />
         </View>
       </View>

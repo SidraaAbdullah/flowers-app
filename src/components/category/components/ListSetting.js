@@ -1,6 +1,14 @@
 import React, { useState, useRef } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import { List, BoxList } from ".";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
@@ -68,28 +76,18 @@ const ListSetting = ({ navigation }) => {
           alignItems: "center",
           paddingHorizontal: 15,
           backgroundColor: "white",
+          marginBottom: 10,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 10,
-          }}
-        >
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-            List Setting:
-          </Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Text style={styles.text}>List Setting:</Text>
           <TouchableOpacity
             onPress={() => changeTo("boxStyle")}
-            style={{ marginHorizontal: 3, marginTop: 3 }}
+            style={{ marginRight: 3 }}
           >
             <Icon color={boxColor} name="apps" type="ionicon" size={18} />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginTop: 3 }}
-            onPress={() => changeTo("listStyle")}
-          >
+          <TouchableOpacity onPress={() => changeTo("listStyle")}>
             <Icon color={listColor} name="list" type="ionicon" />
           </TouchableOpacity>
         </View>
@@ -98,6 +96,8 @@ const ListSetting = ({ navigation }) => {
           <Text >
             <Icon name="" type="" />
           </Text>
+          <Text style={styles.text}>Filters:</Text>
+          <Icon name="options" type="ionicon" />
         </View>
       </View>
       <ScrollView>
@@ -220,3 +220,13 @@ const style = StyleSheet.create({
       color:'gray'
   }
 });
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 16,
+    marginBottom: 3,
+    marginRight: 3,
+  },
+});
+
+
