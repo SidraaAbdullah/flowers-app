@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     borderRadius: 60,
     width: "100%",
     marginVertical: 5,
+    height: 43,
   },
   text: {
     paddingHorizontal: 10,
@@ -18,8 +19,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "white",
     right: 0,
     bottom: 0,
-    height: 41,
-    width: 41,
+    height: 43,
+    width: 43,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 30,

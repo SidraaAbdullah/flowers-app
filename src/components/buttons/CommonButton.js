@@ -29,7 +29,7 @@ const CommonButton = (props) => {
         </Text>
         {props.isIcon && (
           <Icon
-            size={props.iconSize || 20}
+            size={props.iconSize || 18}
             name={props.iconName || "save-outline"}
             color={props.iconColor || "white"}
             type={props.iconType || "ionicon"}
