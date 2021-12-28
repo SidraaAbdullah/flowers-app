@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "black",
-    fontSize: 20,
-    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 24,
+    fontFamily: "ProximaNovaBold",
   },
 });

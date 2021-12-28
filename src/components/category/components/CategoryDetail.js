@@ -3,7 +3,8 @@ import { View, Text, FlatList } from "react-native";
 import { CategoryName, FilterList, ListSetting } from ".";
 import Header from "../../header";
 
-const CategoryDetail = ({ navigation }) => {
+const CategoryDetail = ({ navigation, route }) => {
+  const { detailName } = route.params;
   const filterData = [
     { id: "1", name: "Over 4.5" },
     { id: "2", name: "Browser by Bouquets" },
@@ -14,10 +15,10 @@ const CategoryDetail = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText="Flowers" />
+      <Header headingText={detailName} />
       <View style={{ flex: 1 }}>
         <View style={{ paddingHorizontal: 15, paddingTop: 10 }}>
-          <CategoryName />
+          <CategoryName detailName={detailName} />
           <FlatList
             data={filterData}
             renderItem={({ item }) => (

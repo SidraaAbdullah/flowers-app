@@ -1,11 +1,8 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-const FilterList = ({ navigation, item }) => {
+const FilterList = ({ item }) => {
   return (
-    <TouchableOpacity
-      style={{ flex: 1, marginVertical: 15 }}
-      onPress={() => navigation.navigate("categoryDetail")}
-    >
+    <TouchableOpacity style={{ flex: 1, marginVertical: 15 }}>
       <View
         style={{
           marginRight: 10,

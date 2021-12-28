@@ -4,6 +4,7 @@ import { Icon } from "react-native-elements";
 import Header from "../header";
 import { OrderList } from "./components";
 import { CommonButton } from "../buttons";
+
 const OrderHistory = () => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -31,7 +32,7 @@ const OrderHistory = () => {
         <ScrollView>
           <View style={{ padding: 15 }}>
             <OrderList status="Delivered" />
-            <OrderList status="Delivered" />
+            <OrderList status="In Progress" />
             <OrderList status="Cancelled" />
             <OrderList status="Delivered" />
             <OrderList status="In Progress" />
@@ -51,6 +52,7 @@ const OrderHistory = () => {
   );
 };
 export default OrderHistory;
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",

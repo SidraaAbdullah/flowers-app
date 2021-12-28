@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Icon } from "react-native-elements";
 
-const CategoryName = () => {
+const CategoryName = ({ detailName }) => {
   return (
     <View>
       <View
@@ -21,7 +21,7 @@ const CategoryName = () => {
               fontFamily: "ProximaNovaSemiBold",
             }}
           >
-            Flowers
+            {detailName}
           </Text>
         </View>
       </View>

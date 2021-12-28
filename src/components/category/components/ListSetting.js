@@ -1,7 +1,5 @@
 import React, { useState, useRef } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
-import React, { useState } from "react";
 import {
   View,
   Text,
@@ -91,11 +89,10 @@ const ListSetting = ({ navigation }) => {
             <Icon color={listColor} name="list" type="ionicon" />
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text onPress={() => refRBSheet.current.open()} style={{ fontSize: 16, fontWeight: "bold" }}>Price:</Text>
-          <Text >
-            <Icon name="" type="" />
-          </Text>
+        <View
+          onPress={() => refRBSheet.current.open()}
+          style={{ flexDirection: "row", alignItems: "center" }}
+        >
           <Text style={styles.text}>Filters:</Text>
           <Icon name="options" type="ionicon" />
         </View>
@@ -112,13 +109,13 @@ const ListSetting = ({ navigation }) => {
         >
           {value === "boxStyle"
             ? flowerList.map((list, index) => (
-              <BoxList item={list} key={index} navigation={navigation} />
-            ))
+                <BoxList item={list} key={index} navigation={navigation} />
+              ))
             : value === "listStyle"
-              ? flowerList.map((list, index) => (
+            ? flowerList.map((list, index) => (
                 <List item={list} key={index} navigation={navigation} />
               ))
-              : null}
+            : null}
         </View>
         <View style={{ marginHorizontal: 40, marginBottom: 15 }}>
           <CommonButton bgColor="green" text="Load More" />
@@ -135,49 +132,113 @@ const ListSetting = ({ navigation }) => {
           height={400}
           customStyles={{
             draggableIcon: {
-              backgroundColor: "#000"
+              backgroundColor: "#000",
             },
           }}
-
         >
-          <View style={{ flexGrow: 1, alignItems: 'center', }}>
-
+          <View style={{ flexGrow: 1, alignItems: "center" }}>
             <View style={{ width: "90%", borderRadius: 5, padding: 10 }}>
-              <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold' }}>Select Delivery Address</Text>
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
+              >
+                Select Delivery Address
+              </Text>
 
-              <View style={style.item}>
-                <Text style={style.text}>Color Selection</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
-                  <View style={{ height: 30, width: 30, backgroundColor: 'red', borderRadius: 100 }}></View>
-                  <View style={{ height: 30, width: 30, backgroundColor: 'blue', borderRadius: 100 }}></View>
-                  <View style={{ height: 30, width: 30, backgroundColor: 'orange', borderRadius: 100 }}></View>
-                  <View style={{ height: 30, width: 30, backgroundColor: 'black', borderRadius: 100 }}></View>
-                  <View style={{ height: 30, width: 30, backgroundColor: 'gray', borderRadius: 100 }}></View>
-                  <View style={{ height: 30, width: 30, backgroundColor: 'green', borderRadius: 100 }}></View>
+              <View style={styles.item}>
+                <Text style={styles.text}>Color Selection</Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    marginTop: 5,
+                  }}
+                >
+                  <View
+                    style={{
+                      height: 30,
+                      width: 30,
+                      backgroundColor: "red",
+                      borderRadius: 100,
+                    }}
+                  ></View>
+                  <View
+                    style={{
+                      height: 30,
+                      width: 30,
+                      backgroundColor: "blue",
+                      borderRadius: 100,
+                    }}
+                  ></View>
+                  <View
+                    style={{
+                      height: 30,
+                      width: 30,
+                      backgroundColor: "orange",
+                      borderRadius: 100,
+                    }}
+                  ></View>
+                  <View
+                    style={{
+                      height: 30,
+                      width: 30,
+                      backgroundColor: "black",
+                      borderRadius: 100,
+                    }}
+                  ></View>
+                  <View
+                    style={{
+                      height: 30,
+                      width: 30,
+                      backgroundColor: "gray",
+                      borderRadius: 100,
+                    }}
+                  ></View>
+                  <View
+                    style={{
+                      height: 30,
+                      width: 30,
+                      backgroundColor: "green",
+                      borderRadius: 100,
+                    }}
+                  ></View>
                 </View>
               </View>
 
-              <View style={style.item}>
-                <Text style={style.text}>Flower Selection</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', margin: 5, flexWrap: 'wrap' }}>
-
-                  <Text style={style.selection}>Rose</Text>
-                  <Text style={style.selection}>Lilly</Text>
-                  <Text style={style.selection}>Sunflower</Text>
-                  <Text style={style.selection}>Daisy</Text>
-                  <Text style={style.selection}>Iris</Text>
-                  <Text style={style.selection}>Orchid</Text>
-                  <Text style={style.selection}>Buttercup</Text>
-                  <Text style={style.selection}>Tulip</Text>
-                  <Text style={style.selection}>Cactus Flower</Text>
-                  <Text style={style.selection}>Violet</Text>
-
+              <View style={styles.item}>
+                <Text style={styles.text}>Flower Selection</Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "flex-start",
+                    margin: 5,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Text style={styles.selection}>Rose</Text>
+                  <Text style={styles.selection}>Lilly</Text>
+                  <Text style={styles.selection}>Sunflower</Text>
+                  <Text style={styles.selection}>Daisy</Text>
+                  <Text style={styles.selection}>Iris</Text>
+                  <Text style={styles.selection}>Orchid</Text>
+                  <Text style={styles.selection}>Buttercup</Text>
+                  <Text style={styles.selection}>Tulip</Text>
+                  <Text style={styles.selection}>Cactus Flower</Text>
+                  <Text style={styles.selection}>Violet</Text>
                 </View>
               </View>
-
             </View>
 
-            <View style={{ width: "80%", flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View
+              style={{
+                width: "80%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
               <View style={{ width: "45%" }}>
                 <CommonButton text="Reset" />
               </View>
@@ -185,41 +246,14 @@ const ListSetting = ({ navigation }) => {
                 <CommonButton text="Apply" />
               </View>
             </View>
-
           </View>
         </RBSheet>
       </View>
-
     </View>
   );
 };
 export { ListSetting };
 
-
-const style = StyleSheet.create({
-  item: {
-      marginTop: 15,
-      // padding: 5,
-      borderTopColor: "lightgray",
-      borderTopWidth: 1,
-  },
-  text: {
-      fontSize: 20,
-      margin:5,
-
-  },
-  selection: {
-      margin:5,
-      borderStyle: "dashed",
-      borderColor: "lightgray",
-      borderWidth: 2,
-      borderRadius: 10,
-      paddingHorizontal: 10,
-      paddingVertical: 5,
-      fontSize:16,
-      color:'gray'
-  }
-});
 const styles = StyleSheet.create({
   text: {
     fontFamily: "ProximaNovaSemiBold",
@@ -227,6 +261,21 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     marginRight: 3,
   },
+  item: {
+    marginTop: 15,
+    // padding: 5,
+    borderTopColor: "lightgray",
+    borderTopWidth: 1,
+  },
+  selection: {
+    margin: 5,
+    borderStyle: "dashed",
+    borderColor: "lightgray",
+    borderWidth: 2,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    fontSize: 16,
+    color: "gray",
+  },
 });
-
-
