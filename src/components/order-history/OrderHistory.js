@@ -1,11 +1,19 @@
-import React from "react";
-import { ScrollView, Text, View, StyleSheet, Image } from "react-native";
+import React, { useRef } from "react";
+import {
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { Icon } from "react-native-elements";
 import Header from "../header";
 import { OrderList } from "./components";
 import { CommonButton } from "../buttons";
+import OrderHistoryFilterModal from "../modal/OrderHistoryFilterModal";
 
 const OrderHistory = () => {
+  const refRBSheet = useRef();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Order History" />
@@ -16,7 +24,10 @@ const OrderHistory = () => {
           <Text style={{ fontSize: 18, fontFamily: "ProximaNovaSemiBold" }}>
             My Orders
           </Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ flexDirection: "row", alignItems: "center" }}
+            onPress={() => refRBSheet.current.open()}
+          >
             <Text
               style={{
                 fontSize: 18,
@@ -27,7 +38,7 @@ const OrderHistory = () => {
               Filter:
             </Text>
             <Icon name="options" type="ionicon" />
-          </View>
+          </TouchableOpacity>
         </View>
         <ScrollView>
           <View style={{ padding: 15 }}>
@@ -48,6 +59,7 @@ const OrderHistory = () => {
           </View>
         </ScrollView>
       </View>
+      <OrderHistoryFilterModal refRBSheet={refRBSheet} />
     </View>
   );
 };
