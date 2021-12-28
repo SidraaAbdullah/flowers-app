@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./src/navigation/RootNavigator";
 import { loadAsync } from "expo-font";
-
+import { SafeAreaProvider } from "react-native-safe-area-context";
 const App = () => {
   useEffect(() => {
     (async () => {
@@ -19,9 +19,11 @@ const App = () => {
     })();
   }, []);
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 export default App;

@@ -89,13 +89,13 @@ const ListSetting = ({ navigation }) => {
             <Icon color={listColor} name="list" type="ionicon" />
           </TouchableOpacity>
         </View>
-        <View
+        <TouchableOpacity
           onPress={() => refRBSheet.current.open()}
           style={{ flexDirection: "row", alignItems: "center" }}
         >
           <Text style={styles.text}>Filters:</Text>
           <Icon name="options" type="ionicon" />
-        </View>
+        </TouchableOpacity>
       </View>
       <ScrollView>
         <View
@@ -128,7 +128,7 @@ const ListSetting = ({ navigation }) => {
         <RBSheet
           ref={refRBSheet}
           closeOnDragDown={true}
-          closeOnPressMask={false}
+          closeOnPressMask={true}
           height={400}
           customStyles={{
             draggableIcon: {

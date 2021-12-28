@@ -6,3 +6,5 @@ export * from "./BoxList";
 export * from "./ListSetting";
 export * from "./count";
 export * from "./Rating";
+export * from "./CategoryBox";
+export * from "./CategoryHeader";

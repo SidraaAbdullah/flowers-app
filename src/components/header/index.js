@@ -2,7 +2,6 @@ import React from "react";
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { style } from "../input/style";
 
 const Header = (props) => {
   const navigation = useNavigation();
@@ -27,9 +26,23 @@ const Header = (props) => {
         </TouchableOpacity>
 
         <View>
-          {props.headingText && (
+          {props.headingText ? (
             <Text style={styles.text}>{props?.headingText}</Text>
-          )}
+          ) : props.dropdownText ? (
+            <TouchableOpacity
+              style={{
+                alignItems: "center",
+                flexDirection: "row",
+                marginLeft: 12,
+              }}
+              onPress={props.onPress}
+            >
+              <Text style={[styles.text, { marginRight: 2 }]}>
+                {props?.dropdownText}
+              </Text>
+              <Icon name="chevron-down-outline" type="ionicon" color="black" />
+            </TouchableOpacity>
+          ) : null}
         </View>
 
         <TouchableOpacity>
@@ -85,7 +98,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "black",
-    fontSize: 24,
-    fontFamily: "ProximaNovaBold",
+    fontSize: 22,
+    fontFamily: "ProximaNovaSemiBold",
   },
 });

@@ -7,8 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import Header from "../../components/header";
-import { CategoryBox } from "./components/CategoryBox";
-import { CategoryHeader } from "./components/CategoryHeader";
+import { CategoryBox, CategoryHeader } from "./components";
 import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
@@ -24,7 +23,7 @@ const Category = ({ navigation }) => {
   ];
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText="Current Location" />
+      <Header onPress={() => refRBSheet.current.open()} dropdownText="Current Location" />
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address="R306 Sharifabd FB Area Block 1 Karachi"
@@ -38,8 +37,9 @@ const Category = ({ navigation }) => {
             marginBottom: 20,
           }}
         >
-          {data.map((item) => (
+          {data?.map((item, i) => (
             <TouchableOpacity
+              key={i}
               onPress={() =>
                 navigation.navigate("categoryDetail", {
                   detailName: item?.name,
@@ -53,12 +53,11 @@ const Category = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      {/* <Text onPress={() => refRBSheet.current.open()} >hhgghgg</Text> */}
       <View>
         <RBSheet
           ref={refRBSheet}
           closeOnDragDown={true}
-          closeOnPressMask={false}
+          closeOnPressMask={true}
           height={230}
           customStyles={{
             draggableIcon: {
