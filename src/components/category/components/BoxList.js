@@ -77,7 +77,13 @@ const BoxList = ({ item, navigation }) => {
                 padding: 1,
                 paddingLeft: 3,
               }}
-              onPress={() => navigation.navigate("Cart")}
+              onPress={() =>
+                navigation.navigate("Cart", {
+                  categoryName: item.name,
+                  categoryPrice: item.price,
+                  categoryPlace: item.place,
+                })
+              }
             >
               <Icon name="add" color="white" type="ionicon" />
             </TouchableOpacity>
