@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
-import { CategoryName, FilterList, ListSetting } from ".";
+import { View, FlatList } from "react-native";
+import { CategoryName, FilterList, ListSetting } from "../components";
 import Header from "../../header";
 
 const CategoryDetail = ({ navigation, route }) => {

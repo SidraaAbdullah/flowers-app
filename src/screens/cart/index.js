@@ -1,11 +1,8 @@
 import React from "react";
-import { Text, View } from "react-native";
-const Cart = () => {
-  return (
-    <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-      <Text>Cart Screen</Text>
-    </View>
-  );
+import Cart from "../../components/cart";
+
+const CartScreen = () => {
+  return <Cart />;
 };
 
-export default Cart;
+export default CartScreen;
