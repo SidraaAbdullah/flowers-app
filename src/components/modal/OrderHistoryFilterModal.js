@@ -41,7 +41,7 @@ const OrderHistoryFilterModal = ({ refRBSheet }) => {
             }}
           >
             {data?.map((item, i) => (
-              <TouchableOpacity key={i}>
+              <TouchableOpacity key={i} style={{ margin: 4 }}>
                 <Text style={styles.border}>{item.name}</Text>
               </TouchableOpacity>
             ))}
@@ -55,8 +55,8 @@ export default OrderHistoryFilterModal;
 
 const styles = StyleSheet.create({
   border: {
-    margin: 4,
-    borderStyle: "solid",
+    margin: 0,
+    borderStyle: "dashed",
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 22,

@@ -14,16 +14,6 @@ const ArrowButton = ({ icon, text, screen, navigation }) => {
           alignItems: "center",
         }}
       >
-        <Icon name="book-outline" size={20} color="black" type="ionicon" />
-        <Text
-          style={{
-            fontSize: 14,
-            paddingLeft: 15,
-            textAlign: "center",
-          }}
-        >
-          {text}
-        </Text>
         <Icon name={icon} size={20} color="black" type="ionicon" />
         <Text style={styles.text}>{text}</Text>
       </View>

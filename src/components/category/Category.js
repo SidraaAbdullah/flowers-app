@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import Header from "../../components/header";
-import { CategoryBox, CategoryHeader } from "./components";
+import { CategoryBox, CategoryHeader } from "./components/index";
 import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
@@ -23,7 +23,10 @@ const Category = ({ navigation }) => {
   ];
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header onPress={() => refRBSheet.current.open()} dropdownText="Current Location" />
+      <Header
+        onPress={() => refRBSheet.current.open()}
+        dropdownText="Current Location"
+      />
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address="R306 Sharifabd FB Area Block 1 Karachi"
