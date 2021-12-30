@@ -35,13 +35,14 @@ const CartCard = () => {
                 color: "gray",
               }}
             >
-              {"Loreum"}
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
             </Text>
             <View
               style={{
                 justifyContent: "space-between",
                 flexDirection: "row",
-                marginTop: 8,
+                marginTop: 4,
                 alignItems: "center",
               }}
             >

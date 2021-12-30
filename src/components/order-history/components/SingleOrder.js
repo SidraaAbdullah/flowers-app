@@ -43,20 +43,18 @@ const SingleOrder = ({ navigation }) => {
               <SingleOrderList />
             </View>
             <DeliveryInfo navigation={navigation} />
+            <View
+              style={{
+                justifyContent: "flex-end",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text style={styles.text}>Total: </Text>
+              <Text style={[styles.text, { color: "red" }]}>60$</Text>
+            </View>
           </View>
         </ScrollView>
-        <View
-          style={{
-            justifyContent: "flex-end",
-            alignItems: "center",
-            flexDirection: "row",
-            marginTop: 10,
-            marginHorizontal: 19,
-          }}
-        >
-          <Text style={styles.text}>Total: </Text>
-          <Text style={[styles.text, { color: "red" }]}>60$</Text>
-        </View>
       </View>
     </View>
   );

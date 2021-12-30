@@ -1,104 +1,67 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-import { Icon } from "react-native-elements";
+import { Count, Rating } from "../../category/components";
 
 const SingleOrderList = () => {
   return (
-    <View style={styles.border}>
-      <View
-        style={{
-          padding: 10,
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View style={{ width: "30%" }}>
-          <Image
-            style={{ width: 80, height: 80 }}
-            source={{
-              uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
-            }}
-          />
-        </View>
-        <View style={{ width: "70%" }}>
-          <View style={[styles.container, { marginBottom: 3 }]}>
-            <Text style={styles.font}>Rose (2 items)</Text>
-            <Text style={styles.font}>$40.00</Text>
-          </View>
-          <Text
-            numberOfLines={1}
-            style={{
-              fontFamily: "ProximaNova",
-              fontSize: 14,
-              color: "gray",
-            }}
-          >
-            Loreum ipsum dolor sit amet, consectetur non adipiscing elit.
-          </Text>
-          <View
-            style={{
-              alignItems: "center",
-              flexDirection: "row",
-              marginVertical: 3,
-              marginBottom: 8,
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "ProximaNova",
-                color: "gray",
-                marginRight: 3,
+    <View style={{ width: "100%", marginBottom: 12 }}>
+      <View style={styles.border}>
+        <View style={styles.container}>
+          <View style={{ width: "30%" }}>
+            <Image
+              style={{ width: 80, height: 80 }}
+              source={{
+                uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
               }}
-            >
-              Invoice No:
-            </Text>
-            <Text style={{ fontFamily: "ProximaNova", color: "red" }}>
-              39303030
-            </Text>
+            />
           </View>
-          <View style={styles.container}>
+          <View style={{ width: "70%" }}>
             <View
               style={{
-                justifyContent: "center",
-                alignItems: "center",
+                justifyContent: "space-between",
                 flexDirection: "row",
+                alignItems: "center",
               }}
             >
-              <Icon name="calendar-outline" size={18} type="ionicon" />
-              <Text
-                style={{
-                  fontFamily: "ProximaNova",
-                  marginLeft: 5,
-                  marginTop: 2,
-                }}
-              >
-                27 May
-              </Text>
+              <Text style={styles.text}>{"Flower"}</Text>
+              <Text style={styles.text}>{"40$"}</Text>
+            </View>
+
+            <Text
+              numberOfLines={1}
+              style={{
+                fontFamily: "ProximaNova",
+                fontSize: 14,
+                color: "gray",
+              }}
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </Text>
+            <View
+              style={{
+                justifyContent: "space-between",
+                flexDirection: "row",
+                marginTop: 4,
+                alignItems: "center",
+              }}
+            >
+              <Rating />
+              <Count />
             </View>
           </View>
+        </View>
+        <View style={{ justifyContent: "space-around", flexDirection: "row" }}>
+          <Text style={[styles.text, { paddingVertical: 8 }]}>ReOrder</Text>
+          <Text style={[styles.text, { paddingVertical: 8 }]}>Rate</Text>
         </View>
       </View>
     </View>
   );
 };
 export { SingleOrderList };
+
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  text: {
-    fontSize: 15,
-    paddingLeft: 15,
-    textAlign: "center",
-    fontFamily: "ProximaNova",
-  },
-  font: {
-    fontSize: 16,
-    fontFamily: "ProximaNovaSemiBold",
-  },
   border: {
     borderWidth: 1,
     justifyContent: "center",
@@ -106,6 +69,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: "gray",
     backgroundColor: "white",
-    marginBottom: 8,
+  },
+  text: {
+    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 17,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
 });
