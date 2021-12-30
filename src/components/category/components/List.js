@@ -79,13 +79,7 @@ const List = ({ item, navigation }) => {
                     padding: 1,
                     paddingLeft: 3,
                   }}
-                  onPress={() =>
-                    navigation.navigate("Cart", {
-                      categoryName: item.name,
-                      categoryPrice: item.price,
-                      categoryPlace: item.place,
-                    })
-                  }
+                  onPress={() => navigation.navigate("Cart")}
                 >
                   <Icon name="add" color="white" type="ionicon" />
                 </TouchableOpacity>

@@ -13,10 +13,11 @@ import Category from "../screens/category";
 import CategoryDetail from "../screens/category-detail";
 import ListDetail from "../screens/list-detail";
 import OrderHistory from "../screens/order-history";
+import SingleOrderHistory from "../screens/single-order-history";
+
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
-
   return (
     <Tab.Navigator
       initialRouteName="Discover"
@@ -65,7 +66,20 @@ const App = () => {
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Order history" component={OrderHistory} />
+      <Tab.Screen name="Order history">
+        {() => (
+          <Stack.Navigator
+            ininitialRouteName="orderHistory"
+            screenOptions={() => ({ headerShown: false })}
+          >
+            <Stack.Screen name="orderHistory" component={OrderHistory} />
+            <Stack.Screen
+              name="singleOrderHistory"
+              component={SingleOrderHistory}
+            />
+          </Stack.Navigator>
+        )}
+      </Tab.Screen>
       <Tab.Screen name="Account">
         {() => (
           <Stack.Navigator

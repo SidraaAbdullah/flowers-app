@@ -29,12 +29,12 @@ const DeliveryInfo = ({ navigation }) => {
           flexDirection: "row",
           alignItems: "center",
           marginTop: 3,
+          marginBottom: 10,
         }}
       >
         <Text style={styles.text}>R306 Sharifabd FB Area Block 1 Karachi</Text>
         <Icon name="pencil" type="font-awesome" size={18} color="gray" />
       </TouchableOpacity>
-
       <View style={{ marginTop: 10 }}>
         <Text style={styles.heading}>Deliver date and time:</Text>
         <View style={{ flexDirection: "row", marginTop: 5 }}>
@@ -69,12 +69,12 @@ export { DeliveryInfo };
 
 const styles = StyleSheet.create({
   heading: {
-    fontSize: 17,
+    fontSize: 15,
     fontFamily: "ProximaNovaSemiBold",
     marginBottom: 0,
   },
   text: {
-    fontSize: 15,
+    fontSize: 14,
     fontFamily: "ProximaNova",
     color: "gray",
     marginRight: 8,

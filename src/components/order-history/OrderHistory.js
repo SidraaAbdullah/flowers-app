@@ -12,7 +12,7 @@ import { OrderList } from "./components";
 import { CommonButton } from "../buttons";
 import OrderHistoryFilterModal from "../modal/OrderHistoryFilterModal";
 
-const OrderHistory = () => {
+const OrderHistory = ({ navigation }) => {
   const refRBSheet = useRef();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -42,17 +42,17 @@ const OrderHistory = () => {
         </View>
         <ScrollView>
           <View style={{ padding: 15 }}>
-            <OrderList status="Delivered" />
-            <OrderList status="In Progress" />
-            <OrderList status="Cancelled" />
-            <OrderList status="Delivered" />
-            <OrderList status="In Progress" />
-            <OrderList status="Refunded" />
-            <OrderList status="Delivered" />
-            <OrderList status="Refunded" />
-            <OrderList status="Cancelled" />
-            <OrderList status="Delivered" />
-            <OrderList status="In Progress" />
+            <OrderList status="Delivered" navigation={navigation} />
+            <OrderList status="In Progress" navigation={navigation} />
+            <OrderList status="Cancelled" navigation={navigation} />
+            <OrderList status="Delivered" navigation={navigation} />
+            <OrderList status="In Progress" navigation={navigation} />
+            <OrderList status="Refunded" navigation={navigation} />
+            <OrderList status="Delivered" navigation={navigation} />
+            <OrderList status="Refunded" navigation={navigation} />
+            <OrderList status="Cancelled" navigation={navigation} />
+            <OrderList status="Delivered" navigation={navigation} />
+            <OrderList status="In Progress" navigation={navigation} />
             <View style={{ marginVertical: 5 }}>
               <CommonButton text="Load More" />
             </View>

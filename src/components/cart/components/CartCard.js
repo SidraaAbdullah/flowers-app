@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Count, Rating } from "../../category/components";
 
-const CartCard = ({ categoryName, categoryPrice, categoryPlace }) => {
+const CartCard = () => {
   return (
     <View style={{ width: "100%", marginBottom: 8 }}>
       <View style={styles.border}>
@@ -23,8 +23,8 @@ const CartCard = ({ categoryName, categoryPrice, categoryPlace }) => {
                 alignItems: "center",
               }}
             >
-              <Text style={styles.text}>{categoryName || "Flower"}</Text>
-              <Text style={styles.text}>{categoryPrice || "40$"}</Text>
+              <Text style={styles.text}>{"Flower"}</Text>
+              <Text style={styles.text}>{"40$"}</Text>
             </View>
 
             <Text
@@ -35,7 +35,7 @@ const CartCard = ({ categoryName, categoryPrice, categoryPlace }) => {
                 color: "gray",
               }}
             >
-              {categoryPlace || "Loreum"}
+              {"Loreum"}
             </Text>
             <View
               style={{
