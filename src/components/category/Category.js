@@ -11,6 +11,7 @@ import { CategoryBox, CategoryHeader } from "./components/index";
 import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
+import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -27,6 +28,9 @@ const Category = ({ navigation }) => {
         onPress={() => refRBSheet.current.open()}
         dropdownText="Current Location"
       />
+      <View style={style.searchBar}>
+        <SearchBar style={{}} placeholder="Search" />
+      </View>
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address="R306 Sharifabd FB Area Block 1 Karachi"
@@ -80,7 +84,7 @@ const Category = ({ navigation }) => {
                 Select Delivery Address
               </Text>
               <View style={style.item}>
-                <Icon name="add" size={30} color="black" type="ionicon" />
+                <Icon name="location" size={30} color="black" type="ionicon" />
                 <Text style={style.text}>Current Location</Text>
               </View>
               <View style={style.item}>
@@ -101,6 +105,10 @@ const Category = ({ navigation }) => {
 export default Category;
 
 const style = StyleSheet.create({
+  searchBar: {
+    paddingLeft: 20,
+    paddingRight: 20
+  },
   item: {
     flexDirection: "row",
     alignItems: "center",

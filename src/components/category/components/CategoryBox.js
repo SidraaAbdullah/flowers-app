@@ -10,7 +10,7 @@ const CategoryBox = ({ name, type }) => {
         }}
         style={{ width: 90, height: 90 }}
       />
-      <View style={{ marginTop: 10, alignItems: "center" }}>
+      <View style={{ padding: 10, }}>
         <Text style={{ fontSize: 18, fontFamily: "ProximaNovaSemiBold" }}>
           {name}
         </Text>
@@ -31,13 +31,11 @@ export { CategoryBox };
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
     borderStyle: "dashed",
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 10,
-    padding: 10,
+    padding: 8,
     margin: 4,
-    justifyContent: "center",
   },
 });
