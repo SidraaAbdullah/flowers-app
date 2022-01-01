@@ -29,7 +29,7 @@ const Category = ({ navigation }) => {
         dropdownText="Current Location"
       />
       <View style={style.searchBar}>
-        <SearchBar style={{}} placeholder="Search" />
+        <SearchBar placeholder="Search" />
       </View>
       <CategoryHeader
         headingText="Discover Plant & Flower"
