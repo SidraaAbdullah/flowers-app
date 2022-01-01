@@ -1,13 +1,10 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-const ProductReviewHeader = ({ reviewHeader, reviewPara, image }) => {
+const ProductReviewHeader = () => {
     return (
         <View
             style={{
-                // width: '100%',
-                display: 'flex',
-                backgroundColor: 'pink',
                 alignItems: 'center',
                 paddingVertical: 10
             }}

@@ -9,6 +9,7 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
+import { CommentBox } from "./components/commentBox";
 import { ProductBox } from "./components/productBox";
 import { ProductReviewHeader } from "./components/productReviewHeader";
 
@@ -22,7 +23,7 @@ const Review = ({ navigation }) => {
                 <View style={{ alignItems: 'center' }}>
                     <ProductReviewHeader image />
                     <ProductBox image name="Flowers in Box" message="Please rate your feedback will help" />
-              
+                    <CommentBox />
                     <View style={{ width: "90%" }}>
                         <CommonButton text="ADD REVIEW" />
                     </View>

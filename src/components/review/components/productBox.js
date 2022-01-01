@@ -42,8 +42,8 @@ export { ProductBox };
 const styles = StyleSheet.create({
     border: {
         borderStyle: "dashed",
-        borderColor:'gray',
-        borderWidth: 1,
+        borderColor:'lightgray',
+        borderWidth: 2,
         borderRadius: 10,
         padding: 8,
         marginBottom: 10,
