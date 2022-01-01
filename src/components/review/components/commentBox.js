@@ -13,6 +13,7 @@ const CommentBox = () => {
                     placeholder="Type something"
                     placeholderTextColor="grey"
                     numberOfLines={10}
+                    
                 />
             </View>
         </View>
@@ -31,6 +32,6 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     textArea: {
-        textAlignVertical:'top'
+        textAlignVertical: 'top'
     }
 });
