@@ -7,6 +7,7 @@ import {
     ScrollView,
 } from "react-native";
 import Header from "../../components/header";
+import { ProductReviewHeader } from "./components/productReviewHeader";
 
 
 
@@ -16,7 +17,7 @@ const Review = ({ navigation }) => {
             <Header headingText="Product Review" />
             <ScrollView>
                 <View>
-                    <Text>welcome review screen</Text>
+                   <ProductReviewHeader image/>
                 </View>
             </ScrollView>
 
