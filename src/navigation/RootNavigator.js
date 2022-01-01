@@ -5,12 +5,13 @@ import Register from "../screens/register";
 import BottomTab from "./BottomTab";
 import ForgotPassword from "../screens/forgot-password";
 import CategoryScreen from "../screens/category"
+import ReviewScreen from "../screens/reviews";
 
 const RootNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName={"home"}
+      initialRouteName={"reviewScreen"}
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={BottomTab} />
@@ -18,6 +19,7 @@ const RootNavigator = () => {
       <Stack.Screen name="getStarted" component={GetStarted} />
       <Stack.Screen name="signUp" component={Register} />
       <Stack.Screen name="forgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="reviewScreen" component={ReviewScreen} />
     </Stack.Navigator>
   );
 };
