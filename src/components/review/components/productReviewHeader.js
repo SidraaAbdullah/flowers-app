@@ -5,7 +5,7 @@ const ProductReviewHeader = ({ reviewHeader, reviewPara, image }) => {
     return (
         <View
             style={{
-                width: '100%',
+                // width: '100%',
                 display: 'flex',
                 backgroundColor: 'pink',
                 alignItems: 'center',
