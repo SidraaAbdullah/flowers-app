@@ -17,11 +17,12 @@ import { ViewReviewsHeader } from "./components/ViewReviewsHeader";
 const ViewReviews = ({ navigation }) => {
     return (
         <View style={{ flex: 1, backgroundColor: "white" }}>
-            <Header headingText="Product's Review" />
+            <Header headingText="View Posts" />
             <ScrollView>
 
                 <View style={{ alignItems: 'center' }}>
-                    
+                    <ViewReviewsHeader />
+                    <PostsReviews image />
                    
                     <View style={{ width: "90%" }}>
                         <CommonButton text="Load More" />

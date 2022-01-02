@@ -12,7 +12,7 @@ const CategoryHeader = ({ headingText, address }) => {
     >
       <Text style={style.text}>{headingText}</Text>
       <Text style={{ display: 'flex', fontFamily: "ProximaNova" }}>
-        <Text style={{ fontWeight: 'bold' }}>Delivering to: </Text>
+        <Text style={{ fontWeight: 'bold' }}>Delivering to : </Text>
         <Text style={style.address}>{address}</Text>
       </Text>
 
@@ -24,7 +24,7 @@ export { CategoryHeader };
 const style = StyleSheet.create({
   text: {
     fontSize: 20,
-    fontFamily: "ProximaNovaBold"
+    fontFamily: "ProximaNovaBold",
   },
   address: {
     fontSize: 14,

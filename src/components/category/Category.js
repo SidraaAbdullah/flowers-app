@@ -73,7 +73,7 @@ const Category = ({ navigation }) => {
           }}
         >
           <View style={{ flexGrow: 1, alignItems: "center" }}>
-            <View style={{ width: "90%", borderRadius: 5, padding: 10 }}>
+            <View style={{ width: "100%", borderRadius: 5, padding: 10 }}>
               <Text
                 style={{
                   textAlign: "center",
@@ -112,10 +112,11 @@ const style = StyleSheet.create({
   item: {
     flexDirection: "row",
     alignItems: "center",
-    margin: 3,
+    margin: 5,
     padding: 5,
     borderTopColor: "lightgray",
     borderTopWidth: 1,
+    width:'100%'
   },
   text: {
     paddingLeft: 10,

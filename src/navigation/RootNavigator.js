@@ -12,7 +12,7 @@ const RootNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName={"ViewReviewsScreen"}
+      initialRouteName={"reviewScreen"}
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={BottomTab} />
