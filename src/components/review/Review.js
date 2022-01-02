@@ -23,7 +23,7 @@ const Review = ({ navigation }) => {
                 <View style={{ alignItems: 'center' }}>
                     <ProductReviewHeader image />
                     <ProductBox image name="Flowers in Box" message="Please rate your feedback will help" />
-                    <ProductBox image name="Flowers in Box" message="Please rate your feedback will help" />
+                    <ProductBox image name="Salman Siddiqui" message="Please rate our Rider" />
                     <CommentBox />
                     <View style={{ width: "90%" }}>
                         <CommonButton text="ADD REVIEW" />
