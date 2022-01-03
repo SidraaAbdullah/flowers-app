@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, View, StyleSheet, Text } from "react-native";
 import { Icon } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { CommonButton } from "../buttons";
 import Header from "../header";
+import OrderModal from "../modal/OrderModal";
 import { TopSection, CartCard, DeliveryInfo } from "./components";
 
 const Cart = ({ navigation }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="" />
@@ -53,12 +59,21 @@ const Cart = ({ navigation }) => {
                 Pay Cash on delivery
               </Text>
             </View>
-            <View style={{ marginHorizontal: 35, marginVertical: 5 }}>
+            <TouchableOpacity
+              onPress={handleOpen}
+              activeOpacity={1}
+              style={{ marginHorizontal: 35, marginVertical: 5 }}
+            >
               <CommonButton text="Order Now" bgColor="green" />
-            </View>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
+      <OrderModal
+        handleOpen={handleOpen}
+        isOpen={isOpen}
+        navigation={navigation}
+      />
     </View>
   );
 };

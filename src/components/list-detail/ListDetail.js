@@ -12,7 +12,7 @@ import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { Count, Rating } from "../category/components";
 
-const ListDetail = ({ route }) => {
+const ListDetail = ({ route, navigation }) => {
   const { name, price } = route.params;
   return (
     <View style={{ flex: 1 }}>
@@ -69,7 +69,9 @@ const ListDetail = ({ route }) => {
                 }}
               >
                 <Rating />
-                <TouchableOpacity activeOpacity={1}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("viewReviewsScreen")}
+                >
                   <View
                     style={{
                       justifyContent: "center",

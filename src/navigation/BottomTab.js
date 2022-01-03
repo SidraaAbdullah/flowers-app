@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CartScreen from "../screens/cart";
-import AccountScreen from "../screens/account";
 import { Icon } from "react-native-elements";
 import Profile from "../screens/profile";
 import ChangePassword from "../screens/change-password";
@@ -14,6 +13,8 @@ import CategoryDetail from "../screens/category-detail";
 import ListDetail from "../screens/list-detail";
 import OrderHistory from "../screens/order-history";
 import SingleOrderHistory from "../screens/single-order-history";
+import ReviewScreen from "../screens/reviews";
+import ViewReviewScreen from "../screens/view-reviews";
 
 const App = () => {
   const Tab = createBottomTabNavigator();
@@ -38,7 +39,7 @@ const App = () => {
             ? (iconName = "user-circle")
             : route.name === "Discover"
             ? (iconName = "search")
-            : route.name === "Partners"
+            : route.name === "Reviews"
             ? (iconName = "")
             : null;
           return (
@@ -63,6 +64,10 @@ const App = () => {
             <Stack.Screen name="category" component={Category} />
             <Stack.Screen name="categoryDetail" component={CategoryDetail} />
             <Stack.Screen name="listDetail" component={ListDetail} />
+            <Stack.Screen
+              name="viewReviewsScreen"
+              component={ViewReviewScreen}
+            />
           </Stack.Navigator>
         )}
       </Tab.Screen>
@@ -77,6 +82,7 @@ const App = () => {
               name="singleOrderHistory"
               component={SingleOrderHistory}
             />
+            <Stack.Screen name="reviewScreen" component={ReviewScreen} />
           </Stack.Navigator>
         )}
       </Tab.Screen>
@@ -94,7 +100,6 @@ const App = () => {
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Partners" component={AccountScreen} />
       <Tab.Screen name="Cart" component={CartScreen} />
     </Tab.Navigator>
   );

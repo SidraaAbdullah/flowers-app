@@ -38,9 +38,9 @@ const SingleOrder = ({ navigation }) => {
         <ScrollView>
           <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
             <View>
-              <SingleOrderList />
-              <SingleOrderList />
-              <SingleOrderList />
+              <SingleOrderList navigation={navigation} />
+              <SingleOrderList navigation={navigation} />
+              <SingleOrderList navigation={navigation} />
             </View>
             <DeliveryInfo navigation={navigation} />
             <View

@@ -1,8 +1,8 @@
 import React from "react";
 import DetailList from "../../components/list-detail";
 
-const ListDetail = ({ route }) => {
-  return <DetailList route={route} />;
+const ListDetail = ({ route, navigation }) => {
+  return <DetailList route={route} navigation={navigation} />;
 };
 
 export default ListDetail;

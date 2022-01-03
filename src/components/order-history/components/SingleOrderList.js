@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Count, Rating } from "../../category/components";
 
-const SingleOrderList = () => {
+const SingleOrderList = ({ navigation }) => {
   return (
     <View style={{ width: "100%", marginBottom: 12 }}>
       <View style={styles.border}>
@@ -52,8 +52,12 @@ const SingleOrderList = () => {
           </View>
         </View>
         <View style={{ justifyContent: "space-around", flexDirection: "row" }}>
-          <Text style={[styles.text, { paddingVertical: 8 }]}>ReOrder</Text>
-          <Text style={[styles.text, { paddingVertical: 8 }]}>Rate</Text>
+          <TouchableOpacity>
+            <Text style={[styles.text, { paddingVertical: 8 }]}>ReOrder</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("reviewScreen")}>
+            <Text style={[styles.text, { paddingVertical: 8 }]}>Rate</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
