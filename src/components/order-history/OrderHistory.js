@@ -10,7 +10,6 @@ import { Icon } from "react-native-elements";
 import Header from "../header";
 import { OrderList } from "./components";
 import { CommonButton } from "../buttons";
-import OrderHistoryFilterModal from "../modal/OrderHistoryFilterModal";
 
 const OrderHistory = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -26,7 +25,6 @@ const OrderHistory = ({ navigation }) => {
           </Text>
           <TouchableOpacity
             style={{ flexDirection: "row", alignItems: "center" }}
-            onPress={() => refRBSheet.current.open()}
           >
             <Text
               style={{
@@ -59,7 +57,6 @@ const OrderHistory = ({ navigation }) => {
           </View>
         </ScrollView>
       </View>
-      <OrderHistoryFilterModal refRBSheet={refRBSheet} />
     </View>
   );
 };

@@ -4,13 +4,16 @@ import { View, Text, StyleSheet, Image } from "react-native";
 const CategoryBox = ({ name, type }) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={{
-          uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
-        }}
-        style={{ width: 90, height: 90 }}
-      />
-      <View style={{ padding: 10, }}>
+      <View style={{ alignItems: "center" }}>
+        <Image
+          source={{
+            uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+          }}
+          style={{ width: 90, height: 90 }}
+        />
+      </View>
+
+      <View style={{ padding: 10 }}>
         <Text style={{ fontSize: 18, fontFamily: "ProximaNovaSemiBold" }}>
           {name}
         </Text>

@@ -78,23 +78,40 @@ const Category = ({ navigation }) => {
                 style={{
                   textAlign: "center",
                   fontSize: 20,
-                  fontWeight: "bold",
+                  fontFamily: "ProximaNovaSemiBold",
                 }}
               >
                 Select Delivery Address
               </Text>
-              <View style={style.item}>
-                <Icon name="location" size={30} color="black" type="ionicon" />
-                <Text style={style.text}>Current Location</Text>
-              </View>
-              <View style={style.item}>
-                <Icon name="add" size={30} color="black" type="ionicon" />
-                <Text style={style.text}>Add an Address</Text>
+              <View style={{ marginTop: 10 }}>
+                <TouchableOpacity
+                  style={style.item}
+                  onPress={() =>
+                    navigation.navigate("home", {
+                      screen: "Account",
+                      params: {
+                        screen: "addAddress",
+                      },
+                    })
+                  }
+                >
+                  <Icon
+                    name="location"
+                    size={25}
+                    color="black"
+                    type="ionicon"
+                  />
+                  <Text style={style.text}>Current Location</Text>
+                </TouchableOpacity>
+                <View style={style.item}>
+                  <Icon name="add" size={25} color="black" type="ionicon" />
+                  <Text style={style.text}>Add an Address</Text>
+                </View>
               </View>
             </View>
 
             <View style={{ width: "90%" }}>
-              <CommonButton text="Cancel" />
+              <CommonButton text="Cancel" rightIcon rightIconName="close" />
             </View>
           </View>
         </RBSheet>
@@ -107,19 +124,21 @@ export default Category;
 const style = StyleSheet.create({
   searchBar: {
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
   },
   item: {
     flexDirection: "row",
     alignItems: "center",
-    margin: 5,
     padding: 5,
+    paddingVertical: 8,
     borderTopColor: "lightgray",
     borderTopWidth: 1,
-    width:'100%'
+    width: "100%",
   },
   text: {
     paddingLeft: 10,
-    fontSize: 18,
+    fontSize: 17,
+    fontFamily: "ProximaNovaSemiBold",
+    color: "black",
   },
 });
