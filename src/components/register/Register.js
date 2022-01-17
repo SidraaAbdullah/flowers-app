@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SignIn, SignUp } from "./components";
 
-const Register = () => {
+const Register = ({ navigation }) => {
   const [value, setValue] = useState("signUp");
   const changeTo = (val) => {
     setValue(val);
@@ -45,7 +45,11 @@ const Register = () => {
           <Text style={styles.text}>Sign Up</Text>
         </TouchableOpacity>
       </View>
-      {value === "logIn" ? <SignIn /> : value === "signUp" ? <SignUp /> : null}
+      {value === "logIn" ? (
+        <SignIn />
+      ) : value === "signUp" ? (
+        <SignUp navigation={navigation} />
+      ) : null}
     </View>
   );
 };
