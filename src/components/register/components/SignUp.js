@@ -13,17 +13,24 @@ import {
 import { ScrollView, TouchableOpacity, Button } from "react-native";
 
 const SignUp = ({ navigation }) => {
-  const { mutate: signUp, isSuccess, isLoading } = useMutation(SIGN_UP);
+  const { mutate: signUp, isLoading } = useMutation(SIGN_UP);
 
-  const handleClick = async (values) => {
-    await signUp({
-      name: values.name,
-      email: values.email,
-      phone_number: values.phoneNumber,
-      password: values.password,
-      cpassword: values.confirm_password,
-    });
-    navigation.navigate("home");
+  const handleClick = async (values, resetForm) => {
+    await signUp(
+      {
+        name: values.name,
+        email: values.email,
+        phone_number: values.phoneNumber,
+        password: values.password,
+        cpassword: values.confirm_password,
+      },
+      {
+        onSuccess: () => {
+          navigation.navigate("home");
+          resetForm();
+        },
+      }
+    );
   };
 
   return (
@@ -31,7 +38,7 @@ const SignUp = ({ navigation }) => {
       <Formik
         initialValues={signUpInitialValues}
         validationSchema={signUpValidationSchema}
-        onSubmit={(values) => handleClick(values)}
+        onSubmit={(values, { resetForm }) => handleClick(values, resetForm)}
       >
         {({
           values,
