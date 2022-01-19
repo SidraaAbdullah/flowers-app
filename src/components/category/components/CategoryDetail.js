@@ -4,7 +4,7 @@ import { CategoryName, FilterList, ListSetting } from "../components";
 import Header from "../../header";
 
 const CategoryDetail = ({ navigation, route }) => {
-  const { detailName } = route.params;
+  const { categoryName, categoryId } = route.params;
   const filterData = [
     { id: "1", name: "Over 4.5" },
     { id: "2", name: "Browser by Bouquets" },
@@ -15,10 +15,10 @@ const CategoryDetail = ({ navigation, route }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText={detailName} />
+      <Header headingText={categoryName} />
       <View style={{ flex: 1 }}>
         <View style={{ paddingHorizontal: 15, paddingTop: 10 }}>
-          <CategoryName detailName={detailName} />
+          <CategoryName categoryName={categoryName} />
           <FlatList
             data={filterData}
             renderItem={({ item }) => (

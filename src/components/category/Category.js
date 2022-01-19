@@ -12,16 +12,20 @@ import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
+import { useQuery } from "react-query";
+import { CATEGORY } from "../../queries";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
-  const data = [
-    { name: "Flowers", type: "All Category" },
-    { name: "Plants", type: "Indoor" },
-    { name: "Plants", type: "Outdoor" },
-    { name: "Pots", type: "All Types" },
-    { name: "Accessories", type: "supplements" },
-  ];
+  const { data: category } = useQuery("CATEGORY", CATEGORY);
+  console.log(category?.data);
+  // const data = [
+  //   { name: "Flowers", type: "All Category" },
+  //   { name: "Plants", type: "Indoor" },
+  //   { name: "Plants", type: "Outdoor" },
+  //   { name: "Pots", type: "All Types" },
+  //   { name: "Accessories", type: "supplements" },
+  // ];
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
@@ -44,17 +48,18 @@ const Category = ({ navigation }) => {
             marginBottom: 20,
           }}
         >
-          {data?.map((item, i) => (
+          {category?.data?.map((item) => (
             <TouchableOpacity
-              key={i}
+              key={item?._id}
               onPress={() =>
                 navigation.navigate("categoryDetail", {
-                  detailName: item?.name,
+                  categoryName: item?.name,
+                  categoryId: item?._id,
                 })
               }
               style={{ width: "47%" }}
             >
-              <CategoryBox name={item.name} type={item.type} />
+              <CategoryBox name={item.name} type={"Category About"} />
             </TouchableOpacity>
           ))}
         </View>

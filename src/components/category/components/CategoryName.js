@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Icon } from "react-native-elements";
 
-const CategoryName = ({ detailName }) => {
+const CategoryName = ({ categoryName }) => {
   return (
     <View>
       <View
@@ -19,9 +19,10 @@ const CategoryName = ({ detailName }) => {
               marginHorizontal: 4,
               fontSize: 22,
               fontFamily: "ProximaNovaSemiBold",
+              textTransform: "capitalize",
             }}
           >
-            {detailName}
+            {categoryName}
           </Text>
         </View>
       </View>
