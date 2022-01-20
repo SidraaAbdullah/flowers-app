@@ -13,7 +13,7 @@ import { CommonButton } from "../buttons";
 import { Count, Rating } from "../category/components";
 
 const ListDetail = ({ route, navigation }) => {
-  const { name, price } = route.params;
+  const { name, price, description } = route.params;
   return (
     <View style={{ flex: 1 }}>
       <Header
@@ -57,8 +57,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNova",
                 }}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+                {description}
               </Text>
               <View
                 style={{

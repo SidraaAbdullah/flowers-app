@@ -100,5 +100,6 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 22,
     fontFamily: "ProximaNovaSemiBold",
+    textTransform: "capitalize",
   },
 });

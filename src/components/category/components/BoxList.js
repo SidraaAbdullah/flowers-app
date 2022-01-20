@@ -14,6 +14,7 @@ const BoxList = ({ item, navigation }) => {
               navigation.navigate("listDetail", {
                 name: item.name,
                 price: item.price,
+                description: item.description,
               })
             }
           >
