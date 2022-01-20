@@ -25,9 +25,9 @@ const SignIn = () => {
       },
       {
         onSuccess: async (res) => {
-          axios.defaults.headers.common.Authorization = `Bearer ${res.token}`;
-          await AsyncStorage.setItem("SignIn", JSON.stringify(res));
           navigation.replace("home");
+          axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
+          localStorage.setItem("User", JSON.stringify(res.data));
         },
         onError: () => {
           alert("Please enter correct email or password");
