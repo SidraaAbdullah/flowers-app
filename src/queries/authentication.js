@@ -6,7 +6,7 @@ export const SIGN_UP = async (e) => {
   return res.data;
 };
 
-export const SIGN_IN = async () => {
-  const res = await axios.get(BASE_URL + "/login");
+export const SIGN_IN = async (e) => {
+  const res = await axios.post(BASE_URL + "/login", e);
   return res.data;
 };

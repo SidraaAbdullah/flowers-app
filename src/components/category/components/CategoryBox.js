@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-const CategoryBox = ({ name, type }) => {
+const CategoryBox = ({ item }) => {
+  console.log(item);
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
@@ -13,9 +14,15 @@ const CategoryBox = ({ name, type }) => {
         />
       </View>
 
-      <View style={{ padding: 10 }}>
-        <Text style={{ fontSize: 18, fontFamily: "ProximaNovaSemiBold" }}>
-          {name}
+      <View style={{ paddingVertical: 6, paddingHorizontal: 2 }}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontFamily: "ProximaNovaSemiBold",
+            textTransform: "capitalize",
+          }}
+        >
+          {item?.name}
         </Text>
         <Text
           style={{
@@ -24,7 +31,7 @@ const CategoryBox = ({ name, type }) => {
             fontFamily: "ProximaNova",
           }}
         >
-          {type}
+          {item?.description}
         </Text>
       </View>
     </View>

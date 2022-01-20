@@ -18,7 +18,7 @@ import { CATEGORY } from "../../queries";
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
   const { data: category } = useQuery("CATEGORY", CATEGORY);
-  console.log(category?.data);
+
   // const data = [
   //   { name: "Flowers", type: "All Category" },
   //   { name: "Plants", type: "Indoor" },
@@ -59,7 +59,7 @@ const Category = ({ navigation }) => {
               }
               style={{ width: "47%" }}
             >
-              <CategoryBox name={item.name} type={"Category About"} />
+              <CategoryBox item={item} />
             </TouchableOpacity>
           ))}
         </View>

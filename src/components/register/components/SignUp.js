@@ -14,7 +14,6 @@ import { ScrollView, TouchableOpacity, Button } from "react-native";
 
 const SignUp = ({ navigation }) => {
   const { mutate: signUp, isLoading } = useMutation(SIGN_UP);
-
   const handleClick = async (values, resetForm) => {
     await signUp(
       {
@@ -26,8 +25,11 @@ const SignUp = ({ navigation }) => {
       },
       {
         onSuccess: () => {
-          navigation.navigate("home");
+          navigation.replace("home");
           resetForm();
+        },
+        onError: () => {
+          alert("This email is already taken.");
         },
       }
     );

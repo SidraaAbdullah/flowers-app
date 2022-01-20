@@ -40,7 +40,7 @@ export const signInInitialValues = {
 
 export const signInValidationSchema = () =>
   Yup.object({
-    email: yup.string().email("Invalid email address").required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
       .required("Required")
       .min(7, "too short")
