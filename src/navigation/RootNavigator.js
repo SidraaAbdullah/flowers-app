@@ -1,10 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import GetStarted from "../screens/get-started";
-import Register from "../screens/register";
 import BottomTab from "./BottomTab";
-import ForgotPassword from "../screens/forgot-password";
-import CategoryScreen from "../screens/category"
+import * as Screen from "../screens";
 
 const RootNavigator = () => {
   const Stack = createStackNavigator();
@@ -14,10 +11,12 @@ const RootNavigator = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={BottomTab} />
-      <Stack.Screen name="categoryScreen" component={CategoryScreen} />
-      <Stack.Screen name="getStarted" component={GetStarted} />
-      <Stack.Screen name="signUp" component={Register} />
-      <Stack.Screen name="forgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="getStarted" component={Screen.GetStartedScreen} />
+      <Stack.Screen name="signUp" component={Screen.RegisterScreen} />
+      <Stack.Screen
+        name="forgotPassword"
+        component={Screen.ForgetPasswordScreen}
+      />
     </Stack.Navigator>
   );
 };
