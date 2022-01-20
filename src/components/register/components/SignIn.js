@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Button } from "react-native";
-import { CommonButton } from "../../buttons";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { style } from "./style";
 import Input from "../../input";
@@ -16,7 +15,7 @@ import {
 
 const SignIn = () => {
   const navigation = useNavigation();
-  const { mutate: signIn, isLoading } = useMutation(SIGN_IN);
+  const { mutate: signIn } = useMutation(SIGN_IN);
   const handleLogin = async (values) => {
     await signIn(
       {
@@ -27,7 +26,7 @@ const SignIn = () => {
         onSuccess: async (res) => {
           navigation.replace("home");
           axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
-          localStorage.setItem("User", JSON.stringify(res.data));
+          await AsyncStorage.setItem("User", JSON.stringify(res.data));
         },
         onError: () => {
           alert("Please enter correct email or password");
@@ -77,13 +76,30 @@ const SignIn = () => {
               touched={touched["password"]}
             />
 
-            <View style={{ marginVertical: 10 }}>
-              <Button
-                disabled={isLoading}
-                onPress={handleSubmit}
-                title="LOG IN"
-              />
-            </View>
+            <TouchableOpacity
+              onPress={handleSubmit}
+              style={{
+                marginVertical: 10,
+                backgroundColor: "black",
+                borderRadius: 60,
+                marginVertical: 5,
+                height: 43,
+              }}
+            >
+              <Text
+                style={{
+                  paddingHorizontal: 10,
+                  fontSize: 14,
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  fontFamily: "ProximaNovaSemiBold",
+                  color: "white",
+                  paddingVertical: 12,
+                }}
+              >
+                LOG IN
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate("forgotPassword")}
             >

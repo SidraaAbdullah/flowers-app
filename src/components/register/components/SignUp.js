@@ -1,6 +1,5 @@
 import React from "react";
-import { View } from "react-native";
-import { CommonButton } from "../../buttons";
+import { View, Text } from "react-native";
 import Input from "../../input";
 import { style } from "./style";
 import { useMutation } from "react-query";
@@ -10,10 +9,10 @@ import {
   signUpInitialValues,
   signUpValidationSchema,
 } from "../../../constants";
-import { ScrollView, TouchableOpacity, Button } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 
 const SignUp = ({ navigation }) => {
-  const { mutate: signUp, isLoading } = useMutation(SIGN_UP);
+  const { mutate: signUp } = useMutation(SIGN_UP);
   const handleClick = async (values, resetForm) => {
     await signUp(
       {
@@ -110,13 +109,30 @@ const SignUp = ({ navigation }) => {
               error={errors["confirm_password"]}
               touched={touched["confirm_password"]}
             />
-            <View style={{ marginTop: 10 }}>
-              <Button
-                disabled={isLoading}
-                onPress={handleSubmit}
-                title="SIGN UP"
-              />
-            </View>
+            <TouchableOpacity
+              onPress={handleSubmit}
+              style={{
+                marginVertical: 10,
+                backgroundColor: "black",
+                borderRadius: 60,
+                marginVertical: 5,
+                height: 43,
+              }}
+            >
+              <Text
+                style={{
+                  paddingHorizontal: 10,
+                  fontSize: 14,
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  fontFamily: "ProximaNovaSemiBold",
+                  color: "white",
+                  paddingVertical: 12,
+                }}
+              >
+                SIGN UP
+              </Text>
+            </TouchableOpacity>
           </View>
         )}
       </Formik>
