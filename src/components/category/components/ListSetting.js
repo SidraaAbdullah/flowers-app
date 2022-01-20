@@ -11,57 +11,57 @@ import { List, BoxList } from ".";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 
-const ListSetting = ({ navigation }) => {
+const ListSetting = ({ navigation, products, categoryId }) => {
   const [value, setValue] = useState("boxStyle");
   const changeTo = (val) => {
     setValue(val);
   };
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
-  const flowerList = [
-    {
-      id: "1",
-      name: "Flower Store",
-      place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-      delivery: "27min . Deleivery",
-      price: "5$",
-    },
-    {
-      id: "2",
-      name: "Flower Shop",
-      place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-      delivery: "20min . Deleivery",
-      price: "20$",
-    },
-    {
-      id: "3",
-      name: "Flower Store",
-      place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-      delivery: "30min . Deleivery",
-      price: "30$",
-    },
-    {
-      id: "4",
-      name: "Flower Shop",
-      place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-      delivery: "40min . Deleivery",
-      price: "10$",
-    },
-    {
-      id: "5",
-      name: "Flower Shop",
-      place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-      delivery: "20min . Deleivery",
-      price: "20$",
-    },
-    {
-      id: "6",
-      name: "Flower Store",
-      place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-      delivery: "30min . Deleivery",
-      price: "30$",
-    },
-  ];
+  // const flowerList = [
+  //   {
+  //     id: "1",
+  //     name: "Flower Store",
+  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
+  //     delivery: "27min . Deleivery",
+  //     price: "5$",
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "Flower Shop",
+  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
+  //     delivery: "20min . Deleivery",
+  //     price: "20$",
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "Flower Store",
+  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
+  //     delivery: "30min . Deleivery",
+  //     price: "30$",
+  //   },
+  //   {
+  //     id: "4",
+  //     name: "Flower Shop",
+  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
+  //     delivery: "40min . Deleivery",
+  //     price: "10$",
+  //   },
+  //   {
+  //     id: "5",
+  //     name: "Flower Shop",
+  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
+  //     delivery: "20min . Deleivery",
+  //     price: "20$",
+  //   },
+  //   {
+  //     id: "6",
+  //     name: "Flower Store",
+  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
+  //     delivery: "30min . Deleivery",
+  //     price: "30$",
+  //   },
+  // ];
 
   const refRBSheet = useRef();
 
@@ -108,13 +108,27 @@ const ListSetting = ({ navigation }) => {
           }}
         >
           {value === "boxStyle"
-            ? flowerList.map((list, index) => (
-                <BoxList item={list} key={index} navigation={navigation} />
-              ))
+            ? products?.data?.map(
+                (product) =>
+                  product?.category_id?._id === categoryId && (
+                    <BoxList
+                      item={product}
+                      key={product?._id}
+                      navigation={navigation}
+                    />
+                  )
+              )
             : value === "listStyle"
-            ? flowerList.map((list, index) => (
-                <List item={list} key={index} navigation={navigation} />
-              ))
+            ? products?.data?.map(
+                (product) =>
+                  product?.category_id?._id === categoryId && (
+                    <List
+                      item={product}
+                      key={product?._id}
+                      navigation={navigation}
+                    />
+                  )
+              )
             : null}
         </View>
         <View style={{ marginHorizontal: 40, marginBottom: 15 }}>

@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Rating } from ".";
 import { Icon } from "react-native-elements";
+
 const List = ({ item, navigation }) => {
   return (
     <View style={{ width: "100%" }}>
@@ -57,7 +58,7 @@ const List = ({ item, navigation }) => {
                     color: "gray",
                   }}
                 >
-                  {item?.place}
+                  {item?.description}
                 </Text>
               </TouchableOpacity>
 

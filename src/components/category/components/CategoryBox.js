@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 const CategoryBox = ({ item }) => {
-  console.log(item);
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>

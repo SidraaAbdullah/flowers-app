@@ -56,7 +56,7 @@ const BoxList = ({ item, navigation }) => {
                   marginTop: 2,
                 }}
               >
-                {item?.place}
+                {item?.description}
               </Text>
             </View>
           </TouchableOpacity>

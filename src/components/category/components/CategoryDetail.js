@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 import { PRODUCT } from "../../../queries";
 
 const CategoryDetail = ({ navigation, route }) => {
-  const { data: product } = useQuery("PRODUCT", PRODUCT);
+  const { data: products } = useQuery("PRODUCT", PRODUCT);
   const { categoryName, categoryId } = route.params;
   const filterData = [
     { id: "1", name: "Over 4.5" },
@@ -15,7 +15,7 @@ const CategoryDetail = ({ navigation, route }) => {
     { id: "4", name: "Browser by Bouquets" },
     { id: "5", name: "Buy flowers in Box" },
   ];
-  console.log(product);
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={categoryName} />
@@ -33,7 +33,11 @@ const CategoryDetail = ({ navigation, route }) => {
             keyExtractor={(item) => item.id}
           />
         </View>
-        <ListSetting navigation={navigation} />
+        <ListSetting
+          navigation={navigation}
+          products={products}
+          categoryId={categoryId}
+        />
       </View>
     </View>
   );
