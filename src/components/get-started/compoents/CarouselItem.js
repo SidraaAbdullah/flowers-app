@@ -5,7 +5,7 @@ import { styles } from "./style";
 const CarouselItem = ({ item }) => {
   const { width } = useWindowDimensions();
   return (
-    <View style={{ flex: 1, width: width }}>
+    <View style={{ flex: 1, width: width,}}>
       <Image
         style={[styles.image, { width, resizeMode: "contain", }]}
         source={item.imagePath}
