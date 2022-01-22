@@ -1,26 +1,26 @@
 export const Carousel = [
   {
-    imagePath: "",
+    imagePath: require('../assets/images/choose.svg'),
     title: "Choose your Location",
-    text: "Lorem Ipsum but also the leap into electronic typesetting, remaining essentially unchanged.",
+    text: "You can choose a location to fulfil your orders. Your orders are categorised so that you can see where your desired item is.",
     id: 1,
   },
   {
     imagePath: "",
     title: "Select a Flower Store",
-    text: "Lorem Ipsum but also the leap into electronic typesetting.",
+    text: "Choose a flower shop that is convenient for you so that you can receive the greatest flowers.",
     id: 2,
   },
   {
     imagePath: "",
     title: "Choose your plant",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+    text: "There are several things to consider when picking out plants. Budget, ease of care, compatibility with neighboring plants, aesthetics and size all come into play in garden design. When choosing trees and shrubs, consider their height and width at maturity. A sapling takes up a lot less room than a full-grown tree.",
     id: 3,
   },
   {
     imagePath: "",
     title: "Deliver to your door",
-    text: "",
+    text: "With a few touches on your phone screen, you can have flowers delivered to your home faster than ever before.",
     id: 4,
   },
   {
@@ -32,7 +32,7 @@ export const Carousel = [
   {
     imagePath: "",
     title: "Get 24/7 Support",
-    text: "",
+    text: "Our IT support team is ready to help, and each customer will have their difficulties fixed with adequate guidance and clarity. When you're in desperate need of IT help, we'll be there for you.",
     id: 6,
   },
 ];
