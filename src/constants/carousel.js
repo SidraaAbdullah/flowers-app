@@ -1,6 +1,7 @@
+
 export const Carousel = [
   {
-    imagePath: require('../assets/images/choose.svg'),
+    imagePath: "",
     title: "Choose your Location",
     text: "You can choose a location to fulfil your orders. Your orders are categorised so that you can see where your desired item is.",
     id: 1,

@@ -7,7 +7,7 @@ const CarouselItem = ({ item }) => {
   return (
     <View style={{ flex: 1, width: width }}>
       <Image
-        style={[styles.image, { width, resizeMode: "contain" }]}
+        style={[styles.image, { width, resizeMode: "contain", }]}
         source={item.imagePath}
       />
       <View style={styles.container}>

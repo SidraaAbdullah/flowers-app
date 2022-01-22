@@ -25,8 +25,7 @@ const TopSection = () => {
           textAlign: "center",
         }}
       >
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry.
+        Items in your shopping cart will be saved in your computer for 30 days
       </Text>
     </View>
   );

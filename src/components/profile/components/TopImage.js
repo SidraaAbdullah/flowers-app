@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Avatar } from "react-native-elements";
+
 
 const TopImage = ({ headingText, personalInfo }) => {
   return (
@@ -15,11 +16,13 @@ const TopImage = ({ headingText, personalInfo }) => {
           showEditButton
         />
       ) : (
-        <Text>Image</Text>
+       <Image style={{height:50, width:50}} source={require('../../../assets/images/check.png')}/>
+       
+
       )}
       <Text style={styles.text}>{headingText}</Text>
       <Text style={styles.discription}>
-        Loreum ipsum dolor sit amet, consectetur non adipiscing elit.
+        Information that cannot be viewed by other users
       </Text>
     </View>
   );
@@ -44,5 +47,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     justifyContent: "center",
     alignItems: "center",
+  
   },
 });
