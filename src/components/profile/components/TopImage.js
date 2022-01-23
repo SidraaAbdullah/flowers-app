@@ -16,8 +16,9 @@ const TopImage = ({ headingText, personalInfo }) => {
           showEditButton
         />
       ) : (
-       <Image style={{height:50, width:50}} source={require('../../../assets/images/check.png')}/>
-       
+
+        <Image style={{ height: 150, width: 250 }} source={require('../../../assets/images/profile information.png')} />
+
 
       )}
       <Text style={styles.text}>{headingText}</Text>
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     justifyContent: "center",
     alignItems: "center",
-  
+
   },
 });

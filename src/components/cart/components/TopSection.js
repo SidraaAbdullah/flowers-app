@@ -11,7 +11,7 @@ const TopSection = () => {
         marginHorizontal: 19 
       }}
     >
-      <Image style={{ height: 60, width: 60 }} />
+      <Image style={{ height: 150, width: 250 }} source={require('../../../assets/images/invoices.png')}/>
       <View style={{ flexDirection: "row" }}>
         <Text style={styles.text}>Invoice No: </Text>
         <Text style={[styles.text, { color: "red" }]}>789979980</Text>

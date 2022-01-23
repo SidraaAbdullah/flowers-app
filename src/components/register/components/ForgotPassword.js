@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { CommonButton } from "../../buttons";
 import { style } from "./style";
 import Input from "../../input";
@@ -11,7 +11,7 @@ const ForgotPassword = () => {
       <View
         style={{ flex: 0.5, alignItems: "center", justifyContent: "center" }}
       >
-        <Text>Image</Text>
+        <Image style={{height:130, width:250}} source={require('../../../assets/images/forgot.png')}/>
       </View>
       <Input
         label="Email"

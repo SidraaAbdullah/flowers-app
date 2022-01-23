@@ -15,7 +15,7 @@ const AddAdress = () => {
     },
   ];
   return (
-    <View>
+    <View style={{backgroundColor:'white'}}>
       <Header screen="profile" headingText="Address Setting" />
       <TopImage headingText="Add Address" />
       <View style={{ marginHorizontal: 35 }}>

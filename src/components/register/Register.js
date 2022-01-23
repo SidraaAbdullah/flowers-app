@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { SignIn, SignUp } from "./components";
 
 const Register = ({ navigation }) => {
@@ -12,9 +12,18 @@ const Register = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View
-        style={{ flex: 0.5, alignItems: "center", justifyContent: "center" }}
+        style={{ flex: 0.5, marginTop:10, justifyContent: 'center', alignItems: 'center' }}
       >
-        <Text>Image</Text>
+
+        {value === "logIn" ? (
+          <Image style={{ height: 150, width: 250 }} source={require('../../assets/images/login.png')} />
+
+        ) : value === "signUp" ? (
+          <Image style={{ height: 150, width: 250 }} source={require('../../assets/images/signup.png')} />
+
+        ) : null}
+
+
       </View>
       <View
         style={{

@@ -9,7 +9,7 @@ const ChangePassword = () => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setconfirmPassword] = useState(null);
   return (
-    <View>
+    <View style={{backgroundColor:'white'}}>
       <Header screen="profile" headingText="Change Password" />
       <TopImage headingText="Change Password" />
       <View style={{ marginHorizontal: 35 }}>
