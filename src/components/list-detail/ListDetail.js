@@ -11,13 +11,21 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { Count, Rating } from "../category/components";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/actions/Cart";
 
 const ListDetail = ({ route, navigation }) => {
-  const { name, price, description } = route.params;
+  const { item } = route.params;
+  const dispatch = useDispatch();
+  const handleAddToCart = async (item) => {
+    dispatch(addToCart(item));
+    navigation.navigate("Cart");
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <Header
-        headingText={name}
+        headingText={item.name}
         rightIcon="heart-outline"
         rightSize={24}
         rightType="ionicon"
@@ -48,7 +56,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNovaSemiBold",
                 }}
               >
-                {name}
+                {item.name}
               </Text>
               <Text
                 style={{
@@ -57,7 +65,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNova",
                 }}
               >
-                {description}
+                {item.description}
               </Text>
               <View
                 style={{
@@ -111,7 +119,7 @@ const ListDetail = ({ route, navigation }) => {
                 <Text
                   style={{ fontSize: 17, fontFamily: "ProximaNovaSemiBold" }}
                 >
-                  {price}
+                  {item.price}
                 </Text>
               </View>
               <Count />
@@ -150,6 +158,7 @@ const ListDetail = ({ route, navigation }) => {
                 rightIconName="cart-outline"
                 rightIconSize={24}
                 bgColor="green"
+                onPress={() => handleAddToCart(item)}
               />
             </View>
           </View>

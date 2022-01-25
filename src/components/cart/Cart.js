@@ -7,23 +7,22 @@ import Header from "../header";
 import OrderModal from "../modal/OrderModal";
 import { TopSection, CartCard, DeliveryInfo } from "./components";
 
-const Cart = ({ navigation }) => {
+const Cart = ({ navigation, cartItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText="" />
+      <Header headingText="Cart" />
       <View style={{ marginVertical: 20, marginBottom: 5, flex: 1 }}>
         <TopSection />
         <ScrollView>
           <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
-            <View>
-              <CartCard />
-              <CartCard />
-              <CartCard />
-            </View>
+            {cartItems?.map((item) => (
+              <CartCard item={item} key={item?._id} />
+            ))}
             <DeliveryInfo navigation={navigation} />
             <View
               style={{

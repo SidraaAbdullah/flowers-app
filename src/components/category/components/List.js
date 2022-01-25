@@ -12,9 +12,7 @@ const List = ({ item, navigation }) => {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("listDetail", {
-                  name: item.name,
-                  price: item.price,
-                  description: item.description,
+                  item: item,
                 })
               }
               activeOpacity={0.5}
@@ -33,8 +31,7 @@ const List = ({ item, navigation }) => {
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("listDetail", {
-                    name: item.name,
-                    price: item.price,
+                    item: item,
                   })
                 }
                 activeOpacity={0.5}
@@ -81,7 +78,6 @@ const List = ({ item, navigation }) => {
                     padding: 1,
                     paddingLeft: 3,
                   }}
-                  onPress={() => navigation.navigate("Cart")}
                 >
                   <Icon name="add" color="white" type="ionicon" />
                 </TouchableOpacity>

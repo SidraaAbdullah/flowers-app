@@ -6,7 +6,7 @@ const Count = () => {
   const [number, setNumber] = useState(1);
   const increment = () => setNumber(number + 1);
   let decrement = () => setNumber(number - 1);
-  if (number <= 0) {
+  if (number <= 1) {
     decrement = () => setNumber(1);
   }
   return (

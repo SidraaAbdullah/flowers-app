@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Avatar } from "react-native-elements";
 
-
 const TopImage = ({ headingText, personalInfo }) => {
   return (
     <View style={styles.container}>
@@ -16,10 +15,10 @@ const TopImage = ({ headingText, personalInfo }) => {
           showEditButton
         />
       ) : (
-
-        <Image style={{ height: 150, width: 250 }} source={require('../../../assets/images/profile information.png')} />
-
-
+        <Image
+          style={{ height: 150, width: 250 }}
+          source={require("../../../assets/images/profile_information.png")}
+        />
       )}
       <Text style={styles.text}>{headingText}</Text>
       <Text style={styles.discription}>
@@ -48,6 +47,5 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     justifyContent: "center",
     alignItems: "center",
-
   },
 });

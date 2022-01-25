@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
-import Input from "../../input/index";
+import Input from "../../input";
 
 const ChangePassword = () => {
   const [password, setPassword] = useState(null);

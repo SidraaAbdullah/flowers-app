@@ -3,7 +3,7 @@ import { View, ScrollView } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
-import Input from "../../input/index";
+import Input from "../../input";
 
 const PersonalInformation = () => {
   const [email, setEmail] = useState("sidraabdullah56@gmail.com");

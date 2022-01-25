@@ -36,6 +36,10 @@
     "react-native-svg": "^12.1.1",
     "react-native-web": "0.17.1",
     "react-query": "^3.34.7",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
