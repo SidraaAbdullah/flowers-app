@@ -16,7 +16,7 @@ const Cart = ({ navigation, cartItems }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Cart" />
-      <View style={{ marginVertical: 5, flex: 1 }}>
+      <View style={{ marginVertical: 5, marginTop: 20, flex: 1 }}>
         <TopSection />
         <ScrollView>
           <View style={{ marginVertical: 10, marginHorizontal: 15 }}>

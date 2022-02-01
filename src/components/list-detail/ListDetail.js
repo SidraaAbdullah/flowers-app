@@ -37,7 +37,8 @@ const ListDetail = ({ route, navigation }) => {
         <View
           style={{
             backgroundColor: "white",
-            paddingVertical: 10,
+            marginVertical: 5,
+            marginTop: 20,
             alignItems: "center",
             paddingBottom: 20,
           }}
@@ -52,7 +53,7 @@ const ListDetail = ({ route, navigation }) => {
           />
         </View>
         <ScrollView>
-          <View style={{ margin: 20, marginTop: 15 }}>
+          <View style={{ margin: 15 }}>
             <View style={styles.border}>
               <Text
                 style={{

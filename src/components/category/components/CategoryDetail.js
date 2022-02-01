@@ -20,7 +20,7 @@ const CategoryDetail = ({ navigation, route }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={categoryName} />
       <View style={{ flex: 1 }}>
-        <View style={{ paddingHorizontal: 15, paddingTop: 10 }}>
+        <View style={{ paddingHorizontal: 15, paddingTop: 20 }}>
           <CategoryName categoryName={categoryName} />
           <FlatList
             data={filterData}

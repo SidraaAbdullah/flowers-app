@@ -85,11 +85,11 @@ const styles = StyleSheet.create({
     zIndex: 100,
     backgroundColor: "white",
     position: "relative",
-    elevation: 0,
     shadowOpacity: 0,
     shadowRadius: 0,
     paddingTop: 20,
     height: 80,
+    elevation: 1,
   },
   leftIcon: {
     width: "100%",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "black",
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: "ProximaNovaSemiBold",
     textTransform: "capitalize",
   },

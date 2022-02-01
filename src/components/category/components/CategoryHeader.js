@@ -5,17 +5,16 @@ const CategoryHeader = ({ headingText, address }) => {
   return (
     <View
       style={{
-        marginBottom: 20,
+        marginVertical: 20,
         justifyContent: "flex-start",
-        paddingHorizontal: 20,
+        paddingHorizontal: 15,
       }}
     >
       <Text style={style.text}>{headingText}</Text>
-      <Text style={{ display: 'flex', fontFamily: "ProximaNova" }}>
-        <Text style={{ fontWeight: 'bold' }}>Delivering to : </Text>
+      <Text style={{ display: "flex", fontFamily: "ProximaNova" }}>
+        <Text style={{ fontWeight: "bold" }}>Delivering to : </Text>
         <Text style={style.address}>{address}</Text>
       </Text>
-
     </View>
   );
 };
@@ -29,5 +28,5 @@ const style = StyleSheet.create({
   address: {
     fontSize: 14,
     color: "gray",
-  }
+  },
 });
