@@ -89,13 +89,13 @@ const ListSetting = ({ navigation, products, categoryId }) => {
             <Icon color={listColor} name="list" type="ionicon" />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => refRBSheet.current.open()}
           style={{ flexDirection: "row", alignItems: "center" }}
         >
           <Text style={styles.text}>Filters:</Text>
           <Icon name="options" type="ionicon" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <ScrollView>
         <View

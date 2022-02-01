@@ -2,8 +2,14 @@ import React from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { Rating } from ".";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/actions/Cart";
 
 const BoxList = ({ item, navigation }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
   return (
     <View style={{ width: "50%" }}>
       <View style={{ marginBottom: 8, marginRight: 8 }}>
@@ -68,6 +74,7 @@ const BoxList = ({ item, navigation }) => {
           >
             <Rating />
             <TouchableOpacity
+             onPress={() => handleAddToCart(item)}
               style={{
                 borderRadius: 15,
                 backgroundColor: "black",

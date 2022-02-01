@@ -89,6 +89,15 @@ const Category = ({ navigation }) => {
                 Select Delivery Address
               </Text>
               <View style={{ marginTop: 10 }}>
+                <TouchableOpacity style={style.item}>
+                  <Icon
+                    name="location"
+                    size={25}
+                    color="black"
+                    type="ionicon"
+                  />
+                  <Text style={style.text}>Current Location</Text>
+                </TouchableOpacity>
                 <TouchableOpacity
                   style={style.item}
                   onPress={() =>
@@ -100,18 +109,9 @@ const Category = ({ navigation }) => {
                     })
                   }
                 >
-                  <Icon
-                    name="location"
-                    size={25}
-                    color="black"
-                    type="ionicon"
-                  />
-                  <Text style={style.text}>Current Location</Text>
-                </TouchableOpacity>
-                <View style={style.item}>
                   <Icon name="add" size={25} color="black" type="ionicon" />
                   <Text style={style.text}>Add an Address</Text>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
 
