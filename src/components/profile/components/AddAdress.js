@@ -5,7 +5,7 @@ import { TopImage } from ".";
 import Header from "../../header";
 import RadioButton from "radio-buttons-react-native";
 
-const AddAdress = () => {
+const AddAdress = ({ navigation }) => {
   const data = [
     {
       label: "Address 1",
@@ -15,7 +15,7 @@ const AddAdress = () => {
     },
   ];
   return (
-    <View style={{backgroundColor:'white'}}>
+    <View style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="profile" headingText="Address Setting" />
       <TopImage headingText="Add Address" />
       <View style={{ marginHorizontal: 35 }}>
@@ -34,7 +34,7 @@ const AddAdress = () => {
           bgColor="#ffbd11"
           color="black"
           text="Add new Address"
-          screen="newAddress"
+          onPress={() => navigation.navigate("newAddress")}
           rightIcon
           rightIconName="add-outline"
         />
