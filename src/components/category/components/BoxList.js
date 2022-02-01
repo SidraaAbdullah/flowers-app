@@ -32,7 +32,9 @@ const BoxList = ({ item, navigation }) => {
             >
               <Image
                 source={{
-                  uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                  uri:
+                    item?.image ||
+                    "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
                 }}
                 style={{ width: 100, height: 100 }}
               />
@@ -74,7 +76,7 @@ const BoxList = ({ item, navigation }) => {
           >
             <Rating />
             <TouchableOpacity
-             onPress={() => handleAddToCart(item)}
+              onPress={() => handleAddToCart(item)}
               style={{
                 borderRadius: 15,
                 backgroundColor: "black",

@@ -39,12 +39,14 @@ const ListDetail = ({ route, navigation }) => {
             backgroundColor: "white",
             paddingVertical: 10,
             alignItems: "center",
-            paddingBottom: 30,
+            paddingBottom: 20,
           }}
         >
           <Image
             source={{
-              uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+              uri:
+                item?.image ||
+                "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
             }}
             style={{ width: 110, height: 110 }}
           />
