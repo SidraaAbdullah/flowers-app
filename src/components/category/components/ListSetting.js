@@ -18,51 +18,6 @@ const ListSetting = ({ navigation, products, categoryId }) => {
   };
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
-  // const flowerList = [
-  //   {
-  //     id: "1",
-  //     name: "Flower Store",
-  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-  //     delivery: "27min . Deleivery",
-  //     price: "5$",
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "Flower Shop",
-  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-  //     delivery: "20min . Deleivery",
-  //     price: "20$",
-  //   },
-  //   {
-  //     id: "3",
-  //     name: "Flower Store",
-  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-  //     delivery: "30min . Deleivery",
-  //     price: "30$",
-  //   },
-  //   {
-  //     id: "4",
-  //     name: "Flower Shop",
-  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-  //     delivery: "40min . Deleivery",
-  //     price: "10$",
-  //   },
-  //   {
-  //     id: "5",
-  //     name: "Flower Shop",
-  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-  //     delivery: "20min . Deleivery",
-  //     price: "20$",
-  //   },
-  //   {
-  //     id: "6",
-  //     name: "Flower Store",
-  //     place: "Loreum ipsum dolor sit amet, consectetur non adipiscing elit.",
-  //     delivery: "30min . Deleivery",
-  //     price: "30$",
-  //   },
-  // ];
-
   const refRBSheet = useRef();
 
   return (
@@ -78,7 +33,9 @@ const ListSetting = ({ navigation, products, categoryId }) => {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={styles.text}>List Setting:</Text>
+          <Text style={styles.text}>List Setting</Text>
+        </View>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           <TouchableOpacity
             onPress={() => changeTo("boxStyle")}
             style={{ marginRight: 3 }}
@@ -130,9 +87,6 @@ const ListSetting = ({ navigation, products, categoryId }) => {
                   )
               )
             : null}
-        </View>
-        <View style={{ marginHorizontal: 40, marginBottom: 15 }}>
-          <CommonButton bgColor="green" text="Load More" />
         </View>
       </ScrollView>
 
@@ -271,7 +225,7 @@ export { ListSetting };
 const styles = StyleSheet.create({
   text: {
     fontFamily: "ProximaNovaSemiBold",
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 3,
     marginRight: 3,
   },
