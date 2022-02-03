@@ -1,20 +1,17 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./style";
-import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 
 const CommonButton = (props) => {
-  const navigation = useNavigation();
   const backgroundColor = props.bgColor ? props.bgColor : "black";
   const color = props.color ? props.color : "white";
   const padding = props.paddingVertical ? props.paddingVertical : 12;
+  
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      onPress={() => {
-        props.screen && navigation.navigate(props.screen);
-      }}
+      onPress={props.onPress && props.onPress}
       style={[styles.button, { backgroundColor: backgroundColor }]}
     >
       <View
@@ -38,9 +35,7 @@ const CommonButton = (props) => {
       </View>
 
       {props.rightIcon && (
-        <View
-          style={styles.rightIcon}
-        >
+        <View style={styles.rightIcon}>
           <Icon
             size={props.rightIconSize || 30}
             name={props.rightIconName || "arrow-forward-outline"}

@@ -10,7 +10,7 @@ import {
   signUpValidationSchema,
 } from "../../../constants";
 import { ScrollView, TouchableOpacity } from "react-native";
-
+import { CommonButton } from "../../buttons";
 const SignUp = ({ navigation }) => {
   const { mutate: signUp } = useMutation(SIGN_UP);
   const handleClick = async (values, resetForm) => {
@@ -109,30 +109,9 @@ const SignUp = ({ navigation }) => {
               error={errors["confirm_password"]}
               touched={touched["confirm_password"]}
             />
-            <TouchableOpacity
-              onPress={handleSubmit}
-              style={{
-                marginVertical: 10,
-                backgroundColor: "black",
-                borderRadius: 60,
-                marginVertical: 5,
-                height: 43,
-              }}
-            >
-              <Text
-                style={{
-                  paddingHorizontal: 10,
-                  fontSize: 14,
-                  textAlign: "center",
-                  textTransform: "uppercase",
-                  fontFamily: "ProximaNovaSemiBold",
-                  color: "white",
-                  paddingVertical: 12,
-                }}
-              >
-                SIGN UP
-              </Text>
-            </TouchableOpacity>
+            <View style={{ marginVertical: 10 }}>
+              <CommonButton onPress={() => handleSubmit()} text="SIGN UP" />
+            </View>
           </View>
         )}
       </Formik>

@@ -9,7 +9,9 @@ const CategoryBox = ({ item }) => {
       <View style={{ alignItems: "center" }}>
         <Image
           source={{
-            uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+            uri:
+              item?.image ||
+              "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
           }}
           style={{ width: 90, height: 90 }}
         />

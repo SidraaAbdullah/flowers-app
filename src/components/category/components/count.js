@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 
-const Count = () => {
-  const [number, setNumber] = useState(1);
-  const increment = () => setNumber(number + 1);
-  let decrement = () => setNumber(number - 1);
-  if (number <= 0) {
-    decrement = () => setNumber(1);
+const Count = ({ setCount, count = 1 }) => {
+  const increment = () => setCount(count + 1);
+  let decrement = () => setCount(count - 1);
+  if (count <= 1) {
+    decrement = () => setCount(1);
   }
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => decrement()}>
         <Icon name="minus" size={18} color="gray" type="font-awesome" />
       </TouchableOpacity>
-      <Text style={styles.text}>{number}</Text>
+      <Text style={styles.text}>{count}</Text>
       <TouchableOpacity onPress={() => increment()}>
         <Icon name="plus" color="gray" size={18} type="font-awesome" />
       </TouchableOpacity>

@@ -2,8 +2,14 @@ import React from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { Rating } from ".";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/actions/Cart";
 
 const BoxList = ({ item, navigation }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
   return (
     <View style={{ width: "50%" }}>
       <View style={{ marginBottom: 8, marginRight: 8 }}>
@@ -12,9 +18,7 @@ const BoxList = ({ item, navigation }) => {
             activeOpacity={0.5}
             onPress={() =>
               navigation.navigate("listDetail", {
-                name: item.name,
-                price: item.price,
-                description: item.description,
+                item: item,
               })
             }
           >
@@ -28,7 +32,9 @@ const BoxList = ({ item, navigation }) => {
             >
               <Image
                 source={{
-                  uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                  uri:
+                    item?.image ||
+                    "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
                 }}
                 style={{ width: 100, height: 100 }}
               />
@@ -70,6 +76,7 @@ const BoxList = ({ item, navigation }) => {
           >
             <Rating />
             <TouchableOpacity
+              onPress={() => handleAddToCart(item)}
               style={{
                 borderRadius: 15,
                 backgroundColor: "black",
@@ -78,7 +85,6 @@ const BoxList = ({ item, navigation }) => {
                 padding: 1,
                 paddingLeft: 3,
               }}
-              onPress={() => navigation.navigate("Cart")}
             >
               <Icon name="add" color="white" type="ionicon" />
             </TouchableOpacity>

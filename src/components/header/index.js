@@ -1,10 +1,13 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, Badge } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 const Header = (props) => {
   const navigation = useNavigation();
+  const cartItemCount = useSelector((state) => state.cart.addToCart);
+
   return (
     <View style={styles.header}>
       <View style={styles.container}>
@@ -48,11 +51,18 @@ const Header = (props) => {
         <TouchableOpacity>
           <View style={styles.rightIcon}>
             <Icon
-              name={props.rightIcon || "menu"}
+              name={props.rightIcon || "cart"}
               size={props.rightSize || 28}
               color={props.rightColor || "black"}
               type={props.rightType || "ionicon"}
             />
+            {!props.rightIcon && (
+              <Badge
+                status="error"
+                value={cartItemCount?.length}
+                containerStyle={{ position: "absolute", top: 10, right: 5 }}
+              />
+            )}
           </View>
         </TouchableOpacity>
       </View>
@@ -75,11 +85,11 @@ const styles = StyleSheet.create({
     zIndex: 100,
     backgroundColor: "white",
     position: "relative",
-    elevation: 0,
     shadowOpacity: 0,
     shadowRadius: 0,
     paddingTop: 20,
     height: 80,
+    elevation: 1,
   },
   leftIcon: {
     width: "100%",
@@ -98,7 +108,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "black",
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: "ProximaNovaSemiBold",
     textTransform: "capitalize",
   },

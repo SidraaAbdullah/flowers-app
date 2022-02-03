@@ -12,6 +12,7 @@ import {
   signInInitialValues,
   signInValidationSchema,
 } from "../../../constants";
+import { CommonButton } from "../../buttons";
 
 const SignIn = () => {
   const navigation = useNavigation();
@@ -24,9 +25,9 @@ const SignIn = () => {
       },
       {
         onSuccess: async (res) => {
-          navigation.replace("home");
           axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
-          await AsyncStorage.setItem("User", JSON.stringify(res.data));
+          await AsyncStorage.setItem("logIn", JSON.stringify(res.data));
+          navigation.replace("home");
         },
         onError: () => {
           alert("Please enter correct email or password");
@@ -75,31 +76,9 @@ const SignIn = () => {
               error={errors["password"]}
               touched={touched["password"]}
             />
-
-            <TouchableOpacity
-              onPress={handleSubmit}
-              style={{
-                marginVertical: 10,
-                backgroundColor: "black",
-                borderRadius: 60,
-                marginVertical: 5,
-                height: 43,
-              }}
-            >
-              <Text
-                style={{
-                  paddingHorizontal: 10,
-                  fontSize: 14,
-                  textAlign: "center",
-                  textTransform: "uppercase",
-                  fontFamily: "ProximaNovaSemiBold",
-                  color: "white",
-                  paddingVertical: 12,
-                }}
-              >
-                LOG IN
-              </Text>
-            </TouchableOpacity>
+            <View style={{ marginVertical: 10 }}>
+              <CommonButton onPress={() => handleSubmit()} text=" LOG IN" />
+            </View>
             <TouchableOpacity
               onPress={() => navigation.navigate("forgotPassword")}
             >

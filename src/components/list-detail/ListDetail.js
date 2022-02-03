@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,35 +11,49 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { Count, Rating } from "../category/components";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/actions/Cart";
 
 const ListDetail = ({ route, navigation }) => {
-  const { name, price, description } = route.params;
+  const { item } = route.params;
+  const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.addToCart);
+  const handleAddToCart = (item) => {
+    for (let i = 1; i <= count; i++) {
+      const isCheck = cartItems.filter((val) => val._id === item._id);
+      isCheck ? setCount(count + 1) : null;
+      item.count = count;
+      const products = { ...item };
+      dispatch(addToCart(products));
+    }
+    navigation.navigate("Cart");
+  };
+
   return (
     <View style={{ flex: 1 }}>
-      <Header
-        headingText={name}
-        rightIcon="heart-outline"
-        rightSize={24}
-        rightType="ionicon"
-      />
+      <Header headingText={item.name} />
       <View style={{ flex: 1, backgroundColor: "white" }}>
         <View
           style={{
             backgroundColor: "white",
-            paddingVertical: 10,
+            marginVertical: 5,
+            marginTop: 20,
             alignItems: "center",
-            paddingBottom: 30,
+            paddingBottom: 20,
           }}
         >
           <Image
             source={{
-              uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+              uri:
+                item?.image ||
+                "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
             }}
-            style={{ width: 130, height: 130 }}
+            style={{ width: 110, height: 110 }}
           />
         </View>
         <ScrollView>
-          <View style={{ margin: 20, marginTop: 15 }}>
+          <View style={{ margin: 15 }}>
             <View style={styles.border}>
               <Text
                 style={{
@@ -48,7 +62,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNovaSemiBold",
                 }}
               >
-                {name}
+                {item.name}
               </Text>
               <Text
                 style={{
@@ -57,7 +71,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNova",
                 }}
               >
-                {description}
+                {item.description}
               </Text>
               <View
                 style={{
@@ -111,10 +125,10 @@ const ListDetail = ({ route, navigation }) => {
                 <Text
                   style={{ fontSize: 17, fontFamily: "ProximaNovaSemiBold" }}
                 >
-                  {price}
+                  {item.price}
                 </Text>
               </View>
-              <Count />
+              <Count count={count} setCount={setCount} />
             </View>
 
             <View style={styles.border}>
@@ -150,6 +164,7 @@ const ListDetail = ({ route, navigation }) => {
                 rightIconName="cart-outline"
                 rightIconSize={24}
                 bgColor="green"
+                onPress={() => handleAddToCart(item)}
               />
             </View>
           </View>

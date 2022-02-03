@@ -4,7 +4,7 @@ import { Carousel } from "../../constants";
 import { CommonButton } from "../buttons";
 import { Paginator, CarouselItem } from "./compoents";
 
-const GetStarted = () => {
+const GetStarted = ({ navigation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
@@ -43,7 +43,11 @@ const GetStarted = () => {
         scrollTo={(i) => changeTo(i)}
       />
       <View style={{ width: "80%" }}>
-        <CommonButton screen="signUp" text="CREATE ACCOUNT" rightIcon />
+        <CommonButton
+          onPress={() => navigation.navigate("signUp")}
+          text="CREATE ACCOUNT"
+          rightIcon
+        />
       </View>
     </View>
   );
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 35,
-    backgroundColor:'white'
+    backgroundColor: "white",
   },
 });
 

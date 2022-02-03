@@ -16,15 +16,7 @@ const DeliveryInfo = ({ navigation }) => {
         <Text style={[styles.heading, { color: "red" }]}>30$</Text>
       </View>
 
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("home", {
-            screen: "Account",
-            params: {
-              screen: "addAddress",
-            },
-          })
-        }
+      <View
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -33,8 +25,7 @@ const DeliveryInfo = ({ navigation }) => {
         }}
       >
         <Text style={styles.text}>R306 Sharifabd FB Area Block 1 Karachi</Text>
-        <Icon name="pencil" type="font-awesome" size={18} color="gray" />
-      </TouchableOpacity>
+      </View>
       <View style={{ marginTop: 10 }}>
         <Text style={styles.heading}>Deliver date and time:</Text>
         <View style={{ flexDirection: "row", marginTop: 5 }}>

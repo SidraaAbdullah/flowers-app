@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Count, Rating } from "../../category/components";
 
-const CartCard = () => {
+const CartCard = ({ item }) => {
+  const [count, setCount] = useState(item?.count);
   return (
     <View style={{ width: "100%", marginBottom: 8 }}>
       <View style={styles.border}>
@@ -23,7 +24,7 @@ const CartCard = () => {
                 alignItems: "center",
               }}
             >
-              <Text style={styles.text}>{"Flower"}</Text>
+              <Text style={styles.text}>{item.name}</Text>
               <Text style={styles.text}>{"40$"}</Text>
             </View>
 
@@ -35,8 +36,7 @@ const CartCard = () => {
                 color: "gray",
               }}
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              {item.description}
             </Text>
             <View
               style={{
@@ -47,7 +47,7 @@ const CartCard = () => {
               }}
             >
               <Rating />
-              <Count />
+              <Count count={count} setCount={setCount} />
             </View>
           </View>
         </View>
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "ProximaNovaSemiBold",
     fontSize: 15,
+    textTransform: "capitalize",
   },
   container: {
     flexDirection: "row",

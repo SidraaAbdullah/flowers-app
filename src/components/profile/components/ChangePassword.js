@@ -3,13 +3,13 @@ import { View } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
-import Input from "../../input/index";
+import Input from "../../input";
 
 const ChangePassword = () => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setconfirmPassword] = useState(null);
   return (
-    <View style={{backgroundColor:'white'}}>
+    <View style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="profile" headingText="Change Password" />
       <TopImage headingText="Change Password" />
       <View style={{ marginHorizontal: 35 }}>

@@ -2,8 +2,14 @@ import React from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Rating } from ".";
 import { Icon } from "react-native-elements";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/actions/Cart";
 
 const List = ({ item, navigation }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
   return (
     <View style={{ width: "100%" }}>
       <View style={{ marginRight: 8, marginBottom: 8 }}>
@@ -12,9 +18,7 @@ const List = ({ item, navigation }) => {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("listDetail", {
-                  name: item.name,
-                  price: item.price,
-                  description: item.description,
+                  item: item,
                 })
               }
               activeOpacity={0.5}
@@ -23,7 +27,9 @@ const List = ({ item, navigation }) => {
                 <Image
                   style={{ width: 80, height: 80 }}
                   source={{
-                    uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                    uri:
+                      item?.image ||
+                      "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
                   }}
                 />
               </View>
@@ -33,8 +39,7 @@ const List = ({ item, navigation }) => {
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("listDetail", {
-                    name: item.name,
-                    price: item.price,
+                    item: item,
                   })
                 }
                 activeOpacity={0.5}
@@ -73,6 +78,7 @@ const List = ({ item, navigation }) => {
               >
                 <Rating />
                 <TouchableOpacity
+                  onPress={() => handleAddToCart(item)}
                   style={{
                     borderRadius: 15,
                     backgroundColor: "black",
@@ -81,7 +87,6 @@ const List = ({ item, navigation }) => {
                     padding: 1,
                     paddingLeft: 3,
                   }}
-                  onPress={() => navigation.navigate("Cart")}
                 >
                   <Icon name="add" color="white" type="ionicon" />
                 </TouchableOpacity>

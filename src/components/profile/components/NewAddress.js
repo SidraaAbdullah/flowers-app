@@ -17,7 +17,7 @@ const NewAddress = () => {
     },
   ];
   return (
-    <View>
+    <View style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="addAddress" headingText="New Address" />
       <TopImage headingText="Add Address" />
       <View style={{ marginHorizontal: 35 }}>

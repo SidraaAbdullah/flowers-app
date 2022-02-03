@@ -11,30 +11,23 @@ import { CategoryBox, CategoryHeader } from "./components/index";
 import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
-import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
+//import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
   const { data: category } = useQuery("CATEGORY", CATEGORY);
-
-  // const data = [
-  //   { name: "Flowers", type: "All Category" },
-  //   { name: "Plants", type: "Indoor" },
-  //   { name: "Plants", type: "Outdoor" },
-  //   { name: "Pots", type: "All Types" },
-  //   { name: "Accessories", type: "supplements" },
-  // ];
+  
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
         onPress={() => refRBSheet.current.open()}
         dropdownText="Current Location"
       />
-      <View style={style.searchBar}>
+      {/* <View style={style.searchBar}>
         <SearchBar placeholder="Search" />
-      </View>
+      </View> */}
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address="R306 Sharifabd FB Area Block 1 Karachi"
@@ -93,6 +86,15 @@ const Category = ({ navigation }) => {
                 Select Delivery Address
               </Text>
               <View style={{ marginTop: 10 }}>
+                <TouchableOpacity style={style.item}>
+                  <Icon
+                    name="location"
+                    size={25}
+                    color="black"
+                    type="ionicon"
+                  />
+                  <Text style={style.text}>Current Location</Text>
+                </TouchableOpacity>
                 <TouchableOpacity
                   style={style.item}
                   onPress={() =>
@@ -104,18 +106,9 @@ const Category = ({ navigation }) => {
                     })
                   }
                 >
-                  <Icon
-                    name="location"
-                    size={25}
-                    color="black"
-                    type="ionicon"
-                  />
-                  <Text style={style.text}>Current Location</Text>
-                </TouchableOpacity>
-                <View style={style.item}>
                   <Icon name="add" size={25} color="black" type="ionicon" />
                   <Text style={style.text}>Add an Address</Text>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
 

@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { SignIn, SignUp } from "./components";
 
 const Register = ({ navigation }) => {
-  const [value, setValue] = useState("signUp");
+  const [value, setValue] = useState("logIn");
   const changeTo = (val) => {
     setValue(val);
   };
@@ -12,18 +12,24 @@ const Register = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View
-        style={{ flex: 0.5, marginTop:10, justifyContent: 'center', alignItems: 'center' }}
+        style={{
+          flex: 0.5,
+          marginTop: 10,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-
         {value === "logIn" ? (
-          <Image style={{ height: 150, width: 250 }} source={require('../../assets/images/login.png')} />
-
+          <Image
+            style={{ height: 150, width: 250 }}
+            source={require("../../assets/images/login.png")}
+          />
         ) : value === "signUp" ? (
-          <Image style={{ height: 150, width: 250 }} source={require('../../assets/images/signup.png')} />
-
+          <Image
+            style={{ height: 150, width: 250 }}
+            source={require("../../assets/images/signup.png")}
+          />
         ) : null}
-
-
       </View>
       <View
         style={{

@@ -1,5 +1,5 @@
 import React from "react";
-import { PersonalInformation } from "../components/profile/components/index";
+import { PersonalInformation } from "../components/profile/components";
 
 const PersonalInfoScreen = () => {
   return <PersonalInformation />;
