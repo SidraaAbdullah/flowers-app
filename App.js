@@ -1,15 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./src/navigation/RootNavigator";
 import { loadAsync } from "expo-font";
 import { QueryClientProvider, QueryClient } from "react-query";
+import useStorage from "./src/hooks/useStorage";
+import axios from "axios";
 import {
   defaultQueryFn,
   defaultMutationFn,
   reactQueryConfig,
 } from "./src/constants";
+import AppLoading from 'expo-app-loading';
 
 const App = () => {
+  const [user, isLoading] = useStorage('User', { isObject: true });
+  if (user) {
+    axios.defaults.headers.common.Authorization = `bearer ${user?.access_token}`;
+  }
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -35,10 +42,17 @@ const App = () => {
       }
     })();
   }, []);
+
+  if (isLoading) {
+    return (
+      <AppLoading
+      />
+    );
+  }
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
-        <RootNavigator />
+        <RootNavigator user={user} />
       </NavigationContainer>
     </QueryClientProvider>
   );

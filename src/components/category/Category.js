@@ -42,26 +42,30 @@ const Category = ({ navigation }) => {
       <ScrollView>
         <View
           style={{
+
             flexDirection: "row",
             justifyContent: "center",
             flexWrap: "wrap",
             marginBottom: 20,
           }}
         >
-          {category?.data?.map((item) => (
-            <TouchableOpacity
-              key={item?._id}
-              onPress={() =>
-                navigation.navigate("categoryDetail", {
-                  categoryName: item?.name,
-                  categoryId: item?._id,
-                })
-              }
-              style={{ width: "47%" }}
-            >
-              <CategoryBox item={item} />
-            </TouchableOpacity>
-          ))}
+            <>
+              {category?.data?.map((item) => (
+                <TouchableOpacity
+                  key={item?._id}
+                  onPress={() =>
+                    navigation.navigate("categoryDetail", {
+                      categoryName: item?.name,
+                      categoryId: item?._id,
+                    })
+                  }
+                  style={{ width: "47%" }}
+                >
+                  <CategoryBox item={item} />
+                </TouchableOpacity>
+              ))}
+            </>
+
         </View>
       </ScrollView>
 

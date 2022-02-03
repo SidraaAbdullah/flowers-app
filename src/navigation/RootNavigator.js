@@ -3,11 +3,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import BottomTab from "./BottomTab";
 import * as Screen from "../screens";
 
-const RootNavigator = () => {
+const RootNavigator = ({user}) => {
   const Stack = createStackNavigator();
+  console.log(user);
   return (
     <Stack.Navigator
-      initialRouteName="getStarted"
+      initialRouteName={user?.access_token ? 'home' : "getStarted"}
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={BottomTab} />
