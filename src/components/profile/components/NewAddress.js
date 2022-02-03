@@ -7,26 +7,26 @@ import Input from "../../input";
 import RadioButton from "radio-buttons-react-native";
 import { useMutation } from "react-query";
 import { ADD_ADDRESS, GET_ADDRESS } from "../../../queries";
-import { useQuery } from "react-query";
 
 const NewAddress = () => {
-  const { data, isLoading: addressesLoading } = useQuery("/user/delivery-address");
-  console.log({ data });
   const { mutate: addAddress } = useMutation(ADD_ADDRESS);
-  const [newAddress, setNewAddress] = useState('');
+  const [newAddress, setNewAddress] = useState("");
   const handleAddAdress = () => {
-    addAddress({
-      address: newAddress
-    }, {
-      onError: (e) => {
-        alert('Error');
+    addAddress(
+      {
+        address: newAddress,
       },
-      onSuccess: () => {
-        alert("Success");
-        setNewAddress('')
+      {
+        onError: (e) => {
+          alert("Error");
+        },
+        onSuccess: () => {
+          alert("Success");
+          setNewAddress("");
+        },
       }
-    })
-  }
+    );
+  };
   const dataA = [
     {
       label: "Address 1",

@@ -26,7 +26,7 @@ const DeliveryInfo = ({ navigation }) => {
       >
         <Text style={styles.text}>R306 Sharifabd FB Area Block 1 Karachi</Text>
       </View>
-      <View style={{ marginTop: 10 }}>
+      {/* <View style={{ marginTop: 10 }}>
         <Text style={styles.heading}>Deliver date and time:</Text>
         <View style={{ flexDirection: "row", marginTop: 5 }}>
           <View
@@ -52,7 +52,7 @@ const DeliveryInfo = ({ navigation }) => {
           </View>
           <Icon name="pencil" type="font-awesome" size={18} color="gray" />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };

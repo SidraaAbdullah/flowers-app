@@ -1,11 +1,16 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
 import RadioButton from "radio-buttons-react-native";
+import { useQuery } from "react-query";
 
 const AddAdress = ({ navigation }) => {
+  const { data: savedAddresses, isLoading: addressesLoading } = useQuery(
+    "/user/delivery-address"
+  );
+  console.log({ savedAddresses });
   const data = [
     {
       label: "Address 1",
@@ -15,7 +20,7 @@ const AddAdress = ({ navigation }) => {
     },
   ];
   return (
-    <View style={{ backgroundColor: "white", flex: 1 }}>
+    <ScrollView style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="profile" headingText="Address Setting" />
       <TopImage headingText="Add Address" />
       <View style={{ marginHorizontal: 35 }}>
@@ -23,8 +28,8 @@ const AddAdress = ({ navigation }) => {
           animationType="pulse"
           box={false}
           initial={2}
-          data={data}
-          selectedBtn={(e) => console.log(e.label)}
+          data={savedAddresses?.data || []}
+          // selectedBtn={(e) => console.log(e.label)}
           style={{ marginBottom: 30 }}
           activeColor="#ffbd11"
           circleSize={15}
@@ -40,7 +45,7 @@ const AddAdress = ({ navigation }) => {
         />
         <CommonButton text="Save as Primary" screen="profile" />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 export { AddAdress };
