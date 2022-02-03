@@ -5,10 +5,29 @@ import { TopImage } from ".";
 import Header from "../../header";
 import Input from "../../input";
 import RadioButton from "radio-buttons-react-native";
+import { useMutation } from "react-query";
+import { ADD_ADDRESS, GET_ADDRESS } from "../../../queries";
+import { useQuery } from "react-query";
 
 const NewAddress = () => {
-  const [newAddress, setNewAddress] = useState(null);
-  const data = [
+  const { data, isLoading: addressesLoading } = useQuery("/user/delivery-address");
+  console.log({ data });
+  const { mutate: addAddress } = useMutation(ADD_ADDRESS);
+  const [newAddress, setNewAddress] = useState('');
+  const handleAddAdress = () => {
+    addAddress({
+      address: newAddress
+    }, {
+      onError: (e) => {
+        alert('Error');
+      },
+      onSuccess: () => {
+        alert("Success");
+        setNewAddress('')
+      }
+    })
+  }
+  const dataA = [
     {
       label: "Address 1",
     },
@@ -25,7 +44,7 @@ const NewAddress = () => {
           animationType="pulse"
           box={false}
           initial={2}
-          data={data}
+          data={dataA}
           selectedBtn={(e) => console.log(e.label)}
           style={{ marginBottom: 30 }}
           activeColor="#ffbd11"
@@ -36,6 +55,7 @@ const NewAddress = () => {
           iconName="book"
           setValue={setNewAddress}
           value={newAddress}
+          onChangeText={(e) => setNewAddress(e)}
           placeholder="Add a new delivery address"
           label="Address"
         />
@@ -49,6 +69,7 @@ const NewAddress = () => {
             rightIcon
             rightIconName="close-outline"
             rightIconColor="red"
+            onPress={handleAddAdress}
           />
         </View>
       </View>

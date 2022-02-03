@@ -30,21 +30,20 @@ const App = () => {
       },
     },
   });
-  if (isLoading) {
-    return (
-      <AppLoading
-      />
-    );
-  }
-  
   const [loaded] = useFonts({
     ProximaNova: require("./src/assets/fonts/ProximaNova/ProximaNova-Regular.otf"),
     ProximaNovaBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Bold.otf"),
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
-  if (!loaded) {
-    return null;
+  if (isLoading || !loaded) {
+    return (
+      <AppLoading
+      />
+    );
   }
+
+
+
 
   return (
     <QueryClientProvider client={queryClient}>

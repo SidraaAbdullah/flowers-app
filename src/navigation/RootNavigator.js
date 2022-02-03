@@ -8,7 +8,7 @@ const RootNavigator = ({user}) => {
   console.log(user);
   return (
     <Stack.Navigator
-      initialRouteName={user?.access_token ? 'home' : "getStarted"}
+      initialRouteName={"getStarted"}
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={BottomTab} />
