@@ -7,7 +7,7 @@ const CommonButton = (props) => {
   const backgroundColor = props.bgColor ? props.bgColor : "black";
   const color = props.color ? props.color : "white";
   const padding = props.paddingVertical ? props.paddingVertical : 12;
-  
+
   return (
     <TouchableOpacity
       activeOpacity={0.5}

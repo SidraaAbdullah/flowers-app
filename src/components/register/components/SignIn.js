@@ -13,10 +13,18 @@ import {
   signInValidationSchema,
 } from "../../../constants";
 import { CommonButton } from "../../buttons";
+import { addUser } from "../../../redux/actions/User";
+import { useDispatch } from "react-redux";
 
 const SignIn = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const { mutate: signIn } = useMutation(SIGN_IN);
+
+  const handleAddUser = (item) => {
+    dispatch(addUser(item));
+  };
+
   const handleLogin = async (values) => {
     await signIn(
       {
@@ -27,6 +35,7 @@ const SignIn = () => {
         onSuccess: async (res) => {
           axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
           await AsyncStorage.setItem("logIn", JSON.stringify(res.data));
+          handleAddUser(res.data);
           navigation.replace("home");
         },
         onError: () => {

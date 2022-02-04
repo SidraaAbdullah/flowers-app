@@ -6,9 +6,41 @@ import { CommonButton } from "../buttons";
 import Header from "../header";
 import OrderModal from "../modal/OrderModal";
 import { TopSection, CartCard, DeliveryInfo } from "./components";
+import { useMutation } from "react-query";
+import { ADD_ORDER } from "../../queries";
+import { useSelector } from "react-redux";
 
 const Cart = ({ navigation, cartItems }) => {
+  const { mutate: addOrder } = useMutation(ADD_ORDER);
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useSelector((state) => state.user);
+
+  const filterCartItems = (items) => {
+    let orderItems = [];
+    cartItems.map((item) => {
+      const { _id, quantity = "40", price = "500" } = item;
+      orderItems.push({ product_id: _id, quantity, price });
+    });
+    return orderItems;
+  };
+
+  const handleAddOrder = () => {
+    addOrder(
+      {
+        products: filterCartItems(cartItems),
+        deliveryAddress: user?.primaryDeliveryAddress?._id,
+      },
+      {
+        onError: (e) => {
+          alert("Error");
+        },
+        onSuccess: () => {
+          handleOpen();
+        },
+      }
+    );
+  };
+
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -59,7 +91,7 @@ const Cart = ({ navigation, cartItems }) => {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={handleOpen}
+              onPress={handleAddOrder}
               activeOpacity={1}
               style={{ marginHorizontal: 35, marginVertical: 5 }}
             >

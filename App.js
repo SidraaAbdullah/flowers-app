@@ -10,12 +10,12 @@ import {
   defaultMutationFn,
   reactQueryConfig,
 } from "./src/constants";
-import AppLoading from 'expo-app-loading';
+import AppLoading from "expo-app-loading";
 import { Provider } from "react-redux";
 import store from "./src/redux/Store";
 
 const App = () => {
-  const [user, isLoading] = useStorage('User', { isObject: true });
+  const [user, isLoading] = useStorage("User", { isObject: true });
   if (user) {
     axios.defaults.headers.common.Authorization = `bearer ${user?.access_token}`;
   }
@@ -36,14 +36,8 @@ const App = () => {
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
   if (isLoading || !loaded) {
-    return (
-      <AppLoading
-      />
-    );
+    return <AppLoading />;
   }
-
-
-
 
   return (
     <QueryClientProvider client={queryClient}>

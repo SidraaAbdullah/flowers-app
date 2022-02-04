@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, ScrollView } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
 import RadioButton from "radio-buttons-react-native";
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
+import { UPDATE_PRIMARY_ADDRESS } from "../../../queries";
 
 const AddAdress = ({ navigation }) => {
   const { data: savedAddresses, isLoading: addressesLoading } = useQuery(
     "/user/delivery-address"
   );
-  console.log({ savedAddresses });
-  const data = [
-    {
-      label: "Address 1",
-    },
-    {
-      label: "Address 2",
-    },
-  ];
+  const { mutate: updatePrimaryAddress } = useMutation(UPDATE_PRIMARY_ADDRESS);
+  const [selectedAddress, setSelectedAddress] = useState("");
+
+  const handleUpdatePrimaryAdress = () => {
+    updatePrimaryAddress(
+      {
+        delivery_address_id: selectedAddress?._id,
+        primary: true,
+      },
+      {
+        onError: (e) => {
+          alert("Error");
+        },
+        onSuccess: () => {
+          alert("Success");
+        },
+      }
+    );
+  };
+
   return (
     <ScrollView style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="profile" headingText="Address Setting" />
@@ -29,7 +41,7 @@ const AddAdress = ({ navigation }) => {
           box={false}
           initial={2}
           data={savedAddresses?.data || []}
-          // selectedBtn={(e) => console.log(e.label)}
+          selectedBtn={(e) => setSelectedAddress(e)}
           style={{ marginBottom: 30 }}
           activeColor="#ffbd11"
           circleSize={15}
@@ -43,7 +55,11 @@ const AddAdress = ({ navigation }) => {
           rightIcon
           rightIconName="add-outline"
         />
-        <CommonButton text="Save as Primary" screen="profile" />
+        <CommonButton
+          onPress={handleUpdatePrimaryAdress}
+          text="Save as Primary"
+          screen="profile"
+        />
       </View>
     </ScrollView>
   );
