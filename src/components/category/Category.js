@@ -11,23 +11,23 @@ import { CategoryBox, CategoryHeader } from "./components/index";
 import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
-//import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
+import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
   const { data: category } = useQuery("CATEGORY", CATEGORY);
-  
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
         onPress={() => refRBSheet.current.open()}
         dropdownText="Current Location"
       />
-      {/* <View style={style.searchBar}>
+      <View style={style.searchBar}>
         <SearchBar placeholder="Search" />
-      </View> */}
+      </View>
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address="R306 Sharifabd FB Area Block 1 Karachi"
@@ -35,30 +35,28 @@ const Category = ({ navigation }) => {
       <ScrollView>
         <View
           style={{
-
             flexDirection: "row",
             justifyContent: "center",
             flexWrap: "wrap",
             marginBottom: 20,
           }}
         >
-            <>
-              {category?.data?.map((item) => (
-                <TouchableOpacity
-                  key={item?._id}
-                  onPress={() =>
-                    navigation.navigate("categoryDetail", {
-                      categoryName: item?.name,
-                      categoryId: item?._id,
-                    })
-                  }
-                  style={{ width: "47%" }}
-                >
-                  <CategoryBox item={item} />
-                </TouchableOpacity>
-              ))}
-            </>
-
+          <>
+            {category?.data?.map((item) => (
+              <TouchableOpacity
+                key={item?._id}
+                onPress={() =>
+                  navigation.navigate("categoryDetail", {
+                    categoryName: item?.name,
+                    categoryId: item?._id,
+                  })
+                }
+                style={{ width: "47%" }}
+              >
+                <CategoryBox item={item} />
+              </TouchableOpacity>
+            ))}
+          </>
         </View>
       </ScrollView>
 

@@ -5,13 +5,18 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import Header from "../header";
 import { OrderList } from "./components";
 import { CommonButton } from "../buttons";
+import { useQuery } from "react-query";
 
 const OrderHistory = ({ navigation }) => {
+  const { data: orderHistory, isLoading: orderHistoryLoading } =
+    useQuery("/order");
+  console.log(orderHistory);
   const refRBSheet = useRef();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -40,17 +45,13 @@ const OrderHistory = ({ navigation }) => {
         </View>
         <ScrollView>
           <View style={{ padding: 15 }}>
-            <OrderList status="Delivered" navigation={navigation} />
-            <OrderList status="In Progress" navigation={navigation} />
-            <OrderList status="Cancelled" navigation={navigation} />
-            <OrderList status="Delivered" navigation={navigation} />
-            <OrderList status="In Progress" navigation={navigation} />
-            <OrderList status="Refunded" navigation={navigation} />
-            <OrderList status="Delivered" navigation={navigation} />
-            <OrderList status="Refunded" navigation={navigation} />
-            <OrderList status="Cancelled" navigation={navigation} />
-            <OrderList status="Delivered" navigation={navigation} />
-            <OrderList status="In Progress" navigation={navigation} />
+            <FlatList
+              data={orderHistory.data}
+              renderItem={({ item }) => (
+                <OrderList status={item.status} navigation={navigation} />
+              )}
+              keyExtractor={(item) => item._id}
+            />
             <View style={{ marginVertical: 5 }}>
               <CommonButton text="Load More" />
             </View>

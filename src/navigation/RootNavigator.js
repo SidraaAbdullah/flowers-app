@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import BottomTab from "./BottomTab";
 import * as Screen from "../screens";
 
-const RootNavigator = ({user}) => {
+const RootNavigator = ({ user }) => {
   const Stack = createStackNavigator();
   console.log(user);
   return (

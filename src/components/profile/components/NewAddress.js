@@ -6,7 +6,7 @@ import Header from "../../header";
 import Input from "../../input";
 import RadioButton from "radio-buttons-react-native";
 import { useMutation } from "react-query";
-import { ADD_ADDRESS, GET_ADDRESS } from "../../../queries";
+import { ADD_ADDRESS } from "../../../queries";
 
 const NewAddress = () => {
   const { mutate: addAddress } = useMutation(ADD_ADDRESS);
