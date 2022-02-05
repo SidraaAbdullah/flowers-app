@@ -16,7 +16,6 @@ import { useQuery } from "react-query";
 const OrderHistory = ({ navigation }) => {
   const { data: orderHistory, isLoading: orderHistoryLoading } =
     useQuery("/order");
-  console.log(orderHistory);
   const refRBSheet = useRef();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -46,7 +45,7 @@ const OrderHistory = ({ navigation }) => {
         <ScrollView>
           <View style={{ padding: 15 }}>
             <FlatList
-              data={orderHistory.data}
+              data={orderHistory?.data || []}
               renderItem={({ item }) => (
                 <OrderList status={item.status} navigation={navigation} />
               )}

@@ -10,3 +10,8 @@ export const SIGN_IN = async (e) => {
   const res = await axios.post(BASE_URL + "/login", e);
   return res.data;
 };
+
+export const VERIFY_USER = async (e) => {
+  const res = await axios.post(BASE_URL + "/verify-user");
+  return res.data;
+};
