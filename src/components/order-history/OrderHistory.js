@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   ScrollView,
   Text,
@@ -16,8 +16,6 @@ import { useQuery } from "react-query";
 const OrderHistory = ({ navigation }) => {
   const { data: orderHistory, isLoading: orderHistoryLoading } =
     useQuery("/order");
-  console.log(orderHistory);
-  const refRBSheet = useRef();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Order History" />
@@ -46,15 +44,12 @@ const OrderHistory = ({ navigation }) => {
         <ScrollView>
           <View style={{ padding: 15 }}>
             <FlatList
-              data={orderHistory.data}
+              data={orderHistory?.data || []}
               renderItem={({ item }) => (
                 <OrderList status={item.status} navigation={navigation} />
               )}
               keyExtractor={(item) => item._id}
             />
-            <View style={{ marginVertical: 5 }}>
-              <CommonButton text="Load More" />
-            </View>
           </View>
         </ScrollView>
       </View>

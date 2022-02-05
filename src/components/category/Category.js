@@ -14,7 +14,7 @@ import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
-import {HomeCardSkeleton} from "../skeletons/home.card.skeleton"
+import {HomeCardSkeleton} from "../skeletons/categoriesHomePage"
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
