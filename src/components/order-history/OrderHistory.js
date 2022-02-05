@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   ScrollView,
   Text,
@@ -16,7 +16,6 @@ import { useQuery } from "react-query";
 const OrderHistory = ({ navigation }) => {
   const { data: orderHistory, isLoading: orderHistoryLoading } =
     useQuery("/order");
-  const refRBSheet = useRef();
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Order History" />

@@ -1,60 +1,74 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  ImageBackground,
+} from "react-native";
 import Header from "../../header";
-import { SingleOrderList } from ".";
-import { DeliveryInfo } from "../../cart/components";
+import { OrderDetail, DeliveryStatus } from ".";
+import { Avatar } from "react-native-elements";
+import { Icon } from "react-native-elements";
 
 const SingleOrder = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText="Single Order History" />
-      <View style={{ marginVertical: 20, flex: 1 }}>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginBottom: 10,
-            marginHorizontal: 19,
-          }}
+      <Header />
+      <View style={{ flex: 1 }}>
+        <ImageBackground
+          source={require("../../../assets/images/map.png")}
+          resizeMode="cover"
+          style={{ flex: 1 }}
         >
-          <Image style={{ height: 60, width: 60 }} />
-          <View style={{ flexDirection: "row" }}>
-            <Text style={styles.text}>Invoice No: </Text>
-            <Text style={[styles.text, { color: "red" }]}>789979980</Text>
-          </View>
-          <Text
-            style={{
-              fontSize: 15,
-              fontFamily: "ProximaNova",
-              color: "gray",
-              marginTop: 4,
-              textAlign: "center",
-            }}
-          >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
-          </Text>
-        </View>
-        <ScrollView>
-          <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
-            <View>
-              <SingleOrderList navigation={navigation} />
-              <SingleOrderList navigation={navigation} />
-              <SingleOrderList navigation={navigation} />
-            </View>
-            <DeliveryInfo navigation={navigation} />
+          <View style={styles.container}>
             <View
               style={{
-                justifyContent: "flex-end",
-                alignItems: "center",
-                flexDirection: "row",
+                position: "absolute",
+                top: -35,
+                left: 145,
               }}
             >
-              <Text style={styles.text}>Total: </Text>
-              <Text style={[styles.text, { color: "red" }]}>60$</Text>
+              <Avatar
+                rounded
+                size={70}
+                source={{
+                  uri: "https://cci-research.nl/author/aya-fukami/avatar_hu3c18ec414e2e5615db7090f5d5745dd7_17253_270x270_fill_lanczos_center_2.png",
+                }}
+                showEditButton
+              />
             </View>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 10,
+                marginTop: 45,
+              }}
+            >
+              <Text style={[styles.text, { color: "gray" }]}>Your Shipper</Text>
+              <Text
+                style={[
+                  styles.text,
+                  { fontSize: 18, fontFamily: "ProximaNovaBold" },
+                ]}
+              >
+                George Backer
+              </Text>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.text}>Invoice No: </Text>
+                <Text style={[styles.text, { color: "red" }]}>789979980</Text>
+              </View>
+              <DeliveryStatus />
+              <View style={styles.call}>
+                <Icon name="phone" color="white" type="font-awesome" />
+              </View>
+            </View>
+            <ScrollView>
+              <OrderDetail navigation={navigation} />
+            </ScrollView>
           </View>
-        </ScrollView>
+        </ImageBackground>
       </View>
     </View>
   );
@@ -62,7 +76,23 @@ const SingleOrder = ({ navigation }) => {
 export { SingleOrder };
 const styles = StyleSheet.create({
   text: {
-    fontSize: 18,
+    fontSize: 15,
     fontFamily: "ProximaNovaSemiBold",
+    marginBottom: 3,
+    color: "black",
+  },
+  call: {
+    paddingVertical: 10,
+    width: "35%",
+    backgroundColor: "#60dc6c",
+    borderRadius: 25,
+  },
+  container: {
+    backgroundColor: "white",
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    marginTop: 75,
+    position: "relative",
+    flex: 1,
   },
 });
