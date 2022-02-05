@@ -50,9 +50,6 @@ const OrderHistory = ({ navigation }) => {
               )}
               keyExtractor={(item) => item._id}
             />
-            <View style={{ marginVertical: 5 }}>
-              <CommonButton text="Load More" />
-            </View>
           </View>
         </ScrollView>
       </View>
