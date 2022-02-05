@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { Count, Rating } from "../../category/components";
 
 const CartCard = ({ item }) => {
-  const [count, setCount] = useState(item?.count);
+  const [count, setCount] = useState(item?.quantity);
   return (
     <View style={{ width: "100%", marginBottom: 8 }}>
       <View style={styles.border}>

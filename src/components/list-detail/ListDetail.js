@@ -21,9 +21,10 @@ const ListDetail = ({ route, navigation }) => {
   const cartItems = useSelector((state) => state.cart.addToCart);
   const handleAddToCart = (item) => {
     for (let i = 1; i <= count; i++) {
+      //CHECK IF ITEM ALREADY IN CART OR NOT
       const isCheck = cartItems.filter((val) => val._id === item._id);
       isCheck ? setCount(count + 1) : null;
-      item.count = count;
+      item.quantity = count;
       const products = { ...item };
       dispatch(addToCart(products));
     }
