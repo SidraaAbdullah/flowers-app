@@ -14,6 +14,7 @@ import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
+import {HomeCardSkeleton} from "../skeletons/home.card.skeleton"
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -53,6 +54,7 @@ const Category = ({ navigation }) => {
                 }
                 style={{ width: "47%" }}
               >
+                {/* <HomeCardSkeleton /> */}
                 <CategoryBox item={item} />
               </TouchableOpacity>
             ))}
