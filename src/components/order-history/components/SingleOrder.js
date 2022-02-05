@@ -7,7 +7,7 @@ import {
   ImageBackground,
 } from "react-native";
 import Header from "../../header";
-import { OrderDetail, DeliveryStatus } from ".";
+import { OrderDetail, DeliveryStatus, OrderCancel } from ".";
 import { Avatar } from "react-native-elements";
 import { Icon } from "react-native-elements";
 
@@ -60,9 +60,7 @@ const SingleOrder = ({ navigation }) => {
                 <Text style={[styles.text, { color: "red" }]}>789979980</Text>
               </View>
               <DeliveryStatus />
-              <View style={styles.call}>
-                <Icon name="phone" color="white" type="font-awesome" />
-              </View>
+              <OrderCancel />
             </View>
             <ScrollView>
               <OrderDetail navigation={navigation} />

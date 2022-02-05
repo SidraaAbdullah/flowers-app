@@ -4,7 +4,7 @@ import { SingleOrderList } from ".";
 
 const OrderDetail = ({ navigation }) => {
   return (
-    <View style={{ marginBottom: 10, marginHorizontal: 25 }}>
+    <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
       <View>
         <View style={{ paddingBottom: 10 }}>
           <Text style={styles.text}>Deliver to:</Text>
