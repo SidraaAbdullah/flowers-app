@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Dimensions, Text, Image } from 'react-native';
-const HomeCardSkeleton = () => {
+const CategoriesHomePage = () => {
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
@@ -26,13 +26,13 @@ const HomeCardSkeleton = () => {
     </View>
   );
 };
-export { HomeCardSkeleton };
+export { CategoriesHomePage };
 
 const styles = StyleSheet.create({
   container: {
     borderStyle: "dashed",
     borderColor: "lightgray",
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 10,
     padding: 8,
     margin: 4,

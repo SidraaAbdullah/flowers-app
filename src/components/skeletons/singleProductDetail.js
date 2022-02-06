@@ -42,11 +42,11 @@ export { SingleProductDetail };
 
 const styles = StyleSheet.create({
     border: {
-        borderWidth: 1,
+        borderWidth: 2,
         justifyContent: "center",
         borderStyle: "dashed",
         borderRadius: 8,
-        borderColor: "gray",
+        borderColor: "lightgray",
         paddingTop: 10,
         paddingBottom: 6,
         paddingHorizontal: 8,

@@ -49,7 +49,7 @@ const App = () => {
             ininitialRouteName="category"
             screenOptions={() => ({ headerShown: false })}
           >
-            <Stack.Screen name="category" component={Screen.CategoryScreen} />
+            <Stack.Screen name="category"  component={Screen.CategoryScreen} />
             <Stack.Screen
               name="categoryDetail"
               component={Screen.DetailCategoryScreen}

@@ -14,8 +14,9 @@ import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
-import {HomeCardSkeleton} from "../skeletons/categoriesHomePage"
-import {SingleProductDetail} from "../skeletons/singleProductDetail"
+import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
+import { SingleProductDetail } from "../skeletons/singleProductDetail";
+import { OrderListSkeleton } from "../skeletons/orderListSkeleton";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
