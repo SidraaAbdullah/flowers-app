@@ -11,24 +11,19 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { Count, Rating } from "../category/components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/Cart";
 
 const ListDetail = ({ route, navigation }) => {
   const { item } = route.params;
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.addToCart);
   const handleAddToCart = (item) => {
     for (let i = 1; i <= count; i++) {
-      //CHECK IF ITEM ALREADY IN CART OR NOT
-      const isCheck = cartItems.filter((val) => val._id === item._id);
-      isCheck ? setCount(count + 1) : null;
       item.quantity = count;
       const products = { ...item };
       dispatch(addToCart(products));
     }
-    navigation.navigate("Cart");
   };
 
   return (

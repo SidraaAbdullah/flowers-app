@@ -3,10 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "react-native-elements";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Screen from "../screens";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
+  const cartItemCount = useSelector((state) => state.cart.addToCart).length;
   return (
     <Tab.Navigator
       initialRouteName="Discover"
@@ -49,7 +51,7 @@ const App = () => {
             ininitialRouteName="category"
             screenOptions={() => ({ headerShown: false })}
           >
-            <Stack.Screen name="category"  component={Screen.CategoryScreen} />
+            <Stack.Screen name="category" component={Screen.CategoryScreen} />
             <Stack.Screen
               name="categoryDetail"
               component={Screen.DetailCategoryScreen}
@@ -109,7 +111,11 @@ const App = () => {
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Cart" component={Screen.CartScreen} />
+      <Tab.Screen
+        name="Cart"
+        component={Screen.CartScreen}
+        options={{ tabBarBadge: cartItemCount }}
+      />
     </Tab.Navigator>
   );
 };
