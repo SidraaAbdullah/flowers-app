@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ScrollView,
   Text,
@@ -6,16 +6,29 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Dimensions,
+  ActivityIndicator,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import Header from "../header";
 import { OrderList } from "./components";
-import { CommonButton } from "../buttons";
 import { useQuery } from "react-query";
-
+import { GET_ORDER } from "../../queries";
+import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton";
 const OrderHistory = ({ navigation }) => {
-  const { data: orderHistory, isLoading: orderHistoryLoading } =
-    useQuery("/order");
+  const [pageNumber, setPageNumber] = useState(1);
+  const [data, setData] = useState([]);
+  const { data: orderHistory, isLoading: orderHistoryLoading } = useQuery(
+    ["GET_ORDER", { page_no: pageNumber, records_per_page: 10 }],
+    GET_ORDER,
+    {
+      onSuccess: (res) => {
+        setData([...data, ...res?.data]);
+      },
+    }
+  );
+  const { height } = Dimensions.get("window");
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Order History" />
@@ -41,17 +54,22 @@ const OrderHistory = ({ navigation }) => {
             <Icon name="options" type="ionicon" />
           </TouchableOpacity>
         </View>
-        <ScrollView>
-          <View style={{ padding: 15 }}>
-            <FlatList
-              data={orderHistory?.data || []}
-              renderItem={({ item }) => (
-                <OrderList status={item.status} navigation={navigation} />
-              )}
-              keyExtractor={(item) => item._id}
-            />
-          </View>
-        </ScrollView>
+        <View style={{ padding: 15, flex: 1, height: height }}>
+          <FlatList
+            data={data || []}
+            renderItem={({ item }) => (
+              <OrderList status={item.status} navigation={navigation} />
+            )}
+            keyExtractor={(item, index) => index}
+            onEndReached={() =>
+              !orderHistoryLoading && setPageNumber((prev) => prev + 1)
+            }
+            onEndReachedThreshold={0}
+            ListFooterComponent={() =>
+              orderHistoryLoading ? <OrderListSkeleton /> : null
+            }
+          />
+        </View>
       </View>
     </View>
   );
