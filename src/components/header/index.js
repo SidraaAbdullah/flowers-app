@@ -48,21 +48,14 @@ const Header = (props) => {
           ) : null}
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
           <View style={styles.rightIcon}>
-            <Icon
-              name={props.rightIcon || "cart"}
-              size={props.rightSize || 28}
-              color={props.rightColor || "black"}
-              type={props.rightType || "ionicon"}
+            <Icon name="cart" size={28} color="black" type="ionicon" />
+            <Badge
+              status="error"
+              value={cartItemCount?.length}
+              containerStyle={{ position: "absolute", top: 10, right: 5 }}
             />
-            {!props.rightIcon && (
-              <Badge
-                status="error"
-                value={cartItemCount?.length}
-                containerStyle={{ position: "absolute", top: 10, right: 5 }}
-              />
-            )}
           </View>
         </TouchableOpacity>
       </View>

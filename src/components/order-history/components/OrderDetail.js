@@ -2,7 +2,11 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { SingleOrderList } from ".";
 
-const OrderDetail = ({ navigation }) => {
+const OrderDetail = ({ navigation, item }) => {
+  const prices = item?.products?.map((price) => price?.price);
+  const totalPrice = prices.reduce(
+    (previous, current) => (previous += current)
+  );
   return (
     <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
       <View>
@@ -11,7 +15,7 @@ const OrderDetail = ({ navigation }) => {
           <Text
             style={[styles.text, { color: "gray", fontFamily: "ProximaNova" }]}
           >
-            R306 Sharifabd FB Area Block 1 Karachi
+            {item?.deliveryAddress?.address}
           </Text>
         </View>
 
@@ -19,19 +23,27 @@ const OrderDetail = ({ navigation }) => {
           <Text style={styles.text}>Order details</Text>
           <View style={styles.container}>
             <View>
-              <Text style={[styles.text, { color: "gray" }]}>6 items</Text>
+              <Text style={[styles.text, { color: "gray" }]}>
+                {item?.products?.length} item(s)
+              </Text>
             </View>
             <View style={{ alignItems: "center", flexDirection: "row" }}>
               <Text style={styles.text}>Subtotal: </Text>
-              <Text style={[styles.text, { color: "red" }]}>60$</Text>
+              <Text style={[styles.text, { color: "red" }]}>{totalPrice}$</Text>
             </View>
           </View>
         </View>
       </View>
+
       <View>
-        <SingleOrderList navigation={navigation} />
-        <SingleOrderList navigation={navigation} />
-        <SingleOrderList navigation={navigation} />
+        {item?.products?.map((item, i) => (
+          <SingleOrderList
+            quantity={item?.quantity}
+            item={item?.product_id}
+            key={i}
+            navigation={navigation}
+          />
+        ))}
       </View>
     </View>
   );

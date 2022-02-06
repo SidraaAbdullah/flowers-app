@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { Count, Rating } from "../../category/components";
+import { Rating } from "../../category/components";
 
-const SingleOrderList = ({ navigation }) => {
+const SingleOrderList = ({ navigation, item, quantity }) => {
   return (
     <View style={{ width: "100%", marginBottom: 12 }}>
       <View style={styles.border}>
@@ -11,7 +11,9 @@ const SingleOrderList = ({ navigation }) => {
             <Image
               style={{ width: 80, height: 80 }}
               source={{
-                uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                uri:
+                  item?.image ||
+                  "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
               }}
             />
           </View>
@@ -23,7 +25,7 @@ const SingleOrderList = ({ navigation }) => {
                 alignItems: "center",
               }}
             >
-              <Text style={styles.text}>{"Flower"}</Text>
+              <Text style={styles.text}>{item?.name}</Text>
               <Text style={styles.text}>{"40$"}</Text>
             </View>
 
@@ -35,8 +37,7 @@ const SingleOrderList = ({ navigation }) => {
                 color: "gray",
               }}
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              {item?.description}
             </Text>
             <View
               style={{
@@ -47,12 +48,31 @@ const SingleOrderList = ({ navigation }) => {
               }}
             >
               <Rating />
-              <Count />
+              <View style={{ marginTop: 3 }}>
+                <Text style={[styles.text, { color: "gray", fontSize: 16 }]}>
+                  {quantity} item(s)
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-        <View style={{ justifyContent: "space-around", flexDirection: "row" }}>
-          <TouchableOpacity>
+        <View
+          style={{
+            justifyContent: "space-around",
+            flexDirection: "row",
+            borderTopWidth: 1,
+            borderTopColor: "lightgray",
+            borderStyle: "dashed",
+          }}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("categoryDetail", {
+                categoryName: item?.category_id?.name,
+                categoryId: item?.category_id?._id,
+              })
+            }
+          >
             <Text style={[styles.text, { paddingVertical: 8 }]}>ReOrder</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("reviewScreen")}>

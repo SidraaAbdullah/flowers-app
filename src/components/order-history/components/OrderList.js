@@ -2,9 +2,11 @@ import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 
-const OrderList = ({ status, navigation }) => {
+const OrderList = ({ status, navigation, item }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("singleOrderHistory")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("singleOrderHistory", { item: item })}
+    >
       <View style={styles.border}>
         <View
           style={{

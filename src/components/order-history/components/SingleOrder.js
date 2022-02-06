@@ -9,9 +9,9 @@ import {
 import Header from "../../header";
 import { OrderDetail, DeliveryStatus, OrderCancel } from ".";
 import { Avatar } from "react-native-elements";
-import { Icon } from "react-native-elements";
 
-const SingleOrder = ({ navigation }) => {
+const SingleOrder = ({ navigation, route }) => {
+  const { item } = route.params;
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header />
@@ -63,7 +63,7 @@ const SingleOrder = ({ navigation }) => {
               <OrderCancel />
             </View>
             <ScrollView>
-              <OrderDetail navigation={navigation} />
+              <OrderDetail navigation={navigation} item={item} />
             </ScrollView>
           </View>
         </ImageBackground>

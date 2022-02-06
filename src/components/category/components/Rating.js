@@ -11,11 +11,11 @@ const Rating = () => {
         alignItems: "center",
       }}
     >
-      <Icon name="star-outline" color="gray" size={16} type="ionicon" />
-      <Icon name="star-outline" color="gray" size={16} type="ionicon" />
-      <Icon name="star-outline" color="gray" size={16} type="ionicon" />
-      <Icon name="star-outline" color="gray" size={16} type="ionicon" />
-      <Icon name="star-outline" color="gray" size={16} type="ionicon" />
+      <Icon name="star" color="#ffbd11" size={18} type="font-awesome" />
+      <Icon name="star" color="#ffbd11" size={18} type="font-awesome" />
+      <Icon name="star" color="#ffbd11" size={18} type="font-awesome" />
+      <Icon name="star" color="lightgray" size={18} type="font-awesome" />
+      <Icon name="star" color="lightgray" size={18} type="font-awesome" />
       <Text
         style={{
           color: "black",

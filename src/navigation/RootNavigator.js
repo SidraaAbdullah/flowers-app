@@ -5,7 +5,6 @@ import * as Screen from "../screens";
 
 const RootNavigator = ({ user, verify }) => {
   const Stack = createStackNavigator();
-  console.log(user, verify);
   return (
     <Stack.Navigator
       initialRouteName={user && verify ? "home" : "signUp"}

@@ -46,7 +46,11 @@ const OrderHistory = ({ navigation }) => {
             <FlatList
               data={orderHistory?.data || []}
               renderItem={({ item }) => (
-                <OrderList status={item.status} navigation={navigation} />
+                <OrderList
+                  item={item}
+                  status={item.status}
+                  navigation={navigation}
+                />
               )}
               keyExtractor={(item) => item._id}
             />
