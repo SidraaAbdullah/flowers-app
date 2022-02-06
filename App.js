@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./src/navigation/RootNavigator";
 import { useFonts } from "expo-font";
@@ -13,11 +13,16 @@ import {
 import AppLoading from "expo-app-loading";
 import { Provider } from "react-redux";
 import store from "./src/redux/Store";
+import { BASE_URL } from "./src/constants";
 
 const App = () => {
-  const [user, isLoading] = useStorage("User", { isObject: true });
+  const [user, isLoading] = useStorage("logIn", { isObject: true });
+  const [verify, setVerify] = useState({
+    verify: false,
+    isVerifyLoading: false,
+  });
+
   if (user) {
-    axios.defaults.headers.common.Authorization = `bearer ${user?.access_token}`;
   }
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -30,12 +35,28 @@ const App = () => {
       },
     },
   });
+
+  useEffect(async () => {
+    setVerify({ verify: false, isVerifyLoading: true });
+    if (user) {
+      axios.defaults.headers.common.Authorization = `bearer ${user?.access_token}`;
+      axios
+        .post(BASE_URL + "/verify-user")
+        .then(() => {
+          setVerify({ verify: true, isVerifyLoading: false });
+        })
+        .catch(() => {
+          setVerify({ verify: false, isVerifyLoading: false });
+        });
+    }
+  }, [isLoading]);
+
   const [loaded] = useFonts({
     ProximaNova: require("./src/assets/fonts/ProximaNova/ProximaNova-Regular.otf"),
     ProximaNovaBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Bold.otf"),
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
-  if (isLoading || !loaded) {
+  if (!loaded || verify.isVerifyLoading) {
     return <AppLoading />;
   }
 
@@ -43,7 +64,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <NavigationContainer>
-          <RootNavigator user={user} />
+          <RootNavigator user={user} verify={verify.verify} />
         </NavigationContainer>
       </Provider>
     </QueryClientProvider>
