@@ -45,6 +45,12 @@ const Cart = ({ navigation, cartItems }) => {
     setIsOpen(!isOpen);
   };
 
+  const prices = cartItems.map((p) => 40 * p.quantity);
+  const totalPrice = prices.reduce(
+    (previous, current) => (previous += current)
+  );
+  // console.log(totalPrice);
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Cart" />
@@ -65,7 +71,7 @@ const Cart = ({ navigation, cartItems }) => {
               }}
             >
               <Text style={styles.text}>Total: </Text>
-              <Text style={[styles.text, { color: "red" }]}>60$</Text>
+              <Text style={[styles.text, { color: "red" }]}>{totalPrice}$</Text>
             </View>
             <View
               style={{
