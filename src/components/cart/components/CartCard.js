@@ -13,7 +13,9 @@ const CartCard = ({ item }) => {
             <Image
               style={{ width: 80, height: 80 }}
               source={{
-                uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                uri:
+                  item?.image ||
+                  "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
               }}
             />
           </View>
@@ -26,7 +28,7 @@ const CartCard = ({ item }) => {
               }}
             >
               <Text style={styles.text}>{item?.name}</Text>
-              <Text style={styles.text}>{"40$"}</Text>
+              <Text style={styles.text}>Rs: {item?.price}</Text>
             </View>
 
             <Text

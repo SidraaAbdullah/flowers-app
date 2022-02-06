@@ -14,11 +14,16 @@ const Cart = ({ navigation, cartItems }) => {
   const { mutate: addOrder } = useMutation(ADD_ORDER);
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
+  const prices = cartItems.map((p) => p?.price * p?.quantity);
+  const totalPrice = prices?.reduce(
+    (previous, current) => (previous += current)
+  );
+  //console.log(totalPrice);
 
   const filterCartItems = (items) => {
     let orderItems = [];
     cartItems.map((item) => {
-      const { _id, quantity = "40", price = "500" } = item;
+      const { _id, quantity = "40", price = totalPrice } = item;
       orderItems.push({ product_id: _id, quantity, price });
     });
     return orderItems;
@@ -45,12 +50,6 @@ const Cart = ({ navigation, cartItems }) => {
     setIsOpen(!isOpen);
   };
 
-  const prices = cartItems.map((p) => 40 * p?.quantity);
-  const totalPrice = prices.reduce(
-    (previous, current) => (previous += current)
-  );
-  // console.log(totalPrice);
-
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Cart" screen="category" />
@@ -71,7 +70,7 @@ const Cart = ({ navigation, cartItems }) => {
               }}
             >
               <Text style={styles.text}>Total: </Text>
-              <Text style={[styles.text, { color: "red" }]}>{totalPrice}$</Text>
+              <Text style={[styles.text, { color: "red" }]}>Rs: {totalPrice}</Text>
             </View>
             <View
               style={{
