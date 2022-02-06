@@ -10,9 +10,10 @@ import {
 import { Icon } from "react-native-elements/dist/icons/Icon";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
-import { Count, Rating } from "../category/components";
+import { Rating } from "../category/components";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/Cart";
+import { Count } from "./components";
 
 const ListDetail = ({ route, navigation }) => {
   const { item } = route.params;
