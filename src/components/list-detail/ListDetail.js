@@ -59,7 +59,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNovaSemiBold",
                 }}
               >
-                {item.name}
+                {item?.name}
               </Text>
               <Text
                 style={{
@@ -68,7 +68,7 @@ const ListDetail = ({ route, navigation }) => {
                   fontFamily: "ProximaNova",
                 }}
               >
-                {item.description}
+                {item?.description}
               </Text>
               <View
                 style={{
@@ -122,7 +122,7 @@ const ListDetail = ({ route, navigation }) => {
                 <Text
                   style={{ fontSize: 17, fontFamily: "ProximaNovaSemiBold" }}
                 >
-                  {item.price}
+                  Rs: {item?.price}
                 </Text>
               </View>
               <Count count={count} setCount={setCount} />

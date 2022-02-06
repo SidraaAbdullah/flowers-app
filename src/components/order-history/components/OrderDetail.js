@@ -29,7 +29,7 @@ const OrderDetail = ({ navigation, item }) => {
             </View>
             <View style={{ alignItems: "center", flexDirection: "row" }}>
               <Text style={styles.text}>Subtotal: </Text>
-              <Text style={[styles.text, { color: "red" }]}>{totalPrice}$</Text>
+              <Text style={[styles.text, { color: "red" }]}>Rs: {totalPrice}</Text>
             </View>
           </View>
         </View>

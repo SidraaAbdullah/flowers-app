@@ -51,7 +51,7 @@ const BoxList = ({ item, navigation }) => {
                 }}
               >
                 <Text style={styles.text}>{item?.name}</Text>
-                <Text style={styles.text}>{item.price}</Text>
+                <Text style={styles.text}>Rs: {item?.price}</Text>
               </View>
 
               <Text
