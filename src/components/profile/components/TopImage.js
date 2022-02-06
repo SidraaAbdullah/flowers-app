@@ -16,7 +16,7 @@ const TopImage = ({ headingText, personalInfo }) => {
         />
       ) : (
         <Image
-          style={{ height: 150, width: 250 }}
+          style={{ height: 110, width: 250 }}
           source={require("../../../assets/images/profile_information.png")}
         />
       )}
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   container: {
     marginTop: 30,
-    marginBottom: 30,
+    marginBottom: 20,
     justifyContent: "center",
     alignItems: "center",
   },

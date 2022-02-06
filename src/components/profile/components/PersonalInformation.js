@@ -18,7 +18,7 @@ const PersonalInformation = () => {
       <Header screen="profile" headingText="Personal Information" />
       <TopImage headingText="Sidra Abdullah" personalInfo />
       <ScrollView>
-        <View style={{ marginHorizontal: 35, marginBottom: 30 }}>
+        <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
           <Input
             label="Phone Number"
             iconName="call"

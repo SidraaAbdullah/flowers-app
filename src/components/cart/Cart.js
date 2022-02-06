@@ -45,7 +45,7 @@ const Cart = ({ navigation, cartItems }) => {
     setIsOpen(!isOpen);
   };
 
-  const prices = cartItems.map((p) => 40 * p.quantity);
+  const prices = cartItems.map((p) => 40 * p?.quantity);
   const totalPrice = prices.reduce(
     (previous, current) => (previous += current)
   );
@@ -53,7 +53,7 @@ const Cart = ({ navigation, cartItems }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText="Cart" />
+      <Header headingText="Cart" screen="category" />
       <View style={{ marginVertical: 5, marginTop: 20, flex: 1 }}>
         <TopSection />
         <ScrollView>

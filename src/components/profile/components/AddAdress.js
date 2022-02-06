@@ -1,5 +1,11 @@
 import React, { useState, useRef } from "react";
-import { View, ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
@@ -53,17 +59,23 @@ const AddAdress = ({ navigation }) => {
       }
     );
   };
-
+  //FOR PRIMARY ADDRESS RADIO BUTTON POSITION
+  const index = parseInt(
+    savedAddresses?.data
+      .map((val, index) => val.primary === true && index)
+      .filter((val) => val != false)
+      .toString()
+  );
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
-      <ScrollView >
-        <Header screen="profile" headingText="Address Setting" />
-        <TopImage headingText="Add Address" />
-        <View style={{ marginHorizontal: 35 }}>
+      <Header screen="profile" headingText="Address Setting" />
+      <TopImage headingText="Add Address" />
+      <ScrollView>
+        <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
           <RadioButton
             animationType="pulse"
             box={false}
-            initial={2}
+            initial={index + 1}
             data={savedAddresses?.data || []}
             selectedBtn={(e) => setSelectedAddress(e)}
             style={{ marginBottom: 30 }}
@@ -111,7 +123,6 @@ const AddAdress = ({ navigation }) => {
               >
                 Select Delivery Address
               </Text>
-
             </View>
             <View style={{ width: "90%" }}>
               <Input

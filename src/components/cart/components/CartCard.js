@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Count, Rating } from "../../category/components";
+import { Rating } from "../../category/components";
+import { Count } from ".";
 
 const CartCard = ({ item }) => {
   const [count, setCount] = useState(item?.quantity);
@@ -24,7 +25,7 @@ const CartCard = ({ item }) => {
                 alignItems: "center",
               }}
             >
-              <Text style={styles.text}>{item.name}</Text>
+              <Text style={styles.text}>{item?.name}</Text>
               <Text style={styles.text}>{"40$"}</Text>
             </View>
 
@@ -36,7 +37,7 @@ const CartCard = ({ item }) => {
                 color: "gray",
               }}
             >
-              {item.description}
+              {item?.description}
             </Text>
             <View
               style={{
