@@ -4,7 +4,7 @@ import { SingleOrderList } from ".";
 
 const OrderDetail = ({ navigation, item }) => {
   const prices = item?.products?.map((price) => price?.price);
-  const totalPrice = prices.reduce(
+  const totalPrice = prices?.reduce(
     (previous, current) => (previous += current)
   );
   return (
