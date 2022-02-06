@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 
-
 const CategoryBox = ({ item }) => {
   return (
     <View style={styles.container}>

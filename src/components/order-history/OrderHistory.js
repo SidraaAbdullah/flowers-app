@@ -63,9 +63,13 @@ const OrderHistory = ({ navigation }) => {
               />
             )}
             keyExtractor={(item, index) => index}
-            onEndReached={() =>
-              !orderHistoryLoading && setPageNumber((prev) => prev + 1)
-            }
+            onEndReached={() => {
+              if (pageNumber < orderHistory?.pagination?.totalPages) {
+                if (!orderHistoryLoading) {
+                  setPageNumber((prev) => prev + 1);
+                }
+              }
+            }}
             onEndReachedThreshold={0}
             ListFooterComponent={() =>
               orderHistoryLoading ? <OrderListSkeleton /> : null
