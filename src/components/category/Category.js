@@ -20,7 +20,10 @@ import { OrderListSkeleton } from "../skeletons/orderListSkeleton";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
-  const { data: category } = useQuery("CATEGORY", CATEGORY);
+  const { data: category, isLoading: categoriesLoading } = useQuery(
+    "CATEGORY",
+    CATEGORY
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -44,22 +47,26 @@ const Category = ({ navigation }) => {
             marginBottom: 20,
           }}
         >
-          <>
-            {category?.data?.map((item) => (
-              <TouchableOpacity
-                key={item?._id}
-                onPress={() =>
-                  navigation.navigate("categoryDetail", {
-                    categoryName: item?.name,
-                    categoryId: item?._id,
-                  })
-                }
-                style={{ width: "47%" }}
-              >
-                <CategoryBox item={item} />
-              </TouchableOpacity>
-            ))}
-          </>
+          {categoriesLoading ? (
+            <CategoriesHomePage />
+          ) : (
+            <>
+              {category?.data?.map((item) => (
+                <TouchableOpacity
+                  key={item?._id}
+                  onPress={() =>
+                    navigation.navigate("categoryDetail", {
+                      categoryName: item?.name,
+                      categoryId: item?._id,
+                    })
+                  }
+                  style={{ width: "47%" }}
+                >
+                  <CategoryBox item={item} />
+                </TouchableOpacity>
+              ))}
+            </>
+          )}
         </View>
       </ScrollView>
 
