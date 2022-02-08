@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -13,6 +13,7 @@ import { OrderList } from "./components";
 import { useQuery } from "react-query";
 import { GET_ORDER } from "../../queries";
 import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton";
+
 const OrderHistory = ({ navigation }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [data, setData] = useState([]);
