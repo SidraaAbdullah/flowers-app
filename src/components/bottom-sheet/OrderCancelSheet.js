@@ -1,7 +1,25 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
-const OrderCancelSheet = ({ refRBSheet }) => {
+import { useMutation } from "react-query";
+import { CANCEL_ORDER } from "../../queries";
+
+const OrderCancelSheet = ({ item, refRBSheet }) => {
+  const { mutate: cancelOrder } = useMutation(CANCEL_ORDER);
+  const handleCancelOrder = async () => {
+    await cancelOrder(
+      { id: item?._id, status: "CANCELLED" },
+      {
+        onSuccess: () => {
+          refRBSheet.current.close();
+          Alert.alert("Your order has been cancelled.");
+        },
+        onError: () => {
+          Alert.alert("Failed to cancel your order.");
+        },
+      }
+    );
+  };
   return (
     <View>
       <RBSheet
@@ -33,7 +51,7 @@ const OrderCancelSheet = ({ refRBSheet }) => {
             >
               <Text style={styles.text}>No</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.call}>
+            <TouchableOpacity onPress={handleCancelOrder} style={styles.call}>
               <Text style={styles.text}>Yes</Text>
             </TouchableOpacity>
           </View>

@@ -60,7 +60,7 @@ const SingleOrder = ({ navigation, route }) => {
                 <Text style={[styles.text, { color: "red" }]}>789979980</Text>
               </View>
               <DeliveryStatus item={item} />
-              <OrderCancel />
+              <OrderCancel item={item} />
             </View>
             <ScrollView>
               <OrderDetail navigation={navigation} item={item} />

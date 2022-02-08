@@ -4,7 +4,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { OrderCancelSheet } from "../../bottom-sheet";
 
-const OrderCancel = () => {
+const OrderCancel = ({ item }) => {
   const refRBSheet = useRef();
   return (
     <View style={styles.container}>
@@ -19,7 +19,7 @@ const OrderCancel = () => {
         <Icon name="phone" color="white" type="font-awesome" />
         <Text style={styles.text}>Call</Text>
       </View>
-      <OrderCancelSheet refRBSheet={refRBSheet} />
+      <OrderCancelSheet item={item} refRBSheet={refRBSheet} />
     </View>
   );
 };
