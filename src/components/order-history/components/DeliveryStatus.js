@@ -16,14 +16,14 @@ const DeliveryStatus = ({ item }) => {
   }, []);
 
   let statuses = [
-    { name: "phone", text: "Accepted", status: "DRIVER-ASSIGNED" },
-    { name: "truck", text: "Accepted", status: "DRIVER-ASSIGNED" },
+    { name: "phone", text: "Driver assigned", status: "DRIVER-ASSIGNED" },
+    { name: "truck", text: "Item picked", status: "DRIVER-PICKED" },
     {
       name: "phone",
       text: "On the way",
       status: "IN-PROGRESS",
     },
-    { name: "truck", text: "Delivered", status: "DRIVER-ASSIGNED" },
+    { name: "truck", text: "Delivered", status: "DELIVERED" },
   ];
   return (
     <View style={styles.container}>
@@ -34,7 +34,14 @@ const DeliveryStatus = ({ item }) => {
             color={item.status === response ? "green" : "black"}
             type="font-awesome"
           />
-          <Text style={styles.text}>{item.text}</Text>
+          <Text
+            style={[
+              styles.text,
+              { color: item.status === response ? "green" : "black" },
+            ]}
+          >
+            {item.text}
+          </Text>
         </View>
       ))}
     </View>
@@ -46,6 +53,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 14,
     fontFamily: "ProximaNova",
+    marginTop: 5,
   },
   container: {
     paddingVertical: 15,
