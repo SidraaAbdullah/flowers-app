@@ -14,7 +14,6 @@ import AppLoading from "expo-app-loading";
 import { Provider } from "react-redux";
 import store from "./src/redux/Store";
 import { BASE_URL } from "./src/constants";
-import socketIOClient from "socket.io-client";
 
 const App = () => {
   const [user, isLoading] = useStorage("logIn", { isObject: true });
@@ -22,18 +21,7 @@ const App = () => {
     verify: false,
     isVerifyLoading: false,
   });
-  const [response, setResponse] = useState("");
 
-  useEffect(() => {
-    const socket = socketIOClient("http://localhost:8000");
-    socket.on("StatusUpdate", (data) => {
-      setResponse(data);
-      console.log({ data });
-    });
-    // CLEAN UP THE EFFECT
-    return () => socket.disconnect();
-    //
-  }, []);
   if (user) {
   }
   const queryClient = new QueryClient({
