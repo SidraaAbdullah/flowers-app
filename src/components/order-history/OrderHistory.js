@@ -18,6 +18,7 @@ import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton"
 const OrderHistory = ({ navigation }) => {
   const { height } = Dimensions.get("window");
   const [pageNumber, setPageNumber] = useState(1);
+  const [data, setData] = useState([]);
   const {
     data: orderHistory,
     isLoading: orderHistoryLoading,
@@ -25,7 +26,13 @@ const OrderHistory = ({ navigation }) => {
     refetch: refetchOrder,
   } = useQuery(
     ["GET_ORDER", { page_no: pageNumber, records_per_page: 10 }],
-    GET_ORDER
+    GET_ORDER,
+    {
+      onSuccess: (res) => {
+        console.log(res);
+        setData([...data, ...res?.data]);
+      },
+    }
   );
 
   return (
@@ -55,7 +62,7 @@ const OrderHistory = ({ navigation }) => {
         </View>
         <View style={{ padding: 15, flex: 1, height: height }}>
           <FlatList
-            data={orderHistory?.data || []}
+            data={data || []}
             renderItem={({ item }) => (
               <OrderList
                 item={item}
@@ -65,8 +72,12 @@ const OrderHistory = ({ navigation }) => {
             )}
             refreshControl={
               <RefreshControl
-                refreshing={orderIsFetching}
-                onRefresh={refetchOrder}
+                refreshing={!orderHistoryLoading && orderIsFetching}
+                onRefresh={() => {
+                  setData([]);
+                  setPageNumber(1);
+                  refetchOrder();
+                }}
               />
             }
             keyExtractor={(item, index) => index}
@@ -77,6 +88,9 @@ const OrderHistory = ({ navigation }) => {
                 }
               }
             }}
+            // ListHeaderComponent={() =>
+            //   orderIsFetching ? <OrderListSkeleton /> : null
+            // }
             onEndReachedThreshold={0}
             ListFooterComponent={() =>
               orderHistoryLoading ? <OrderListSkeleton /> : null
