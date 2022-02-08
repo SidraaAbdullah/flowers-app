@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  RefreshControl,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import Header from "../header";
@@ -17,16 +18,14 @@ import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton"
 const OrderHistory = ({ navigation }) => {
   const { height } = Dimensions.get("window");
   const [pageNumber, setPageNumber] = useState(1);
-  const [data, setData] = useState([]);
-  const { data: orderHistory, isLoading: orderHistoryLoading } = useQuery(
+  const {
+    data: orderHistory,
+    isLoading: orderHistoryLoading,
+    isFetching: orderIsFetching,
+    refetch: refetchOrder,
+  } = useQuery(
     ["GET_ORDER", { page_no: pageNumber, records_per_page: 10 }],
-    GET_ORDER,
-    {
-      onSuccess: (res) => {
-        console.log(res);
-        setData([...data, ...res?.data]);
-      },
-    }
+    GET_ORDER
   );
 
   return (
@@ -56,7 +55,7 @@ const OrderHistory = ({ navigation }) => {
         </View>
         <View style={{ padding: 15, flex: 1, height: height }}>
           <FlatList
-            data={data || []}
+            data={orderHistory?.data || []}
             renderItem={({ item }) => (
               <OrderList
                 item={item}
@@ -64,6 +63,12 @@ const OrderHistory = ({ navigation }) => {
                 navigation={navigation}
               />
             )}
+            refreshControl={
+              <RefreshControl
+                refreshing={orderIsFetching}
+                onRefresh={refetchOrder}
+              />
+            }
             keyExtractor={(item, index) => index}
             onEndReached={() => {
               if (pageNumber < orderHistory?.pagination?.totalPages) {
