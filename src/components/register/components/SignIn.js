@@ -16,8 +16,9 @@ import { CommonButton } from "../../buttons";
 import { addUser } from "../../../redux/actions/User";
 import { useDispatch } from "react-redux";
 
-const SignIn = () => {
+const SignIn = ({ route }) => {
   const navigation = useNavigation();
+  const { cart } = route?.params || {};
   const dispatch = useDispatch();
   const { mutate: signIn } = useMutation(SIGN_IN);
 
@@ -36,7 +37,11 @@ const SignIn = () => {
           axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
           await AsyncStorage.setItem("logIn", JSON.stringify(res.data));
           handleAddUser(res.data);
-          navigation.replace("home");
+          if (cart) {
+            navigation.replace("home", { cart });
+          } else {
+            navigation.replace("home");
+          }
         },
         onError: () => {
           alert("Please enter correct email or password");

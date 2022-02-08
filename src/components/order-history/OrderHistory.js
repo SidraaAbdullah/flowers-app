@@ -13,33 +13,22 @@ import { OrderList } from "./components";
 import { useQuery } from "react-query";
 import { GET_ORDER } from "../../queries";
 import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton";
-import socketIOClient from "socket.io-client";
 
 const OrderHistory = ({ navigation }) => {
   const { height } = Dimensions.get("window");
   const [pageNumber, setPageNumber] = useState(1);
   const [data, setData] = useState([]);
-  const [response, setResponse] = useState("");
   const { data: orderHistory, isLoading: orderHistoryLoading } = useQuery(
     ["GET_ORDER", { page_no: pageNumber, records_per_page: 10 }],
     GET_ORDER,
     {
       onSuccess: (res) => {
+        console.log(res);
         setData([...data, ...res?.data]);
       },
     }
   );
 
-  useEffect(() => {
-    const socket = socketIOClient("http://localhost:8000");
-    socket.on("statusUpdate", (data) => {
-      setResponse(data);
-      console.log({ data });
-    });
-    // CLEAN UP THE EFFECT
-    return () => socket.disconnect();
-    //
-  }, []);
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Order History" />

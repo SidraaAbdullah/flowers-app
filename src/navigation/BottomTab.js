@@ -5,13 +5,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as Screen from "../screens";
 import { useSelector } from "react-redux";
 
-const App = () => {
+const App = ({ route }) => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
   const cartItemCount = useSelector((state) => state.cart.addToCart).length;
   return (
     <Tab.Navigator
-      initialRouteName="Discover"
+      initialRouteName={`${route?.params?.cart ? "Cart" : "Discover"}`}
       screenOptions={({ route }) => ({
         headerShown: false,
         headerTitleAlign: "center",

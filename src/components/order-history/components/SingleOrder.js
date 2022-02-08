@@ -11,7 +11,7 @@ import { OrderDetail, DeliveryStatus, OrderCancel } from ".";
 import { Avatar } from "react-native-elements";
 
 const SingleOrder = ({ navigation, route }) => {
-  const { item } = route.params;
+  const { item } = route?.params || {};
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header />
@@ -59,7 +59,7 @@ const SingleOrder = ({ navigation, route }) => {
                 <Text style={styles.text}>Invoice No: </Text>
                 <Text style={[styles.text, { color: "red" }]}>789979980</Text>
               </View>
-              <DeliveryStatus />
+              <DeliveryStatus item={item} />
               <OrderCancel />
             </View>
             <ScrollView>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { SignIn, SignUp } from "./components";
 
-const Register = ({ navigation }) => {
+const Register = ({ navigation, route }) => {
   const [value, setValue] = useState("logIn");
   const changeTo = (val) => {
     setValue(val);
@@ -61,7 +61,7 @@ const Register = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       {value === "logIn" ? (
-        <SignIn />
+        <SignIn route={route} />
       ) : value === "signUp" ? (
         <SignUp navigation={navigation} />
       ) : null}

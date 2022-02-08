@@ -37,7 +37,9 @@ const Cart = ({ navigation, cartItems }) => {
       },
       {
         onError: (e) => {
-          alert("Error");
+          if (e.response.status == 401) {
+            navigation.navigate("signUp", { cart: true });
+          }
         },
         onSuccess: () => {
           handleOpen();
@@ -70,7 +72,9 @@ const Cart = ({ navigation, cartItems }) => {
               }}
             >
               <Text style={styles.text}>Total: </Text>
-              <Text style={[styles.text, { color: "red" }]}>Rs: {totalPrice}</Text>
+              <Text style={[styles.text, { color: "red" }]}>
+                Rs: {totalPrice}
+              </Text>
             </View>
             <View
               style={{

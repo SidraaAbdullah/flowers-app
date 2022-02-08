@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
+import socketIOClient from "socket.io-client";
+import { URL } from "../../../constants";
 
 const OrderList = ({ status, navigation, item }) => {
+  const [response, setResponse] = useState(status);
+  useEffect(() => {
+    const socket = socketIOClient(URL);
+    socket.on(`${item._id}_statusUpdate`, (data) => {
+      setResponse(data);
+    });
+    // CLEAN UP THE EFFECT
+    return () => socket.disconnect();
+  }, []);
+
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("singleOrderHistory", { item: item })}
@@ -88,7 +100,7 @@ const OrderList = ({ status, navigation, item }) => {
                   fontSize: 16,
                 }}
               >
-                {status}
+                {response}
               </Text>
             </View>
           </View>
