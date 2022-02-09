@@ -1,43 +1,39 @@
-import React, { useState, useRef } from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState, useRef, useEffect } from "react";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
-import RadioButton from "radio-buttons-react-native";
 import { useQuery, useMutation } from "react-query";
 import { UPDATE_PRIMARY_ADDRESS } from "../../../queries";
 import RBSheet from "react-native-raw-bottom-sheet";
 import Input from "../../input";
 import { ADD_ADDRESS } from "../../../queries";
+import RadioButton from "../../radio-button";
 
-const AddAdress = ({ navigation }) => {
+const AddAdress = () => {
   const refRBSheet = useRef();
-  const { data: savedAddresses, isLoading: addressesLoading } = useQuery(
-    "/user/delivery-address"
-  );
+  const { data: savedAddresses, refetch } = useQuery("/user/delivery-address");
   const { mutate: updatePrimaryAddress } = useMutation(UPDATE_PRIMARY_ADDRESS);
-  const [selectedAddress, setSelectedAddress] = useState("");
+  const isPrimary = savedAddresses?.data?.find(
+    (item) => item?.primary === true
+  );
+  console.log(isPrimary);
+  const [check, setCheck] = useState(isPrimary?._id);
   const { mutate: addAddress } = useMutation(ADD_ADDRESS);
   const [newAddress, setNewAddress] = useState("");
-
   const handleUpdatePrimaryAdress = () => {
     updatePrimaryAddress(
       {
-        delivery_address_id: selectedAddress?._id,
+        delivery_address_id: check,
         primary: true,
       },
       {
-        onError: (e) => {
+        onError: () => {
           alert("Error");
         },
         onSuccess: () => {
           alert("Success");
+          refetch();
         },
       }
     );
@@ -55,48 +51,45 @@ const AddAdress = ({ navigation }) => {
         onSuccess: () => {
           alert("Success");
           setNewAddress("");
+          refetch();
         },
       }
     );
   };
-  //FOR PRIMARY ADDRESS RADIO BUTTON POSITION
-  const index = parseInt(
-    savedAddresses?.data
-      .map((val, index) => val.primary === true && index)
-      .filter((val) => val != false)
-      .toString()
-  );
+
+  const handleClick = (data) => {
+    setCheck(data);
+  };
+
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="profile" headingText="Address Setting" />
       <TopImage headingText="Add Address" />
       <ScrollView>
         <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
-          {/* <RadioButton
-            animationType="pulse"
-            box={false}
-            initial={index + 1}
-            data={savedAddresses?.data || []}
-            selectedBtn={(e) => setSelectedAddress(e)}
-            style={{ marginBottom: 30 }}
-            activeColor="#ffbd11"
-            circleSize={15}
-            boxStyle={{ marginBottom: 5 }} */}
-          />
-          <CommonButton
-            bgColor="#ffbd11"
-            color="black"
-            text="Add new Address"
-            // onPress={() => navigation.navigate("newAddress")}
-            onPress={() => refRBSheet.current.open()}
-            rightIcon
-            rightIconName="add-outline"
-          />
-          <CommonButton
-            onPress={handleUpdatePrimaryAdress}
-            text="Save as Primary"
-            screen="profile"
-          />
+          {savedAddresses?.data?.map((data) => (
+            <RadioButton
+              key={data?._id}
+              check={check}
+              handleClick={() => handleClick(data._id)}
+              data={data}
+            />
+          ))}
+          <View style={{ marginTop: 10 }}>
+            <CommonButton
+              onPress={handleUpdatePrimaryAdress}
+              text="Save as Primary"
+              screen="profile"
+            />
+            <CommonButton
+              bgColor="#ffbd11"
+              color="black"
+              text="Add new Address"
+              onPress={() => refRBSheet.current.open()}
+              rightIcon
+              rightIconName="add-outline"
+            />
+          </View>
         </View>
       </ScrollView>
 
