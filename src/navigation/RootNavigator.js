@@ -7,7 +7,7 @@ const RootNavigator = ({ user, verify }) => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName={"signUp"}
+      initialRouteName={"home"}
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={BottomTab} />

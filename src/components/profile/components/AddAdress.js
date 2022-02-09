@@ -14,8 +14,11 @@ const AddAdress = () => {
   const refRBSheet = useRef();
   const { data: savedAddresses, refetch } = useQuery("/user/delivery-address");
   const { mutate: updatePrimaryAddress } = useMutation(UPDATE_PRIMARY_ADDRESS);
-  const isPrimary = savedAddresses?.data?.find((item) => item.primary === true);
-  const [check, setCheck] = useState(isPrimary._id);
+  const isPrimary = savedAddresses?.data?.find(
+    (item) => item?.primary === true
+  );
+  console.log(isPrimary);
+  const [check, setCheck] = useState(isPrimary?._id);
   const { mutate: addAddress } = useMutation(ADD_ADDRESS);
   const [newAddress, setNewAddress] = useState("");
   const handleUpdatePrimaryAdress = () => {

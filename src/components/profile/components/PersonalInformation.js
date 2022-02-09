@@ -1,20 +1,43 @@
 import React, { useState } from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Alert } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
 import Input from "../../input";
+import { useMutation } from "react-query";
+import { UPDATE_USER_PROFILE } from "../../../queries";
+import { useNavigation } from "@react-navigation/native";
 
 const PersonalInformation = () => {
+  const navigation = useNavigation();
+  const { mutate: updateUser } = useMutation(UPDATE_USER_PROFILE);
   const [email, setEmail] = useState("sidraabdullah56@gmail.com");
   const [name, setName] = useState("Sidra Abdullah");
   const [number, setNumber] = useState("090078601");
-  const [city, setCity] = useState("Karachi");
-  const [country, setCountry] = useState("Pakistan");
-  const [houseNo, setHouseNo] = useState("D/84/B");
-  const [town, setTown] = useState("Gulshan");
+  // const [city, setCity] = useState("Karachi");
+  // const [country, setCountry] = useState("Pakistan");
+  // const [houseNo, setHouseNo] = useState("D/84/B");
+  // const [town, setTown] = useState("Gulshan");
+  const handleUpdateUser = async () => {
+    await updateUser(
+      { name, email, phone_number: number },
+      {
+        onSuccess: () => {
+          Alert.alert("User profile has been updated.", "", [
+            {
+              text: "OK",
+              onPress: () => navigation.navigate("profile"),
+            },
+          ]);
+        },
+        onError: () => {
+          Alert.alert("Failed to update user profile.");
+        },
+      }
+    );
+  };
   return (
-    <View style={{ flex: 1, backgroundColor:'white' }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header screen="profile" headingText="Personal Information" />
       <TopImage headingText="Sidra Abdullah" personalInfo />
       <ScrollView>
@@ -23,7 +46,7 @@ const PersonalInformation = () => {
             label="Phone Number"
             iconName="call"
             value={number}
-            setValue={setNumber}
+            onChangeText={(e) => setNumber(e)}
             keyboardType="numeric"
             placeholder="Phone Number"
           />
@@ -31,18 +54,18 @@ const PersonalInformation = () => {
             label="Name"
             iconName="person"
             value={name}
-            setValue={setName}
+            onChangeText={(e) => setName(e)}
             placeholder="Name"
           />
           <Input
             label="Email"
             iconName="mail"
             value={email}
-            setValue={setEmail}
+            onChangeText={(e) => setEmail(e)}
             placeholder="Email"
             keyboardType="email-address"
           />
-          <Input
+          {/* <Input
             label="Country"
             iconName="location"
             value={country}
@@ -69,9 +92,15 @@ const PersonalInformation = () => {
             value={houseNo}
             setValue={setHouseNo}
             placeholder="House Number"
-          />
+          /> */}
           <View style={{ marginTop: 10 }}>
-            <CommonButton text="Save" screen="profile" isIcon bgColor="#1c74bc" />
+            <CommonButton
+              text="Save"
+              screen="profile"
+              isIcon
+              bgColor="#1c74bc"
+              onPress={() => handleUpdateUser()}
+            />
           </View>
         </View>
       </ScrollView>

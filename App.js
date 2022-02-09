@@ -103,7 +103,7 @@ const App = () => {
     ProximaNovaBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Bold.otf"),
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
-  if (!loaded || verify.isVerifyLoading || locationLoad) {
+  if (!loaded || verify.isVerifyLoading) {
     return <AppLoading />;
   }
 
