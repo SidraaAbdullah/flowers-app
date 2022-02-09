@@ -14,7 +14,7 @@ const PersonalInformation = () => {
   const [houseNo, setHouseNo] = useState("D/84/B");
   const [town, setTown] = useState("Gulshan");
   return (
-    <View style={{ flex: 1, backgroundColor:'white' }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header screen="profile" headingText="Personal Information" />
       <TopImage headingText="Sidra Abdullah" personalInfo />
       <ScrollView>
@@ -23,7 +23,7 @@ const PersonalInformation = () => {
             label="Phone Number"
             iconName="call"
             value={number}
-            setValue={setNumber}
+            onChangeText={(e) => setNumber(e)}
             keyboardType="numeric"
             placeholder="Phone Number"
           />
@@ -31,14 +31,14 @@ const PersonalInformation = () => {
             label="Name"
             iconName="person"
             value={name}
-            setValue={setName}
+            onChangeText={(e) => setName(e)}
             placeholder="Name"
           />
           <Input
             label="Email"
             iconName="mail"
             value={email}
-            setValue={setEmail}
+            onChangeText={(e) => setEmail(e)}
             placeholder="Email"
             keyboardType="email-address"
           />
@@ -71,7 +71,12 @@ const PersonalInformation = () => {
             placeholder="House Number"
           />
           <View style={{ marginTop: 10 }}>
-            <CommonButton text="Save" screen="profile" isIcon bgColor="#1c74bc" />
+            <CommonButton
+              text="Save"
+              screen="profile"
+              isIcon
+              bgColor="#1c74bc"
+            />
           </View>
         </View>
       </ScrollView>
