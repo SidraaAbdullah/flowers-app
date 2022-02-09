@@ -25,6 +25,7 @@
     "expo-location": "^14.0.2",
     "expo-status-bar": "~1.1.0",
     "formik": "^2.2.9",
+    "lodash": "^4.17.21",
     "native-base": "^3.2.2",
     "radio-buttons-react-native": "^1.0.4",
     "react": "17.0.1",
