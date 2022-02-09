@@ -14,9 +14,12 @@ import AppLoading from "expo-app-loading";
 import { Provider } from "react-redux";
 import store from "./src/redux/Store";
 import { BASE_URL } from "./src/constants";
+import * as Location from "expo-location";
 
 const App = () => {
   const [user, isLoading] = useStorage("logIn", { isObject: true });
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [verify, setVerify] = useState({
     verify: false,
     isVerifyLoading: false,
@@ -50,6 +53,63 @@ const App = () => {
         });
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      if (location) {
+        setLocation(location);
+        const { latitude, longitude, accuracy, altitude } =
+          location.coords || {};
+        const address = await Location.reverseGeocodeAsync({
+          latitude,
+          longitude,
+          accuracy,
+          altitude,
+        });
+        console.log(address);
+      }
+
+      // Geocoder.from(lat, long)
+      //   .then((json) => {
+      //     var addressComponent = json.results[0].address_components[0];
+      //     console.log({ addressComponent });
+      //   })
+      //   .catch((error) => console.warn(error));
+      // Works as well :
+      // ------------
+
+      // location object
+      // Geocoder.from({
+      //   // latitude: 41.89,
+      //   // longitude: 12.49,
+      //   lat,
+      //   lon,
+      // });
+
+      // // latlng object
+      // Geocoder.from({
+      //   lat: 41.89,
+      //   lng: 12.49,
+      // });
+
+      // // array
+      // Geocoder.from([41.89, 12.49]);
+      console.log(location);
+    })();
+  }, []);
+  // let text = "Waiting..";
+  // if (errorMsg) {
+  //   text = errorMsg;
+  // } else if (location) {
+  //   text = JSON.stringify(location);
+  // }
 
   const [loaded] = useFonts({
     ProximaNova: require("./src/assets/fonts/ProximaNova/ProximaNova-Regular.otf"),
