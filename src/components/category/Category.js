@@ -16,66 +16,13 @@ import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
-import Geocoder from "react-native-geocoding";
-import * as Location from "expo-location";
 
-Geocoder.init("AIzaSyAb-aq-uNiitauLRo7CWdyJK2l7fQB6LTQ");
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
   const { data: category, isLoading: categoriesLoading } = useQuery(
     "CATEGORY",
     CATEGORY
   );
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-      const lat = location.coords.latitude
-      const long = location.coords.longitude
-      Geocoder.from(lat, long)
-        .then((json) => {
-          var addressComponent = json.results[0].address_components[0];
-          console.log(addressComponent);
-        })
-        .catch((error) => console.warn(error));
-      // Works as well :
-      // ------------
-
-      // location object
-      Geocoder.from({
-        // latitude: 41.89,
-        // longitude: 12.49,
-        lat,
-        lon
-      });
-
-      // latlng object
-      Geocoder.from({
-        lat: 41.89,
-        lng: 12.49,
-      });
-
-      // array
-      Geocoder.from([41.89, 12.49]);
-      console.log(location);
-    })();
-  }, []);
-
-  let text = "Waiting..";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
