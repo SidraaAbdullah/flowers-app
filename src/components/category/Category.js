@@ -16,9 +16,11 @@ import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
+import useStorage from "../../hooks/useStorage";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
+  const [location] = useStorage("ca_location", { isObject: true });
   const { data: category, isLoading: categoriesLoading } = useQuery(
     "CATEGORY",
     CATEGORY
@@ -28,7 +30,7 @@ const Category = ({ navigation }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
         onPress={() => refRBSheet.current.open()}
-        dropdownText="Current Location"
+        dropdownText={location.address || "Current location"}
       />
       <View style={style.searchBar}>
         <SearchBar placeholder="Search" />
@@ -100,7 +102,9 @@ const Category = ({ navigation }) => {
                     color="black"
                     type="ionicon"
                   />
-                  <Text style={style.text}>Current Location</Text>
+                  <Text style={style.text}>
+                    {location.address || "Current location"}
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={style.item}
