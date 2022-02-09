@@ -26,7 +26,7 @@ const SingleOrderList = ({ navigation, item, quantity }) => {
               }}
             >
               <Text style={styles.text}>{item?.name}</Text>
-              <Text style={styles.text}>{"40$"}</Text>
+              <Text style={styles.text}>{item?.price}</Text>
             </View>
 
             <Text
@@ -56,7 +56,7 @@ const SingleOrderList = ({ navigation, item, quantity }) => {
             </View>
           </View>
         </View>
-        <View
+        {/* <View
           style={{
             justifyContent: "space-around",
             flexDirection: "row",
@@ -78,7 +78,7 @@ const SingleOrderList = ({ navigation, item, quantity }) => {
           <TouchableOpacity onPress={() => navigation.navigate("reviewScreen")}>
             <Text style={[styles.text, { paddingVertical: 8 }]}>Rate</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </View>
   );

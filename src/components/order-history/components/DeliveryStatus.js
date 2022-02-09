@@ -28,7 +28,7 @@ const DeliveryStatus = ({ item }) => {
   return (
     <View style={styles.container}>
       {statuses.map((item) => (
-        <View style={{ marginHorizontal: 15 }}>
+        <View style={{ marginHorizontal: 8 }}>
           <Icon
             name={item.name}
             color={item.status === response ? "green" : "black"}
@@ -37,7 +37,11 @@ const DeliveryStatus = ({ item }) => {
           <Text
             style={[
               styles.text,
-              { color: item.status === response ? "green" : "black" },
+              {
+                color: item.status === response ? "green" : "black",
+                fontFamily:
+                  item.status === response ? "ProximaNovaBold" : "ProximaNova",
+              },
             ]}
           >
             {item.text}
@@ -52,8 +56,10 @@ const styles = StyleSheet.create({
   text: {
     color: "black",
     fontSize: 14,
-    fontFamily: "ProximaNova",
     marginTop: 5,
+    width: 70,
+    textAlign: "center",
+    lineHeight: 15,
   },
   container: {
     paddingVertical: 15,
