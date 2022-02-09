@@ -72,7 +72,7 @@ const AddAdress = ({ navigation }) => {
       <TopImage headingText="Add Address" />
       <ScrollView>
         <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
-          <RadioButton
+          {/* <RadioButton
             animationType="pulse"
             box={false}
             initial={index + 1}
@@ -81,7 +81,7 @@ const AddAdress = ({ navigation }) => {
             style={{ marginBottom: 30 }}
             activeColor="#ffbd11"
             circleSize={15}
-            boxStyle={{ marginBottom: 5 }}
+            boxStyle={{ marginBottom: 5 }} */}
           />
           <CommonButton
             bgColor="#ffbd11"
