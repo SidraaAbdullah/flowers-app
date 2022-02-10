@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Header from "../../components/header";
 import { CategoryBox, CategoryHeader } from "./components/index";
-import { Icon,} from "react-native-elements";
+import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
@@ -17,7 +17,9 @@ import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
 import useStorage from "../../hooks/useStorage";
-import {Rating} from "./components/Rating"
+import { Rating } from "./components/Rating";
+import LottieView from "lottie-react-native";
+import sorry from "../../assets/images/sorry.json";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -41,7 +43,19 @@ const Category = ({ navigation }) => {
           value={search}
           onChangeText={(e) => setSearch(e)}
           placeholder="Search"
-          style={style.searchBar}
+          inputStyle={{ backgroundColor: "#f9f9f9", }}
+          containerStyle={{
+            shadowColor: "gray",
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.30,
+            shadowRadius: 100,
+            elevation: 7,
+            
+          }}
+          placeholderTextColor={"lightgray"}
         />
       </View>
 
@@ -98,7 +112,15 @@ const Category = ({ navigation }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text>Sorry no categories available</Text>
+                  <LottieView
+                    style={{ width: 250, height: 200 }}
+                    source={sorry}
+                    autoPlay
+                    loop={true}
+                    speed={1}
+                  />
+
+                  <Text style={style.label}>Sorry No Products available</Text>
                 </View>
               )
             }
@@ -174,9 +196,7 @@ const style = StyleSheet.create({
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
-    borderWidth: 2,
-    borderColor: "#f9f9f9",
-    borderRadius: 5,
+  
     // shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
   },
   searchBar: {
@@ -184,6 +204,12 @@ const style = StyleSheet.create({
     // shadowOffset: 2,
     // shadowOpacity: 0.2,
     // shadowRadius: 3,
+  },
+  label: {
+    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 18,
+    marginTop: 5,
+    color: "red",
   },
 
   item: {
