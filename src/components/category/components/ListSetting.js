@@ -26,7 +26,7 @@ const ListSetting = ({
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const refRBSheet = useRef();
-  console.log(products);
+
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -67,7 +67,7 @@ const ListSetting = ({
         </View>
       ) : (
         <>
-          {products?.data?.length ? (
+          {products?.data ? (
             <FlatList
               data={products?.data || []}
               numColumns={2}

@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import Input from "../../input";
 import { style } from "./style";
 import { useMutation } from "react-query";
-import { SIGN_UP } from "../../../queries";
+import { ADD_ADDRESS, SIGN_UP } from "../../../queries";
 import { Formik } from "formik";
 import {
   signUpInitialValues,
@@ -11,8 +11,15 @@ import {
 } from "../../../constants";
 import { ScrollView, TouchableOpacity } from "react-native";
 import { CommonButton } from "../../buttons";
+import useStorage from "../../../hooks/useStorage";
 const SignUp = ({ navigation }) => {
-  const { mutate: signUp } = useMutation(SIGN_UP);
+  const [addressObject] = useStorage("ca_location", { isObject: true });
+
+  const { mutate: signUp } = useMutation(SIGN_UP, {
+    onSuccess: async (res) => {
+      if (addressObject) await ADD_ADDRESS(addressObject);
+    },
+  });
   const handleClick = async (values, resetForm) => {
     await signUp(
       {

@@ -13,7 +13,7 @@ const CommonButton = (props) => {
       activeOpacity={0.5}
       disabled={props.disabled}
       onPress={props.onPress && props.onPress}
-      style={[styles.button, { backgroundColor: backgroundColor }]}
+      style={[styles.button, { backgroundColor: backgroundColor }, props.style]}
     >
       <View
         style={{
