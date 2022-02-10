@@ -13,7 +13,6 @@ const DeliveryInfo = ({ navigation }) => {
         }}
       >
         <Text style={styles.heading}>Deliver To:</Text>
-        <Text style={[styles.heading, { color: "red" }]}>30$</Text>
       </View>
 
       <View

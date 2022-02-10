@@ -45,7 +45,7 @@ const OrderHistory = ({ navigation }) => {
           <Text style={{ fontSize: 18, fontFamily: "ProximaNovaSemiBold" }}>
             My Orders
           </Text>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ flexDirection: "row", alignItems: "center" }}
           >
             <Text
@@ -58,7 +58,7 @@ const OrderHistory = ({ navigation }) => {
               Filter:
             </Text>
             <Icon name="options" type="ionicon" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={{ padding: 15, flex: 1, height: height }}>
           <FlatList

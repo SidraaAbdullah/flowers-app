@@ -80,13 +80,10 @@ const BoxList = ({ item, navigation }) => {
               style={{
                 borderRadius: 15,
                 backgroundColor: "black",
-                width: 28,
-                height: 28,
-                padding: 1,
-                paddingLeft: 3,
+                paddingLeft: 1,
               }}
             >
-              <Icon name="add" color="white" type="ionicon" />
+              <Icon size={20} name="add" color="white" type="ionicon" />
             </TouchableOpacity>
           </View>
         </View>
