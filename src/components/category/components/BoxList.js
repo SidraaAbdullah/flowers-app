@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { Rating } from ".";
@@ -6,8 +6,11 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/actions/Cart";
 
 const BoxList = ({ item, navigation }) => {
+  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const handleAddToCart = (item) => {
+    setQuantity(quantity + 1);
+    item.quantity = quantity;
     dispatch(addToCart(item));
   };
   return (

@@ -31,7 +31,7 @@ const ListSetting = ({
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const refRBSheet = useRef();
-  console.log(data);
+  //console.log(data);
   return (
     <View style={{ flex: 1 }}>
       <View
