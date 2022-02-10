@@ -20,7 +20,7 @@ const ListSetting = ({
   products,
   productIsLoading,
   pageNumber,
-  setPageNumber,
+  setQuery,
   data,
   setData,
   refetchProducts,
@@ -86,11 +86,16 @@ const ListSetting = ({
             ]}
             refreshControl={
               <RefreshControl
-                refreshing={!productIsLoading && productIsFetching}
+                refreshing={productIsLoading || productIsFetching}
                 onRefresh={() => {
                   setDataRefreshed(true);
-                  setPageNumber(1);
-                  refetchProducts();
+                  if (pageNumber == 1) {
+                    refetchProducts();
+                  } else {
+                    setQuery((prev) => {
+                      return { page_no: 1, search: prev?.search };
+                    });
+                  }
                 }}
               />
             }
@@ -113,7 +118,9 @@ const ListSetting = ({
             onEndReached={() => {
               if (pageNumber < products?.pagination?.totalPages) {
                 if (!productIsLoading) {
-                  setPageNumber((prev) => prev + 1);
+                  setQuery((prev) => {
+                    return { page_no: prev.page_no + 1, search: prev?.search };
+                  });
                 }
               }
             }}
