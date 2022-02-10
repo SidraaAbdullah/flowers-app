@@ -46,7 +46,17 @@ const CategoryDetail = ({ navigation, route }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={categoryName} />
       <View style={{ flex: 1 }}>
-        <View style={{ paddingHorizontal: 4, paddingRight: 6 }}>
+        <View
+          style={{
+            marginTop: 7,
+            marginBottom:10,
+            marginLeft: 20,
+            marginRight: 20,
+            borderWidth: 2,
+            borderColor: "#f9f9f9",
+            borderRadius: 5,
+          }}
+        >
           <SearchBar
             value={search}
             onChangeText={(e) => {

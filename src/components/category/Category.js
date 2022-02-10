@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Header from "../../components/header";
 import { CategoryBox, CategoryHeader } from "./components/index";
-import { Icon } from "react-native-elements";
+import { Icon,} from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
@@ -17,6 +17,7 @@ import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
 import useStorage from "../../hooks/useStorage";
+import {Rating} from "./components/Rating"
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -35,11 +36,12 @@ const Category = ({ navigation }) => {
         dropdownText={location.address || "Current location"}
         headerTextStyle={{ width: "85%" }}
       />
-      <View style={style.searchBar}>
+      <View style={style.searchBarBox}>
         <SearchBar
           value={search}
           onChangeText={(e) => setSearch(e)}
           placeholder="Search"
+          style={style.searchBar}
         />
       </View>
       <CategoryHeader
@@ -167,10 +169,22 @@ const Category = ({ navigation }) => {
 export default Category;
 
 const style = StyleSheet.create({
-  searchBar: {
-    paddingLeft: 20,
-    paddingRight: 20,
+  searchBarBox: {
+    marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    borderWidth: 2,
+    borderColor: "#f9f9f9",
+    borderRadius: 5,
+    // shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
   },
+  searchBar: {
+    // shadowColor: "blue",
+    // shadowOffset: 2,
+    // shadowOpacity: 0.2,
+    // shadowRadius: 3,
+  },
+
   item: {
     flexDirection: "row",
     alignItems: "center",
