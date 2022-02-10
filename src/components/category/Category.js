@@ -44,6 +44,7 @@ const Category = ({ navigation }) => {
           style={style.searchBar}
         />
       </View>
+
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address={location.address || "Current location"}
