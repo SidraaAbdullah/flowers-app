@@ -113,7 +113,9 @@ const OrderHistory = ({ navigation }) => {
             // }
             onEndReachedThreshold={0}
             ListFooterComponent={() =>
-              orderHistoryLoading ? <OrderListSkeleton /> : null
+              orderIsFetching || orderHistoryLoading ? (
+                <OrderListSkeleton />
+              ) : null
             }
             ListEmptyComponent={() =>
               !orderHistoryLoading &&
