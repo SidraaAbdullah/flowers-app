@@ -25,7 +25,7 @@ const Category = ({ navigation }) => {
     "CATEGORY",
     CATEGORY
   );
-
+  // console.log(location.address);
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header

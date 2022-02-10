@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { style } from "./style";
 import Input from "../../input";
-import { SIGN_IN } from "../../../queries";
+import { ADD_ADDRESS, SIGN_IN } from "../../../queries";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMutation } from "react-query";
@@ -15,12 +15,18 @@ import {
 import { CommonButton } from "../../buttons";
 import { addUser } from "../../../redux/actions/User";
 import { useDispatch } from "react-redux";
+import useStorage from "../../../hooks/useStorage";
 
 const SignIn = ({ route }) => {
+  const [addressObject] = useStorage("ca_location", { isObject: true });
   const navigation = useNavigation();
   const { cart } = route?.params || {};
   const dispatch = useDispatch();
-  const { mutate: signIn } = useMutation(SIGN_IN);
+  const { mutate: signIn } = useMutation(SIGN_IN, {
+    onSuccess: async (res) => {
+      if (addressObject) await ADD_ADDRESS(addressObject);
+    },
+  });
 
   const handleAddUser = (item) => {
     dispatch(addUser(item));

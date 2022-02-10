@@ -27,8 +27,6 @@ const App = () => {
     isVerifyLoading: false,
   });
 
-  if (user) {
-  }
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -84,11 +82,12 @@ const App = () => {
               addressPaths: address,
               locationDetails,
             };
-            if (user) await ADD_ADDRESS(addressObject);
             await AsyncStorageLib.setItem(
               "ca_location",
               JSON.stringify(addressObject)
             );
+            const userAsync = await AsyncStorageLib.getItem("logIn");
+            if (userAsync) await ADD_ADDRESS(addressObject);
           }
         }
         setLocationLoad(false);
@@ -104,7 +103,7 @@ const App = () => {
     ProximaNovaBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Bold.otf"),
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
-  if (!loaded || verify.isVerifyLoading) {
+  if (!loaded || verify.isVerifyLoading || isLoading || locationLoad) {
     return <AppLoading />;
   }
 

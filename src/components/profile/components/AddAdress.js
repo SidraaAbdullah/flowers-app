@@ -5,22 +5,28 @@ import { TopImage } from ".";
 import Header from "../../header";
 import { useQuery, useMutation } from "react-query";
 import { UPDATE_PRIMARY_ADDRESS } from "../../../queries";
-import RBSheet from "react-native-raw-bottom-sheet";
-import Input from "../../input";
 import { ADD_ADDRESS } from "../../../queries";
 import RadioButton from "../../radio-button";
+import { showToast } from "../../../util/toast";
+import { useNavigation } from "@react-navigation/native";
 
 const AddAdress = () => {
-  const refRBSheet = useRef();
-  const { data: savedAddresses, refetch } = useQuery("/user/delivery-address");
+  const navigation = useNavigation();
+  const [check, setCheck] = useState("");
+  const { data: savedAddresses, refetch } = useQuery("/user/delivery-address", {
+    refetchOnMount: true,
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: true,
+    onSuccess: (res) => {
+      const isPrimary = res?.data?.find((item) => item?.primary === true);
+      setCheck(isPrimary?._id);
+    },
+  });
+  navigation.addListener("focus", () => {
+    refetch();
+  });
   const { mutate: updatePrimaryAddress } = useMutation(UPDATE_PRIMARY_ADDRESS);
-  const isPrimary = savedAddresses?.data?.find(
-    (item) => item?.primary === true
-  );
-  console.log(isPrimary);
-  const [check, setCheck] = useState(isPrimary?._id);
-  const { mutate: addAddress } = useMutation(ADD_ADDRESS);
-  const [newAddress, setNewAddress] = useState("");
+
   const handleUpdatePrimaryAdress = () => {
     updatePrimaryAddress(
       {
@@ -28,29 +34,12 @@ const AddAdress = () => {
         primary: true,
       },
       {
-        onError: () => {
-          alert("Error");
+        onError: (err) => {
+          showToast(err.toString(), "error");
         },
-        onSuccess: () => {
-          alert("Success");
-          refetch();
-        },
-      }
-    );
-  };
-
-  const handleAddAdress = () => {
-    addAddress(
-      {
-        address: newAddress,
-      },
-      {
-        onError: (e) => {
-          alert("Error");
-        },
-        onSuccess: () => {
-          alert("Success");
-          setNewAddress("");
+        onSuccess: (res) => {
+          console.log(res);
+          showToast(res.message, "success");
           refetch();
         },
       }
@@ -85,7 +74,7 @@ const AddAdress = () => {
               bgColor="#ffbd11"
               color="black"
               text="Add new Address"
-              onPress={() => refRBSheet.current.open()}
+              onPress={() => navigation.push("newAddressMap")}
               rightIcon
               rightIconName="add-outline"
             />
@@ -93,56 +82,7 @@ const AddAdress = () => {
         </View>
       </ScrollView>
 
-      <View>
-        <RBSheet
-          ref={refRBSheet}
-          closeOnDragDown={true}
-          closeOnPressMask={true}
-          height={230}
-          customStyles={{
-            draggableIcon: {
-              backgroundColor: "#000",
-            },
-          }}
-        >
-          <View style={{ flexGrow: 1, alignItems: "center" }}>
-            <View style={{ width: "100%", borderRadius: 5, padding: 10 }}>
-              <Text
-                style={{
-                  textAlign: "center",
-                  fontSize: 20,
-                  fontFamily: "ProximaNovaSemiBold",
-                }}
-              >
-                Select Delivery Address
-              </Text>
-            </View>
-            <View style={{ width: "90%" }}>
-              <Input
-                iconName="book"
-                setValue={setNewAddress}
-                value={newAddress}
-                onChangeText={(e) => setNewAddress(e)}
-                placeholder="Add a new delivery address"
-                label="Address"
-              />
-
-              <View style={{ marginTop: 10 }}>
-                <CommonButton
-                  bgColor="#ffbd11"
-                  color="black"
-                  text="Save new Address"
-                  screen="addAddress"
-                  rightIcon
-                  rightIconName="close-outline"
-                  rightIconColor="red"
-                  onPress={handleAddAdress}
-                />
-              </View>
-            </View>
-          </View>
-        </RBSheet>
-      </View>
+      <View></View>
     </View>
   );
 };
