@@ -16,7 +16,6 @@ const App = ({ route }) => {
         headerShown: false,
         headerTitleAlign: "center",
         tabBarStyle: {
-          paddingBottom: 3,
           fontFamily: "ProximaNovaSemiBold",
         },
         tabBarIcon: ({ color, type }) => {
@@ -107,6 +106,10 @@ const App = ({ route }) => {
             <Stack.Screen
               name="newAddress"
               component={Screen.NewAddressScreen}
+            />
+            <Stack.Screen
+              name="newAddressMap"
+              component={Screen.MapScreenAddress}
             />
           </Stack.Navigator>
         )}

@@ -14,3 +14,4 @@ export * from "./Register";
 export * from "./Reviews";
 export * from "./SingleOrderHistory";
 export * from "./ViewReviews";
+export * from "./MapScreenAddress";

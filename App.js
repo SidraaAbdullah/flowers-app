@@ -17,6 +17,7 @@ import { BASE_URL } from "./src/constants";
 import * as Location from "expo-location";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 import { ADD_ADDRESS } from "./src/queries";
+import FlashMessage from "react-native-flash-message";
 
 const App = () => {
   const [user, isLoading] = useStorage("logIn", { isObject: true });
@@ -83,7 +84,7 @@ const App = () => {
               addressPaths: address,
               locationDetails,
             };
-            await ADD_ADDRESS(addressObject);
+            if (user) await ADD_ADDRESS(addressObject);
             await AsyncStorageLib.setItem(
               "ca_location",
               JSON.stringify(addressObject)
@@ -111,6 +112,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <NavigationContainer>
+          <FlashMessage position="top" floating={true} />
           <RootNavigator user={user} verify={verify.verify} />
         </NavigationContainer>
       </Provider>

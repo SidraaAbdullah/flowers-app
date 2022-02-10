@@ -1,11 +1,5 @@
 import React, { useState, useRef } from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
 import { CommonButton } from "../../buttons";
 import { TopImage } from ".";
 import Header from "../../header";
@@ -81,14 +75,16 @@ const AddAdress = ({ navigation }) => {
             style={{ marginBottom: 30 }}
             activeColor="#ffbd11"
             circleSize={15}
-            boxStyle={{ marginBottom: 5 }} */}
-          />
+            boxStyle={{ marginBottom: 5 }} 
+            />
+            
+            */}
           <CommonButton
             bgColor="#ffbd11"
             color="black"
             text="Add new Address"
             // onPress={() => navigation.navigate("newAddress")}
-            onPress={() => refRBSheet.current.open()}
+            onPress={() => navigation.push("newAddressMap")}
             rightIcon
             rightIconName="add-outline"
           />
