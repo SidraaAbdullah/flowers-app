@@ -29,7 +29,6 @@ const OrderHistory = ({ navigation }) => {
     GET_ORDER,
     {
       onSuccess: (res) => {
-        console.log(res);
         setData([...data, ...res?.data]);
       },
     }
@@ -63,6 +62,7 @@ const OrderHistory = ({ navigation }) => {
         <View style={{ padding: 15, flex: 1, height: height }}>
           <FlatList
             data={data || []}
+            showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <OrderList
                 item={item}

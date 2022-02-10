@@ -6,18 +6,23 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
+  RefreshControl,
 } from "react-native";
 import { List, BoxList } from ".";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { SingleProductDetail } from "../../skeletons/singleProductDetail";
-import { object } from "yup/lib/locale";
 
 const ListSetting = ({
   navigation,
   products,
-  categoryId,
   productIsLoading,
+  pageNumber,
+  setPageNumber,
+  data,
+  setData,
+  refetchProducts,
+  productIsFetching,
 }) => {
   const [value, setValue] = useState("boxStyle");
   const changeTo = (val) => {
@@ -26,7 +31,7 @@ const ListSetting = ({
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const refRBSheet = useRef();
-  console.log(products);
+  console.log(data);
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -61,45 +66,62 @@ const ListSetting = ({
           <Icon name="options" type="ionicon" />
         </TouchableOpacity> */}
       </View>
-      {productIsLoading ? (
+      {productIsLoading && !data.length ? (
         <View style={{ width: "50%" }}>
           <SingleProductDetail />
         </View>
       ) : (
         <>
-          {products?.data?.length ? (
+          {data?.length ? (
             <FlatList
-              data={products?.data || []}
+              data={data || []}
+              showsVerticalScrollIndicator={false}
               numColumns={2}
               contentContainerStyle={[
                 {
                   marginBottom: 20,
                 },
               ]}
+              refreshControl={
+                <RefreshControl
+                  refreshing={productIsFetching}
+                  onRefresh={() => {
+                    setData([]);
+                    setPageNumber(1);
+                    refetchProducts();
+                  }}
+                />
+              }
               renderItem={({ item }) => (
                 <>
-                  {value === "boxStyle"
-                    ? item?.category_id?._id === categoryId && (
-                        <BoxList
-                          item={item}
-                          key={item?._id}
-                          navigation={navigation}
-                        />
-                      )
-                    : value === "listStyle"
-                    ? item?.category_id?._id === categoryId && (
-                        <List
-                          item={item}
-                          key={item?._id}
-                          navigation={navigation}
-                        />
-                      )
-                    : null}
+                  {value === "boxStyle" ? (
+                    <BoxList
+                      item={item}
+                      key={item?._id}
+                      navigation={navigation}
+                    />
+                  ) : value === "listStyle" ? (
+                    <List item={item} key={item?._id} navigation={navigation} />
+                  ) : null}
                 </>
               )}
               showsHorizontalScrollIndicator={false}
-              bounces={false}
+              bounces={true}
               keyExtractor={(item, index) => index}
+              onEndReached={() => {
+                if (pageNumber < products?.pagination?.totalPages) {
+                  if (!productIsLoading) {
+                    setPageNumber((prev) => prev + 1);
+                  }
+                }
+              }}
+              // ListHeaderComponent={() =>
+              //   orderIsFetching ? <OrderListSkeleton /> : null
+              // }
+              onEndReachedThreshold={0}
+              ListFooterComponent={() =>
+                productIsLoading ? <SingleProductDetail /> : null
+              }
             />
           ) : (
             <View

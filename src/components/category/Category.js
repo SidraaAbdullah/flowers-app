@@ -50,6 +50,7 @@ const Category = ({ navigation }) => {
           {category?.data?.length ? (
             <FlatList
               data={category?.data || []}
+              showsVerticalScrollIndicator={false}
               numColumns={2}
               contentContainerStyle={[
                 {

@@ -8,11 +8,32 @@ import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 
 const CategoryDetail = ({ navigation, route }) => {
   const [search, setSearch] = useState("");
-  const { data: products, isLoading: productIsLoading } = useQuery(
-    ["PRODUCT", { search }],
-    PRODUCT
+  const [pageNumber, setPageNumber] = useState(1);
+  const [data, setData] = useState([]);
+  const { categoryName, categoryId } = route?.params || {};
+
+  const {
+    data: products,
+    isLoading: productIsLoading,
+    refetch: refetchProducts,
+    isFetching: productIsFetching,
+  } = useQuery(
+    [
+      "PRODUCT",
+      {
+        category_id: categoryId,
+        search,
+        page_no: pageNumber,
+        records_per_page: 10,
+      },
+    ],
+    PRODUCT,
+    {
+      onSuccess: (res) => {
+        setData([...data, ...res?.data]);
+      },
+    }
   );
-  const { categoryName, categoryId } = route.params;
   const filterData = [
     { id: "1", name: "Over 4.5" },
     { id: "2", name: "Browser by Bouquets" },
@@ -28,7 +49,11 @@ const CategoryDetail = ({ navigation, route }) => {
         <View style={{ paddingHorizontal: 4, paddingRight: 6 }}>
           <SearchBar
             value={search}
-            onChangeText={(e) => setSearch(e)}
+            onChangeText={(e) => {
+              setData([]);
+              setPageNumber(1);
+              setSearch(e);
+            }}
             placeholder="Search"
           />
         </View>
@@ -50,6 +75,12 @@ const CategoryDetail = ({ navigation, route }) => {
           products={products}
           categoryId={categoryId}
           productIsLoading={productIsLoading}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          data={data || []}
+          setData={setData}
+          refetchProducts={refetchProducts}
+          productIsFetching={productIsFetching}
         />
       </View>
     </View>
