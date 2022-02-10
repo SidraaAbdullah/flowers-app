@@ -28,6 +28,7 @@ const Category = ({ navigation }) => {
     isFetching: categoryIsFetching,
     refetch: refetchCategories,
   } = useQuery(["CATEGORY", { search }], CATEGORY);
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
@@ -46,7 +47,7 @@ const Category = ({ navigation }) => {
         headingText="Discover Plant & Flower"
         address={location.address || "Current location"}
       />
-      {categoriesLoading ? (
+      {categoriesLoading && !category?.data?.length ? (
         <CategoriesHomePage />
       ) : (
         <>
@@ -63,7 +64,7 @@ const Category = ({ navigation }) => {
             ]}
             refreshControl={
               <RefreshControl
-                refreshing={categoryIsFetching}
+                refreshing={!categoriesLoading && categoryIsFetching}
                 onRefresh={() => {
                   refetchCategories();
                 }}

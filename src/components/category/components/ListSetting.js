@@ -20,9 +20,9 @@ const ListSetting = ({
   pageNumber,
   setPageNumber,
   data,
-  setData,
   refetchProducts,
   productIsFetching,
+  setDataRefreshed,
 }) => {
   const [value, setValue] = useState("boxStyle");
   const changeTo = (val) => {
@@ -31,7 +31,7 @@ const ListSetting = ({
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const refRBSheet = useRef();
-  console.log(data);
+
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -66,7 +66,7 @@ const ListSetting = ({
           <Icon name="options" type="ionicon" />
         </TouchableOpacity> */}
       </View>
-      {productIsLoading && !data.length ? (
+      {productIsLoading && !data?.length ? (
         <View style={{ width: "50%" }}>
           <SingleProductDetail />
         </View>
@@ -86,7 +86,7 @@ const ListSetting = ({
               <RefreshControl
                 refreshing={!productIsLoading && productIsFetching}
                 onRefresh={() => {
-                  setData([]);
+                  setDataRefreshed(true);
                   setPageNumber(1);
                   refetchProducts();
                 }}
