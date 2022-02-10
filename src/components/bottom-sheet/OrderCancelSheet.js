@@ -18,8 +18,8 @@ const OrderCancelSheet = ({ item, refRBSheet, refreshData }) => {
     await cancelOrder(
       { id: item?._id, status: "CANCELLED" },
       {
-        onSuccess: () => {
-          refreshData();
+        onSuccess: async () => {
+          await refreshData();
           refRBSheet.current.close();
           Alert.alert("Your order has been cancelled.");
         },

@@ -41,7 +41,6 @@ const OrderHistory = ({ navigation }) => {
       },
     }
   );
-  console.log(orderIsFetching, orderHistoryLoading);
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -78,10 +77,10 @@ const OrderHistory = ({ navigation }) => {
                 item={item}
                 status={item?.status}
                 navigation={navigation}
-                refreshData={() => {
+                refreshData={async () => {
                   setDataRefreshed(true);
                   if (pageNumber == 1) {
-                    refetchOrder();
+                    await refetchOrder();
                   } else {
                     pageNumber(1);
                   }

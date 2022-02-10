@@ -7,12 +7,10 @@ import { PRODUCT } from "../../../queries";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 
 const CategoryDetail = ({ navigation, route }) => {
-  const [search, setSearch] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
+  const [query, setQuery] = useState({ page_no: 1, search: "" });
   const [data, setData] = useState([]);
   const [dataRefreshed, setDataRefreshed] = useState(false);
   const { categoryName, categoryId } = route?.params || {};
-
   const {
     data: products,
     isLoading: productIsLoading,
@@ -23,8 +21,7 @@ const CategoryDetail = ({ navigation, route }) => {
       "PRODUCT",
       {
         category_id: categoryId,
-        search,
-        page_no: pageNumber,
+        ...query,
         records_per_page: 10,
       },
     ],
@@ -65,11 +62,10 @@ const CategoryDetail = ({ navigation, route }) => {
           }}
         >
           <SearchBar
-            value={search}
+            value={query?.search}
             onChangeText={(e) => {
               setDataRefreshed(true);
-              setPageNumber(1);
-              setSearch(e);
+              setQuery({ page_no: 1, search: e });
             }}
             placeholder="Search"
           />
@@ -92,8 +88,8 @@ const CategoryDetail = ({ navigation, route }) => {
           products={products}
           categoryId={categoryId}
           productIsLoading={productIsLoading}
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
+          pageNumber={query.page_no}
+          setQuery={setQuery}
           data={data?.length ? data : products?.data}
           refetchProducts={refetchProducts}
           productIsFetching={productIsFetching}
