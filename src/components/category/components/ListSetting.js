@@ -12,6 +12,8 @@ import { List, BoxList } from ".";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { SingleProductDetail } from "../../skeletons/singleProductDetail";
+import LottieView from "lottie-react-native";
+import sorry from "../../../assets/images/sorry.json";
 
 const ListSetting = ({
   navigation,
@@ -127,12 +129,20 @@ const ListSetting = ({
               !productIsLoading && (
                 <View
                   style={{
-                    flex: 1,
+                    flex:1,
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <Text>Sorry no products available</Text>
+                  <LottieView
+                    style={{ width: 250, height: 200 }}
+                    source={sorry}
+                    autoPlay
+                    loop={true}
+                    speed={1}
+                  />
+
+                  <Text style={styles.label}>Sorry No Products available</Text>
                 </View>
               )
             }
@@ -294,6 +304,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     marginRight: 3,
   },
+
   item: {
     marginTop: 15,
     // padding: 5,
@@ -310,5 +321,11 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     fontSize: 16,
     color: "gray",
+  },
+  label: {
+    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 18,
+    marginTop: 5,
+    color: "red",
   },
 });

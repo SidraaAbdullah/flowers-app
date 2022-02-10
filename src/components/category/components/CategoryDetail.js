@@ -56,9 +56,8 @@ const CategoryDetail = ({ navigation, route }) => {
             marginBottom: 10,
             marginLeft: 20,
             marginRight: 20,
-            borderWidth: 2,
-            borderColor: "#f9f9f9",
-            borderRadius: 5,
+            marginBottom: 20,
+         
           }}
         >
           <SearchBar
@@ -68,6 +67,19 @@ const CategoryDetail = ({ navigation, route }) => {
               setQuery({ page_no: 1, search: e });
             }}
             placeholder="Search"
+            inputStyle={{ backgroundColor: "#f9f9f9",  }}
+          containerStyle={{
+            shadowColor: "gray",
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.30,
+            shadowRadius: 100,
+            elevation: 70,
+            
+          }}
+          placeholderTextColor={"lightgray"}
           />
         </View>
         <View style={{ paddingHorizontal: 15 }}>
