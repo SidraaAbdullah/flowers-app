@@ -17,6 +17,7 @@ const SignUp = ({ navigation }) => {
 
   const { mutate: signUp } = useMutation(SIGN_UP, {
     onSuccess: async (res) => {
+      axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
       if (addressObject) await ADD_ADDRESS(addressObject);
     },
   });

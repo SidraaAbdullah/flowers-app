@@ -16,6 +16,7 @@ import { CommonButton } from "../../buttons";
 import { addUser } from "../../../redux/actions/User";
 import { useDispatch } from "react-redux";
 import useStorage from "../../../hooks/useStorage";
+import { showToast } from "../../../util/toast";
 
 const SignIn = ({ route }) => {
   const [addressObject] = useStorage("ca_location", { isObject: true });
@@ -24,6 +25,7 @@ const SignIn = ({ route }) => {
   const dispatch = useDispatch();
   const { mutate: signIn } = useMutation(SIGN_IN, {
     onSuccess: async (res) => {
+      axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
       if (addressObject) await ADD_ADDRESS(addressObject);
     },
   });
@@ -40,7 +42,6 @@ const SignIn = ({ route }) => {
       },
       {
         onSuccess: async (res) => {
-          axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
           await AsyncStorage.setItem("logIn", JSON.stringify(res.data));
           handleAddUser(res.data);
           if (cart) {
@@ -49,8 +50,8 @@ const SignIn = ({ route }) => {
             navigation.replace("home");
           }
         },
-        onError: () => {
-          alert("Please enter correct email or password");
+        onError: (res) => {
+          showToast(res.response?.data?.message, "danger");
         },
       }
     );

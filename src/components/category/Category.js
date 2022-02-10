@@ -28,12 +28,12 @@ const Category = ({ navigation }) => {
     isFetching: categoryIsFetching,
     refetch: refetchCategories,
   } = useQuery(["CATEGORY", { search }], CATEGORY);
-  // console.log(location.address);
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
         onPress={() => refRBSheet.current.open()}
         dropdownText={location.address || "Current location"}
+        headerTextStyle={{ width: "85%" }}
       />
       <View style={style.searchBar}>
         <SearchBar
@@ -44,7 +44,7 @@ const Category = ({ navigation }) => {
       </View>
       <CategoryHeader
         headingText="Discover Plant & Flower"
-        address="R306 Sharifabd FB Area Block 1 Karachi"
+        address={location.address || "Current location"}
       />
       {categoriesLoading ? (
         <CategoriesHomePage />

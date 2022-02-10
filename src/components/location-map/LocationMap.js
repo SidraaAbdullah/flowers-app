@@ -15,16 +15,19 @@ import useStorage from "../../hooks/useStorage";
 import { ADD_ADDRESS } from "../../queries";
 import { useNavigation } from "@react-navigation/native";
 import { showToast } from "../../util/toast";
+import { Icon } from "react-native-elements";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 export default function MapScreen() {
   const [user] = useStorage("logIn", { isObject: true });
   const [locationResult, setLocation] = useState(null);
   const [mapAddress, setMapAddress] = useState("");
+  //   const
   const [hasLocationPermissions, setLocationPermission] = useState(false);
   const bottomSheetModalRef = useRef(null);
   const navigation = useNavigation();
   // variables
-  const formattedAddress = `${mapAddress.name} ${mapAddress.district} ${mapAddress.city} ${mapAddress.country}`;
+  //   const formattedAddress = `${mapAddress.name} ${mapAddress.district} ${mapAddress.city} ${mapAddress.country}`;
   const snapPoints = useMemo(() => ["10%", "25%"], []);
 
   // callbacks
@@ -41,6 +44,7 @@ export default function MapScreen() {
     longitude,
     accuracy,
     altitude,
+    formattedAddress,
   }) => {
     const locationDetails = {
       latitude: latitude || locationResult.latitude,
@@ -48,10 +52,15 @@ export default function MapScreen() {
       accuracy: accuracy || locationResult?.accuracy,
       altitude: altitude || locationResult?.altitude,
     };
+    let address = "";
     setLocation(locationDetails);
-    const address = ((await Location.reverseGeocodeAsync(locationDetails)) ||
-      [])[0];
-    setMapAddress(address);
+    if (!formattedAddress)
+      address = ((await Location.reverseGeocodeAsync(locationDetails)) ||
+        [])[0];
+    setMapAddress(
+      formattedAddress ||
+        `${address.name} ${address.district} ${address.city} ${address.country}`
+    );
   };
 
   // GETTING LOCATION OF USER IN LONG AND LAT
@@ -65,6 +74,8 @@ export default function MapScreen() {
     let {
       coords: { latitude, longitude, accuracy, altitude },
     } = await Location.getCurrentPositionAsync({});
+    Location.installWebGeolocationPolyfill();
+    // navigator.geolocation.getCurrentPosition(setPosition);
     // setLocation({ latitude, longitude, accuracy, altitude });
     await getLocationAddress({ latitude, longitude, accuracy, altitude });
   };
@@ -83,8 +94,7 @@ export default function MapScreen() {
   // SUBMITTING USER'S LOCATION
   const submitUserAddress = async () => {
     const addressObject = {
-      address: formattedAddress,
-      addressPaths: mapAddress,
+      address: mapAddress,
       locationDetails: locationResult,
     };
     if (user) await ADD_ADDRESS(addressObject);
@@ -120,12 +130,51 @@ export default function MapScreen() {
 
   // RENDER FUNCTION
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Header screen="profile" headingText="Add location" />
+      <GooglePlacesAutocomplete
+        styles={{
+          container: {
+            flex: 0,
+          },
+          textInput: {
+            height: 38,
+            color: "#5d5d5d",
+            fontSize: 16,
+          },
+          predefinedPlacesDescription: {
+            color: "#1faadb",
+          },
+        }}
+        placeholder="Enter Location"
+        fetchDetails={true}
+        onPress={(data, details = null) => {
+          getLocationAddress({
+            latitude: details.geometry.location.lat,
+            longitude: details.geometry.location.lng,
+            formattedAddress: details.formatted_address,
+          });
+          // 'details' is provided when fetchDetails = true
+          //   console.log( details.geometry.location.lat; );
+        }}
+        nearbyPlacesAPI="GoogleReverseGeocoding"
+        currentLocation={true}
+        enableHighAccuracyLocation={true}
+        query={{
+          key: "AIzaSyAb-aq-uNiitauLRo7CWdyJK2l7fQB6LTQ",
+          language: "en",
+        }}
+      />
       <MapView
         style={styles.container}
         provider={PROVIDER_GOOGLE}
         initialRegion={{
+          latitude: locationResult.latitude,
+          latitudeDelta: parseFloat(locationResult.latitude) * 0.0001,
+          longitude: locationResult.longitude,
+          longitudeDelta: parseFloat(locationResult.longitude) * 0.0001,
+        }}
+        region={{
           latitude: locationResult.latitude,
           latitudeDelta: parseFloat(locationResult.latitude) * 0.0001,
           longitude: locationResult.longitude,
@@ -141,7 +190,9 @@ export default function MapScreen() {
             latitude: locationResult.latitude,
             longitude: locationResult.longitude,
           }}
-        />
+        >
+          <Icon name="map-pin" color="#ffbd11" type="font-awesome" />
+        </MapView.Marker>
       </MapView>
 
       <BottomSheet
@@ -153,7 +204,7 @@ export default function MapScreen() {
         <View style={styles.contentContainer}>
           <View style={[{ flexDirection: "row" }]}>
             <Text style={styles.locationText}>Location: </Text>
-            <Text style={styles.mapAddressText}>{formattedAddress}</Text>
+            <Text style={styles.mapAddressText}>{mapAddress}</Text>
           </View>
         </View>
         <CommonButton
@@ -166,7 +217,7 @@ export default function MapScreen() {
           rightIconName="add-outline"
         />
       </BottomSheet>
-    </SafeAreaView>
+    </View>
   );
 }
 

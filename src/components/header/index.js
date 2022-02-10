@@ -30,7 +30,13 @@ const Header = (props) => {
 
         <View>
           {props.headingText ? (
-            <Text style={styles.text}>{props?.headingText}</Text>
+            <Text
+              style={[styles.text, props.headerTextStyle]}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              {props?.headingText}
+            </Text>
           ) : props.dropdownText ? (
             <TouchableOpacity
               style={{
@@ -40,7 +46,11 @@ const Header = (props) => {
               }}
               onPress={props.onPress}
             >
-              <Text style={[styles.text, { marginRight: 2 }]}>
+              <Text
+                style={[styles.text, props.headerTextStyle]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
                 {props?.dropdownText}
               </Text>
               <Icon name="chevron-down-outline" type="ionicon" color="black" />

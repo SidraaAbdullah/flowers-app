@@ -9,17 +9,20 @@ import { ADD_ADDRESS } from "../../../queries";
 import RadioButton from "../../radio-button";
 import { showToast } from "../../../util/toast";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorageLib from "@react-native-async-storage/async-storage";
+import useStorage from "../../../hooks/useStorage";
 
 const AddAdress = () => {
   const navigation = useNavigation();
-  const [check, setCheck] = useState("");
+  const [location] = useStorage("ca_location", { isObject: true });
+  const [check, setCheck] = useState({});
   const { data: savedAddresses, refetch } = useQuery("/user/delivery-address", {
     refetchOnMount: true,
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
     onSuccess: (res) => {
       const isPrimary = res?.data?.find((item) => item?.primary === true);
-      setCheck(isPrimary?._id);
+      setCheck(isPrimary);
     },
   });
   navigation.addListener("focus", () => {
@@ -30,16 +33,19 @@ const AddAdress = () => {
   const handleUpdatePrimaryAdress = () => {
     updatePrimaryAddress(
       {
-        delivery_address_id: check,
+        delivery_address_id: check._id,
         primary: true,
       },
       {
         onError: (err) => {
           showToast(err.toString(), "error");
         },
-        onSuccess: (res) => {
-          console.log(res);
+        onSuccess: async (res) => {
           showToast(res.message, "success");
+          await AsyncStorageLib.setItem(
+            "ca_location",
+            JSON.stringify({ ...location, ...check })
+          );
           refetch();
         },
       }
@@ -59,8 +65,8 @@ const AddAdress = () => {
           {savedAddresses?.data?.map((data) => (
             <RadioButton
               key={data?._id}
-              check={check}
-              handleClick={() => handleClick(data._id)}
+              check={check?._id}
+              handleClick={() => handleClick(data)}
               data={data}
             />
           ))}

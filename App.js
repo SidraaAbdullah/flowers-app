@@ -20,7 +20,6 @@ import { ADD_ADDRESS } from "./src/queries";
 import FlashMessage from "react-native-flash-message";
 
 const App = () => {
-  const [user, isLoading] = useStorage("logIn", { isObject: true });
   const [locationLoad, setLocationLoad] = useState(true);
   const [verify, setVerify] = useState({
     verify: false,
@@ -41,6 +40,8 @@ const App = () => {
 
   useEffect(async () => {
     setVerify({ verify: false, isVerifyLoading: true });
+    let user = await AsyncStorageLib.getItem("logIn");
+    user = JSON.parse(user);
     if (user) {
       axios.defaults.headers.common.Authorization = `bearer ${user?.access_token}`;
       axios
@@ -52,7 +53,7 @@ const App = () => {
           setVerify({ verify: false, isVerifyLoading: false });
         });
     }
-  }, [isLoading]);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -82,10 +83,12 @@ const App = () => {
               addressPaths: address,
               locationDetails,
             };
-            await AsyncStorageLib.setItem(
-              "ca_location",
-              JSON.stringify(addressObject)
-            );
+            let location = await AsyncStorageLib.getItem("ca_location");
+            if (!location)
+              await AsyncStorageLib.setItem(
+                "ca_location",
+                JSON.stringify(addressObject)
+              );
             const userAsync = await AsyncStorageLib.getItem("logIn");
             if (userAsync) await ADD_ADDRESS(addressObject);
           }
@@ -103,7 +106,7 @@ const App = () => {
     ProximaNovaBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Bold.otf"),
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
-  if (!loaded || verify.isVerifyLoading || isLoading || locationLoad) {
+  if (!loaded || verify.isVerifyLoading || locationLoad) {
     return <AppLoading />;
   }
 
@@ -112,7 +115,7 @@ const App = () => {
       <Provider store={store}>
         <NavigationContainer>
           <FlashMessage position="top" floating={true} />
-          <RootNavigator user={user} verify={verify.verify} />
+          <RootNavigator verify={verify.verify} />
         </NavigationContainer>
       </Provider>
     </QueryClientProvider>
