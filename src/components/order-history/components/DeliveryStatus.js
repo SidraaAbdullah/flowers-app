@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
-import socketIOClient from "socket.io-client";
-import { URL } from "../../../constants";
+import { getOrderStatus } from "../../../hooks/socket-api";
 
 const DeliveryStatus = ({ item }) => {
-  const [response, setResponse] = useState(item.status);
+  const [response, setResponse] = useState();
+
   useEffect(() => {
-    const socket = socketIOClient(URL);
-    socket.on(`${item._id}_statusUpdate`, (data) => {
-      setResponse(data);
-    });
-    // CLEAN UP THE EFFECT
-    return () => socket.disconnect();
+    getOrderStatus(item, setResponse);
   }, []);
 
   let statuses = [
@@ -27,27 +22,39 @@ const DeliveryStatus = ({ item }) => {
   ];
   return (
     <View style={styles.container}>
-      {statuses.map((item) => (
-        <View style={{ marginHorizontal: 8 }}>
-          <Icon
-            name={item.name}
-            color={item.status === response ? "green" : "black"}
-            type="font-awesome"
-          />
-          <Text
-            style={[
-              styles.text,
-              {
-                color: item.status === response ? "green" : "black",
-                fontFamily:
-                  item.status === response ? "ProximaNovaBold" : "ProximaNova",
-              },
-            ]}
-          >
-            {item.text}
-          </Text>
-        </View>
-      ))}
+      {response === "CANCELLED" ? (
+        <Text
+          style={{ color: "red", fontFamily: "ProximaNovaBold", fontSize: 18 }}
+        >
+          ORDER CANCELLED
+        </Text>
+      ) : (
+        <>
+          {statuses.map((item) => (
+            <View style={{ marginHorizontal: 8 }}>
+              <Icon
+                name={item.name}
+                color={item.status === response ? "green" : "black"}
+                type="font-awesome"
+              />
+              <Text
+                style={[
+                  styles.text,
+                  {
+                    color: item.status === response ? "green" : "black",
+                    fontFamily:
+                      item.status === response
+                        ? "ProximaNovaBold"
+                        : "ProximaNova",
+                  },
+                ]}
+              >
+                {item.text}
+              </Text>
+            </View>
+          ))}
+        </>
+      )}
     </View>
   );
 };

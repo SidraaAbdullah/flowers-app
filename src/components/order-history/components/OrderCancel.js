@@ -1,20 +1,29 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { OrderCancelSheet } from "../../bottom-sheet";
+import { getOrderStatus } from "../../../hooks/socket-api";
 
 const OrderCancel = ({ item }) => {
+  const [response, setResponse] = useState();
+
+  useEffect(() => {
+    getOrderStatus(item, setResponse);
+  }, []);
+
   const refRBSheet = useRef();
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => refRBSheet.current.open()}
-        style={[styles.call, { backgroundColor: "red", marginRight: 6 }]}
-      >
-        <Icon name="times" size={25} color="white" type="font-awesome" />
-        <Text style={styles.text}>Order Cancel</Text>
-      </TouchableOpacity>
+      {response != "CANCELLED" && (
+        <TouchableOpacity
+          onPress={() => refRBSheet.current.open()}
+          style={[styles.call, { backgroundColor: "red", marginRight: 6 }]}
+        >
+          <Icon name="times" size={25} color="white" type="font-awesome" />
+          <Text style={styles.text}>Order Cancel</Text>
+        </TouchableOpacity>
+      )}
       <View style={styles.call}>
         <Icon name="phone" color="white" type="font-awesome" />
         <Text style={styles.text}>Call</Text>

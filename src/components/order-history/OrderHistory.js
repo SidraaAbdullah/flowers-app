@@ -63,6 +63,7 @@ const OrderHistory = ({ navigation }) => {
           <FlatList
             data={data || []}
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={[{ flexGrow: 1 }]}
             renderItem={({ item }) => (
               <OrderList
                 item={item}
@@ -94,6 +95,20 @@ const OrderHistory = ({ navigation }) => {
             onEndReachedThreshold={0}
             ListFooterComponent={() =>
               orderHistoryLoading ? <OrderListSkeleton /> : null
+            }
+            ListEmptyComponent={() =>
+              !orderHistoryLoading &&
+              !orderIsFetching && (
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text>Sorry no orders available</Text>
+                </View>
+              )
             }
           />
         </View>
