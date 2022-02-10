@@ -82,7 +82,7 @@ const OrderHistory = ({ navigation }) => {
                   if (pageNumber == 1) {
                     await refetchOrder();
                   } else {
-                    pageNumber(1);
+                    setPageNumber(1);
                   }
                 }}
               />
@@ -95,7 +95,7 @@ const OrderHistory = ({ navigation }) => {
                   if (pageNumber == 1) {
                     refetchOrder();
                   } else {
-                    pageNumber(1);
+                    setPageNumber(1);
                   }
                 }}
               />
