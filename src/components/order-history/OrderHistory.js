@@ -19,20 +19,29 @@ const OrderHistory = ({ navigation }) => {
   const { height } = Dimensions.get("window");
   const [pageNumber, setPageNumber] = useState(1);
   const [data, setData] = useState([]);
+  const [dataRefreshed, setDataRefreshed] = useState(false);
+
   const {
     data: orderHistory,
     isLoading: orderHistoryLoading,
-    isFetching: orderIsFetching,
+    isRefetching: orderIsFetching,
     refetch: refetchOrder,
   } = useQuery(
     ["GET_ORDER", { page_no: pageNumber, records_per_page: 10 }],
     GET_ORDER,
     {
+      refetchOnWindowFocus: true,
       onSuccess: (res) => {
-        setData([...data, ...res?.data]);
+        if (dataRefreshed) {
+          setData(res?.data);
+          setDataRefreshed(false);
+        } else {
+          setData([...data, ...res?.data]);
+        }
       },
     }
   );
+  console.log(orderIsFetching, orderHistoryLoading);
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -67,17 +76,28 @@ const OrderHistory = ({ navigation }) => {
             renderItem={({ item }) => (
               <OrderList
                 item={item}
-                status={item.status}
+                status={item?.status}
                 navigation={navigation}
+                refreshData={() => {
+                  setDataRefreshed(true);
+                  if (pageNumber == 1) {
+                    refetchOrder();
+                  } else {
+                    pageNumber(1);
+                  }
+                }}
               />
             )}
             refreshControl={
               <RefreshControl
                 refreshing={!orderHistoryLoading && orderIsFetching}
                 onRefresh={() => {
-                  setData([]);
-                  setPageNumber(1);
-                  refetchOrder();
+                  setDataRefreshed(true);
+                  if (pageNumber == 1) {
+                    refetchOrder();
+                  } else {
+                    pageNumber(1);
+                  }
                 }}
               />
             }

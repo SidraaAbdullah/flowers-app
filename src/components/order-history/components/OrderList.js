@@ -3,16 +3,15 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import { getOrderStatus } from "../../../hooks/socket-api";
 
-const OrderList = ({ status, navigation, item }) => {
+const OrderList = ({ status, navigation, item, refreshData }) => {
   const [response, setResponse] = useState(status);
   useEffect(() => {
     getOrderStatus(item, setResponse);
   }, []);
-  console.log(item);
 
   return (
     <>
-      {item?.status == "DELIVERED" && (
+      {response === "DELIVERED" && (
         <TouchableOpacity onPress={() => navigation.navigate("reviewScreen")}>
           <Text
             style={{
@@ -27,9 +26,12 @@ const OrderList = ({ status, navigation, item }) => {
         </TouchableOpacity>
       )}
       <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("singleOrderHistory", { item: item })
-        }
+        onPress={async () => {
+          navigation.navigate("singleOrderHistory", {
+            item,
+            refreshData,
+          });
+        }}
       >
         <View style={styles.border}>
           <View

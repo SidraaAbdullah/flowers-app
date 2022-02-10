@@ -4,7 +4,7 @@ export * from "./FilterList";
 export * from "./List";
 export * from "./BoxList";
 export * from "./ListSetting";
-export * from "./count";
+export * from "./Count";
 export * from "./Rating";
 export * from "./CategoryBox";
 export * from "./CategoryHeader";
