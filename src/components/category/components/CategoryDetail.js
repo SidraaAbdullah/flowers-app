@@ -10,6 +10,7 @@ const CategoryDetail = ({ navigation, route }) => {
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [data, setData] = useState([]);
+  const [dataRefreshed, setDataRefreshed] = useState(false);
   const { categoryName, categoryId } = route?.params || {};
 
   const {
@@ -30,10 +31,16 @@ const CategoryDetail = ({ navigation, route }) => {
     PRODUCT,
     {
       onSuccess: (res) => {
-        setData([...data, ...res?.data]);
+        if (dataRefreshed) {
+          setData(res?.data);
+          setDataRefreshed(false);
+        } else {
+          setData([...data, ...res?.data]);
+        }
       },
     }
   );
+
   const filterData = [
     { id: "1", name: "Over 4.5" },
     { id: "2", name: "Browser by Bouquets" },
@@ -46,11 +53,21 @@ const CategoryDetail = ({ navigation, route }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={categoryName} />
       <View style={{ flex: 1 }}>
-        <View style={{ paddingHorizontal: 4, paddingRight: 6 }}>
+        <View
+          style={{
+            marginTop: 7,
+            marginBottom:10,
+            marginLeft: 20,
+            marginRight: 20,
+            borderWidth: 2,
+            borderColor: "#f9f9f9",
+            borderRadius: 5,
+          }}
+        >
           <SearchBar
             value={search}
             onChangeText={(e) => {
-              setData([]);
+              setDataRefreshed(true);
               setPageNumber(1);
               setSearch(e);
             }}
@@ -77,10 +94,10 @@ const CategoryDetail = ({ navigation, route }) => {
           productIsLoading={productIsLoading}
           pageNumber={pageNumber}
           setPageNumber={setPageNumber}
-          data={data || []}
-          setData={setData}
+          data={data?.length ? data : products?.data}
           refetchProducts={refetchProducts}
           productIsFetching={productIsFetching}
+          setDataRefreshed={setDataRefreshed}
         />
       </View>
     </View>
