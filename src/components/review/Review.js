@@ -1,10 +1,10 @@
 import React from "react";
 import {
-    TouchableOpacity,
-    StyleSheet,
-    View,
-    Text,
-    ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import Header from "../../components/header";
@@ -13,30 +13,32 @@ import { CommentBox } from "./components/commentBox";
 import { ProductBox } from "./components/productBox";
 import { ProductReviewHeader } from "./components/productReviewHeader";
 
-
-
 const Review = ({ navigation }) => {
-    return (
-        <View style={{ flex: 1, backgroundColor: "white" }}>
-            <Header headingText="Product Review" />
-            <ScrollView>
-                <View style={{ alignItems: 'center' }}>
-                    <ProductReviewHeader image />
-                    <ProductBox image name="Flowers in Box" message="Please rate your feedback will help" />
-                    <ProductBox image name="Salman Siddiqui" message="Please rate our Rider" />
-                    <CommentBox />
-                    <View style={{ width: "90%" }}>
-                        <CommonButton text="ADD REVIEW" />
-                    </View>
-                </View>
-
-            </ScrollView>
-
+  return (
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      <Header headingText="Product Review" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ alignItems: "center" }}>
+          <ProductReviewHeader image />
+          <ProductBox
+            image
+            name="Flowers in Box"
+            message="Please rate your feedback will help"
+          />
+          <ProductBox
+            image
+            name="Salman Siddiqui"
+            message="Please rate our Rider"
+          />
+          <CommentBox />
+          <View style={{ width: "90%" }}>
+            <CommonButton text="ADD REVIEW" />
+          </View>
         </View>
-    );
+      </ScrollView>
+    </View>
+  );
 };
 export default Review;
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});

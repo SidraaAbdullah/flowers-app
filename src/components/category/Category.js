@@ -4,8 +4,6 @@ import {
   StyleSheet,
   View,
   Text,
-  ScrollView,
-  Platform,
   FlatList,
 } from "react-native";
 import Header from "../../components/header";

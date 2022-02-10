@@ -53,8 +53,8 @@ const AddAdress = () => {
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <Header screen="profile" headingText="Address Setting" />
-      <TopImage headingText="Add Address" />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <TopImage headingText="Add Address" />
         <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
           {savedAddresses?.data?.map((data) => (
             <RadioButton

@@ -62,7 +62,7 @@ const SingleOrder = ({ navigation, route }) => {
               <DeliveryStatus item={item} />
               <OrderCancel item={item} />
             </View>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <OrderDetail navigation={navigation} item={item} />
             </ScrollView>
           </View>

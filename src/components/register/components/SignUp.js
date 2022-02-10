@@ -42,7 +42,7 @@ const SignUp = ({ navigation }) => {
   };
 
   return (
-    <ScrollView style={style?.container}>
+    <ScrollView style={style?.container} showsVerticalScrollIndicator={false}>
       <Formik
         initialValues={signUpInitialValues}
         validationSchema={signUpValidationSchema}

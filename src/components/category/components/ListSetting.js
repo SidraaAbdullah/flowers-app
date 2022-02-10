@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ScrollView,
   StyleSheet,
   FlatList,
 } from "react-native";
@@ -12,6 +11,7 @@ import { List, BoxList } from ".";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
 import { SingleProductDetail } from "../../skeletons/singleProductDetail";
+import { object } from "yup/lib/locale";
 
 const ListSetting = ({
   navigation,
@@ -26,7 +26,7 @@ const ListSetting = ({
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const refRBSheet = useRef();
-
+  console.log(products);
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -67,7 +67,7 @@ const ListSetting = ({
         </View>
       ) : (
         <>
-          {products?.data ? (
+          {products?.data?.length ? (
             <FlatList
               data={products?.data || []}
               numColumns={2}

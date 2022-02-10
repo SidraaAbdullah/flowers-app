@@ -40,7 +40,7 @@ const PersonalInformation = () => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header screen="profile" headingText="Personal Information" />
       <TopImage headingText="Sidra Abdullah" personalInfo />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
           <Input
             label="Phone Number"

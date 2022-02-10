@@ -57,18 +57,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderStyle: "dashed",
     borderRadius: 8,
-    borderColor: "lightgray",
+    borderColor: "#f0f0f0",
     backgroundColor: "white",
     marginBottom: 8,
   },
   bgColorImage: {
-    backgroundColor: "lightgray",
+    backgroundColor: "#f0f0f0",
     width: 80,
     height: 80,
     borderRadius: 5,
   },
   bgColor: {
-    backgroundColor: "lightgray",
+    backgroundColor: "#f0f0f0",
     margin: 1,
   },
 });

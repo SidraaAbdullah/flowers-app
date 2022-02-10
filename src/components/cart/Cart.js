@@ -56,8 +56,8 @@ const Cart = ({ navigation, cartItems }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Cart" screen="category" />
       <View style={{ marginVertical: 5, marginTop: 20, flex: 1 }}>
-        <TopSection />
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <TopSection />
           <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
             {cartItems?.map((item) => (
               <CartCard item={item} key={item?._id} />

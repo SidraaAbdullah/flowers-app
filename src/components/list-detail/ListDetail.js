@@ -49,7 +49,7 @@ const ListDetail = ({ route, navigation }) => {
             style={{ width: 110, height: 110 }}
           />
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ margin: 15 }}>
             <View style={styles.border}>
               <Text
