@@ -4,7 +4,7 @@ import { Icon } from "react-native-elements";
 import { getOrderStatus } from "../../../hooks/socket-api";
 
 const DeliveryStatus = ({ item }) => {
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState(item?.status);
 
   useEffect(() => {
     getOrderStatus(item, setResponse);

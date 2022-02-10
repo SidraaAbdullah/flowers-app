@@ -5,8 +5,8 @@ import { Icon } from "react-native-elements";
 import { OrderCancelSheet } from "../../bottom-sheet";
 import { getOrderStatus } from "../../../hooks/socket-api";
 
-const OrderCancel = ({ item }) => {
-  const [response, setResponse] = useState();
+const OrderCancel = ({ item, refreshData }) => {
+  const [response, setResponse] = useState(item?.status);
 
   useEffect(() => {
     getOrderStatus(item, setResponse);
@@ -28,7 +28,11 @@ const OrderCancel = ({ item }) => {
         <Icon name="phone" color="white" type="font-awesome" />
         <Text style={styles.text}>Call</Text>
       </View>
-      <OrderCancelSheet item={item} refRBSheet={refRBSheet} />
+      <OrderCancelSheet
+        refreshData={refreshData}
+        item={item}
+        refRBSheet={refRBSheet}
+      />
     </View>
   );
 };
