@@ -5,6 +5,7 @@ import {
   View,
   Text,
   FlatList,
+  RefreshControl,
 } from "react-native";
 import Header from "../../components/header";
 import { CategoryBox, CategoryHeader } from "./components/index";
@@ -21,10 +22,12 @@ const Category = ({ navigation }) => {
   const refRBSheet = useRef();
   const [location] = useStorage("ca_location", { isObject: true });
   const [search, setSearch] = useState("");
-  const { data: category, isLoading: categoriesLoading } = useQuery(
-    ["CATEGORY", { search }],
-    CATEGORY
-  );
+  const {
+    data: category,
+    isLoading: categoriesLoading,
+    isFetching: categoryIsFetching,
+    refetch: refetchCategories,
+  } = useQuery(["CATEGORY", { search }], CATEGORY);
   // console.log(location.address);
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -47,45 +50,56 @@ const Category = ({ navigation }) => {
         <CategoriesHomePage />
       ) : (
         <>
-          {category?.data?.length ? (
-            <FlatList
-              data={category?.data || []}
-              showsVerticalScrollIndicator={false}
-              numColumns={2}
-              contentContainerStyle={[
-                {
-                  marginBottom: 20,
-                },
-              ]}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  key={item?._id}
-                  onPress={() =>
-                    navigation.navigate("categoryDetail", {
-                      categoryName: item?.name,
-                      categoryId: item?._id,
-                    })
-                  }
-                  style={{ width: "48%", margin: 2 }}
+          <FlatList
+            data={category?.data || []}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            bounces={true}
+            contentContainerStyle={[
+              {
+                marginBottom: 20,
+                flexGrow: 1,
+              },
+            ]}
+            refreshControl={
+              <RefreshControl
+                refreshing={categoryIsFetching}
+                onRefresh={() => {
+                  refetchCategories();
+                }}
+              />
+            }
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                key={item?._id}
+                onPress={() =>
+                  navigation.navigate("categoryDetail", {
+                    categoryName: item?.name,
+                    categoryId: item?._id,
+                  })
+                }
+                style={{ width: "48%", margin: 2 }}
+              >
+                <CategoryBox item={item} />
+              </TouchableOpacity>
+            )}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index) => index}
+            ListEmptyComponent={() =>
+              !categoriesLoading &&
+              !categoryIsFetching && (
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 >
-                  <CategoryBox item={item} />
-                </TouchableOpacity>
-              )}
-              showsHorizontalScrollIndicator={false}
-              bounces={false}
-              keyExtractor={(item, index) => index}
-            />
-          ) : (
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Text>Sorry no categories available</Text>
-            </View>
-          )}
+                  <Text>Sorry no categories available</Text>
+                </View>
+              )
+            }
+          />
         </>
       )}
 

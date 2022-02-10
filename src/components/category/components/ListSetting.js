@@ -72,68 +72,79 @@ const ListSetting = ({
         </View>
       ) : (
         <>
-          {data?.length ? (
-            <FlatList
-              data={data || []}
-              showsVerticalScrollIndicator={false}
-              numColumns={2}
-              contentContainerStyle={[
-                {
-                  marginBottom: 20,
-                },
-              ]}
-              refreshControl={
-                <RefreshControl
-                  refreshing={productIsFetching}
-                  onRefresh={() => {
-                    setData([]);
-                    setPageNumber(1);
-                    refetchProducts();
-                  }}
-                />
-              }
-              renderItem={({ item }) => (
-                <>
-                  {value === "boxStyle" ? (
-                    <BoxList
-                      item={item}
-                      key={item?._id}
-                      navigation={navigation}
-                    />
-                  ) : value === "listStyle" ? (
-                    <List item={item} key={item?._id} navigation={navigation} />
-                  ) : null}
-                </>
-              )}
-              showsHorizontalScrollIndicator={false}
-              bounces={true}
-              keyExtractor={(item, index) => index}
-              onEndReached={() => {
-                if (pageNumber < products?.pagination?.totalPages) {
-                  if (!productIsLoading) {
-                    setPageNumber((prev) => prev + 1);
-                  }
+          <FlatList
+            data={data || []}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            contentContainerStyle={[
+              {
+                marginBottom: 20,
+                flexGrow: 1,
+              },
+            ]}
+            refreshControl={
+              <RefreshControl
+                refreshing={!productIsLoading && productIsFetching}
+                onRefresh={() => {
+                  setData([]);
+                  setPageNumber(1);
+                  refetchProducts();
+                }}
+              />
+            }
+            renderItem={({ item }) => (
+              <>
+                {value === "boxStyle" ? (
+                  <BoxList
+                    item={item}
+                    key={item?._id}
+                    navigation={navigation}
+                  />
+                ) : value === "listStyle" ? (
+                  <List item={item} key={item?._id} navigation={navigation} />
+                ) : null}
+              </>
+            )}
+            showsHorizontalScrollIndicator={false}
+            bounces={true}
+            keyExtractor={(item, index) => index}
+            onEndReached={() => {
+              if (pageNumber < products?.pagination?.totalPages) {
+                if (!productIsLoading) {
+                  setPageNumber((prev) => prev + 1);
                 }
-              }}
-              // ListHeaderComponent={() =>
-              //   orderIsFetching ? <OrderListSkeleton /> : null
-              // }
-              onEndReachedThreshold={0}
-              ListFooterComponent={() =>
-                productIsLoading ? <SingleProductDetail /> : null
               }
-            />
-          ) : (
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Text>Sorry no products available</Text>
-            </View>
-          )}
+            }}
+            ListEmptyComponent={() =>
+              !productIsFetching &&
+              !productIsLoading && (
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text>Sorry no products available</Text>
+                </View>
+              )
+            }
+            // ListHeaderComponent={() =>
+            //   productIsFetching ? (
+            //     <View style={{ width: "50%" }}>
+            //       <SingleProductDetail />
+            //     </View>
+            //   ) : null
+            // }
+            onEndReachedThreshold={0}
+            ListFooterComponent={() =>
+              productIsLoading ? (
+                <View style={{ width: "50%" }}>
+                  <SingleProductDetail />
+                </View>
+              ) : null
+            }
+          />
         </>
       )}
 
