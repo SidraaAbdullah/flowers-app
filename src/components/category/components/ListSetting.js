@@ -20,6 +20,7 @@ const ListSetting = ({
   pageNumber,
   setPageNumber,
   data,
+  setData,
   refetchProducts,
   productIsFetching,
   setDataRefreshed,

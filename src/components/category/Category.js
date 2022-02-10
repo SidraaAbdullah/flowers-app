@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Header from "../../components/header";
 import { CategoryBox, CategoryHeader } from "./components/index";
-import { Icon,} from "react-native-elements";
+import { Icon } from "react-native-elements";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
@@ -17,7 +17,7 @@ import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
 import useStorage from "../../hooks/useStorage";
-import {Rating} from "./components/Rating"
+import { Rating } from "./components/Rating";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -26,7 +26,7 @@ const Category = ({ navigation }) => {
   const {
     data: category,
     isLoading: categoriesLoading,
-    isFetching: categoryIsFetching,
+    isRefetching: categoryIsFetching,
     refetch: refetchCategories,
   } = useQuery(["CATEGORY", { search }], CATEGORY);
 
@@ -67,7 +67,7 @@ const Category = ({ navigation }) => {
             ]}
             refreshControl={
               <RefreshControl
-                refreshing={!categoriesLoading && categoryIsFetching}
+                refreshing={categoryIsFetching}
                 onRefresh={() => {
                   refetchCategories();
                 }}

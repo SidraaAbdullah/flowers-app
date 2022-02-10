@@ -16,8 +16,8 @@ const CategoryDetail = ({ navigation, route }) => {
   const {
     data: products,
     isLoading: productIsLoading,
+    isRefetching: productIsFetching,
     refetch: refetchProducts,
-    isFetching: productIsFetching,
   } = useQuery(
     [
       "PRODUCT",
@@ -56,7 +56,7 @@ const CategoryDetail = ({ navigation, route }) => {
         <View
           style={{
             marginTop: 7,
-            marginBottom:10,
+            marginBottom: 10,
             marginLeft: 20,
             marginRight: 20,
             borderWidth: 2,
