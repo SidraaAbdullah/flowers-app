@@ -1,33 +1,44 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { Icon } from "react-native-elements";
-const Rating = () => {
+import React from 'react';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+// import { Colors } from '../constants/Theme';
+
+const Rating = ({
+  starSize,
+  filled,
+  containerPadding,
+  containerBgColor,
+  notRatedStarColor,
+  type,
+  padding,
+}) => {
+  // alert(filled)
+
   return (
     <View
-      style={{
-        paddingVertical: 5,
-        justifyContent: "center",
-        flexDirection: "row",
-        alignItems: "center",
-      }}
+      style={
+        ({
+          paddingHorizontal: containerPadding ? containerPadding : 2,
+          backgroundColor: containerBgColor ? containerBgColor : 'transparent',
+        },
+        padding ? { alignItems: 'center', } : {})
+      }
     >
-      <Icon name="star" color="#ffbd11" size={18} type="font-awesome" />
-      <Icon name="star" color="#ffbd11" size={18} type="font-awesome" />
-      <Icon name="star" color="#ffbd11" size={18} type="font-awesome" />
-      <Icon name="star" color="lightgray" size={18} type="font-awesome" />
-      <Icon name="star" color="lightgray" size={18} type="font-awesome" />
-      <Text
-        style={{
-          color: "black",
-          marginLeft: 5,
-          marginTop: 3,
-          fontFamily: "ProximaNovaSemiBold",
-          fontSize: 14,
-        }}
-      >
-        4.6
-      </Text>
+      <FontAwesome
+        style={padding ? { marginLeft: '6%', marginRight: '6%', } : {}}
+        name={type === 'half' ? 'star-half-empty' : 'star'}
+        size={starSize ? starSize : 20}
+        color={
+          type === 'filled' || type === 'half'
+            ? '#FFD088'
+            : notRatedStarColor
+        }
+      />
     </View>
   );
 };
-export { Rating };
+export {Rating};
+
+const styles = StyleSheet.create({
+  container: {},
+});
