@@ -6,6 +6,7 @@ import {
   Text,
   ScrollView,
   Platform,
+  FlatList,
 } from "react-native";
 import Header from "../../components/header";
 import { CategoryBox, CategoryHeader } from "./components/index";
@@ -21,8 +22,9 @@ import useStorage from "../../hooks/useStorage";
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
   const [location] = useStorage("ca_location", { isObject: true });
+  const [search, setSearch] = useState("");
   const { data: category, isLoading: categoriesLoading } = useQuery(
-    "CATEGORY",
+    ["CATEGORY", { search }],
     CATEGORY
   );
 
@@ -33,26 +35,30 @@ const Category = ({ navigation }) => {
         dropdownText={location.address || "Current location"}
       />
       <View style={style.searchBar}>
-        <SearchBar placeholder="Search" />
+        <SearchBar
+          value={search}
+          onChangeText={(e) => setSearch(e)}
+          placeholder="Search"
+        />
       </View>
       <CategoryHeader
         headingText="Discover Plant & Flower"
         address="R306 Sharifabd FB Area Block 1 Karachi"
       />
-      <ScrollView>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: 20,
-          }}
-        >
-          {categoriesLoading ? (
-            <CategoriesHomePage />
-          ) : (
-            <>
-              {category?.data?.map((item) => (
+      {categoriesLoading ? (
+        <CategoriesHomePage />
+      ) : (
+        <>
+          {category?.data?.length ? (
+            <FlatList
+              data={category?.data || []}
+              numColumns={2}
+              contentContainerStyle={[
+                {
+                  marginBottom: 20,
+                },
+              ]}
+              renderItem={({ item }) => (
                 <TouchableOpacity
                   key={item?._id}
                   onPress={() =>
@@ -61,15 +67,28 @@ const Category = ({ navigation }) => {
                       categoryId: item?._id,
                     })
                   }
-                  style={{ width: "47%" }}
+                  style={{ width: "48%", margin: 2 }}
                 >
                   <CategoryBox item={item} />
                 </TouchableOpacity>
-              ))}
-            </>
+              )}
+              showsHorizontalScrollIndicator={false}
+              bounces={false}
+              keyExtractor={(item, index) => index}
+            />
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text>Sorry no categories available</Text>
+            </View>
           )}
-        </View>
-      </ScrollView>
+        </>
+      )}
 
       <View>
         <RBSheet

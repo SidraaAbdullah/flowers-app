@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, FlatList } from "react-native";
 import { CategoryName, FilterList, ListSetting } from "../components";
 import Header from "../../header";
 import { useQuery } from "react-query";
 import { PRODUCT } from "../../../queries";
+import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 
 const CategoryDetail = ({ navigation, route }) => {
-  const { data: products } = useQuery("PRODUCT", PRODUCT);
+  const [search, setSearch] = useState("");
+  const { data: products, isLoading: productIsLoading } = useQuery(
+    ["PRODUCT", { search }],
+    PRODUCT
+  );
   const { categoryName, categoryId } = route.params;
   const filterData = [
     { id: "1", name: "Over 4.5" },
@@ -20,7 +25,14 @@ const CategoryDetail = ({ navigation, route }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={categoryName} />
       <View style={{ flex: 1 }}>
-        <View style={{ paddingHorizontal: 15, paddingTop: 20 }}>
+        <View style={{ paddingHorizontal: 4, paddingRight: 6 }}>
+          <SearchBar
+            value={search}
+            onChangeText={(e) => setSearch(e)}
+            placeholder="Search"
+          />
+        </View>
+        <View style={{ paddingHorizontal: 15 }}>
           <CategoryName categoryName={categoryName} />
           <FlatList
             data={filterData}
@@ -37,6 +49,7 @@ const CategoryDetail = ({ navigation, route }) => {
           navigation={navigation}
           products={products}
           categoryId={categoryId}
+          productIsLoading={productIsLoading}
         />
       </View>
     </View>

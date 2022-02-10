@@ -31,6 +31,7 @@ const CategoryBox = ({ item }) => {
             fontSize: 15,
             color: "gray",
             fontFamily: "ProximaNova",
+            marginTop: 5,
           }}
         >
           {item?.description}
@@ -49,5 +50,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 8,
     margin: 4,
+    height: 170,
   },
 });

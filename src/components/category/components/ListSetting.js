@@ -6,12 +6,19 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  FlatList,
 } from "react-native";
 import { List, BoxList } from ".";
 import { CommonButton } from "../../buttons";
 import { Icon } from "react-native-elements";
+import { SingleProductDetail } from "../../skeletons/singleProductDetail";
 
-const ListSetting = ({ navigation, products, categoryId }) => {
+const ListSetting = ({
+  navigation,
+  products,
+  categoryId,
+  productIsLoading,
+}) => {
   const [value, setValue] = useState("boxStyle");
   const changeTo = (val) => {
     setValue(val);
@@ -19,7 +26,7 @@ const ListSetting = ({ navigation, products, categoryId }) => {
   const listColor = value === "listStyle" ? "green" : "black";
   const boxColor = value === "boxStyle" ? "green" : "black";
   const refRBSheet = useRef();
-
+  console.log(products);
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -54,41 +61,59 @@ const ListSetting = ({ navigation, products, categoryId }) => {
           <Icon name="options" type="ionicon" />
         </TouchableOpacity> */}
       </View>
-      <ScrollView>
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            marginLeft: 10,
-            marginRight: 2,
-            marginTop: 10,
-          }}
-        >
-          {value === "boxStyle"
-            ? products?.data?.map(
-                (product) =>
-                  product?.category_id?._id === categoryId && (
-                    <BoxList
-                      item={product}
-                      key={product?._id}
-                      navigation={navigation}
-                    />
-                  )
-              )
-            : value === "listStyle"
-            ? products?.data?.map(
-                (product) =>
-                  product?.category_id?._id === categoryId && (
-                    <List
-                      item={product}
-                      key={product?._id}
-                      navigation={navigation}
-                    />
-                  )
-              )
-            : null}
+      {productIsLoading ? (
+        <View style={{ width: "50%" }}>
+          <SingleProductDetail />
         </View>
-      </ScrollView>
+      ) : (
+        <>
+          {products?.data?.length ? (
+            <FlatList
+              data={products?.data || []}
+              numColumns={2}
+              contentContainerStyle={[
+                {
+                  marginBottom: 20,
+                },
+              ]}
+              renderItem={({ item }) => (
+                <>
+                  {value === "boxStyle"
+                    ? item?.category_id?._id === categoryId && (
+                        <BoxList
+                          item={item}
+                          key={item?._id}
+                          navigation={navigation}
+                        />
+                      )
+                    : value === "listStyle"
+                    ? item?.category_id?._id === categoryId && (
+                        <List
+                          item={item}
+                          key={item?._id}
+                          navigation={navigation}
+                        />
+                      )
+                    : null}
+                </>
+              )}
+              showsHorizontalScrollIndicator={false}
+              bounces={false}
+              keyExtractor={(item, index) => index}
+            />
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text>Sorry no products available</Text>
+            </View>
+          )}
+        </>
+      )}
 
       {/* //Bottom Sheet */}
 
