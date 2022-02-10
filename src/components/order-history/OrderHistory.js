@@ -14,6 +14,8 @@ import { OrderList } from "./components";
 import { useQuery } from "react-query";
 import { GET_ORDER } from "../../queries";
 import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton";
+import LottieView from "lottie-react-native";
+import sorry from "../../assets/images/sorry.json";
 
 const OrderHistory = ({ navigation }) => {
   const { height } = Dimensions.get("window");
@@ -127,7 +129,15 @@ const OrderHistory = ({ navigation }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text>Sorry no orders available</Text>
+                  <LottieView
+                    style={{ width: 250, height: 200 }}
+                    source={sorry}
+                    autoPlay
+                    loop={true}
+                    speed={1}
+                  />
+
+                  <Text style={styles.label}>Sorry No Products available</Text>
                 </View>
               )
             }
@@ -150,5 +160,11 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     textAlign: "center",
     fontFamily: "ProximaNova",
+  },
+  label: {
+    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 18,
+    marginTop: 5,
+    color: "red",
   },
 });
