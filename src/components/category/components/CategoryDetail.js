@@ -10,7 +10,7 @@ const CategoryDetail = ({ navigation, route }) => {
   const [query, setQuery] = useState({ page_no: 1, search: "" });
   const [data, setData] = useState([]);
   const [dataRefreshed, setDataRefreshed] = useState(false);
-  const { categoryName, categoryId } = route?.params || {};
+  const { item } = route?.params || {};
   const {
     data: products,
     isLoading: productIsLoading,
@@ -20,7 +20,7 @@ const CategoryDetail = ({ navigation, route }) => {
     [
       "PRODUCT",
       {
-        category_id: categoryId,
+        category_id: item?._id,
         ...query,
         records_per_page: 10,
       },
@@ -48,18 +48,9 @@ const CategoryDetail = ({ navigation, route }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header headingText={categoryName} />
+      <Header headingText={item?.name} />
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            marginTop: 7,
-            marginBottom: 10,
-            marginLeft: 20,
-            marginRight: 20,
-            marginBottom: 20,
-         
-          }}
-        >
+        <View style={{ marginVertical: 7, marginHorizontal: 20 }}>
           <SearchBar
             value={query?.search}
             onChangeText={(e) => {
@@ -67,23 +58,22 @@ const CategoryDetail = ({ navigation, route }) => {
               setQuery({ page_no: 1, search: e });
             }}
             placeholder="Search"
-            inputStyle={{ backgroundColor: "#f9f9f9",  }}
-          containerStyle={{
-            shadowColor: "gray",
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            shadowOpacity: 0.30,
-            shadowRadius: 100,
-            elevation: 70,
-            
-          }}
-          placeholderTextColor={"lightgray"}
+            inputStyle={{ backgroundColor: "#f9f9f9" }}
+            containerStyle={{
+              shadowColor: "gray",
+              shadowOffset: {
+                width: 0,
+                height: 3,
+              },
+              shadowOpacity: 0.3,
+              shadowRadius: 100,
+              elevation: 70,
+            }}
+            placeholderTextColor={"lightgray"}
           />
         </View>
         <View style={{ paddingHorizontal: 15 }}>
-          <CategoryName categoryName={categoryName} />
+          <CategoryName item={item} />
           <FlatList
             data={filterData}
             renderItem={({ item }) => (
@@ -98,7 +88,7 @@ const CategoryDetail = ({ navigation, route }) => {
         <ListSetting
           navigation={navigation}
           products={products}
-          categoryId={categoryId}
+          categoryId={item?._id}
           productIsLoading={productIsLoading}
           pageNumber={query.page_no}
           setQuery={setQuery}

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -44,17 +44,16 @@ const Category = ({ navigation }) => {
           value={search}
           onChangeText={(e) => setSearch(e)}
           placeholder="Search"
-          inputStyle={{ backgroundColor: "#f9f9f9", }}
+          inputStyle={{ backgroundColor: "#f9f9f9" }}
           containerStyle={{
             shadowColor: "gray",
             shadowOffset: {
               width: 0,
               height: 3,
             },
-            shadowOpacity: 0.30,
+            shadowOpacity: 0.3,
             shadowRadius: 100,
             elevation: 7,
-            
           }}
           placeholderTextColor={"lightgray"}
         />
@@ -92,8 +91,7 @@ const Category = ({ navigation }) => {
                 key={item?._id}
                 onPress={() =>
                   navigation.navigate("categoryDetail", {
-                    categoryName: item?.name,
-                    categoryId: item?._id,
+                    item: item,
                   })
                 }
                 style={{ width: "48%", margin: 2 }}
@@ -146,7 +144,7 @@ const Category = ({ navigation }) => {
               <Text
                 style={{
                   textAlign: "center",
-                  fontSize: 20,
+                  fontSize: 18,
                   fontFamily: "ProximaNovaSemiBold",
                 }}
               >
@@ -155,7 +153,7 @@ const Category = ({ navigation }) => {
               <View style={{ marginTop: 10 }}>
                 <TouchableOpacity style={style.item}>
                   <Icon
-                    name="location"
+                    name="location-outline"
                     size={25}
                     color="black"
                     type="ionicon"
@@ -182,7 +180,12 @@ const Category = ({ navigation }) => {
             </View>
 
             <View style={{ width: "90%" }}>
-              <CommonButton text="Cancel" rightIcon rightIconName="close" />
+              <CommonButton
+                text="Cancel"
+                rightIcon
+                rightIconName="close"
+                onPress={() => refRBSheet.current.close()}
+              />
             </View>
           </View>
         </RBSheet>
@@ -197,7 +200,7 @@ const style = StyleSheet.create({
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
-  
+
     // shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
   },
   searchBar: {
@@ -224,8 +227,8 @@ const style = StyleSheet.create({
   },
   text: {
     paddingLeft: 10,
-    fontSize: 17,
-    fontFamily: "ProximaNovaSemiBold",
+    fontSize: 15,
+    fontFamily: "ProximaNova",
     color: "black",
   },
 });
