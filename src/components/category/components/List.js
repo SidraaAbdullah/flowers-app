@@ -15,7 +15,7 @@ const List = ({ item, navigation }) => {
   };
   return (
     <View style={{ width: "100%" }}>
-      <View style={{ marginRight: 8, marginBottom: 8 }}>
+      <View style={{ marginHorizontal: 5, marginBottom: 8 }}>
         <View style={styles.border}>
           <View style={styles.container}>
             <TouchableOpacity
@@ -56,7 +56,7 @@ const List = ({ item, navigation }) => {
                   }}
                 >
                   <Text style={styles.text}>{item?.name}</Text>
-                  <Text style={styles.text}>{item?.price}</Text>
+                  <Text style={styles.text}>Rs: {item?.price}</Text>
                 </View>
 
                 <Text

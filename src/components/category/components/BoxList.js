@@ -15,7 +15,7 @@ const BoxList = ({ item, navigation }) => {
   };
   return (
     <View style={{ width: "50%" }}>
-      <View style={{ marginBottom: 8, marginRight: 8 }}>
+      <View style={{ marginBottom: 8, marginHorizontal: 5 }}>
         <View style={styles.border}>
           <TouchableOpacity
             activeOpacity={0.5}
