@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -91,8 +91,7 @@ const Category = ({ navigation }) => {
                 key={item?._id}
                 onPress={() =>
                   navigation.navigate("categoryDetail", {
-                    categoryName: item?.name,
-                    categoryId: item?._id,
+                    item: item,
                   })
                 }
                 style={{ width: "48%", margin: 2 }}

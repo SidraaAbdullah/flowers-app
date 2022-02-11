@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Icon } from "react-native-elements";
+import { View, Text, Image } from "react-native";
 
-const CategoryName = ({ categoryName }) => {
+const CategoryName = ({ item }) => {
   return (
     <View>
       <View
@@ -13,7 +12,10 @@ const CategoryName = ({ categoryName }) => {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Icon name="flower-outline" size={30} type="ionicon" />
+          <Image
+            source={{ uri: item?.image }}
+            style={{ width: 40, height: 40 }}
+          />
           <Text
             style={{
               marginHorizontal: 4,
@@ -22,7 +24,7 @@ const CategoryName = ({ categoryName }) => {
               textTransform: "capitalize",
             }}
           >
-            {categoryName}
+            {item?.name}
           </Text>
         </View>
       </View>
@@ -30,8 +32,7 @@ const CategoryName = ({ categoryName }) => {
         <Text
           style={{ fontSize: 15, color: "gray", fontFamily: "ProximaNova" }}
         >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been text ever since the 1500s.
+          {item?.description}
         </Text>
       </View>
     </View>
