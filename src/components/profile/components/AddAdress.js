@@ -11,12 +11,13 @@ import { showToast } from "../../../util/toast";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 import useStorage from "../../../hooks/useStorage";
+import { AddressSkeleton } from "../../skeletons/addressSkeleton";
 
 const AddAdress = () => {
   const navigation = useNavigation();
   const [location] = useStorage("ca_location", { isObject: true });
   const [check, setCheck] = useState({});
-  const { data: savedAddresses, refetch } = useQuery("/user/delivery-address", {
+  const { data: savedAddresses, refetch, isLoading:addressLoading } = useQuery("/user/delivery-address", {
     refetchOnMount: true,
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
@@ -61,31 +62,35 @@ const AddAdress = () => {
       <Header screen="profile" headingText="Address Setting" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <TopImage headingText="Add Address" />
-        <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
-          {savedAddresses?.data?.map((data) => (
-            <RadioButton
-              key={data?._id}
-              check={check?._id}
-              handleClick={() => handleClick(data)}
-              data={data}
-            />
-          ))}
-          <View style={{ marginTop: 10 }}>
-            <CommonButton
-              onPress={handleUpdatePrimaryAdress}
-              text="Save as Primary"
-              screen="profile"
-            />
-            <CommonButton
-              bgColor="#ffbd11"
-              color="black"
-              text="Add new Address"
-              onPress={() => navigation.push("newAddressMap")}
-              rightIcon
-              rightIconName="add-outline"
-            />
+        {addressLoading ? (
+          <AddressSkeleton />
+        ) : (
+          <View style={{ marginHorizontal: 35, marginBottom: 20 }}>
+            {savedAddresses?.data?.map((data) => (
+              <RadioButton
+                key={data?._id}
+                check={check?._id}
+                handleClick={() => handleClick(data)}
+                data={data}
+              />
+            ))}
+            <View style={{ marginTop: 10 }}>
+              <CommonButton
+                onPress={handleUpdatePrimaryAdress}
+                text="Save as Primary"
+                screen="profile"
+              />
+              <CommonButton
+                bgColor="#ffbd11"
+                color="black"
+                text="Add new Address"
+                onPress={() => navigation.push("newAddressMap")}
+                rightIcon
+                rightIconName="add-outline"
+              />
+            </View>
           </View>
-        </View>
+        )}
       </ScrollView>
 
       <View></View>
