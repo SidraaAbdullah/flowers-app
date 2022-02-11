@@ -63,6 +63,7 @@ const Category = ({ navigation }) => {
         headingText="Discover Plant & Flower"
         address={location.address || "Current location"}
       />
+
       {categoriesLoading && !category?.data?.length ? (
         <CategoriesHomePage />
       ) : (
@@ -94,7 +95,7 @@ const Category = ({ navigation }) => {
                     item: item,
                   })
                 }
-                style={{ width: "48%", margin: 2 }}
+                style={{ width: "47%", marginHorizontal: 5 }}
               >
                 <CategoryBox item={item} />
               </TouchableOpacity>
