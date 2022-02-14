@@ -56,7 +56,7 @@ const List = ({ item, navigation }) => {
                   }}
                 >
                   <Text style={styles.text}>{item?.name}</Text>
-                  <Text style={[styles.text, { color: "red" }]}>
+                  <Text style={[styles.text, { color: "#0E5561" }]}>
                     Rs: {item?.price}
                   </Text>
                 </View>
@@ -100,7 +100,7 @@ const List = ({ item, navigation }) => {
                   <Icon
                     name="cart-outline"
                     size={19}
-                    color="black"
+                    color="#0E5561"
                     type="ionicon"
                   />
                 </TouchableOpacity>
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "ProximaNovaSemiBold",
     fontSize: 15,
+    color: "black",
   },
   container: {
     flexDirection: "row",

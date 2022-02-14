@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
   },
   border: {
     borderStyle: "dashed",
-    borderColor: "gray",
+    borderColor: "lightgray",
     borderWidth: 1,
-    backgroundColor: "#ebebeb",
+    backgroundColor: "#f1f1f1",
     borderRadius: 10,
     padding: 15,
     marginBottom: 10,

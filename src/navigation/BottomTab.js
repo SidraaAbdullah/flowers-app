@@ -40,8 +40,8 @@ const App = ({ route }) => {
             />
           );
         },
-        tabBarActiveTintColor: "purple",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: "#0E5561",
+        tabBarInactiveTintColor: "#BEBECD",
       })}
     >
       <Tab.Screen name="Discover">

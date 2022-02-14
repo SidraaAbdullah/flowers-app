@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderStyle: "dashed",
     borderRadius: 8,
-    borderColor: "gray",
+    borderColor: "lightgray",
     backgroundColor: "white",
     marginBottom: 8,
   },

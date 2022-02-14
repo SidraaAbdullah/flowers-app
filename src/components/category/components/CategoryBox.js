@@ -45,7 +45,7 @@ export { CategoryBox };
 const styles = StyleSheet.create({
   container: {
     borderStyle: "dashed",
-    borderColor: "gray",
+    borderColor: "lightgray",
     borderWidth: 1,
     borderRadius: 10,
     padding: 8,

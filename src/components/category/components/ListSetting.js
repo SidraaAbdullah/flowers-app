@@ -29,8 +29,8 @@ const ListSetting = ({
   const changeTo = (val) => {
     setValue(val);
   };
-  const listColor = value === "listStyle" ? "red" : "black";
-  const boxColor = value === "boxStyle" ? "red" : "black";
+  const listColor = value === "listStyle" ? "#0E5561" : "black";
+  const boxColor = value === "boxStyle" ? "#0E5561" : "black";
   return (
     <View style={{ flex: 1 }}>
       <View

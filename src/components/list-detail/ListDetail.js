@@ -115,7 +115,11 @@ const ListDetail = ({ route, navigation }) => {
             >
               <View>
                 <Text
-                  style={{ fontSize: 17, fontFamily: "ProximaNovaSemiBold" }}
+                  style={{
+                    fontSize: 17,
+                    fontFamily: "ProximaNovaSemiBold",
+                    color: "#0E5561",
+                  }}
                 >
                   Rs: {item?.price}
                 </Text>
@@ -151,7 +155,7 @@ const ListDetail = ({ route, navigation }) => {
                 rightIcon
                 rightIconName="cart-outline"
                 rightIconSize={24}
-                bgColor="green"
+                bgColor="#0E5561"
                 onPress={() => handleAddToCart(item)}
               />
             </View>
@@ -168,7 +172,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: "dashed",
     borderRadius: 8,
-    borderColor: "gray",
+    borderColor: "lightgray",
     padding: 10,
   },
 });

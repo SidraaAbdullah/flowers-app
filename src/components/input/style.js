@@ -15,7 +15,7 @@ export const style = StyleSheet.create({
     paddingLeft: 35,
     width: "100%",
     borderStyle: "dashed",
-    borderColor: "gray",
+    borderColor: "lightgray",
   },
   sectionStyle: {
     position: "relative",

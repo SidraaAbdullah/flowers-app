@@ -54,7 +54,7 @@ const BoxList = ({ item, navigation }) => {
                 }}
               >
                 <Text style={styles.text}>{item?.name}</Text>
-                <Text style={[styles.text, { color: "red" }]}>
+                <Text style={[styles.text, { color: "#0E5561" }]}>
                   Rs: {item?.price}
                 </Text>
               </View>
@@ -98,7 +98,7 @@ const BoxList = ({ item, navigation }) => {
               <Icon
                 size={20}
                 name="cart-outline"
-                color="black"
+                color="#0E5561"
                 type="ionicon"
               />
             </TouchableOpacity>
