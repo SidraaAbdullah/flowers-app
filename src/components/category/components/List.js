@@ -79,7 +79,12 @@ const List = ({ item, navigation }) => {
                   alignItems: "center",
                 }}
               >
-                <Rating />
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  {[1, 2, 3, 4, 5].map((val, i) => (
+                    <Rating index={i} />
+                  ))}
+                </View>
+
                 <TouchableOpacity
                   onPress={() => handleAddToCart(item)}
                   style={{

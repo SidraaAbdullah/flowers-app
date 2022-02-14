@@ -54,7 +54,9 @@ const BoxList = ({ item, navigation }) => {
                 }}
               >
                 <Text style={styles.text}>{item?.name}</Text>
-                <Text style={styles.text}>Rs: {item?.price}</Text>
+                <Text style={[styles.text, { color: "red" }]}>
+                  Rs: {item?.price}
+                </Text>
               </View>
 
               <Text
@@ -77,16 +79,27 @@ const BoxList = ({ item, navigation }) => {
               alignItems: "center",
             }}
           >
-            <Rating />
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              {[1, 2, 3, 4, 5].map((val, i) => (
+                <Rating index={i} />
+              ))}
+            </View>
+
             <TouchableOpacity
               onPress={() => handleAddToCart(item)}
               style={{
                 borderRadius: 15,
-                backgroundColor: "black",
-                paddingLeft: 1,
+                backgroundColor: "red",
+                padding: 4,
+                paddingHorizontal: 5,
               }}
             >
-              <Icon size={20} name="add" color="white" type="ionicon" />
+              <Icon
+                size={20}
+                name="cart-outline"
+                color="white"
+                type="ionicon"
+              />
             </TouchableOpacity>
           </View>
         </View>

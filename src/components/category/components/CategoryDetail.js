@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, FlatList } from "react-native";
-import { CategoryName, FilterList, ListSetting } from "../components";
+import { View } from "react-native";
+import { CategoryName, ListSetting } from "../components";
 import Header from "../../header";
 import { useQuery } from "react-query";
 import { PRODUCT } from "../../../queries";
@@ -37,15 +37,6 @@ const CategoryDetail = ({ navigation, route }) => {
       },
     }
   );
-
-  const filterData = [
-    { id: "1", name: "Over 4.5" },
-    { id: "2", name: "Browser by Bouquets" },
-    { id: "3", name: "Buy flowers in Box" },
-    { id: "4", name: "Browser by Bouquets" },
-    { id: "5", name: "Buy flowers in Box" },
-  ];
-
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={item?.name} />
@@ -72,18 +63,8 @@ const CategoryDetail = ({ navigation, route }) => {
             placeholderTextColor={"lightgray"}
           />
         </View>
-        <View style={{ paddingHorizontal: 15 }}>
+        <View style={{ paddingHorizontal: 15, marginBottom: 15 }}>
           <CategoryName item={item} />
-          <FlatList
-            data={filterData}
-            renderItem={({ item }) => (
-              <FilterList navigation={navigation} item={item} />
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            bounces={false}
-            keyExtractor={(item) => item.id}
-          />
         </View>
         <ListSetting
           navigation={navigation}
