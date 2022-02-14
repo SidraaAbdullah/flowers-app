@@ -69,7 +69,11 @@ const ListDetail = ({ route, navigation }) => {
                   marginTop: 5,
                 }}
               >
-                <Rating />
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  {[1, 2, 3, 4, 5].map((val, i) => (
+                    <Rating key={i} />
+                  ))}
+                </View>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("viewReviewsScreen")}
                 >

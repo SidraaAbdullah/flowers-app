@@ -3,60 +3,57 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { Rating } from "./Rating";
 
-
 const ViewReviewsHeader = () => {
-    return (
+  return (
+    <View>
+      <View
+        style={{
+          alignItems: "center",
+          paddingVertical: 10,
+        }}
+      >
         <View>
-            <View
-                style={{
-                    alignItems: 'center',
-                    paddingVertical: 10
-                }}
-            >
-                <View>
-                    <Image
-                        source={{
-                            uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
-                        }}
-                        style={{ width: 70, height: 70 }}
-                    />
-
-                </View>
-
-                <Text style={style.header}>"Chattaunga" BAnquet</Text>
-
-            </View>
-            <View style={{ alignItems: 'flex-start' }}>
-                <Text style={style.para}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.
-                </Text>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Rating />
-                    <Text>(2902 ratings)</Text>
-                </View>
-            </View>
-
-                    
-
+          <Image
+            source={{
+              uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+            }}
+            style={{ width: 70, height: 70 }}
+          />
         </View>
-    );
+
+        <Text style={style.header}>"Chattaunga" BAnquet</Text>
+      </View>
+      <View style={{ alignItems: "flex-start" }}>
+        <Text style={style.para}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            {[1, 2, 3, 4, 5].map((val, i) => (
+              <Rating key={i} />
+            ))}
+          </View>
+          <Text>(2902 ratings)</Text>
+        </View>
+      </View>
+    </View>
+  );
 };
 export { ViewReviewsHeader };
 
 const style = StyleSheet.create({
-    header: {
-        fontSize: 20,
-        fontFamily: "ProximaNovaBold",
-        paddingVertical: 10,
-
-    },
-    para: {
-        fontSize: 14,
-        color: 'gray',
-        fontFamily: "ProximaNova",
-        // paddingHorizontal: 30,
-        // textAlign: 'center',
-        lineHeight: 18
-    }
+  header: {
+    fontSize: 20,
+    fontFamily: "ProximaNovaBold",
+    paddingVertical: 10,
+  },
+  para: {
+    fontSize: 14,
+    color: "gray",
+    fontFamily: "ProximaNova",
+    // paddingHorizontal: 30,
+    // textAlign: 'center',
+    lineHeight: 18,
+  },
 });

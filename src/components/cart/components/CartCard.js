@@ -49,7 +49,11 @@ const CartCard = ({ item }) => {
                 alignItems: "center",
               }}
             >
-              <Rating />
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                {[1, 2, 3, 4, 5].map((val, i) => (
+                  <Rating key={i} />
+                ))}
+              </View>
               <Count count={count} setCount={setCount} />
             </View>
           </View>

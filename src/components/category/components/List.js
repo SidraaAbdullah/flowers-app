@@ -56,7 +56,9 @@ const List = ({ item, navigation }) => {
                   }}
                 >
                   <Text style={styles.text}>{item?.name}</Text>
-                  <Text style={styles.text}>Rs: {item?.price}</Text>
+                  <Text style={[styles.text, { color: "red" }]}>
+                    Rs: {item?.price}
+                  </Text>
                 </View>
 
                 <Text
@@ -81,7 +83,7 @@ const List = ({ item, navigation }) => {
               >
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   {[1, 2, 3, 4, 5].map((val, i) => (
-                    <Rating index={i} />
+                    <Rating key={i} />
                   ))}
                 </View>
 
@@ -89,14 +91,18 @@ const List = ({ item, navigation }) => {
                   onPress={() => handleAddToCart(item)}
                   style={{
                     borderRadius: 15,
-                    backgroundColor: "black",
-                    width: 28,
-                    height: 28,
-                    padding: 1,
-                    paddingLeft: 3,
+                    backgroundColor: "white",
+                    padding: 4,
+                    paddingHorizontal: 5,
+                    elevation: 3,
                   }}
                 >
-                  <Icon name="add" color="white" type="ionicon" />
+                  <Icon
+                    name="cart-outline"
+                    size={19}
+                    color="black"
+                    type="ionicon"
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderStyle: "dashed",
     borderRadius: 8,
-    borderColor: "gray",
+    borderColor: "lightgray",
     backgroundColor: "white",
   },
   text: {

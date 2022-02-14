@@ -81,7 +81,7 @@ const BoxList = ({ item, navigation }) => {
           >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               {[1, 2, 3, 4, 5].map((val, i) => (
-                <Rating index={i} />
+                <Rating key={i} />
               ))}
             </View>
 
@@ -89,15 +89,16 @@ const BoxList = ({ item, navigation }) => {
               onPress={() => handleAddToCart(item)}
               style={{
                 borderRadius: 15,
-                backgroundColor: "red",
+                backgroundColor: "white",
                 padding: 4,
                 paddingHorizontal: 5,
+                elevation: 3,
               }}
             >
               <Icon
                 size={20}
                 name="cart-outline"
-                color="white"
+                color="black"
                 type="ionicon"
               />
             </TouchableOpacity>
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderStyle: "dashed",
     borderRadius: 8,
-    borderColor: "gray",
+    borderColor: "lightgray",
     paddingTop: 10,
     paddingBottom: 6,
     paddingHorizontal: 8,
