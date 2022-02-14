@@ -18,12 +18,12 @@ const Cart = ({ navigation, cartItems }) => {
   const totalPrice = prices?.reduce(
     (previous, current) => (previous += current)
   );
-  //console.log(totalPrice);
+  //console.log(cartItem);
 
   const filterCartItems = (items) => {
     let orderItems = [];
     cartItems.map((item) => {
-      const { _id, quantity = "40", price = totalPrice } = item;
+      const { _id, quantity, price = totalPrice } = item;
       orderItems.push({ product_id: _id, quantity, price });
     });
     return orderItems;
@@ -51,7 +51,6 @@ const Cart = ({ navigation, cartItems }) => {
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Cart" screen="category" />

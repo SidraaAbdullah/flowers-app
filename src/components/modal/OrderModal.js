@@ -1,13 +1,16 @@
 import React from "react";
 import { Overlay } from "react-native-elements";
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { CommonButton } from "../buttons";
+import LottieView from "lottie-react-native";
 
 const OrderModal = ({ handleOpen, isOpen, navigation }) => {
   return (
     <Overlay
       overlayStyle={{
         borderRadius: 10,
-        padding: 30,
+        padding: 20,
+        width: "90%",
       }}
       isVisible={isOpen}
       onBackdropPress={handleOpen}
@@ -18,14 +21,26 @@ const OrderModal = ({ handleOpen, isOpen, navigation }) => {
           justifyContent: "center",
         }}
       >
-        <Image
-          source={require("../../assets/images/check.png")}
-          style={{ height: 90, width: 90 }}
+        <LottieView
+          style={{ height: 200, width: 200 }}
+          source={require("../../assets/lottie/29390-your-order-is-confirmed.json")}
+          autoPlay
+          loop={true}
+          speed={1}
         />
         <Text style={styles.text}>You have placed the order successfully!</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-          <Text style={styles.status}>Check status of delivery</Text>
-        </TouchableOpacity>
+        <CommonButton
+          rightIcon
+          onPress={() =>
+            navigation.navigate("home", {
+              screen: "Order history",
+              params: {
+                screen: "orderHistory",
+              },
+            })
+          }
+          text="Check status of delivery"
+        />
       </View>
     </Overlay>
   );
@@ -37,13 +52,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontFamily: "ProximaNovaSemiBold",
+    marginBottom: 20,
   },
   status: {
-    paddingTop: 25,
     textAlign: "center",
     fontSize: 16,
     fontFamily: "ProximaNova",
-    color: "blue",
+    color: "white",
+    padding: 10,
+    paddingHorizontal: 18,
   },
 });
 
