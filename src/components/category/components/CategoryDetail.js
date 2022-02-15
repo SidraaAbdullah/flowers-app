@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { CategoryName, ListSetting } from "../components";
 import Header from "../../header";
 import { useQuery } from "react-query";
@@ -41,7 +41,7 @@ const CategoryDetail = ({ navigation, route }) => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={item?.name} />
       <View style={{ flex: 1 }}>
-        <View style={{ marginVertical: 7, marginHorizontal: 20 }}>
+        <View style={style.searchBarBox}>
           <SearchBar
             value={query?.search}
             onChangeText={(e) => {
@@ -49,18 +49,8 @@ const CategoryDetail = ({ navigation, route }) => {
               setQuery({ page_no: 1, search: e });
             }}
             placeholder="Search"
-            inputStyle={{ backgroundColor: "#f9f9f9" }}
-            containerStyle={{
-              shadowColor: "gray",
-              shadowOffset: {
-                width: 0,
-                height: 3,
-              },
-              shadowOpacity: 0.3,
-              shadowRadius: 100,
-              elevation: 70,
-            }}
-            placeholderTextColor={"lightgray"}
+            inputStyle={style.inputStyle}
+            placeholderTextColor={"black"}
           />
         </View>
         <View style={{ paddingHorizontal: 15, marginBottom: 15 }}>
@@ -83,3 +73,19 @@ const CategoryDetail = ({ navigation, route }) => {
   );
 };
 export { CategoryDetail };
+
+const style = StyleSheet.create({
+  searchBarBox: {
+    marginTop: 5,
+  },
+  inputStyle: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    borderColor: "lightgray",
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderStyle: "dashed",
+    fontSize: 14,
+    fontFamily: "ProximaNova",
+  },
+});

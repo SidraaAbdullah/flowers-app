@@ -9,17 +9,14 @@ import {
 } from "react-native";
 import Header from "../../components/header";
 import { CategoryBox, CategoryHeader } from "./components/index";
-import { Icon } from "react-native-elements";
-import RBSheet from "react-native-raw-bottom-sheet";
-import { CommonButton } from "../buttons";
 import SearchBar from "react-native-elements/dist/searchbar/SearchBar-ios";
 import { useQuery } from "react-query";
 import { CATEGORY } from "../../queries";
 import { CategoriesHomePage } from "../skeletons/categoriesHomePage";
 import useStorage from "../../hooks/useStorage";
-import { Rating } from "./components/Rating";
 import LottieView from "lottie-react-native";
 import sorry from "../../assets/images/sorry.json";
+import LocationSheet from "../bottom-sheet/LocationSheet";
 
 const Category = ({ navigation }) => {
   const refRBSheet = useRef();
@@ -44,18 +41,8 @@ const Category = ({ navigation }) => {
           value={search}
           onChangeText={(e) => setSearch(e)}
           placeholder="Search"
-          inputStyle={{ backgroundColor: "#f9f9f9" }}
-          containerStyle={{
-            shadowColor: "gray",
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            shadowOpacity: 0.3,
-            shadowRadius: 100,
-            elevation: 7,
-          }}
-          placeholderTextColor={"lightgray"}
+          inputStyle={style.inputStyle}
+          placeholderTextColor={"black"}
         />
       </View>
 
@@ -65,7 +52,11 @@ const Category = ({ navigation }) => {
       />
 
       {categoriesLoading && !category?.data?.length ? (
-        <CategoriesHomePage />
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {[1, 2, 3, 4, 5, 6].map((v, i) => (
+            <CategoriesHomePage key={i} />
+          ))}
+        </View>
       ) : (
         <>
           <FlatList
@@ -127,70 +118,7 @@ const Category = ({ navigation }) => {
           />
         </>
       )}
-
-      <View>
-        <RBSheet
-          ref={refRBSheet}
-          closeOnDragDown={true}
-          closeOnPressMask={true}
-          height={230}
-          customStyles={{
-            draggableIcon: {
-              backgroundColor: "#000",
-            },
-          }}
-        >
-          <View style={{ flexGrow: 1, alignItems: "center" }}>
-            <View style={{ width: "100%", borderRadius: 5, padding: 10 }}>
-              <Text
-                style={{
-                  textAlign: "center",
-                  fontSize: 18,
-                  fontFamily: "ProximaNovaSemiBold",
-                }}
-              >
-                Select Delivery Address
-              </Text>
-              <View style={{ marginTop: 10 }}>
-                <TouchableOpacity style={style.item}>
-                  <Icon
-                    name="location-outline"
-                    size={25}
-                    color="black"
-                    type="ionicon"
-                  />
-                  <Text style={style.text}>
-                    {location.address || "Current location"}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={style.item}
-                  onPress={() =>
-                    navigation.navigate("home", {
-                      screen: "Account",
-                      params: {
-                        screen: "addAddress",
-                      },
-                    })
-                  }
-                >
-                  <Icon name="add" size={25} color="black" type="ionicon" />
-                  <Text style={style.text}>Add an Address</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View style={{ width: "90%" }}>
-              <CommonButton
-                text="Cancel"
-                rightIcon
-                rightIconName="close"
-                onPress={() => refRBSheet.current.close()}
-              />
-            </View>
-          </View>
-        </RBSheet>
-      </View>
+      <LocationSheet refRBSheet={refRBSheet} location={location} />
     </View>
   );
 };
@@ -199,16 +127,16 @@ export default Category;
 const style = StyleSheet.create({
   searchBarBox: {
     marginTop: 5,
-    marginLeft: 20,
-    marginRight: 20,
-
-    // shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
   },
-  searchBar: {
-    // shadowColor: "blue",
-    // shadowOffset: 2,
-    // shadowOpacity: 0.2,
-    // shadowRadius: 3,
+  inputStyle: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    borderColor: "lightgray",
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderStyle: "dashed",
+    fontSize: 14,
+    fontFamily: "ProximaNova",
   },
   label: {
     fontFamily: "ProximaNovaSemiBold",
@@ -216,7 +144,6 @@ const style = StyleSheet.create({
     marginTop: 5,
     color: "red",
   },
-
   item: {
     flexDirection: "row",
     alignItems: "center",
@@ -228,7 +155,7 @@ const style = StyleSheet.create({
   },
   text: {
     paddingLeft: 10,
-    fontSize: 15,
+    fontSize: 14,
     fontFamily: "ProximaNova",
     color: "black",
   },
