@@ -4,7 +4,7 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { CommonButton } from "../buttons";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const LocationSheet = ({ refRBSheet, location }) => {
+const LocationSheet = ({ refRBSheet, location, navigation }) => {
   return (
     <View>
       <RBSheet
@@ -37,14 +37,15 @@ const LocationSheet = ({ refRBSheet, location }) => {
               </View>
               <TouchableOpacity
                 style={style.item}
-                onPress={() =>
+                onPress={() => {
+                  refRBSheet.current.close();
                   navigation.navigate("home", {
                     screen: "Account",
                     params: {
                       screen: "addAddress",
                     },
-                  })
-                }
+                  });
+                }}
               >
                 <Icon name="add" size={25} color="black" type="ionicon" />
                 <Text style={style.text}>Add an Address</Text>

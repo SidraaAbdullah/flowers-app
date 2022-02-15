@@ -122,7 +122,11 @@ const Category = ({ navigation }) => {
           />
         </>
       )}
-      <LocationSheet refRBSheet={refRBSheet} location={location} />
+      <LocationSheet
+        navigation={navigation}
+        refRBSheet={refRBSheet}
+        location={location}
+      />
     </View>
   );
 };

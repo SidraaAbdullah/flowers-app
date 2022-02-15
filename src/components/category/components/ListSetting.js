@@ -134,7 +134,7 @@ const ListSetting = ({
                     speed={1}
                   />
 
-                  <Text style={styles.label}>Sorry No Products available</Text>
+                  <Text style={styles.label}>Sorry no products available</Text>
                 </View>
               )
             }
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: "ProximaNovaSemiBold",
     fontSize: 18,
-    marginTop: 5,
-    color: "red",
+    marginTop: 20,
+    color: "black",
   },
 });
