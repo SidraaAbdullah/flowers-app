@@ -98,7 +98,7 @@ const PersonalInformation = () => {
               text="Save"
               screen="profile"
               isIcon
-              bgColor="#1c74bc"
+              // bgColor="#1c74bc"
               onPress={() => handleUpdateUser()}
             />
           </View>

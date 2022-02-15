@@ -4,7 +4,7 @@ import { styles } from "./style";
 import { Icon } from "react-native-elements";
 
 const CommonButton = (props) => {
-  const backgroundColor = props.bgColor ? props.bgColor : "black";
+  const backgroundColor = props.bgColor ? props.bgColor : '#FF1843';
   const color = props.color ? props.color : "white";
   const padding = props.paddingVertical ? props.paddingVertical : 12;
 
@@ -40,7 +40,7 @@ const CommonButton = (props) => {
           <Icon
             size={props.rightIconSize || 30}
             name={props.rightIconName || "arrow-forward-outline"}
-            color={props.rightIconColor || "black"}
+            color={props.rightIconColor || "#FF1843"}
             type={props.rightIconType || "ionicon"}
           />
         </View>

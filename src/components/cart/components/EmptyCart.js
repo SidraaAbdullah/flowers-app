@@ -24,8 +24,8 @@ const EmptyCart = ({ navigation }) => {
           text="Shop Now"
           rightIcon
           rightIconName="cart-outline"
-          bgColor="#ffbd11"
-          color="black"
+          // bgColor="#ffbd11"
+          // color="black"
           onPress={() => navigation.navigate("category")}
         />
       </View>

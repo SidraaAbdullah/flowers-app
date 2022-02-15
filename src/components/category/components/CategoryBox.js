@@ -44,12 +44,16 @@ export { CategoryBox };
 
 const styles = StyleSheet.create({
   container: {
-    borderStyle: "dashed",
-    borderColor: "lightgray",
-    borderWidth: 1,
-    borderRadius: 10,
+    backgroundColor:'#FFFFFF',
+    // borderStyle: "dashed",
+    // borderColor: "lightgray",
+    // borderWidth: 1,
+    borderRadius: 20,
     padding: 8,
     marginBottom: 10,
     height: 170,
+    shadowColor:'gray',
+    elevation:10,
+    shadowRadius:100
   },
 });
