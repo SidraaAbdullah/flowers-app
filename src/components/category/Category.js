@@ -115,7 +115,7 @@ const Category = ({ navigation }) => {
                     speed={1}
                   />
 
-                  <Text style={style.label}>Sorry No Products available</Text>
+                  <Text style={style.label}>Sorry no categories available</Text>
                 </View>
               )
             }
@@ -157,8 +157,8 @@ const style = StyleSheet.create({
   label: {
     fontFamily: "ProximaNovaSemiBold",
     fontSize: 18,
-    marginTop: 5,
-    color: "red",
+    marginTop: 20,
+    color: "black",
   },
   item: {
     flexDirection: "row",
