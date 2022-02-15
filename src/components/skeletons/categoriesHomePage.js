@@ -20,13 +20,12 @@ const styles = StyleSheet.create({
   container: {
     borderStyle: "dashed",
     borderColor: "#f0f0f0",
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 10,
     padding: 8,
     margin: 4,
-    width: "48%",
+    width: "47%",
     height: 170,
-    // backgroundColor:'#f4f0ec'
   },
   bgColorImage: {
     backgroundColor: "#f0f0f0",

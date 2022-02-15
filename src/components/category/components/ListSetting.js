@@ -59,8 +59,10 @@ const ListSetting = ({
         </View>
       </View>
       {productIsLoading && !data?.length ? (
-        <View style={{ width: "50%" }}>
-          <SingleProductDetail />
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {[1, 2, 3, 4, 5, 6].map((v, i) => (
+            <SingleProductDetail key={i} />
+          ))}
         </View>
       ) : (
         <>

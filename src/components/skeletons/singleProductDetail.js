@@ -21,7 +21,7 @@ export { SingleProductDetail };
 
 const styles = StyleSheet.create({
   border: {
-    borderWidth: 2,
+    borderWidth: 1,
     justifyContent: "center",
     borderStyle: "dashed",
     borderRadius: 8,
@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
     paddingHorizontal: 8,
     backgroundColor: "white",
+    width: "47%",
+    margin: 4,
   },
   bgColorImage: {
     backgroundColor: "#f0f0f0",
