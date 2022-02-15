@@ -74,7 +74,7 @@ const ChangePassword = () => {
             text="Save"
             screen="profile"
             isIcon
-            bgColor={confirmPassword !== password ? "grey" : "#1c74bc"}
+            bgColor={confirmPassword !== password ? "grey" : "#FF1843"}
             disabled={confirmPassword !== password}
           />
         </View>

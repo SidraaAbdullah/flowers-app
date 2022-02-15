@@ -79,10 +79,11 @@ const AddAdress = () => {
                 onPress={handleUpdatePrimaryAdress}
                 text="Save as Primary"
                 screen="profile"
+                // bgColor="pink"
               />
               <CommonButton
-                bgColor="#ffbd11"
-                color="black"
+                // bgColor="#ffbd11"
+                // color="black"
                 text="Add new Address"
                 onPress={() => navigation.push("newAddressMap")}
                 rightIcon
