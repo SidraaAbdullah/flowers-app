@@ -44,18 +44,12 @@ const Category = ({ navigation }) => {
           value={search}
           onChangeText={(e) => setSearch(e)}
           placeholder="Search"
-          inputStyle={{ backgroundColor: "#f9f9f9" }}
           containerStyle={{
-            shadowColor: "gray",
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            shadowOpacity: 0.3,
-            shadowRadius: 100,
-            elevation: 7,
+            height: 40,
+            backgroundColor: "white",
+            borderRadius: 25,
           }}
-          placeholderTextColor={"lightgray"}
+          placeholderTextColor={"gray"}
         />
       </View>
 
@@ -198,11 +192,19 @@ export default Category;
 
 const style = StyleSheet.create({
   searchBarBox: {
-    marginTop: 5,
-    marginLeft: 20,
-    marginRight: 20,
-
-    // shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+    backgroundColor: "#f9f9f9",
+    borderRadius: 25,
+    shadowColor: "gray",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.6,
+    elevation: 7,
+    marginHorizontal: 20,
+    paddingRight: 6,
+    marginVertical: 10,
+    height: 40,
   },
   searchBar: {
     // shadowColor: "blue",

@@ -21,7 +21,7 @@ const Header = (props) => {
           <View style={styles.leftIcon}>
             <Icon
               name="arrow-back-outline"
-              size={30}
+              size={25}
               color="black"
               type="ionicon"
             />
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "black",
-    fontSize: 20,
+    fontSize: 16,
     fontFamily: "ProximaNovaSemiBold",
     textTransform: "capitalize",
   },

@@ -39,10 +39,10 @@ const App = () => {
   });
 
   useEffect(async () => {
-    setVerify({ verify: false, isVerifyLoading: true });
     let user = await AsyncStorageLib.getItem("logIn");
     user = JSON.parse(user);
     if (user) {
+      setVerify({ verify: false, isVerifyLoading: true });
       axios.defaults.headers.common.Authorization = `bearer ${user?.access_token}`;
       axios
         .post(BASE_URL + "/verify-user")
@@ -106,6 +106,8 @@ const App = () => {
     ProximaNovaBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Bold.otf"),
     ProximaNovaSemiBold: require("./src/assets/fonts/ProximaNova/ProximaNova-Semibold.otf"),
   });
+  console.log(loaded, verify.isVerifyLoading, locationLoad);
+
   if (!loaded || verify.isVerifyLoading || locationLoad) {
     return <AppLoading />;
   }
