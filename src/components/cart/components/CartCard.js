@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Rating } from "../../category/components";
 import { Count } from ".";
+import { RatingsContainer } from "../../category/components/RatingsContainer";
 
 const CartCard = ({ item }) => {
   const [count, setCount] = useState(item?.quantity);
@@ -50,9 +50,7 @@ const CartCard = ({ item }) => {
               }}
             >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                {[1, 2, 3, 4, 5].map((val, i) => (
-                  <Rating key={i} />
-                ))}
+                <RatingsContainer />
               </View>
               <Count count={count} setCount={setCount} />
             </View>

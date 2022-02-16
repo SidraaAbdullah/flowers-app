@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
-import { Rating } from ".";
 import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/actions/Cart";
+import { RatingsContainer } from "./RatingsContainer";
 
 const List = ({ item, navigation }) => {
   const [quantity, setQuantity] = useState(1);
@@ -82,9 +82,7 @@ const List = ({ item, navigation }) => {
                 }}
               >
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  {[1, 2, 3, 4, 5].map((val, i) => (
-                    <Rating key={i} />
-                  ))}
+                  <RatingsContainer />
                 </View>
 
                 <TouchableOpacity

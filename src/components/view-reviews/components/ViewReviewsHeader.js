@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Icon } from "react-native-elements";
-import { Rating } from "./Rating";
+import { RatingsContainer } from "../../category/components/RatingsContainer";
 
 const ViewReviewsHeader = () => {
   return (
@@ -30,9 +29,7 @@ const ViewReviewsHeader = () => {
         </Text>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            {[1, 2, 3, 4, 5].map((val, i) => (
-              <Rating key={i} />
-            ))}
+            <RatingsContainer />
           </View>
           <Text>(2902 ratings)</Text>
         </View>

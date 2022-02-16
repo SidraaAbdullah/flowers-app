@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { Rating } from "../../category/components";
+import { RatingsContainer } from "../../category/components/RatingsContainer";
 
 const SingleOrderList = ({ navigation, item, quantity }) => {
   return (
@@ -48,9 +48,7 @@ const SingleOrderList = ({ navigation, item, quantity }) => {
               }}
             >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                {[1, 2, 3, 4, 5].map((val, i) => (
-                  <Rating key={i} />
-                ))}
+                <RatingsContainer />
               </View>
               <View style={{ marginTop: 3 }}>
                 <Text style={[styles.text, { color: "gray", fontSize: 16 }]}>

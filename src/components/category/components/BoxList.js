@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
-import { Rating } from ".";
+import { RatingsContainer } from "../components/RatingsContainer";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/actions/Cart";
 
@@ -80,9 +80,7 @@ const BoxList = ({ item, navigation }) => {
             }}
           >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              {[1, 2, 3, 4, 5].map((val, i) => (
-                <Rating key={i} />
-              ))}
+              <RatingsContainer />
             </View>
 
             <TouchableOpacity
