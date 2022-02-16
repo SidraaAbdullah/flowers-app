@@ -9,20 +9,18 @@ import { TopSection, CartCard, DeliveryInfo } from "./components";
 import { useMutation } from "react-query";
 import { ADD_ORDER } from "../../queries";
 import { useSelector } from "react-redux";
+import { totalPrice } from "../../util/totalPrice";
 
 const Cart = ({ navigation, cartItems }) => {
   const { mutate: addOrder } = useMutation(ADD_ORDER);
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
-  const prices = cartItems.map((p) => p?.price * p?.quantity);
-  const totalPrice = prices?.reduce(
-    (previous, current) => (previous += current)
-  );
+  const finalPrice = totalPrice(cartItems);
 
-  const filterCartItems = (items) => {
+  const filterCartItems = () => {
     let orderItems = [];
     cartItems.map((item) => {
-      const { _id, quantity, price = totalPrice } = item;
+      const { _id, quantity, price = finalPrice } = item;
       orderItems.push({ product_id: _id, quantity, price });
     });
     return orderItems;
@@ -31,7 +29,7 @@ const Cart = ({ navigation, cartItems }) => {
   const handleAddOrder = () => {
     addOrder(
       {
-        products: filterCartItems(cartItems),
+        products: filterCartItems(),
         deliveryAddress: user?.primaryDeliveryAddress?._id,
         delivery_charges: "20",
         special_note: "Deliver early please!",
@@ -74,7 +72,7 @@ const Cart = ({ navigation, cartItems }) => {
             >
               <Text style={styles.text}>Total: </Text>
               <Text style={[styles.text, { color: "red" }]}>
-                Rs: {totalPrice}
+                Rs: {finalPrice}
               </Text>
             </View>
             <View

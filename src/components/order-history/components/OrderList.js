@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import { getOrderStatus } from "../../../hooks/socket-api";
+import { totalPrice } from "../../../util/totalPrice";
 
 const OrderList = ({ status, navigation, item, refreshData }) => {
   const [response, setResponse] = useState(status);
@@ -54,8 +55,12 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
             </View>
             <View style={{ width: "70%" }}>
               <View style={[styles.container, { marginBottom: 3 }]}>
-                <Text style={styles.font}>Rose (2 items)</Text>
-                <Text style={styles.font}>$40.00</Text>
+                <Text style={styles.font}>
+                  Products ({item?.products?.length})
+                </Text>
+                <Text style={styles.font}>
+                  Rs {item?.products?.length && totalPrice(item?.products)}
+                </Text>
               </View>
               <Text
                 numberOfLines={1}
