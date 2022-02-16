@@ -4,6 +4,7 @@ import {
   DECREASE_CART,
   DELETE_CART,
   RESET_CART,
+  CUSTOM_ADD_CART,
 } from "./Types";
 
 export const addToCart = (payload) => (dispatch) => {
@@ -36,5 +37,12 @@ export const DeleteFromCart = (payload) => (dispatch) => {
 export const resetCart = (payload) => (dispatch) => {
   dispatch({
     type: RESET_CART,
+  });
+};
+
+export const customAddCart = (payload) => (dispatch) => {
+  dispatch({
+    type: CUSTOM_ADD_CART,
+    payload,
   });
 };

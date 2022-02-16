@@ -11,20 +11,19 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/actions/Cart";
+import { customAddCart } from "../../redux/actions/Cart";
 import { Count } from "./components";
 import { RatingsContainer } from "../category/components/RatingsContainer";
 
 const ListDetail = ({ route, navigation }) => {
-  const { item } = route.params;
+  const { item } = route?.params || {};
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
-  const handleAddToCart = (item) => {
-    for (let i = 1; i <= count; i++) {
-      item.quantity = count;
-      const products = { ...item };
-      dispatch(addToCart(products));
+  const handleAddToCart = () => {
+    if (!item?.originalPrice) {
+      item.originalPrice = item?.price;
     }
+    dispatch(customAddCart({ quantity: count, ...item }));
   };
 
   return (

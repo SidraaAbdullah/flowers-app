@@ -7,10 +7,10 @@ import { IncreaseCart, DecreaseCart } from "../../../redux/actions/Cart";
 const Count = ({ item }) => {
   const dispatch = useDispatch();
   const increment = () => {
-    dispatch(IncreaseCart(item?._id));
+    dispatch(IncreaseCart(item));
   };
   let decrement = () => {
-    dispatch(DecreaseCart(item?._id));
+    dispatch(DecreaseCart(item));
   };
 
   return (

@@ -11,7 +11,7 @@ const CartCard = ({ item }) => {
 
   return (
     <View style={{ width: "100%", marginBottom: 8 }}>
-      <TouchableOpacity onPress={() => dispatch(DeleteFromCart(item?._id))}>
+      <TouchableOpacity onPress={() => dispatch(DeleteFromCart(item))}>
         <Text>Delete</Text>
       </TouchableOpacity>
 
