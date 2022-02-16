@@ -3,6 +3,7 @@ import {
   INCREASE_CART,
   DECREASE_CART,
   DELETE_CART,
+  RESET_CART,
 } from "../actions/Types";
 
 const initialState = {
@@ -59,6 +60,11 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         addToCart: filteredCart,
+      };
+    case RESET_CART:
+      return {
+        ...state,
+        addToCart: [],
       };
     default:
       return state;

@@ -3,8 +3,11 @@ import { Overlay } from "react-native-elements";
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { CommonButton } from "../buttons";
 import LottieView from "lottie-react-native";
+import { useDispatch } from "react-redux";
+import { resetCart } from "../../redux/actions/Cart";
 
 const OrderModal = ({ handleOpen, isOpen, navigation }) => {
+  const dispatch = useDispatch();
   return (
     <Overlay
       overlayStyle={{
@@ -31,14 +34,16 @@ const OrderModal = ({ handleOpen, isOpen, navigation }) => {
         <Text style={styles.text}>You have placed the order successfully!</Text>
         <CommonButton
           rightIcon
-          onPress={() =>
+          onPress={() => {
             navigation.navigate("home", {
               screen: "Order history",
               params: {
                 screen: "orderHistory",
               },
-            })
-          }
+            });
+            handleOpen();
+            dispatch(resetCart());
+          }}
           text="Check status of delivery"
         />
       </View>

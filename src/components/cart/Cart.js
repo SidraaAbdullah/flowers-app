@@ -33,6 +33,8 @@ const Cart = ({ navigation, cartItems }) => {
       {
         products: filterCartItems(cartItems),
         deliveryAddress: user?.primaryDeliveryAddress?._id,
+        delivery_charges: "20",
+        special_note: "Deliver early please!",
       },
       {
         onError: (e) => {
@@ -50,6 +52,7 @@ const Cart = ({ navigation, cartItems }) => {
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Cart" screen="category" />
