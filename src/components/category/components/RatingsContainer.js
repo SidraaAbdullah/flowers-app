@@ -2,10 +2,10 @@ import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { Rating } from "../../category/components";
 
-const RatingsContainer = ({ pointerEvents, setstarSelect, starSelect }) => {
+const RatingsContainer = ({ pointerEvents, setRating, rating }) => {
   const obj = [1, 2, 3, 4, 5];
   const onPressStar = (v) => {
-    setstarSelect(v);
+    setRating(v);
   };
   return (
     <View
@@ -24,11 +24,7 @@ const RatingsContainer = ({ pointerEvents, setstarSelect, starSelect }) => {
             <Rating
               starSize={16}
               type={
-                v <= starSelect
-                  ? "filled"
-                  : v === starSelect + 0.5
-                  ? "half"
-                  : "empty"
+                v <= rating ? "filled" : v === rating + 0.5 ? "half" : "empty"
               }
             />
           </TouchableOpacity>
