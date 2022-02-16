@@ -6,11 +6,11 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/actions/Cart";
 
 const BoxList = ({ item, navigation }) => {
-  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const handleAddToCart = (item) => {
-    setQuantity(quantity + 1);
-    item.quantity = quantity;
+    if (!item?.originalPrice) {
+      item.originalPrice = item?.price;
+    }
     dispatch(addToCart(item));
   };
   return (

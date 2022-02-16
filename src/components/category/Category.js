@@ -134,7 +134,7 @@ export default Category;
 
 const style = StyleSheet.create({
   searchBarBox: {
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "white",
     borderRadius: 25,
     shadowColor: "gray",
     shadowOffset: {
@@ -143,6 +143,7 @@ const style = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     marginHorizontal: 20,
+    paddingRight: 6,
     marginVertical: 10,
     height: 40,
   },

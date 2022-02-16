@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Count } from ".";
 import { RatingsContainer } from "../../category/components/RatingsContainer";
+import { DeleteFromCart } from "../../../redux/actions/Cart";
+import { useDispatch } from "react-redux";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const CartCard = ({ item }) => {
-  const [count, setCount] = useState(item?.quantity);
+  const dispatch = useDispatch();
+
   return (
     <View style={{ width: "100%", marginBottom: 8 }}>
+      <TouchableOpacity onPress={() => dispatch(DeleteFromCart(item?._id))}>
+        <Text>Delete</Text>
+      </TouchableOpacity>
+
       <View style={styles.border}>
         <View style={styles.container}>
           <View style={{ width: "30%" }}>
@@ -52,7 +60,7 @@ const CartCard = ({ item }) => {
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <RatingsContainer />
               </View>
-              <Count count={count} setCount={setCount} />
+              <Count item={item} />
             </View>
           </View>
         </View>

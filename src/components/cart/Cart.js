@@ -18,7 +18,6 @@ const Cart = ({ navigation, cartItems }) => {
   const totalPrice = prices?.reduce(
     (previous, current) => (previous += current)
   );
-  //console.log(cartItem);
 
   const filterCartItems = (items) => {
     let orderItems = [];

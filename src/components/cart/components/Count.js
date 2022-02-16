@@ -1,19 +1,32 @@
 import React from "react";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { IncreaseCart, DecreaseCart } from "../../../redux/actions/Cart";
 
-const Count = ({ setCount, count }) => {
-  const increment = () => setCount(count + 1);
-  let decrement = () => setCount(count - 1);
-  if (count <= 1) {
-    decrement = () => setCount(1);
-  }
+const Count = ({ item }) => {
+  const dispatch = useDispatch();
+  const increment = () => {
+    dispatch(IncreaseCart(item?._id));
+  };
+  let decrement = () => {
+    dispatch(DecreaseCart(item?._id));
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => decrement()}>
-        <Icon name="minus" size={18} color="gray" type="font-awesome" />
+      <TouchableOpacity
+        disabled={item?.quantity <= 1 ? true : false}
+        onPress={() => decrement()}
+      >
+        <Icon
+          name="minus"
+          size={18}
+          color={item?.quantity <= 1 ? "lightgray" : "gray"}
+          type="font-awesome"
+        />
       </TouchableOpacity>
-      <Text style={styles.text}>{count}</Text>
+      <Text style={styles.text}>{item?.quantity}</Text>
       <TouchableOpacity onPress={() => increment()}>
         <Icon name="plus" color="gray" size={18} type="font-awesome" />
       </TouchableOpacity>
