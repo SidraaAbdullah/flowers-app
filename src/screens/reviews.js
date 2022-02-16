@@ -1,7 +1,7 @@
 import React from "react";
 import Review from "../components/review";
 
-const ReviewScreen = ({ navigation }) => {
-  return <Review navigation={navigation} />;
+const ReviewScreen = ({ navigation, route }) => {
+  return <Review navigation={navigation} route={route} />;
 };
 export { ReviewScreen };

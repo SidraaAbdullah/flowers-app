@@ -9,16 +9,17 @@ import { useMutation } from "react-query";
 import { showToast } from "../../util/toast";
 import { ADD_REVIEW } from "../../queries";
 
-const Review = ({ navigation }) => {
+const Review = ({ navigation, route }) => {
   const [comment, setComment] = useState();
   const [productRating, setproductRating] = useState(0);
   const [riderRating, setriderRating] = useState(0);
+  const { id } = route?.params || {};
   const { mutate: addReview, isLoading: addReviewLoading } =
     useMutation(ADD_REVIEW);
 
   const handleAddReview = async () => {
     await addReview(
-      { id: item?._id, status: "CANCELLED", comment },
+      { id, comment },
       {
         onSuccess: async () => {
           showToast("Your review has been added", "success");

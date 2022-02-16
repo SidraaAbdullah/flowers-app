@@ -12,7 +12,9 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
   return (
     <>
       {response === "DELIVERED" && (
-        <TouchableOpacity onPress={() => navigation.navigate("reviewScreen")}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("reviewScreen", { id: item?._id })}
+        >
           <Text
             style={{
               color: "red",
