@@ -1,12 +1,9 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { SingleOrderList } from ".";
+import { orderHistoryTotalPrice } from "../../../util/totalPrice";
 
 const OrderDetail = ({ navigation, item }) => {
-  const prices = item?.products?.map((price) => price?.price);
-  const totalPrice = prices?.reduce(
-    (previous, current) => (previous += current)
-  );
   return (
     <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
       <View>
@@ -29,7 +26,9 @@ const OrderDetail = ({ navigation, item }) => {
             </View>
             <View style={{ alignItems: "center", flexDirection: "row" }}>
               <Text style={styles.text}>Subtotal: </Text>
-              <Text style={[styles.text, { color: "red" }]}>Rs: {totalPrice}</Text>
+              <Text style={[styles.text, { color: "red" }]}>
+                Rs: {orderHistoryTotalPrice(item?.products)}
+              </Text>
             </View>
           </View>
         </View>

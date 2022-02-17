@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import { getOrderStatus } from "../../../hooks/socket-api";
-import { totalPrice } from "../../../util/totalPrice";
+import { orderHistoryTotalPrice } from "../../../util/totalPrice";
 let moment = require("moment");
 
 const OrderList = ({ status, navigation, item, refreshData }) => {
@@ -61,7 +61,9 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
                   Products ({item?.products?.length})
                 </Text>
                 <Text style={styles.font}>
-                  Rs {item?.products?.length && totalPrice(item?.products)}
+                  Rs{" "}
+                  {item?.products?.length &&
+                    orderHistoryTotalPrice(item?.products)}
                 </Text>
               </View>
               <Text
@@ -72,7 +74,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
                   color: "gray",
                 }}
               >
-                {item?.deliveryAddress?.address}{" "}
+                {item?.deliveryAddress?.address}
               </Text>
               <View
                 style={{

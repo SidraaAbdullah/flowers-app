@@ -20,8 +20,8 @@ const Cart = ({ navigation, cartItems }) => {
   const filterCartItems = () => {
     let orderItems = [];
     cartItems.map((item) => {
-      const { _id, quantity, price = finalPrice } = item;
-      orderItems.push({ product_id: _id, quantity, price });
+      const { _id, quantity, originalPrice } = item;
+      orderItems.push({ product_id: _id, quantity, price: originalPrice });
     });
     return orderItems;
   };

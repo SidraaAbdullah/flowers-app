@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: "ProximaNovaSemiBold",
     fontSize: 18,
-    marginTop: 5,
-    color: "red",
+    marginTop: 25,
+    color: "black",
   },
 });

@@ -36,7 +36,7 @@ const CartCard = ({ item }) => {
               }}
             >
               <Text style={styles.text}>{item?.name}</Text>
-              <Text style={styles.text}>Rs: {item?.price}</Text>
+              <Text style={styles.text}>Rs: {item?.originalPrice}</Text>
             </View>
 
             <Text
