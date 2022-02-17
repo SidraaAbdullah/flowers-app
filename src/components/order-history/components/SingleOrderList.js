@@ -26,7 +26,7 @@ const SingleOrderList = ({ navigation, item, quantity }) => {
               }}
             >
               <Text style={styles.text}>{item?.name}</Text>
-              <Text style={styles.text}>{item?.price}</Text>
+              <Text style={styles.text}>Rs {item?.price}</Text>
             </View>
 
             <Text
