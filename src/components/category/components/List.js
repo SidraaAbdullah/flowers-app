@@ -24,7 +24,7 @@ const List = ({ item, navigation }) => {
                   item: item,
                 })
               }
-              activeOpacity={0.5}
+              activeOpacity={0.4}
             >
               <View style={{ width: "30%" }}>
                 <Image
@@ -45,7 +45,7 @@ const List = ({ item, navigation }) => {
                     item: item,
                   })
                 }
-                activeOpacity={0.5}
+                activeOpacity={0.4}
                 style={{ paddingRight: 10 }}
               >
                 <View

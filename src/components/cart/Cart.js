@@ -100,7 +100,7 @@ const Cart = ({ navigation, cartItems }) => {
             </View>
             <TouchableOpacity
               onPress={handleAddOrder}
-              activeOpacity={1}
+              activeOpacity={0.4}
               style={{ marginHorizontal: 35, marginVertical: 5 }}
             >
               <CommonButton text="Order Now" bgColor="green" />

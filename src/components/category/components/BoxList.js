@@ -18,7 +18,7 @@ const BoxList = ({ item, navigation }) => {
       <View style={{ marginBottom: 8, marginHorizontal: 5 }}>
         <View style={styles.border}>
           <TouchableOpacity
-            activeOpacity={0.5}
+            activeOpacity={0.4}
             onPress={() =>
               navigation.navigate("listDetail", {
                 item: item,

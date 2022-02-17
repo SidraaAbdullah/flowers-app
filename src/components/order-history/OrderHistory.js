@@ -69,11 +69,11 @@ const OrderHistory = ({ navigation }) => {
             <Icon name="options" type="ionicon" />
           </TouchableOpacity> */}
         </View>
-        <View style={{ padding: 15, flex: 1, height: height }}>
+        <View style={{ flex: 1, height: height }}>
           <FlatList
             data={data || []}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={[{ flexGrow: 1 }]}
+            contentContainerStyle={[{ flexGrow: 1, marginTop: 5 }]}
             renderItem={({ item }) => (
               <OrderList
                 item={item}

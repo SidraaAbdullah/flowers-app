@@ -4,13 +4,13 @@ import { styles } from "./style";
 import { Icon } from "react-native-elements";
 
 const CommonButton = (props) => {
-  const backgroundColor = props.bgColor ? props.bgColor : '#FF1843';
+  const backgroundColor = props.bgColor ? props.bgColor : "#FF1843";
   const color = props.color ? props.color : "white";
   const padding = props.paddingVertical ? props.paddingVertical : 12;
 
   return (
     <TouchableOpacity
-      activeOpacity={0.5}
+      activeOpacity={0.4}
       disabled={props.disabled}
       onPress={props.onPress && props.onPress}
       style={[styles.button, { backgroundColor: backgroundColor }, props.style]}

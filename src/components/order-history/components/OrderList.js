@@ -11,7 +11,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
   }, []);
 
   return (
-    <>
+    <View style={{ marginHorizontal: 10, marginVertical: 5 }}>
       {response === "DELIVERED" && (
         <TouchableOpacity
           onPress={() => navigation.navigate("reviewScreen", { id: item?._id })}
@@ -29,6 +29,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
         </TouchableOpacity>
       )}
       <TouchableOpacity
+        activeOpacity={0.4}
         onPress={async () => {
           navigation.navigate("singleOrderHistory", {
             item,
@@ -70,13 +71,13 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
                   color: "gray",
                 }}
               >
-                Loreum ipsum dolor sit amet, consectetur non adipiscing elit.
+                {item?.deliveryAddress?.address}{" "}
               </Text>
               <View
                 style={{
                   alignItems: "center",
                   flexDirection: "row",
-                  marginVertical: 3,
+                  marginTop: 3,
                   marginBottom: 8,
                 }}
               >
@@ -90,7 +91,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
                   Invoice No:
                 </Text>
                 <Text style={{ fontFamily: "ProximaNova", color: "red" }}>
-                  39303030
+                  {item?.uid}
                 </Text>
               </View>
               <View style={styles.container}>
@@ -128,7 +129,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
           </View>
         </View>
       </TouchableOpacity>
-    </>
+    </View>
   );
 };
 export { OrderList };
@@ -156,9 +157,14 @@ const styles = StyleSheet.create({
     // borderColor: "lightgray",
     backgroundColor: "#FFFFFF",
     marginBottom: 8,
-    shadowColor: "gray",
-    elevation: 10,
-    shadowRadius: 100,
+    shadowColor: "lightgray",
+    elevation: 12,
+    shadowRadius: 5,
     borderRadius: 20,
+    shadowOpacity: 0.4,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
   },
 });

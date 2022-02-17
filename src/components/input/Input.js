@@ -19,7 +19,7 @@ const Input = (props) => {
             {error}
           </Text>
         ) : null}
-        {props?.error ? (
+        {/* {props?.error && !error ? (
           <Text
             style={{
               color: "red",
@@ -29,7 +29,7 @@ const Input = (props) => {
           >
             {props?.error}
           </Text>
-        ) : null}
+        ) : null} */}
       </View>
       <View style={style.sectionStyle}>
         <Text style={style.imageStyle}>

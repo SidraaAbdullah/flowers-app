@@ -66,7 +66,7 @@ const Category = ({ navigation }) => {
             bounces={true}
             contentContainerStyle={[
               {
-                marginBottom: 20,
+                marginVertical: 20,
                 flexGrow: 1,
               },
             ]}
@@ -80,6 +80,7 @@ const Category = ({ navigation }) => {
             }
             renderItem={({ item }) => (
               <TouchableOpacity
+                activeOpacity={0.4}
                 key={item?._id}
                 onPress={() =>
                   navigation.navigate("categoryDetail", {
