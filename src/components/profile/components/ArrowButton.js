@@ -44,8 +44,13 @@ const styles = StyleSheet.create({
     width: "85%",
     backgroundColor: "#FFFFFF",
     marginBottom: 8,
-    shadowColor:'gray',
-    elevation:10,
-    shadowRadius:100
+    shadowColor: "lightgray",
+    elevation: 12,
+    shadowRadius: 20,
+    shadowOpacity: 0.4,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
   },
 });

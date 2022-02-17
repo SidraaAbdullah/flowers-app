@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import { getOrderStatus } from "../../../hooks/socket-api";
 import { totalPrice } from "../../../util/totalPrice";
+let moment = require("moment");
 
 const OrderList = ({ status, navigation, item, refreshData }) => {
   const [response, setResponse] = useState(status);
@@ -110,7 +111,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
                       marginTop: 2,
                     }}
                   >
-                    27 May
+                    {moment(item?.createdAt).format("DD-MMM-YYYY")}
                   </Text>
                 </View>
 

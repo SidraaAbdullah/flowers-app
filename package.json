@@ -29,6 +29,7 @@
     "lodash": "^4.17.21",
     "lottie-ios": "^3.2.3",
     "lottie-react-native": "^3.5.0",
+    "moment": "^2.29.1",
     "native-base": "^3.2.2",
     "radio-buttons-react-native": "^1.0.4",
     "react": "17.0.1",
