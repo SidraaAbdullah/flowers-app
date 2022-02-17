@@ -58,7 +58,7 @@ const CartCard = ({ item }) => {
               }}
             >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <RatingsContainer />
+                <RatingsContainer rating={item?.rating} />
               </View>
               <Count item={item} />
             </View>

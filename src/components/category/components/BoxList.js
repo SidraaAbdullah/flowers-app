@@ -80,7 +80,7 @@ const BoxList = ({ item, navigation }) => {
             }}
           >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <RatingsContainer />
+              <RatingsContainer rating={item?.rating} />
             </View>
 
             <TouchableOpacity

@@ -26,7 +26,7 @@ const SingleOrder = ({ navigation, route }) => {
               style={{
                 position: "absolute",
                 top: -35,
-                left: 145,
+                alignSelf: "center",
               }}
             >
               <Avatar
@@ -57,7 +57,7 @@ const SingleOrder = ({ navigation, route }) => {
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <Text style={styles.text}>Invoice No: </Text>
-                <Text style={[styles.text, { color: "red" }]}>789979980</Text>
+                <Text style={[styles.text, { color: "red" }]}>{item?.uid}</Text>
               </View>
               <DeliveryStatus item={item} />
               <OrderCancel refreshData={refreshData} item={item} />

@@ -37,6 +37,7 @@ const CategoryDetail = ({ navigation, route }) => {
       },
     }
   );
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText={item?.name} />

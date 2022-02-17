@@ -53,25 +53,16 @@ const ListDetail = ({ route, navigation }) => {
             <View style={styles.border}>
               <Text
                 style={{
-                  textAlign: "center",
                   fontSize: 20,
                   fontFamily: "ProximaNovaSemiBold",
+                  marginBottom: 10,
                 }}
               >
                 {item?.name}
               </Text>
-              <View
-                style={{
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexDirection: "row",
-                  marginTop: 5,
-                }}
-              >
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <RatingsContainer />
-                </View>
-                <TouchableOpacity
+
+              <RatingsContainer rating={item?.rating} />
+              {/* <TouchableOpacity
                   onPress={() => navigation.navigate("viewReviewsScreen")}
                 >
                   <View
@@ -98,8 +89,7 @@ const ListDetail = ({ route, navigation }) => {
                       color={"black"}
                     />
                   </View>
-                </TouchableOpacity>
-              </View>
+                </TouchableOpacity> */}
             </View>
 
             <View
@@ -171,5 +161,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: "lightgray",
     padding: 10,
+    alignItems: "center",
   },
 });

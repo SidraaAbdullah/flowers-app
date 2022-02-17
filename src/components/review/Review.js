@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
 import Header from "../../components/header";
 import { CommonButton } from "../buttons";
 import { CommentBox } from "./components/commentBox";
@@ -10,19 +10,26 @@ import { showToast } from "../../util/toast";
 import { ADD_REVIEW } from "../../queries";
 
 const Review = ({ navigation, route }) => {
-  const [comment, setComment] = useState();
-  const [productRating, setproductRating] = useState(0);
+  const { item, refreshData } = route?.params || {};
+  const [comment, setComment] = useState("");
+  const [products, setProducts] = useState(item?.products);
   const [riderRating, setriderRating] = useState(0);
-  const { id } = route?.params || {};
   const { mutate: addReview, isLoading: addReviewLoading } =
     useMutation(ADD_REVIEW);
 
   const handleAddReview = async () => {
     await addReview(
-      { id, comment },
+      {
+        productsRating: filterProductsSubmit(),
+        comment,
+        id: item?._id,
+        driver_rating: riderRating,
+      },
       {
         onSuccess: async () => {
-          showToast("Your review has been added", "success");
+          showToast("Your review has  been added", "success");
+          await refreshData();
+          navigation.navigate("orderHistory");
         },
         onError: (res) => {
           showToast(res.response?.data?.message, "danger");
@@ -31,19 +38,64 @@ const Review = ({ navigation, route }) => {
     );
   };
 
+  const handleSelectRating = ({ product, rating }) => {
+    const index = products.findIndex((item) => item._id === product?._id);
+    const updatedProducts = [...products];
+    updatedProducts[index].selectedRating = rating;
+    setProducts(updatedProducts);
+  };
+
+  const filterProductsSubmit = () => {
+    let updatedProducts = [];
+    products.map((item) =>
+      updatedProducts.push({
+        product_id: item?.product_id?._id,
+        rating: item?.selectedRating,
+      })
+    );
+    return updatedProducts;
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header headingText="Product Review" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ alignItems: "center" }}>
           <ProductReviewHeader image />
-          <ProductBox
-            productRating={productRating}
-            setproductRating={setproductRating}
-            image
-            name="Flowers in Box"
-            message="Please rate your feedback will help"
-          />
+          <Text
+            style={{
+              fontFamily: "ProximaNovaBold",
+              alignSelf: "flex-start",
+              marginLeft: 32,
+              marginTop: 10,
+              fontSize: 16,
+            }}
+          >
+            Products Rating
+          </Text>
+          {(products || []).map((item, i) => (
+            <ProductBox
+              key={i}
+              productRating={item?.selectedRating}
+              setproductRating={(rating) =>
+                handleSelectRating({ product: item, rating })
+              }
+              image
+              name={item?.product_id?.name}
+              message={item?.product_id?.description}
+            />
+          ))}
+          <Text
+            style={{
+              fontFamily: "ProximaNovaBold",
+              alignSelf: "flex-start",
+              marginLeft: 32,
+              marginTop: 10,
+              fontSize: 16,
+            }}
+          >
+            Rider Rating
+          </Text>
           <ProductBox
             productRating={riderRating}
             setproductRating={setriderRating}
@@ -53,7 +105,7 @@ const Review = ({ navigation, route }) => {
           />
           <CommentBox comment={comment} setComment={setComment} />
           <View style={{ width: "88%", marginVertical: 10 }}>
-            <CommonButton text="ADD REVIEW" />
+            <CommonButton onPress={handleAddReview} text="ADD REVIEW" />
           </View>
         </View>
       </ScrollView>

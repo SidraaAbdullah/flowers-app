@@ -13,9 +13,11 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
 
   return (
     <View style={{ marginHorizontal: 10, marginVertical: 5 }}>
-      {response === "DELIVERED" && (
+      {response === "DELIVERED" && !item?.driver_rating && (
         <TouchableOpacity
-          onPress={() => navigation.navigate("reviewScreen", { id: item?._id })}
+          onPress={() =>
+            navigation.navigate("reviewScreen", { item, refreshData })
+          }
         >
           <Text
             style={{
