@@ -16,7 +16,6 @@ const Cart = ({ navigation, cartItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
   const finalPrice = totalPrice(cartItems);
-
   const filterCartItems = () => {
     let orderItems = [];
     cartItems.map((item) => {

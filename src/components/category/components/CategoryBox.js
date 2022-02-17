@@ -45,20 +45,12 @@ export { CategoryBox };
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFFFFF",
-    // borderStyle: "dashed",
-    // borderColor: "lightgray",
-    // borderWidth: 1,
+    borderStyle: "dashed",
+    borderColor: "lightgray",
+    borderWidth: 1,
     borderRadius: 20,
     padding: 8,
     marginBottom: 10,
     height: 170,
-    shadowColor: "lightgray",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.4,
-    shadowRadius: 5,
-    elevation: 12,
   },
 });
