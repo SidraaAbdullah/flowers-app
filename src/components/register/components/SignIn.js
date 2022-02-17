@@ -26,7 +26,7 @@ const SignIn = ({ route }) => {
   const { mutate: signIn } = useMutation(SIGN_IN, {
     onSuccess: async (res) => {
       axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
-      if (addressObject) await ADD_ADDRESS(addressObject);
+      if (!addressObject?._id) await ADD_ADDRESS(addressObject);
     },
   });
 

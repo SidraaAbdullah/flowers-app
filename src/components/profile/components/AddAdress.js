@@ -12,12 +12,19 @@ import { useNavigation } from "@react-navigation/native";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 import useStorage from "../../../hooks/useStorage";
 import { AddressSkeleton } from "../../skeletons/addressSkeleton";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../../redux/actions/User";
 
 const AddAdress = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [location] = useStorage("ca_location", { isObject: true });
   const [check, setCheck] = useState({});
-  const { data: savedAddresses, refetch, isLoading:addressLoading } = useQuery("/user/delivery-address", {
+  const {
+    data: savedAddresses,
+    refetch,
+    isLoading: addressLoading,
+  } = useQuery("/user/delivery-address", {
     refetchOnMount: true,
     refetchOnReconnect: true,
     refetchOnWindowFocus: true,
@@ -43,6 +50,8 @@ const AddAdress = () => {
         },
         onSuccess: async (res) => {
           showToast(res.message, "success");
+          console.log(res);
+          // dispatch(addUser(item));
           await AsyncStorageLib.setItem(
             "ca_location",
             JSON.stringify({ ...location, ...check })

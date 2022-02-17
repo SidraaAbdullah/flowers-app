@@ -12,13 +12,14 @@ import {
 import { ScrollView, TouchableOpacity } from "react-native";
 import { CommonButton } from "../../buttons";
 import useStorage from "../../../hooks/useStorage";
+import axios from "axios";
+
 const SignUp = ({ navigation }) => {
   const [addressObject] = useStorage("ca_location", { isObject: true });
-
   const { mutate: signUp } = useMutation(SIGN_UP, {
     onSuccess: async (res) => {
       axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
-      if (addressObject) await ADD_ADDRESS(addressObject);
+      if (!addressObject?._id) await ADD_ADDRESS(addressObject);
     },
   });
   const handleClick = async (values, resetForm) => {
@@ -28,15 +29,14 @@ const SignUp = ({ navigation }) => {
         email: values.email,
         phone_number: values.phoneNumber,
         password: values.password,
-        cpassword: values.confirm_password,
       },
       {
         onSuccess: () => {
-          navigation.replace("home");
+          navigation.replace("signUp");
           resetForm();
         },
-        onError: () => {
-          alert("This email is already taken.");
+        onError: (res) => {
+          alert(res.message);
         },
       }
     );
@@ -118,7 +118,7 @@ const SignUp = ({ navigation }) => {
               touched={touched["confirm_password"]}
             />
             <View style={{ marginVertical: 10 }}>
-              <CommonButton onPress={() => handleSubmit()} text="SIGN UP" />
+              <CommonButton onPress={handleSubmit} text="SIGN UP" />
             </View>
           </View>
         )}

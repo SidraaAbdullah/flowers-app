@@ -68,6 +68,7 @@ const Category = ({ navigation }) => {
               {
                 marginVertical: 20,
                 flexGrow: 1,
+                alignSelf: "center",
               },
             ]}
             refreshControl={
@@ -87,7 +88,7 @@ const Category = ({ navigation }) => {
                     item: item,
                   })
                 }
-                style={{ width: "47%", marginHorizontal: 5 }}
+                style={{ width: "47.5%", marginHorizontal: 5 }}
               >
                 <CategoryBox item={item} />
               </TouchableOpacity>
