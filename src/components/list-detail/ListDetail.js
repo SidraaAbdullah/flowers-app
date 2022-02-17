@@ -142,7 +142,7 @@ const ListDetail = ({ route, navigation }) => {
                 rightIcon
                 rightIconName="cart-outline"
                 rightIconSize={24}
-                bgColor="#0E5561"
+                bgColor="#FF1843"
                 onPress={() => handleAddToCart(item)}
               />
             </View>
