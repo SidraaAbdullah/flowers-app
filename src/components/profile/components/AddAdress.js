@@ -20,6 +20,7 @@ const AddAdress = () => {
   const dispatch = useDispatch();
   const [location] = useStorage("ca_location", { isObject: true });
   const [check, setCheck] = useState({});
+
   const {
     data: savedAddresses,
     refetch,
@@ -49,9 +50,9 @@ const AddAdress = () => {
           showToast(err.toString(), "error");
         },
         onSuccess: async (res) => {
+          // let user = await AsyncStorageLib.getItem("logIn");
+          // dispatch(addUser({ primaryDeliveryAddress: check }));
           showToast(res.message, "success");
-          console.log(res);
-          // dispatch(addUser(item));
           await AsyncStorageLib.setItem(
             "ca_location",
             JSON.stringify({ ...location, ...check })

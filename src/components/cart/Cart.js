@@ -15,6 +15,7 @@ const Cart = ({ navigation, cartItems }) => {
   const { mutate: addOrder } = useMutation(ADD_ORDER);
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
+  console.log(user);
   const finalPrice = totalPrice(cartItems);
   const filterCartItems = () => {
     let orderItems = [];
