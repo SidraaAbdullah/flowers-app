@@ -98,16 +98,16 @@ const Cart = ({ navigation, cartItems }) => {
                 alignItems: "center",
                 padding: 10,
                 flexDirection: "row",
-                borderColor: "green",
+                borderColor: "#FF1843",
               }}
             >
               <Icon
                 name="info-circle"
                 type="font-awesome"
                 size={19}
-                color="green"
+                color="#FF1843"
               />
-              <Text style={[styles.text, { paddingLeft: 5, color: "green" }]}>
+              <Text style={[styles.text, { paddingLeft: 5, color: "#FF1843" }]}>
                 Pay Cash on delivery
               </Text>
             </View>
@@ -116,7 +116,7 @@ const Cart = ({ navigation, cartItems }) => {
               activeOpacity={0.4}
               style={{ marginHorizontal: 35, marginVertical: 5 }}
             >
-              <CommonButton text="Order Now" bgColor="green" />
+              <CommonButton text="Order Now" bgColor="#FF1843" />
             </TouchableOpacity>
           </View>
         </ScrollView>

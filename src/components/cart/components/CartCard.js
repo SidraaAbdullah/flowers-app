@@ -5,15 +5,16 @@ import { RatingsContainer } from "../../category/components/RatingsContainer";
 import { DeleteFromCart } from "../../../redux/actions/Cart";
 import { useDispatch } from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { CommonButton } from "../../buttons";
+import { Button } from "react-native-elements/dist/buttons/Button";
+import { Icon } from "react-native-elements/dist/icons/Icon";
 
 const CartCard = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
     <View style={{ width: "100%", marginBottom: 8 }}>
-      <TouchableOpacity onPress={() => dispatch(DeleteFromCart(item))}>
-        <Text>Delete</Text>
-      </TouchableOpacity>
+      <TouchableOpacity></TouchableOpacity>
 
       <View style={styles.border}>
         <View style={styles.container}>
@@ -65,6 +66,22 @@ const CartCard = ({ item }) => {
             </View>
           </View>
         </View>
+        <View style={styles.deleteContainer}>
+          <View style={styles.delete}>
+            <Text
+              style={{ color: "white", fontWeight: "700", paddingRight: 3 }}
+              onPress={() => dispatch(DeleteFromCart(item))}
+            >
+              Delete
+            </Text>
+            <Icon
+              name="delete"
+              color="white"
+              size={15}
+              onPress={() => dispatch(DeleteFromCart(item))}
+            />
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -91,5 +108,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 5,
+  },
+  deleteContainer: {
+    display: "flex",
+    alignItems: "flex-end",
+    marginHorizontal: 6,
+    marginBottom: 5,
+  },
+  delete: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#FF1843",
+    padding: 6,
+    paddingHorizontal: 8,
+    borderRadius: 5,
   },
 });
