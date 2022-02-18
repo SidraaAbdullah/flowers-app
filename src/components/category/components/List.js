@@ -28,7 +28,7 @@ const List = ({ item, navigation }) => {
             >
               <View style={{ width: "30%" }}>
                 <Image
-                  style={{ width: 80, height: 80 }}
+                  style={{ width: 80, height: 75, resizeMode: "contain" }}
                   source={{
                     uri:
                       item?.image ||

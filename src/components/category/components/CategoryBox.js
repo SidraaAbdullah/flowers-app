@@ -12,7 +12,7 @@ const CategoryBox = ({ item }) => {
               item?.image ||
               "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
           }}
-          style={{ width: 90, height: 90 }}
+          style={{ width: "100%", height: 90, resizeMode: "contain" }}
         />
       </View>
 
@@ -27,6 +27,8 @@ const CategoryBox = ({ item }) => {
           {item?.name}
         </Text>
         <Text
+          numberOfLines={2}
+          ellipsizeMode="tail"
           style={{
             fontSize: 15,
             color: "gray",

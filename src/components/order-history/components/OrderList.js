@@ -51,9 +51,11 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
           >
             <View style={{ width: "30%" }}>
               <Image
-                style={{ width: 80, height: 80 }}
+                style={{ width: 80, height: 80, resizeMode: "contain" }}
                 source={{
-                  uri: "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
+                  uri:
+                    item?.products[0]?.product_id?.image ||
+                    "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
                 }}
               />
             </View>

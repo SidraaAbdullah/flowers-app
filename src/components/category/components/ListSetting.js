@@ -99,9 +99,9 @@ const ListSetting = ({
                     key={item?._id}
                     navigation={navigation}
                   />
-                ) : value === "listStyle" ? (
+                ) : (
                   <List item={item} key={item?._id} navigation={navigation} />
-                ) : null}
+                )}
               </>
             )}
             showsHorizontalScrollIndicator={false}

@@ -39,7 +39,7 @@ const BoxList = ({ item, navigation }) => {
                     item?.image ||
                     "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
                 }}
-                style={{ width: 100, height: 100 }}
+                style={{ width: "100%", height: 90, resizeMode: "contain" }}
               />
             </View>
             <View

@@ -14,7 +14,7 @@ const CategoryName = ({ item }) => {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Image
             source={{ uri: item?.image }}
-            style={{ width: 40, height: 40 }}
+            style={{ width: 40, height: 40, resizeMode: "contain" }}
           />
           <Text
             style={{

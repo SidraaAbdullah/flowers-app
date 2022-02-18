@@ -9,7 +9,7 @@ const SingleOrderList = ({ navigation, item, quantity }) => {
         <View style={styles.container}>
           <View style={{ width: "30%" }}>
             <Image
-              style={{ width: 80, height: 80 }}
+              style={{ width: 80, height: 80, resizeMode: "contain" }}
               source={{
                 uri:
                   item?.image ||

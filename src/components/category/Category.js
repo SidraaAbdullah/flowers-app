@@ -88,7 +88,10 @@ const Category = ({ navigation }) => {
                     item: item,
                   })
                 }
-                style={{ width: "47.5%", marginHorizontal: 5 }}
+                style={{
+                  width: category?.data.length > 1 ? "47.5%" : 200,
+                  marginHorizontal: 5,
+                }}
               >
                 <CategoryBox item={item} />
               </TouchableOpacity>

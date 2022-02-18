@@ -45,11 +45,11 @@ const ListDetail = ({ route, navigation }) => {
                 item?.image ||
                 "https://bakeryonline.pk/wp-content/uploads/2020/08/bouquet-of-1-dozen-roses.jpg",
             }}
-            style={{ width: 110, height: 110 }}
+            style={{ width: "100%", height: 110, resizeMode: "contain" }}
           />
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={{ margin: 15 }}>
+          <View style={{ marginHorizontal: 15, marginVertical: 0 }}>
             <View style={styles.border}>
               <Text
                 style={{

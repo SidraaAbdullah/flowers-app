@@ -19,7 +19,7 @@ const CartCard = ({ item }) => {
         <View style={styles.container}>
           <View style={{ width: "30%" }}>
             <Image
-              style={{ width: 80, height: 80 }}
+              style={{ width: 80, height: 80, resizeMode: "contain" }}
               source={{
                 uri:
                   item?.image ||
@@ -44,6 +44,7 @@ const CartCard = ({ item }) => {
               style={{
                 fontFamily: "ProximaNova",
                 fontSize: 14,
+                marginTop: 3,
                 color: "gray",
               }}
             >

@@ -33,7 +33,9 @@ const SingleOrder = ({ navigation, route }) => {
                 rounded
                 size={70}
                 source={{
-                  uri: "https://cci-research.nl/author/aya-fukami/avatar_hu3c18ec414e2e5615db7090f5d5745dd7_17253_270x270_fill_lanczos_center_2.png",
+                  uri:
+                    item?.product_id?.image ||
+                    "https://cci-research.nl/author/aya-fukami/avatar_hu3c18ec414e2e5615db7090f5d5745dd7_17253_270x270_fill_lanczos_center_2.png",
                 }}
                 showEditButton
               />

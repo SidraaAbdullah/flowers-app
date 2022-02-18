@@ -4,7 +4,6 @@ import { Icon } from "react-native-elements";
 import { getOrderStatus } from "../../../hooks/socket-api";
 import LottieView from "lottie-react-native";
 
-
 const DeliveryStatus = ({ item }) => {
   const [response, setResponse] = useState(item?.status);
 
@@ -13,14 +12,26 @@ const DeliveryStatus = ({ item }) => {
   }, []);
 
   let statuses = [
-    { lottie: require('../../../assets/lottie/17431-package-delivery.json'), text: "Driver assigned", status: "DRIVER-ASSIGNED" },
-    { lottie: require('../../../assets/lottie/23212-order-packed.json'), text: "Item picked", status: "DRIVER-PICKED" },
     {
-      lottie: require('../../../assets/lottie/87985-delivery-scooter.json'),
+      lottie: require("../../../assets/lottie/87985-delivery-scooter.json"),
       text: "On the way",
       status: "IN-PROGRESS",
     },
-    {lottie: require('../../../assets/lottie/95591-delivered.json'), text: "Delivered", status: "DELIVERED" },
+    {
+      lottie: require("../../../assets/lottie/17431-package-delivery.json"),
+      text: "Driver assigned",
+      status: "DRIVER-ASSIGNED",
+    },
+    {
+      lottie: require("../../../assets/lottie/23212-order-packed.json"),
+      text: "Item picked",
+      status: "DRIVER-PICKED",
+    },
+    {
+      lottie: require("../../../assets/lottie/95591-delivered.json"),
+      text: "Delivered",
+      status: "DELIVERED",
+    },
   ];
   return (
     <View style={styles.container}>
@@ -33,17 +44,23 @@ const DeliveryStatus = ({ item }) => {
       ) : (
         <>
           {statuses.map((item) => (
-            <View style={{ marginHorizontal: 0,alignItems:'center', justifyContent:'flex-start', }}>
+            <View
+              style={{
+                marginHorizontal: 0,
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
               {/* <Icon
                 name={item.name}
                 color={item.status === response ? "#FF1843" : "#FF7E95"}
                 type="font-awesome"
               /> */}
               <LottieView
-                style={{ width: 120, height: 90, }}
+                style={{ width: 120, height: 90 }}
                 source={item.lottie}
                 autoPlay
-                loop={item.status === response? true:false}
+                loop={item.status === response ? true : false}
                 speed={1}
                 // colorFilters={'red'}
               />
