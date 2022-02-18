@@ -14,7 +14,7 @@ const DeliveryStatus = ({ item }) => {
   let statuses = [
     {
       lottie: require("../../../assets/lottie/87985-delivery-scooter.json"),
-      text: "On the way",
+      text: "In progress",
       status: "IN-PROGRESS",
     },
     {

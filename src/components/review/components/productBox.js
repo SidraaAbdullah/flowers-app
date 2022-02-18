@@ -32,7 +32,9 @@ const ProductBox = ({
         }}
       >
         <Text style={styles.header}>{name}</Text>
-        <Text style={styles.para}>{message}</Text>
+        <Text ellipsizeMode="tail" numberOfLines={2} style={styles.para}>
+          {message}
+        </Text>
         <RatingsContainer
           pointerEvents
           rating={productRating}
@@ -64,7 +66,8 @@ const styles = StyleSheet.create({
   para: {
     fontSize: 14,
     color: "gray",
-    lineHeight: 25,
+    marginVertical: 3,
     fontFamily: "ProximaNova",
+    width: 200,
   },
 });

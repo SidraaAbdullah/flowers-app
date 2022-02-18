@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   ImageBackground,
+  Linking,
 } from "react-native";
 import Header from "../../header";
 import { OrderDetail, DeliveryStatus, OrderCancel } from ".";
@@ -12,6 +13,18 @@ import { Avatar } from "react-native-elements";
 
 const SingleOrder = ({ navigation, route }) => {
   const { item, refreshData } = route?.params || {};
+  const openDialScreen = () => {
+    if (item?.driver_id?.phone_number) {
+      let number = "";
+      if (Platform.OS === "ios") {
+        number = `telprompt:${item?.driver_id?.phone_number}`;
+      } else {
+        number = `tel:${item?.driver_id?.phone_number}`;
+      }
+      Linking.openURL(number);
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header />
@@ -55,14 +68,19 @@ const SingleOrder = ({ navigation, route }) => {
                   { fontSize: 18, fontFamily: "ProximaNovaBold" },
                 ]}
               >
-                George Backer
+                {item?.driver_id?.name || "To be assigned"}
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <Text style={styles.text}>Invoice No: </Text>
                 <Text style={[styles.text, { color: "red" }]}>{item?.uid}</Text>
               </View>
               <DeliveryStatus item={item} />
-              <OrderCancel refreshData={refreshData} item={item} />
+              <OrderCancel
+                phone={item?.driver_id?.phone_number}
+                openDialScreen={openDialScreen}
+                refreshData={refreshData}
+                item={item}
+              />
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
               <OrderDetail navigation={navigation} item={item} />

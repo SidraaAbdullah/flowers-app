@@ -103,7 +103,9 @@ const Review = ({ navigation, route }) => {
             name="Salman Siddiqui"
             message="Please rate our Rider"
           />
-          <CommentBox comment={comment} setComment={setComment} />
+          <View style={{ width: "86%" }}>
+            <CommentBox comment={comment} setComment={setComment} />
+          </View>
           <View style={{ width: "88%", marginVertical: 10 }}>
             <CommonButton onPress={handleAddReview} text="ADD REVIEW" />
           </View>

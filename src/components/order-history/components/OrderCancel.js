@@ -5,7 +5,7 @@ import { Icon } from "react-native-elements";
 import { OrderCancelSheet } from "../../bottom-sheet";
 import { getOrderStatus } from "../../../hooks/socket-api";
 
-const OrderCancel = ({ item, refreshData }) => {
+const OrderCancel = ({ item, refreshData, openDialScreen, phone }) => {
   const [response, setResponse] = useState(item?.status);
 
   useEffect(() => {
@@ -24,10 +24,17 @@ const OrderCancel = ({ item, refreshData }) => {
           <Text style={styles.text}>Order Cancel</Text>
         </TouchableOpacity>
       )}
-      <View style={styles.call}>
+      <TouchableOpacity
+        disabled={phone ? false : true}
+        onPress={openDialScreen}
+        style={[
+          styles.call,
+          { backgroundColor: phone ? "#60dc6c" : "lightgray" },
+        ]}
+      >
         <Icon name="phone" color="white" type="font-awesome" />
         <Text style={styles.text}>Call</Text>
-      </View>
+      </TouchableOpacity>
       <OrderCancelSheet
         refreshData={refreshData}
         item={item}
@@ -47,7 +54,6 @@ const styles = StyleSheet.create({
   call: {
     paddingVertical: 10,
     width: "43%",
-    backgroundColor: "#60dc6c",
     borderRadius: 25,
     flexDirection: "row",
     alignItems: "center",

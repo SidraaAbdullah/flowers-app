@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     textTransform: "uppercase",
     fontFamily: "ProximaNovaSemiBold",
-    marginBottom: -45,
+    // marginBottom: -45,
   },
   rightIcon: {
     position: "absolute",
