@@ -63,9 +63,7 @@ const OrderList = ({ status, navigation, item, refreshData }) => {
                   Products ({item?.products?.length})
                 </Text>
                 <Text style={styles.font}>
-                  Rs{" "}
-                  {item?.products?.length &&
-                    orderHistoryTotalPrice(item?.products)}
+                  Rs {item?.products?.length && orderHistoryTotalPrice(item)}
                 </Text>
               </View>
               <Text

@@ -14,13 +14,16 @@ import useStorage from "../../../hooks/useStorage";
 import { AddressSkeleton } from "../../skeletons/addressSkeleton";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../../redux/actions/User";
+import { useSelector } from "react-redux";
 
 const AddAdress = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+
   const [location] = useStorage("ca_location", { isObject: true });
   const [check, setCheck] = useState({});
-
+  // console.log(check);
   const {
     data: savedAddresses,
     refetch,
@@ -50,8 +53,7 @@ const AddAdress = () => {
           showToast(err.toString(), "error");
         },
         onSuccess: async (res) => {
-          // let user = await AsyncStorageLib.getItem("logIn");
-          // dispatch(addUser({ primaryDeliveryAddress: check }));
+          dispatch(addUser({ primaryDeliveryAddress: check }));
           showToast(res.message, "success");
           await AsyncStorageLib.setItem(
             "ca_location",

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput } from "react-native";
 
 const CommentBox = ({ comment, setComment }) => {
   return (
-    <View style={{ width: "85%", marginTop: 10 }}>
+    <View style={{ width: "100%", marginTop: 10 }}>
       <Text style={{ fontFamily: "ProximaNovaSemiBold", fontSize: 16 }}>
         Comments
       </Text>

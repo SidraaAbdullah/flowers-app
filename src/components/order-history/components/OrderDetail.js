@@ -4,6 +4,7 @@ import { SingleOrderList } from ".";
 import { orderHistoryTotalPrice } from "../../../util/totalPrice";
 
 const OrderDetail = ({ navigation, item }) => {
+  console.log(item);
   return (
     <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
       <View>
@@ -27,7 +28,7 @@ const OrderDetail = ({ navigation, item }) => {
             <View style={{ alignItems: "center", flexDirection: "row" }}>
               <Text style={styles.text}>Subtotal: </Text>
               <Text style={[styles.text, { color: "red" }]}>
-                Rs: {orderHistoryTotalPrice(item?.products)}
+                Rs: {orderHistoryTotalPrice(item)}
               </Text>
             </View>
           </View>

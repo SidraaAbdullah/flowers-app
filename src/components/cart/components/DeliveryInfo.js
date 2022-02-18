@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 
-const DeliveryInfo = ({ navigation }) => {
+const DeliveryInfo = ({ navigation, user }) => {
   return (
     <View style={{ marginVertical: 10, paddingHorizontal: 5 }}>
       <View
@@ -23,7 +23,7 @@ const DeliveryInfo = ({ navigation }) => {
           marginBottom: 10,
         }}
       >
-        <Text style={styles.text}>R306 Sharifabd FB Area Block 1 Karachi</Text>
+        <Text style={styles.text}>{user?.primaryDeliveryAddress?.address}</Text>
       </View>
       {/* <View style={{ marginTop: 10 }}>
         <Text style={styles.heading}>Deliver date and time:</Text>

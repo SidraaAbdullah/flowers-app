@@ -1,14 +1,14 @@
-export const totalPrice = (items) => {
-  let prices = items.map((p) => p?.originalPrice * p?.quantity);
+export const totalPrice = (item) => {
+  let prices = item?.products?.map((p) => p?.originalPrice * p?.quantity);
   const totalPrice = prices?.reduce(
     (previous, current) => (previous += current)
   );
-  return totalPrice;
+  return totalPrice + Number(item?.delivery_charges);
 };
-export const orderHistoryTotalPrice = (items) => {
-  let prices = items.map((p) => p?.price * p?.quantity);
+export const orderHistoryTotalPrice = (item) => {
+  let prices = item?.products?.map((p) => p?.price * p?.quantity);
   const totalPrice = prices?.reduce(
     (previous, current) => (previous += current)
   );
-  return totalPrice;
+  return totalPrice + Number(item?.delivery_charges);
 };

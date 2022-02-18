@@ -10,13 +10,18 @@ import { useMutation } from "react-query";
 import { ADD_ORDER } from "../../queries";
 import { useSelector } from "react-redux";
 import { totalPrice } from "../../util/totalPrice";
+import { CommentBox } from "../../components/review/components/commentBox";
 
 const Cart = ({ navigation, cartItems }) => {
   const { mutate: addOrder } = useMutation(ADD_ORDER);
+  const [comment, setComment] = useState("");
+  const [deliveryCharges, setDeliveryCharges] = useState(150);
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
-  console.log(user);
-  const finalPrice = totalPrice(cartItems);
+  const finalPrice = totalPrice({
+    products: cartItems,
+    delivery_charges: deliveryCharges,
+  });
   const filterCartItems = () => {
     let orderItems = [];
     cartItems.map((item) => {
@@ -31,8 +36,8 @@ const Cart = ({ navigation, cartItems }) => {
       {
         products: filterCartItems(),
         deliveryAddress: user?.primaryDeliveryAddress?._id,
-        delivery_charges: "20",
-        special_note: "Deliver early please!",
+        delivery_charges: String(deliveryCharges),
+        special_note: comment,
       },
       {
         onError: (e) => {
@@ -61,19 +66,27 @@ const Cart = ({ navigation, cartItems }) => {
             {cartItems?.map((item) => (
               <CartCard item={item} key={item?._id} />
             ))}
-            <DeliveryInfo navigation={navigation} />
+            <CommentBox comment={comment} setComment={setComment} />
+            <DeliveryInfo user={user} navigation={navigation} />
             <View
               style={{
-                justifyContent: "flex-end",
-                alignItems: "center",
-                flexDirection: "row",
+                justifyContent: "space-between",
                 marginBottom: 8,
+                flexDirection: "row",
               }}
             >
-              <Text style={styles.text}>Total: </Text>
-              <Text style={[styles.text, { color: "red" }]}>
-                Rs: {finalPrice}
-              </Text>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.text}>Delivery Charges: </Text>
+                <Text style={[styles.text, { color: "red" }]}>
+                  Rs: {deliveryCharges}
+                </Text>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.text}>Total: </Text>
+                <Text style={[styles.text, { color: "red" }]}>
+                  Rs: {finalPrice}
+                </Text>
+              </View>
             </View>
             <View
               style={{
