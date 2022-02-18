@@ -7,34 +7,40 @@ import Input from "../../input";
 import { useMutation } from "react-query";
 import { UPDATE_USER_PROFILE } from "../../../queries";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { addUser } from "../../../redux/actions/User";
+import { useDispatch } from "react-redux";
 
 const PersonalInformation = () => {
+  const { user } = useSelector((state) => state.user);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const { mutate: updateUser } = useMutation(UPDATE_USER_PROFILE);
-  const [email, setEmail] = useState("sidraabdullah56@gmail.com");
-  const [name, setName] = useState("Sidra Abdullah");
-  const [number, setNumber] = useState("090078601");
-  // const [city, setCity] = useState("Karachi");
-  // const [country, setCountry] = useState("Pakistan");
-  // const [houseNo, setHouseNo] = useState("D/84/B");
-  // const [town, setTown] = useState("Gulshan");
+  const [email, setEmail] = useState(user?.email);
+  const [name, setName] = useState(user?.name);
+  const [number, setNumber] = useState(user?.phone_number);
+
   const handleUpdateUser = async () => {
-    await updateUser(
-      { name, email, phone_number: number },
-      {
-        onSuccess: () => {
-          Alert.alert("User profile has been updated.", "", [
-            {
-              text: "OK",
-              onPress: () => navigation.navigate("profile"),
-            },
-          ]);
-        },
-        onError: () => {
-          Alert.alert("Failed to update user profile.");
-        },
-      }
-    );
+    if (user) {
+      dispatch(addUser({ name, email, phone_number: number }));
+      console.log(user);
+      await updateUser(
+        { name, email, phone_number: number },
+        {
+          onSuccess: () => {
+            Alert.alert("User profile has been updated.", "", [
+              {
+                text: "OK",
+                onPress: () => navigation.navigate("profile"),
+              },
+            ]);
+          },
+          onError: () => {
+            Alert.alert("Failed to update user profile.");
+          },
+        }
+      );
+    }
   };
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>

@@ -21,6 +21,8 @@ import FlashMessage from "react-native-flash-message";
 
 const App = () => {
   const [locationLoad, setLocationLoad] = useState(true);
+  const [startingScreens, setStartingScreens] = useState(true);
+
   const [verify, setVerify] = useState({
     verify: false,
     isVerifyLoading: false,
@@ -39,6 +41,16 @@ const App = () => {
   });
 
   useEffect(async () => {
+    let starting_screen = await AsyncStorageLib.getItem("starting_screens");
+    starting_screen = JSON.parse(starting_screen);
+    setStartingScreens(starting_screen?.isShown);
+    if (!starting_screen?.isShown) {
+      AsyncStorageLib.setItem(
+        "starting_screens",
+        JSON.stringify({ isShown: true })
+      );
+    }
+
     let user = await AsyncStorageLib.getItem("logIn");
     user = JSON.parse(user);
     if (user) {
@@ -117,7 +129,10 @@ const App = () => {
       <Provider store={store}>
         <NavigationContainer>
           <FlashMessage position="top" floating={true} />
-          <RootNavigator verify={verify.verify} />
+          <RootNavigator
+            startingScreens={startingScreens}
+            verify={verify.verify}
+          />
         </NavigationContainer>
       </Provider>
     </QueryClientProvider>

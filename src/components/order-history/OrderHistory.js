@@ -16,8 +16,10 @@ import { GET_ORDER } from "../../queries";
 import { OrderListSkeleton } from "../../components/skeletons/orderListSkeleton";
 import LottieView from "lottie-react-native";
 import sorry from "../../assets/images/sorry.json";
+import { useSelector } from "react-redux";
 
 const OrderHistory = ({ navigation }) => {
+  const { user } = useSelector((state) => state.user);
   const { height } = Dimensions.get("window");
   const [pageNumber, setPageNumber] = useState(1);
   const [data, setData] = useState([]);
@@ -32,7 +34,7 @@ const OrderHistory = ({ navigation }) => {
     ["GET_ORDER", { page_no: pageNumber, records_per_page: 10 }],
     GET_ORDER,
     {
-      refetchOnWindowFocus: true,
+      enabled: user ? true : false,
       onSuccess: (res) => {
         if (dataRefreshed) {
           setData(res?.data);
@@ -137,7 +139,9 @@ const OrderHistory = ({ navigation }) => {
                     speed={1}
                   />
 
-                  <Text style={styles.label}>Sorry No Products available</Text>
+                  <Text style={styles.label}>
+                    Sorry no previous orders available
+                  </Text>
                 </View>
               )
             }

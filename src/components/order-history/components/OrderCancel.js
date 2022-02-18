@@ -11,7 +11,6 @@ const OrderCancel = ({ item, refreshData }) => {
   useEffect(() => {
     getOrderStatus(item, setResponse);
   }, []);
-  console.log(response);
 
   const refRBSheet = useRef();
   return (

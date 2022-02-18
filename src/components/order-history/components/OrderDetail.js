@@ -4,7 +4,6 @@ import { SingleOrderList } from ".";
 import { orderHistoryTotalPrice } from "../../../util/totalPrice";
 
 const OrderDetail = ({ navigation, item }) => {
-  console.log(item);
   return (
     <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
       <View>

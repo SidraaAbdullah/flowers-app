@@ -140,6 +140,7 @@ const style = StyleSheet.create({
     borderStyle: "dashed",
     fontSize: 14,
     fontFamily: "ProximaNova",
+    marginRight: 10,
   },
   label: {
     fontFamily: "ProximaNovaSemiBold",

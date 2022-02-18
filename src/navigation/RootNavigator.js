@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import BottomTab from "./BottomTab";
 import * as Screen from "../screens";
@@ -6,7 +6,7 @@ import useStorage from "../hooks/useStorage";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/actions/User";
 
-const RootNavigator = ({ verify }) => {
+const RootNavigator = ({ verify, startingScreens }) => {
   const Stack = createStackNavigator();
   const [user, isLoading] = useStorage("logIn", { isObject: true });
   const dispatch = useDispatch();
@@ -15,15 +15,11 @@ const RootNavigator = ({ verify }) => {
   }
   return (
     <Stack.Navigator
-      initialRouteName={user.access_token ? "home" : "signUp"}
+      initialRouteName={startingScreens ? "home" : "getStarted"}
       screenOptions={{ headerShown: false }}
     >
-      {!user.access_token && (
-        <React.Fragment>
-          <Stack.Screen name="signUp" component={Screen.RegisterScreen} />
-          <Stack.Screen name="getStarted" component={Screen.GetStartedScreen} />
-        </React.Fragment>
-      )}
+      <Stack.Screen name="signUp" component={Screen.RegisterScreen} />
+      <Stack.Screen name="getStarted" component={Screen.GetStartedScreen} />
       <Stack.Screen name="home" component={BottomTab} />
       <Stack.Screen
         name="forgotPassword"
