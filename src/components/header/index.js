@@ -3,6 +3,7 @@ import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 import { Icon, Badge } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
+import AsyncStorageLib from "@react-native-async-storage/async-storage";
 
 const Header = (props) => {
   const navigation = useNavigation();
@@ -57,17 +58,34 @@ const Header = (props) => {
             </TouchableOpacity>
           ) : null}
         </View>
-
-        <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-          <View style={styles.rightIcon}>
-            <Icon name="cart" size={28} color="black" type="ionicon" />
-            <Badge
-              status="error"
-              value={cartItemCount?.length}
-              containerStyle={{ position: "absolute", top: 10, right: 5 }}
-            />
-          </View>
-        </TouchableOpacity>
+        {props?.logout ? (
+          <TouchableOpacity
+            onPress={() => {
+              AsyncStorageLib.removeItem("logIn");
+              navigation.navigate("signUp");
+            }}
+          >
+            <View style={styles.rightIcon}>
+              <Icon
+                name="log-in-outline"
+                size={28}
+                color="black"
+                type="ionicon"
+              />
+            </View>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
+            <View style={styles.rightIcon}>
+              <Icon name="cart" size={28} color="black" type="ionicon" />
+              <Badge
+                status="error"
+                value={cartItemCount?.length}
+                containerStyle={{ position: "absolute", top: 10, right: 5 }}
+              />
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

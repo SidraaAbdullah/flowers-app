@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { style } from "./style";
 import Input from "../../input";
@@ -23,7 +23,7 @@ const SignIn = ({ route }) => {
   const navigation = useNavigation();
   const { cart } = route?.params || {};
   const dispatch = useDispatch();
-  const { mutate: signIn } = useMutation(SIGN_IN, {
+  const { mutate: signIn, isLoading: signInLoading } = useMutation(SIGN_IN, {
     onSuccess: async (res) => {
       axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
       if (!addressObject?._id) await ADD_ADDRESS(addressObject);
@@ -98,7 +98,11 @@ const SignIn = ({ route }) => {
               touched={touched["password"]}
             />
             <View style={{ marginVertical: 10 }}>
-              <CommonButton onPress={() => handleSubmit()} text=" LOG IN" />
+              <CommonButton
+                loading={signInLoading}
+                onPress={() => handleSubmit()}
+                text=" LOG IN"
+              />
             </View>
             <TouchableOpacity
               onPress={() => navigation.navigate("forgotPassword")}

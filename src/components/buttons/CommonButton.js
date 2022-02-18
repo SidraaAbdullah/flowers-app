@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import { styles } from "./style";
 import { Icon } from "react-native-elements";
 
@@ -22,9 +22,17 @@ const CommonButton = (props) => {
           justifyContent: "center",
         }}
       >
-        <Text style={[styles.text, { color: color, paddingVertical: padding }]}>
-          {props.text}
-        </Text>
+        {props.loading ? (
+          <View style={{ marginBottom: -45 }}>
+            <ActivityIndicator color="white" />
+          </View>
+        ) : (
+          <Text
+            style={[styles.text, { color: color, paddingVertical: padding }]}
+          >
+            {props.text}
+          </Text>
+        )}
         {props.isIcon && (
           <Icon
             size={props.iconSize || 18}
